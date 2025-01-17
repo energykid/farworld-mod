@@ -1,0 +1,39 @@
+{
+  "allsawswitchfromprecision": {
+    "sounds": ["farworld:allsawswitchfromprecision"]
+  },
+  "allsawswitchtoprecision": {
+    "sounds": ["farworld:allsawswitchtoprecision"]
+  },
+  "soulgolemactivate": {
+    "sounds": ["farworld:soulgolemactivate"]
+  },
+  "soulgolemdeactivate": {
+    "sounds": ["farworld:soulgolemdeactivate"]
+  },
+  "bloomedhurt": {
+    "sounds": ["farworld:bloomedhurt1",
+      "farworld:bloomedhurt2",
+      "farworld:bloomedhurt3"]
+  },
+  "bloomeddeath": {
+    "sounds": ["farworld:bloomeddeath"]
+  },
+  "wishbonecrack": {
+    "sounds": ["farworld:wishbonecrack"]
+  },
+  "wishboneshatter": {
+    "sounds": ["farworld:wishboneshatter"]
+  },
+
+  "whirlingworld": {
+    "sounds": ["farworld:whirlingworld"]
+  },
+
+  "dusty_shelves_ambiance": {
+    "sounds": ["farworld:dusty_shelves_ambiance"]
+  },
+  "lush_shallows_ambiance": {
+    "sounds": ["farworld:lush_shallows_ambiance"]
+  }
+}

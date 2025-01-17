@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "farworld:block/lush_flowstone"
+    },
+    "facing=down": {
+      "model": "farworld:block/inverse_lush_flowstone"
+    },
+    "facing=north": {
+      "model": "farworld:block/lush_flowstone"
+    },
+    "facing=south": {
+      "model": "farworld:block/lush_flowstone"
+    },
+    "facing=east": {
+      "model": "farworld:block/lush_flowstone"
+    },
+    "facing=west": {
+      "model": "farworld:block/lush_flowstone"
+    }
+  }
+}

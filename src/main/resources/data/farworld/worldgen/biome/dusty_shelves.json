@@ -1,0 +1,48 @@
+{
+  "temperature": 0,
+  "downfall": 0,
+  "has_precipitation": false,
+  "creature_spawn_probability": 0.05,
+  "effects": {
+    "sky_color": 5066061,
+    "fog_color": 4868682,
+    "water_color": 5003093,
+    "water_fog_color": 2504512,
+    "grass_color": 5526612,
+    "foliage_color": 3687733,
+    "ambient_sound": "farworld:dusty_shelves_ambiance",
+    "particle": {
+      "options": {
+        "type": "minecraft:ash"
+      },
+      "probability": 0.4
+    }
+  },
+  "spawners": {
+    "creature": [
+      {
+        "type": "minecraft:cave_spider",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:spider",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "farworld:ore_dense_coal_placed",
+      "farworld:ore_dense_iron_placed",
+      "farworld:basalt_outcrops_placed",
+      "farworld:flowstone_caches_placed",
+      "farworld:tuff_piles_placed"
+    ]
+  ]
+}

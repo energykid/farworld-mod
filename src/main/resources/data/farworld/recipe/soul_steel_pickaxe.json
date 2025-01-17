@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "farworld:soul_steel_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "minecraft:iron_pickaxe"
+  },
+  "addition": {
+    "item": "farworld:soul_steel"
+  },
+  "result": {
+    "id": "farworld:soul_steel_pickaxe",
+    "count": 1
+  }
+}

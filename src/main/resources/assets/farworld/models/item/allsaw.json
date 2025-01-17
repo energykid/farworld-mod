@@ -1,0 +1,19 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "farworld:item/allsaw"
+  },
+  "overrides": [
+    { "predicate": { "custom_model_data": 1 }, "model": "farworld:item/allsaw_models/allsaw1" },
+
+    { "predicate": { "custom_model_data": 2 }, "model": "farworld:item/allsaw_models/allsaw2" },
+
+    { "predicate": { "custom_model_data": 3 }, "model": "farworld:item/allsaw_models/allsaw3" },
+
+    { "predicate": { "custom_model_data": 4 }, "model": "farworld:item/allsaw_models/allsaw4" },
+
+    { "predicate": { "custom_model_data": 5 }, "model": "farworld:item/allsaw_models/allsaw3" },
+
+    { "predicate": { "custom_model_data": 6 }, "model": "farworld:item/allsaw_models/allsaw2" }
+  ]
+}

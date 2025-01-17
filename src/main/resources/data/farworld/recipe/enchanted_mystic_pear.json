@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "key": {
+    "A": {
+      "item": "farworld:pear"
+    },
+    "B": {
+      "item": "minecraft:lapis_block"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:enchanted_mystic_pear"
+  }
+}

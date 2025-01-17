@@ -1,0 +1,15 @@
+{
+
+  "package": "net.ennway.farworld.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "required": true,
+
+  "mixins": [
+    "WishboneAnimationMixin"
+  ],
+
+  "injectors": {
+    "defaultRequire": 1
+  }
+
+}

@@ -1,0 +1,12 @@
+{
+  "type": "farworld:basic_loot_modifier",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/stronghold_corridor"
+    }
+  ],
+  "chance": 1.0,
+  "amount": 1,
+  "item_type": "farworld:allsaw"
+}

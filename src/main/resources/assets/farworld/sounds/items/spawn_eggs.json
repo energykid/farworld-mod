@@ -1,0 +1,7 @@
+{
+  "keys": [
+    "farworld:bloomed_spawn_egg",
+    "farworld:soul_golem_spawn_egg"
+  ],
+  "soundEvent": "minecraft:block.sniffer_egg.plop"
+}

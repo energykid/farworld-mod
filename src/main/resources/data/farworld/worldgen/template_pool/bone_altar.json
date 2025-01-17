@@ -1,0 +1,18 @@
+{
+  "name": "bone_altar",
+  "fallback": "farworld:bone_altar",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "farworld:bone_altar",
+        "processors": {
+          "processors": []
+        },
+        "override_liquid_settings": "ignore_waterlogging"
+      }
+    }
+  ]
+}

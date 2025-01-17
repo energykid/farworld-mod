@@ -1,0 +1,9 @@
+{
+  "comparator_output": 12,
+  "description":
+  {
+    "translate": "item.farworld.disc_whirlingworld.desc"
+  },
+  "length_in_seconds": 109.0,
+  "sound_event": "farworld:whirlingworld"
+}

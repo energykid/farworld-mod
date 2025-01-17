@@ -1,0 +1,12 @@
+{
+  "type": "farworld:basic_loot_modifier",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/cherry_leaves"
+    }
+  ],
+  "chance": 0.1,
+  "amount": 1,
+  "item_type": "farworld:cherries"
+}

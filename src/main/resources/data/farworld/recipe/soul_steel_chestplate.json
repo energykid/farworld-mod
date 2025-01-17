@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "farworld:soul_steel"
+  },
+  "base": {
+    "item": "minecraft:iron_chestplate"
+  },
+  "result": {
+    "count": 1,
+    "id": "farworld:soul_steel_chestplate"
+  },
+  "template": {
+    "item": "farworld:soul_steel_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "description": {
+    "translate": "enchantment.farworld.scything"
+  },
+  "supported_items": "farworld:allsaw",
+  "primary_items": "farworld:allsaw",
+  "weight": 3,
+  "max_level": 1,
+  "max_cost": {
+    "base": 65,
+    "per_level_above_first": 9
+  },
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 9
+  },
+  "anvil_cost": 3,
+  "slots": []
+}

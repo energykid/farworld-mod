@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "farworld:block/basalt_iron_end",
+    "side": "farworld:block/basalt_iron_side"
+  }
+}

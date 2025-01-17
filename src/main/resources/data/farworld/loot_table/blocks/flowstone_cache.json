@@ -1,0 +1,60 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "name": "farworld:flowstone_cache"
+            }
+          ]
+        }
+      ],
+      "rolls": 2
+    },
+    {
+      "rolls": 5,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 5,
+          "functions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:amethyst_shard",
+          "weight": 7
+        }
+      ]
+    }
+  ],
+  "random_sequence": "farworld:blocks/dense_iron_ore"
+}

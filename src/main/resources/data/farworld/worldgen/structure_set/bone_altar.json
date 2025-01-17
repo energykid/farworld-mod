@@ -1,0 +1,16 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 14357921,
+    "separation": 20,
+    "spacing": 25,
+    "frequency_reduction_method": "legacy_type_2",
+    "frequency": 0.08
+  },
+  "structures": [
+    {
+      "structure": "farworld:bone_altar",
+      "weight": 1
+    }
+  ]
+}

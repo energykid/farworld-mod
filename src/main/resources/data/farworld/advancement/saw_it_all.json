@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "id": "farworld:allsaw"
+    },
+    "title": {
+      "translate": "advancement.farworld.saw_it_all"
+    },
+    "description": {
+      "translate": "advancement.farworld.saw_it_all.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "minecraft:story/follow_ender_eye",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:player_generates_container_loot",
+      "conditions": {
+        "loot_table": "minecraft:chests/stronghold_corridor"
+      }
+    }
+  }
+}

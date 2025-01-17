@@ -1,0 +1,14 @@
+{
+  "keys": [
+    "farworld:soul_steel_pickaxe",
+    "farworld:soul_steel_sword",
+    "farworld:soul_steel_axe",
+    "farworld:soul_steel_shovel",
+    "farworld:soul_steel_hoe",
+    "farworld:soul_steel_helmet",
+    "farworld:soul_steel_chestplate",
+    "farworld:soul_steel_leggings",
+    "farworld:soul_steel_boots"
+  ],
+  "soundEvent": "minecraft:item.armor.equip_netherite"
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farworld:soul_steel_block"
+        }
+      ],
+      "functions": []
+    },
+    {
+      "rolls": 4,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farworld:soul_steel",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

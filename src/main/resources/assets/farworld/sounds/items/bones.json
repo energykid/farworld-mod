@@ -1,0 +1,6 @@
+{
+  "keys": [
+    "farworld:wishbone"
+  ],
+  "soundEvent": "minecraft:block.bone_block.place"
+}

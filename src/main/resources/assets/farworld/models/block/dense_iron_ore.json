@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "farworld:block/dense_iron_ore"
+  }
+}

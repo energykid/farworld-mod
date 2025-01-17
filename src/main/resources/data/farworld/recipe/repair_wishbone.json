@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "farworld:wishbone"
+    },
+    {
+      "item": "minecraft:experience_bottle"
+    }
+  ],
+  "result": {
+    "id": "farworld:wishbone",
+    "components": {
+      "minecraft:custom_model_data": 1
+    }
+  }
+}

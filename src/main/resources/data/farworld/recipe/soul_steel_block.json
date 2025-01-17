@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "key": {
+    "A": {
+      "item": "farworld:soul_steel_ingot"
+    }
+  },
+  "result": {
+    "id": "farworld:soul_steel_block"
+  }
+}

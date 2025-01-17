@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "farworld:block/gloomcap"
+  },
+  "render_type": "cutout"
+}

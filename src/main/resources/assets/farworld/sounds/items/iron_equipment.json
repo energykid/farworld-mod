@@ -1,0 +1,6 @@
+{
+  "keys": [
+    "farworld:allsaw"
+  ],
+  "soundEvent": "minecraft:item.armor.equip_iron"
+}

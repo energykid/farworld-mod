@@ -1,0 +1,51 @@
+package net.ennway.farworld.registries;
+
+import net.ennway.farworld.Farworld;
+import net.minecraft.client.resources.sounds.Sound;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.item.JukeboxSong;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
+
+public class ModSounds {
+    public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
+        DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, "farworld");
+
+    public static final Supplier<SoundEvent> ALLSAW_SWITCH_FROM_PRECISION = createSoundEvent("allsawswitchfromprecision");
+    public static final Supplier<SoundEvent> ALLSAW_SWITCH_TO_PRECISION = createSoundEvent("allsawswitchtoprecision");
+
+    public static final Supplier<SoundEvent> BLOOMED_HURT = createSoundEvent("bloomedhurt");
+    public static final Supplier<SoundEvent> BLOOMED_DEATH = createSoundEvent("bloomeddeath");
+
+    public static final Supplier<SoundEvent> SOUL_GOLEM_ACTIVATE = createSoundEvent("soulgolemactivate");
+    public static final Supplier<SoundEvent> SOUL_GOLEM_DEACTIVATE = createSoundEvent("soulgolemdeactivate");
+
+    public static final Supplier<SoundEvent> WISHBONE_CRACK = createSoundEvent("wishbonecrack");
+    public static final Supplier<SoundEvent> WISHBONE_SHATTER = createSoundEvent("wishboneshatter");
+
+    public static final Supplier<SoundEvent> WHIRLING_WORLD = createSoundEvent("whirlingworld");
+    public static final ResourceKey<JukeboxSong> WHIRLING_WORLD_KEY = createSong("whirlingworld");
+
+    public static final Supplier<SoundEvent> DUSTY_SHELVES_AMBIANCE = createSoundEvent("dusty_shelves_ambiance");
+    public static final Supplier<SoundEvent> LUSH_SHALLOWS_AMBIANCE = createSoundEvent("lush_shallows_ambiance");
+
+    private static ResourceKey<JukeboxSong> createSong(String name)
+    {
+        return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name));
+    }
+
+    private static Supplier<SoundEvent> createSoundEvent(String name)
+    {
+        return SOUND_EVENTS.register(
+                name,
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name))
+        );
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "farworld:bystone",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "farworld:bystone",
+    "biome_source": {
+      "type": "minecraft:checkerboard",
+      "scale": 8,
+      "biomes": [
+        "farworld:lush_shallows",
+        "farworld:dusty_shelves"
+      ]
+    }
+  }
+}

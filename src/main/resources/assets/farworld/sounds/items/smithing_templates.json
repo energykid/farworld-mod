@@ -1,0 +1,6 @@
+{
+  "keys": [
+    "farworld:soul_steel_upgrade_smithing_template"
+  ],
+  "soundEvent": "minecraft:entity.iron_golem.step"
+}
