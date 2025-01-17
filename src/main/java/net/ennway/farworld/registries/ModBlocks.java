@@ -50,11 +50,17 @@ public class ModBlocks {
                     .strength(1.8F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
 
-
     public static final DeferredBlock<Block> DENSE_IRON_ORE = BLOCKS_ALL.register(
             "dense_iron_ore",
             registryName -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN).requiresCorrectToolForDrops()
+                    .strength(1.8F, 6.0F)
+                    .sound(SoundType.NETHERRACK)));
+
+    public static final DeferredBlock<Block> DENSE_GOLD_ORE = BLOCKS_ALL.register(
+            "dense_gold_ore",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_YELLOW).requiresCorrectToolForDrops()
                     .strength(1.8F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
 
@@ -63,6 +69,13 @@ public class ModBlocks {
             registryName -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(1.1F, 6.0F)
+                    .sound(SoundType.NETHERRACK)));
+
+    public static final DeferredBlock<Block> COBBLED_FLOWSTONE = BLOCKS_ALL.register(
+            "cobbled_flowstone",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
                     .sound(SoundType.NETHERRACK)));
 
     public static final DeferredBlock<Block> LUSH_FLOWSTONE = BLOCKS_ALL.register(
@@ -75,7 +88,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> FLOWSTONE_CACHE = BLOCKS_ALL.register(
             "flowstone_cache",
             registryName -> new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
                     .strength(1.3F, 8.0F)
                     .sound(SoundType.NETHER_GOLD_ORE)));
 }

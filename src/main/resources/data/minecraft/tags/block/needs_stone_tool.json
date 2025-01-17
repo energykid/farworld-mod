@@ -3,9 +3,9 @@
   "values": [
     "farworld:nether_iron_ore",
     "farworld:flowstone",
+    "farworld:cobbled_flowstone",
     "farworld:flowstone_cache",
     "farworld:lush_flowstone",
-    "farworld:inverse_lush_flowstone",
     "farworld:dense_coal_ore",
     "farworld:dense_iron_ore"
   ]

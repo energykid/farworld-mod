@@ -42,9 +42,11 @@
   "block.farworld.nether_iron_ore" : "Nether Iron Ore",
   "block.farworld.soul_steel_block" : "Block of Soul Steel",
   "block.farworld.flowstone" : "Flowstone",
+  "block.farworld.cobbled_flowstone" : "Cobbled Flowstone",
   "block.farworld.lush_flowstone" : "Lush Flowstone",
   "block.farworld.dense_coal_ore" : "Dense Coal Ore",
   "block.farworld.dense_iron_ore" : "Dense Iron Ore",
+  "block.farworld.dense_gold_ore" : "Dense Gold Ore",
   "block.farworld.flowstone_cache" : "Geocache Block",
 
   "entity.farworld.bloomed" : "Bloomed",

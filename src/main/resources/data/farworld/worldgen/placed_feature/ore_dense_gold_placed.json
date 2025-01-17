@@ -1,12 +1,12 @@
 {
-  "feature": "farworld:basalt_outcrops",
+  "feature": "farworld:ore_dense_gold",
   "placement": [
     {
       "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:count",
-      "count": 2
+      "count": 16
     },
     {
       "type": "minecraft:height_range",
@@ -22,10 +22,6 @@
     },
     {
       "type": "minecraft:biome"
-    },
-    {
-      "type": "minecraft:rarity_filter",
-      "chance": 3
     }
   ]
 }

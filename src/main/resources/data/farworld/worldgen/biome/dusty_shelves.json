@@ -4,8 +4,8 @@
   "has_precipitation": false,
   "creature_spawn_probability": 0.05,
   "effects": {
-    "sky_color": 5066061,
-    "fog_color": 4868682,
+    "sky_color": 10392176,
+    "fog_color": 10392176,
     "water_color": 5003093,
     "water_fog_color": 2504512,
     "grass_color": 5526612,
@@ -15,13 +15,13 @@
       "options": {
         "type": "minecraft:ash"
       },
-      "probability": 0.4
+      "probability": 0.025
     }
   },
   "spawners": {
     "creature": [
       {
-        "type": "minecraft:cave_spider",
+        "type": "minecraft:silverfish",
         "weight": 1,
         "minCount": 1,
         "maxCount": 2
@@ -40,7 +40,6 @@
     [
       "farworld:ore_dense_coal_placed",
       "farworld:ore_dense_iron_placed",
-      "farworld:basalt_outcrops_placed",
       "farworld:flowstone_caches_placed",
       "farworld:tuff_piles_placed"
     ]

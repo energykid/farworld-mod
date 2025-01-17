@@ -40,18 +40,18 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:emerald",
-          "weight": 5,
+          "weight": 4,
           "functions": []
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:diamond",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:amethyst_shard",
-          "weight": 7
+          "weight": 6
         }
       ]
     }

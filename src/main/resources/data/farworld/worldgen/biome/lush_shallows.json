@@ -10,7 +10,13 @@
     "water_fog_color": 2310738,
     "grass_color": 5027146,
     "foliage_color": 3635038,
-    "ambient_sound": "farworld:lush_shallows_ambiance"
+    "ambient_sound": "farworld:lush_shallows_ambiance",
+    "particle": {
+      "options": {
+        "type": "farworld:phosphen_particle"
+      },
+      "probability": 0.0025
+    }
   },
   "spawners": {
     "creature": [
@@ -36,5 +42,9 @@
   },
   "spawn_costs": {},
   "carvers": {},
-  "features": []
+  "features": [
+    [
+      "farworld:ore_dense_coal_placed",
+      "farworld:ore_dense_gold_placed"
+    ]]
 }

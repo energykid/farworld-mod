@@ -35,7 +35,7 @@
                   "condition": "minecraft:survives_explosion"
                 }
               ],
-              "name": "farworld:flowstone"
+              "name": "farworld:cobbled_flowstone"
             }
           ]
         }

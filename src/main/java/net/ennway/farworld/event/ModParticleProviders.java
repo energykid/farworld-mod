@@ -17,6 +17,8 @@ public class ModParticleProviders {
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ModParticles.PARALYSIS.get(), ParalysisParticleProvider::new);
 
+        event.registerSpriteSet(ModParticles.PHOSPHEN_PARTICLE.get(), PhosphenParticleProvider::new);
+
         event.registerSpriteSet(ModParticles.WISHBONE_SPARKLE.get(), WishboneSparkleParticleProvider::new);
         event.registerSpriteSet(ModParticles.WISHBONE_PORTAL.get(), WishbonePortalParticleProvider::new);
 

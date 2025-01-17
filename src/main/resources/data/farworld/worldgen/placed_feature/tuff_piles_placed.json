@@ -6,7 +6,7 @@
     },
     {
       "type": "minecraft:count",
-      "count": 3
+      "count": 15
     },
     {
       "type": "minecraft:height_range",
@@ -16,7 +16,7 @@
           "above_bottom": 10
         },
         "max_inclusive": {
-          "below_top": 35
+          "below_top": 25
         }
       }
     },

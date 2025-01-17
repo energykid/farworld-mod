@@ -102,12 +102,16 @@ public class ModItems
             () -> new BlockItem(ModBlocks.SOUL_STEEL_BLOCK.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE = ITEMS_ALL.register("flowstone",
             () -> new BlockItem(ModBlocks.FLOWSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> COBBLED_FLOWSTONE = ITEMS_ALL.register("cobbled_flowstone",
+            () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> LUSH_FLOWSTONE = ITEMS_ALL.register("lush_flowstone",
             () -> new BlockItem(ModBlocks.LUSH_FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DENSE_COAL_ORE = ITEMS_ALL.register("dense_coal_ore",
             () -> new BlockItem(ModBlocks.DENSE_COAL_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DENSE_IRON_ORE = ITEMS_ALL.register("dense_iron_ore",
             () -> new BlockItem(ModBlocks.DENSE_IRON_ORE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> DENSE_GOLD_ORE = ITEMS_ALL.register("dense_gold_ore",
+            () -> new BlockItem(ModBlocks.DENSE_GOLD_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE_CACHE = ITEMS_ALL.register("flowstone_cache",
             () -> new BlockItem(ModBlocks.FLOWSTONE_CACHE.get(), new Item.Properties()).asItem());
 

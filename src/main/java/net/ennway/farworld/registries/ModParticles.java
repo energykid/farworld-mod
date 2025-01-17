@@ -41,5 +41,9 @@ public class ModParticles {
             "infernal_tendril",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> PHOSPHEN_PARTICLE = PARTICLE_TYPES.register(
+            "phosphen_particle",
+            () -> new SimpleParticleType(false)
+    );
 
 }
