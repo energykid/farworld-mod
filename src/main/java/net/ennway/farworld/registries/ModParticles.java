@@ -45,5 +45,13 @@ public class ModParticles {
             "phosphen_particle",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> DIAMOND_DUST = PARTICLE_TYPES.register(
+            "diamond_dust",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> DIAMOND_SPARKLE = PARTICLE_TYPES.register(
+            "diamond_sparkle",
+            () -> new SimpleParticleType(false)
+    );
 
 }

@@ -79,6 +79,10 @@ public class CritEffects {
 
                     spawnFireEffect(enemy, ModParticles.INFERNAL_SMOKE, ModParticles.INFERNAL_TENDRIL);
                 }
+                if (stack.is(Items.DIAMOND_SWORD) || stack.is(Items.DIAMOND_AXE))
+                {
+                    spawnFireEffect(enemy, ModParticles.DIAMOND_SPARKLE, ModParticles.DIAMOND_DUST);
+                }
             }
         }
     }

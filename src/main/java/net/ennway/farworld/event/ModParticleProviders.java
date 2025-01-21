@@ -27,5 +27,8 @@ public class ModParticleProviders {
 
         event.registerSpriteSet(ModParticles.INFERNAL_SMOKE.get(), InfernalSmokeParticleProvider::new);
         event.registerSpriteSet(ModParticles.INFERNAL_TENDRIL.get(), InfernalTendrilParticleProvider::new);
+
+        event.registerSpriteSet(ModParticles.DIAMOND_DUST.get(), DiamondDustParticleProvider::new);
+        event.registerSpriteSet(ModParticles.DIAMOND_SPARKLE.get(), DiamondSparkleParticleProvider::new);
     }
 }
