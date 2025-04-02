@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:soul_steel_chestplate"
+    "farworld:soul_steel_chestplate",
+    "farworld:iridium_chestplate"
   ]
 }

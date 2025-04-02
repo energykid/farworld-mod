@@ -18,7 +18,7 @@ import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 import org.joml.Vector3f;
 
-public class BloomedModel<T extends Entity> extends HierarchicalModel<T> {
+public class BloomedModel<T extends BloomedEntity> extends HierarchicalModel<T> {
 
 	public boolean isArthur = false;
 

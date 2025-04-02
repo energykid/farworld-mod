@@ -3,6 +3,8 @@ package net.ennway.farworld.registries;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.*;
 import net.ennway.farworld.item.tool.*;
+import net.ennway.farworld.item.tool.iridium.*;
+import net.ennway.farworld.item.tool.soul_steel.*;
 import net.ennway.farworld.utils.SmithingUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -31,9 +33,14 @@ public class ModItems
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL = ITEMS_ALL.register("soul_steel",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RAW_IRIDIUM = ITEMS_ALL.register("raw_iridium",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRIDIUM_INGOT = ITEMS_ALL.register("iridium_ingot",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE = ITEMS_ALL.register("soul_steel_upgrade_smithing_template",
             ModItems::createSoulSteelUpgradeTemplate);
 
+    //region Soul Steel Gear
     public static final DeferredItem<Item> SOUL_STEEL_SWORD = ITEMS_ALL.register(
             "soul_steel_sword",
             () -> new SoulSteelSword(new Item.Properties())
@@ -82,6 +89,62 @@ public class ModItems
                     ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(290))
     );
+    //endregion
+
+    //region Iridium Gear
+    public static final DeferredItem<Item> IRIDIUM_SWORD = ITEMS_ALL.register(
+            "iridium_sword",
+            () -> new IridiumSword(new Item.Properties())
+    );
+    public static final DeferredItem<Item> IRIDIUM_AXE = ITEMS_ALL.register(
+            "iridium_axe",
+            () -> new IridiumAxe(new Item.Properties())
+    );
+    public static final DeferredItem<Item> IRIDIUM_PICKAXE = ITEMS_ALL.register(
+            "iridium_pickaxe",
+            () -> new IridiumPickaxe(new Item.Properties())
+    );
+    public static final DeferredItem<Item> IRIDIUM_SHOVEL = ITEMS_ALL.register(
+            "iridium_shovel",
+            () -> new IridiumShovel(new Item.Properties())
+    );
+    public static final DeferredItem<Item> IRIDIUM_HOE = ITEMS_ALL.register(
+            "iridium_hoe",
+            () -> new IridiumHoe(new Item.Properties())
+    );
+
+    public static final DeferredItem<ArmorItem> IRIDIUM_HELMET = ITEMS_ALL.register(
+            "iridium_helmet",
+            () -> new ArmorItem(ModArmorMaterials.IRIDIUM_ARMOR_MATERIAL,
+                    ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(312))
+    );
+
+    public static final DeferredItem<ArmorItem> IRIDIUM_CHESTPLATE = ITEMS_ALL.register(
+            "iridium_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.IRIDIUM_ARMOR_MATERIAL,
+                    ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(428))
+    );
+
+    public static final DeferredItem<ArmorItem> IRIDIUM_LEGGINGS = ITEMS_ALL.register(
+            "iridium_leggings",
+            () -> new ArmorItem(ModArmorMaterials.IRIDIUM_ARMOR_MATERIAL,
+                    ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(350))
+    );
+
+    public static final DeferredItem<ArmorItem> IRIDIUM_BOOTS = ITEMS_ALL.register(
+            "iridium_boots",
+            () -> new ArmorItem(ModArmorMaterials.IRIDIUM_ARMOR_MATERIAL,
+                    ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(290))
+    );
+    //endregion
+
+    public static final DeferredItem<ArmorItem> BREEZE_BOOTS = ITEMS_ALL.register(
+            "breeze_boots", BreezeBoots::new
+    );
 
     public static SmithingTemplateItem createSoulSteelUpgradeTemplate() {
         return new SmithingTemplateItem(
@@ -112,6 +175,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.DENSE_IRON_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DENSE_GOLD_ORE = ITEMS_ALL.register("dense_gold_ore",
             () -> new BlockItem(ModBlocks.DENSE_GOLD_ORE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> IRIDIUM_ORE = ITEMS_ALL.register("iridium_ore",
+            () -> new BlockItem(ModBlocks.IRIDIUM_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE_CACHE = ITEMS_ALL.register("flowstone_cache",
             () -> new BlockItem(ModBlocks.FLOWSTONE_CACHE.get(), new Item.Properties()).asItem());
 

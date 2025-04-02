@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "farworld:soul_steel_boots"
+    "farworld:soul_steel_boots",
+    "farworld:iridium_boots",
+    "farworld:breeze_boots"
   ]
 }

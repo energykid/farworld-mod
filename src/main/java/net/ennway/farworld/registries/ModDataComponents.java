@@ -21,11 +21,6 @@ public class ModDataComponents {
             builder -> builder.persistent(Codec.INT)
     );
 
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<BlockPos>> WISHBONE_LOCATION = register(
-            "wishbone_location",
-            builder -> builder.persistent(BlockPos.CODEC)
-    );
-
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator)
     {
         return DATA_COMPONENT_TYPES.register(name, () -> builderOperator.apply(DataComponentType.builder()).build());

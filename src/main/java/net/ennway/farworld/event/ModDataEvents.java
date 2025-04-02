@@ -23,12 +23,6 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 public class ModDataEvents {
 
     @SubscribeEvent
-    public static void dataSpawn(GatherDataEvent event)
-    {
-
-    }
-
-    @SubscribeEvent
     public static void registerSpawnConditions(RegisterSpawnPlacementsEvent event)
     {
         event.register(ModEntities.BLOOMED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);

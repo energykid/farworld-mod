@@ -35,5 +35,11 @@
   },
   "lush_shallows_ambiance": {
     "sounds": ["farworld:lush_shallows_ambiance"]
+  },
+
+  "diamond_hit": {
+    "sounds": ["farworld:diamond_hit_1",
+      "farworld:diamond_hit_2",
+      "farworld:diamond_hit_3"]
   }
 }

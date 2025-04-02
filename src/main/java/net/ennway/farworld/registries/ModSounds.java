@@ -36,6 +36,8 @@ public class ModSounds {
     public static final Supplier<SoundEvent> DUSTY_SHELVES_AMBIANCE = createSoundEvent("dusty_shelves_ambiance");
     public static final Supplier<SoundEvent> LUSH_SHALLOWS_AMBIANCE = createSoundEvent("lush_shallows_ambiance");
 
+    public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");
+
     private static ResourceKey<JukeboxSong> createSong(String name)
     {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name));

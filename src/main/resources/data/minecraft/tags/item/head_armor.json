@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:soul_steel_helmet"
+    "farworld:soul_steel_helmet",
+    "farworld:iridium_helmet"
   ]
 }

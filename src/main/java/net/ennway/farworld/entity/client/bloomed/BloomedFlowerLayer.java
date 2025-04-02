@@ -14,7 +14,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class BloomedFlowerLayer<T extends Entity, M extends BloomedModel<T>> extends RenderLayer<T, M> {
+public class BloomedFlowerLayer<T extends BloomedEntity, M extends BloomedModel<T>> extends RenderLayer<T, M> {
 
     public String flowerString = "poppy";
 

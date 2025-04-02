@@ -19,7 +19,6 @@ public class SmithingUtils {
                 ResourceLocation.withDefaultNamespace("item/empty_armor_slot_shovel"),
                 ResourceLocation.withDefaultNamespace("item/empty_armor_slot_sword"),
                 ResourceLocation.withDefaultNamespace("item/empty_armor_slot_pickaxe")
-
         );
     }
 }

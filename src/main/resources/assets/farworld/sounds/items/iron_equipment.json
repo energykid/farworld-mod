@@ -1,6 +1,7 @@
 {
   "keys": [
-    "farworld:allsaw"
+    "farworld:allsaw",
+    "farworld:breeze_boots"
   ],
   "soundEvent": "minecraft:item.armor.equip_iron"
 }

@@ -1,0 +1,12 @@
+{
+  "type": "farworld:basic_loot_modifier",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/trial_chambers/reward_ominous_unique"
+    }
+  ],
+  "chance": 0.2,
+  "amount": 1,
+  "item_type": "farworld:breeze_boots"
+}

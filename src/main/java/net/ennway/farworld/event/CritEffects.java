@@ -3,6 +3,7 @@ package net.ennway.farworld.event;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.registries.ModItems;
 import net.ennway.farworld.registries.ModParticles;
+import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvents;
@@ -81,6 +82,8 @@ public class CritEffects {
                 }
                 if (stack.is(Items.DIAMOND_SWORD) || stack.is(Items.DIAMOND_AXE))
                 {
+                    enemy.level().playSound(enemy, enemy.blockPosition(), ModSounds.DIAMOND_HIT.get(), SoundSource.PLAYERS, 1f, (float)MathUtils.randomDouble(enemy.getRandom(), 0.5, 1.0));
+
                     spawnFireEffect(enemy, ModParticles.DIAMOND_SPARKLE, ModParticles.DIAMOND_DUST);
                 }
             }

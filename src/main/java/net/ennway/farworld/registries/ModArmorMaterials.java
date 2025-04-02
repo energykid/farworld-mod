@@ -8,9 +8,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.EnumMap;
@@ -27,6 +25,20 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.BODY, 11);
             }), 10, 1f, 0.25f, ModItems.SOUL_STEEL);
 
+    public static final Holder<ArmorMaterial> IRIDIUM_ARMOR_MATERIAL = register("iridium",
+            Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
+                attribute.put(ArmorItem.Type.BOOTS, 3);
+                attribute.put(ArmorItem.Type.LEGGINGS, 6);
+                attribute.put(ArmorItem.Type.CHESTPLATE, 8);
+                attribute.put(ArmorItem.Type.HELMET, 4);
+                attribute.put(ArmorItem.Type.BODY, 11);
+            }), 7, 2f, 0.05f, ModItems.IRIDIUM_INGOT);
+
+    public static final Holder<ArmorMaterial> BREEZE_ARMOR_MATERIAL = register("breeze",
+            Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
+                attribute.put(ArmorItem.Type.BOOTS, 2);
+            }), 5, 0f, 0f,
+            () -> Items.BREEZE_ROD);
 
     private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection,
                                                   int enchantability, float toughness, float knockbackResistance,

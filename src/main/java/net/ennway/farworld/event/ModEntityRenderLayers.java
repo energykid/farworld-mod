@@ -3,6 +3,8 @@ package net.ennway.farworld.event;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.client.bloomed.BloomedModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
+import net.ennway.farworld.registries.ModEntities;
+import net.ennway.farworld.registries.entity_definitions.MobLayerDefinition;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -13,7 +15,10 @@ public class ModEntityRenderLayers {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
     {
-        event.registerLayerDefinition(BloomedModel.LAYER_LOCATION, BloomedModel::createBodyLayer);
-        event.registerLayerDefinition(SoulGolemModel.LAYER_LOCATION, SoulGolemModel::createBodyLayer);
+        for (int i = 0; i < ModEntities.mobDefinitions.size(); i++) {
+            MobLayerDefinition def = ModEntities.mobDefinitions.get(i);
+
+            event.registerLayerDefinition(def.location, def.definition);
+        }
     }
 }

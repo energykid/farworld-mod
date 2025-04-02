@@ -3,7 +3,6 @@ package net.ennway.farworld;
 import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.registries.*;
-import net.ennway.farworld.registries.sets.SoulSteelSet;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
@@ -83,10 +82,20 @@ public class Farworld
         {
             event.insertAfter(Items.WARPED_FUNGUS.getDefaultInstance(), ModItems.GLOOMCAP_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.NETHER_QUARTZ_ORE.getDefaultInstance(), ModItems.NETHER_IRON_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.DEEPSLATE_COAL_ORE.getDefaultInstance(), ModItems.DENSE_COAL_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.DEEPSLATE_IRON_ORE.getDefaultInstance(), ModItems.DENSE_IRON_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.DEEPSLATE_GOLD_ORE.getDefaultInstance(), ModItems.DENSE_GOLD_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DENSE_GOLD_ORE.toStack(), ModItems.IRIDIUM_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.PRISMARINE.getDefaultInstance(), ModItems.FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE.toStack(), ModItems.FLOWSTONE_CACHE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
         {
             event.insertAfter(Items.BLAZE_POWDER.getDefaultInstance(), ModItems.GLOOMSPORES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.RAW_GOLD.getDefaultInstance(), ModItems.RAW_IRIDIUM.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.GOLD_INGOT.getDefaultInstance(), ModItems.IRIDIUM_INGOT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.NETHERITE_INGOT.getDefaultInstance(), ModItems.SOUL_STEEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.getDefaultInstance(), ModItems.SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
@@ -102,16 +111,31 @@ public class Farworld
             event.insertAfter(ModItems.SOUL_STEEL_SHOVEL.toStack(), ModItems.SOUL_STEEL_PICKAXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SOUL_STEEL_PICKAXE.toStack(), ModItems.SOUL_STEEL_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SOUL_STEEL_AXE.toStack(), ModItems.SOUL_STEEL_HOE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.GOLDEN_HOE.getDefaultInstance(), ModItems.IRIDIUM_SHOVEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.IRIDIUM_SHOVEL.toStack(), ModItems.IRIDIUM_PICKAXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.IRIDIUM_PICKAXE.toStack(), ModItems.IRIDIUM_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.IRIDIUM_AXE.toStack(), ModItems.IRIDIUM_HOE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT)
         {
             event.insertAfter(Items.DIAMOND_SWORD.getDefaultInstance(), ModItems.SOUL_STEEL_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.DIAMOND_AXE.getDefaultInstance(), ModItems.SOUL_STEEL_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
+            event.insertAfter(Items.GOLDEN_SWORD.getDefaultInstance(), ModItems.IRIDIUM_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.GOLDEN_AXE.getDefaultInstance(), ModItems.IRIDIUM_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.TURTLE_HELMET.getDefaultInstance(), ModItems.BREEZE_BOOTS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.DIAMOND_BOOTS.getDefaultInstance(), ModItems.SOUL_STEEL_HELMET.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SOUL_STEEL_HELMET.toStack(), ModItems.SOUL_STEEL_CHESTPLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SOUL_STEEL_CHESTPLATE.toStack(), ModItems.SOUL_STEEL_LEGGINGS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SOUL_STEEL_LEGGINGS.toStack(), ModItems.SOUL_STEEL_BOOTS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.GOLDEN_BOOTS.getDefaultInstance(), ModItems.IRIDIUM_HELMET.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.IRIDIUM_HELMET.toStack(), ModItems.IRIDIUM_CHESTPLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.IRIDIUM_CHESTPLATE.toStack(), ModItems.IRIDIUM_LEGGINGS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.IRIDIUM_LEGGINGS.toStack(), ModItems.IRIDIUM_BOOTS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
         {
@@ -120,7 +144,6 @@ public class Farworld
         }
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
@@ -128,7 +151,6 @@ public class Farworld
         LOGGER.info("HELLO from server starting");
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
