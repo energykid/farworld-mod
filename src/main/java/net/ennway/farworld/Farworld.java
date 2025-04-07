@@ -4,6 +4,9 @@ import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.registries.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
 import org.slf4j.Logger;
@@ -24,6 +27,8 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
+import java.util.logging.Level;
+
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Farworld.MOD_ID)
 public class Farworld
@@ -41,6 +46,8 @@ public class Farworld
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        ModAttachments.ATTACHMENT_TYPES.register(modEventBus);
+        ModPois.POIS.register(modEventBus);
         ModItems.ITEMS_ALL.register(modEventBus);
         ModDataComponents.DATA_COMPONENT_TYPES.register(modEventBus);
         ModBlocks.BLOCKS_ALL.register(modEventBus);
@@ -89,7 +96,9 @@ public class Farworld
             event.insertAfter(ModItems.DENSE_GOLD_ORE.toStack(), ModItems.IRIDIUM_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.PRISMARINE.getDefaultInstance(), ModItems.FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.FLOWSTONE.toStack(), ModItems.FLOWSTONE_CACHE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE.toStack(), ModItems.COBBLED_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBBLED_FLOWSTONE.toStack(), ModItems.LUSH_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.LUSH_FLOWSTONE.toStack(), ModItems.FLOWSTONE_CACHE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
         {

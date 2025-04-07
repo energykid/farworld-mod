@@ -1,0 +1,57 @@
+{
+    "render_type": "minecraft:translucent",
+    "textures": {
+        "particle": "farworld:block/bystone_portal_fade",
+        "portal": "farworld:block/bystone_portal_fade"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                0,
+                6
+            ],
+            "to": [
+                16,
+                16,
+                10
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#portal"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#portal"
+                },
+                "east": {
+                    "uv": [
+                        6, 0, 4, 16
+                    ],
+                    "texture": "#portal",
+                    "cullface": "west"
+                },
+                "west": {
+                    "uv": [
+                        6, 0, 4, 16
+                    ],
+                    "texture": "#portal",
+                    "cullface": "east",
+                    "tintindex": 0
+                }
+            },
+            "shade": false
+        }
+    ]
+}

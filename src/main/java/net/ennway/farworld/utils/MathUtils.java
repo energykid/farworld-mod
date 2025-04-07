@@ -13,6 +13,11 @@ public class MathUtils {
         return min + (randomSource.nextDouble() * max);
     }
 
+    public static int sign(int num)
+    {
+        return num < 0 ? -1 : 1;
+    }
+
     public static Vector3f getAngleFromVector(float x, float y, float z)
     {
         return new Vector3f(

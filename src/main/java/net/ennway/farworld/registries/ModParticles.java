@@ -53,5 +53,9 @@ public class ModParticles {
             "diamond_sparkle",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> BYSTONE_PORTAL = PARTICLE_TYPES.register(
+            "bystone_portal",
+            () -> new SimpleParticleType(false)
+    );
 
 }

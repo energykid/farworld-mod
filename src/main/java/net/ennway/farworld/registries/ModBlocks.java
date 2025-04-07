@@ -1,9 +1,7 @@
 package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
-import net.ennway.farworld.block.Gloomcap;
-import net.ennway.farworld.block.LushFlowstoneBlock;
-import net.ennway.farworld.block.NetherIronOreBlock;
+import net.ennway.farworld.block.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -12,6 +10,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -101,8 +100,21 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> ECHO_LANTERN = BLOCKS_ALL.register(
             "echo_lantern",
-            registryName -> new Block(BlockBehaviour.Properties.of()
+            registryName -> new EchoLantern(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
                     .strength(1.3F, 8.0F)
-                    .sound(SoundType.LANTERN)));
+                    .sound(SoundType.LANTERN)
+                    .lightLevel(lamb -> {return 7;})
+                    .pushReaction(PushReaction.BLOCK)));
+
+    public static final DeferredBlock<Block> BYSTONE_PORTAL = BLOCKS_ALL.register(
+            "bystone_portal",
+            registryName -> new BystonePortalBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .noCollission()
+                    .randomTicks()
+                    .strength(-1.0F).sound(SoundType.GLASS).lightLevel((p_50870_) -> {
+                        return 11;
+                    })
+                    .pushReaction(PushReaction.BLOCK)));
 }

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x,short=false": {
+      "model": "farworld:block/bystone_portal_ns"
+    },
+    "axis=z,short=false": {
+      "model": "farworld:block/bystone_portal_ew"
+    },
+    "axis=x,short=true": {
+      "model": "farworld:block/bystone_portal_ns_fade"
+    },
+    "axis=z,short=true": {
+      "model": "farworld:block/bystone_portal_ew_fade"
+    }
+  }
+}

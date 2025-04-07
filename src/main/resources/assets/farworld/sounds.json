@@ -41,5 +41,16 @@
     "sounds": ["farworld:diamond_hit_1",
       "farworld:diamond_hit_2",
       "farworld:diamond_hit_3"]
+  },
+
+  "bystone_portal_idle": {
+    "sounds": ["farworld:bystone_portal_idle_1",
+      "farworld:bystone_portal_idle_2"]
+  },
+  "bystone_portal_enter": {
+    "sounds": ["farworld:bystone_portal_enter"]
+  },
+  "bystone_portal_exit": {
+    "sounds": ["farworld:bystone_portal_exit"]
   }
 }

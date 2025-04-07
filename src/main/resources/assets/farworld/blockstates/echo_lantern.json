@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "farworld:block/echo_lantern"
+    },
+    "hanging=true": {
+      "model": "farworld:block/echo_lantern_hanging"
+    }
+  }
+}

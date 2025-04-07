@@ -1,0 +1,11 @@
+{
+  "animation": {
+    "frametime": 3,
+    "interpolate": true
+  },
+  "gui": {
+    "scaling": {
+      "type": "stretch"
+    }
+  }
+}

@@ -38,6 +38,10 @@ public class ModSounds {
 
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");
 
+    public static final Supplier<SoundEvent> BYSTONE_PORTAL_IDLE = createSoundEvent("bystone_portal_idle");
+    public static final Supplier<SoundEvent> BYSTONE_PORTAL_ENTER = createSoundEvent("bystone_portal_enter");
+    public static final Supplier<SoundEvent> BYSTONE_PORTAL_EXIT = createSoundEvent("bystone_portal_exit");
+
     private static ResourceKey<JukeboxSong> createSong(String name)
     {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name));
