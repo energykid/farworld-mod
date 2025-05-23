@@ -21,7 +21,7 @@ public class BystonePortalParticle extends TextureSheetParticle {
     public BystonePortalParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z);
         this.spriteSet = spriteSet;
-        this.lifetime = level.getRandom().nextInt(10, 25);
+        this.lifetime = level.getRandom().nextInt(10, 15);
 
         float roll = level.getRandom().nextInt(2) >= 1 ? 0 : 180 * Mth.DEG_TO_RAD;
 
