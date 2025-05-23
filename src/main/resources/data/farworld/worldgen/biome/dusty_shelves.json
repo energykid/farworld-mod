@@ -40,6 +40,7 @@
     [
       "farworld:ore_dense_coal_placed",
       "farworld:ore_dense_iron_placed",
+      "farworld:ore_iridium_placed",
       "farworld:flowstone_caches_placed",
       "farworld:tuff_piles_placed"
     ]
