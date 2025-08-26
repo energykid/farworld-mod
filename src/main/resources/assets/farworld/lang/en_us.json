@@ -67,12 +67,13 @@
 
   "enchantment.farworld.scything" : "Scything",
   "enchantment.farworld.scything.desc" : "Negates mining speed decreases while in precision mode.",
-
   "enchantment.farworld.attunement" : "Attunement",
   "enchantment.farworld.attunement.desc" : "Allows the Wishbone to be attuned to a Lodestone.",
 
   "advancement.farworld.friend_of_arthropods" : "Friend of Arthropods",
   "advancement.farworld.friend_of_arthropods.desc" : "Befriend a Bloomed by feeding it a potato",
   "advancement.farworld.saw_it_all": "Saw It All",
-  "advancement.farworld.saw_it_all.desc": "Find the Allsaw in a chest"
+  "advancement.farworld.saw_it_all.desc": "Find the Allsaw in a chest",
+  "advancement.farworld.black_light": "Black Light",
+  "advancement.farworld.black_light.desc": "Open a portal to the Bystone by using an Echo Shard on a row of hanging Lanterns"
 }

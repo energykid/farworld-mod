@@ -14,6 +14,7 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
+import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.item.ItemParser;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -89,6 +90,7 @@ public class PortalEvents {
                         event.getPlayer().swinging = true;
                         event.getPlayer().swingTime = 0;
                         event.getPlayer().swingingArm = InteractionHand.MAIN_HAND;
+                        event.cancelWithResult(ItemInteractionResult.SUCCESS);
                     }
                 }
             }

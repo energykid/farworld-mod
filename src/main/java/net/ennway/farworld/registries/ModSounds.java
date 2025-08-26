@@ -37,6 +37,7 @@ public class ModSounds {
     public static final Supplier<SoundEvent> LUSH_SHALLOWS_AMBIANCE = createSoundEvent("lush_shallows_ambiance");
 
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");
+    public static final Supplier<SoundEvent> IRIDIUM_HIT = createSoundEvent("iridium_hit");
 
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_IDLE = createSoundEvent("bystone_portal_idle");
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_ENTER = createSoundEvent("bystone_portal_enter");

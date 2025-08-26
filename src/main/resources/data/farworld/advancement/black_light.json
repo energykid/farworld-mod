@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:story/mine_diamond",
+  "criteria": {
+    "light_bystone_portal": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "minecraft:lantern"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": "minecraft:echo_shard"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.farworld.black_light.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:echo_shard"
+    },
+    "title": {
+      "translate": "advancement.farworld.black_light"
+    }
+  },
+  "requirements": [
+    [
+      "light_bystone_portal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

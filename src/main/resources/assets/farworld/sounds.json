@@ -43,6 +43,12 @@
       "farworld:diamond_hit_3"]
   },
 
+  "iridium_hit": {
+    "sounds": ["farworld:iridium_hit_1",
+      "farworld:iridium_hit_2",
+      "farworld:iridium_hit_3"]
+  },
+
   "bystone_portal_idle": {
     "sounds": ["farworld:bystone_portal_idle_1",
       "farworld:bystone_portal_idle_2"]

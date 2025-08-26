@@ -1,7 +1,16 @@
 {
   "keys": [
     "farworld:allsaw",
-    "farworld:breeze_boots"
+    "farworld:breeze_boots",
+    "farworld:iridium_sword",
+    "farworld:iridium_pickaxe",
+    "farworld:iridium_axe",
+    "farworld:iridium_shovel",
+    "farworld:iridium_hoe",
+    "farworld:iridium_helmet",
+    "farworld:iridium_chestplate",
+    "farworld:iridium_leggings",
+    "farworld:iridium_boots"
   ],
   "soundEvent": "minecraft:item.armor.equip_iron"
 }
