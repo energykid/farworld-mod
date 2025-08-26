@@ -93,7 +93,24 @@ public class CritEffects {
                     else
                         enemy.level().playSound(enemy, enemy.blockPosition(), ModSounds.IRIDIUM_HIT.get(), SoundSource.PLAYERS, 1f, (float)MathUtils.randomDouble(enemy.getRandom(), 1.0, 1.1));
 
-                    spawnFireEffect(enemy, ModParticles.DIAMOND_SPARKLE, ModParticles.DIAMOND_DUST);
+                    Vec3 v3 = enemy.position().add(enemy.getBbWidth() / 2, enemy.getBbHeight() / 2, enemy.getBbWidth() / 2).add(
+                            MathUtils.randomDouble(enemy.getRandom(), -0.7, 0.7),
+                            MathUtils.randomDouble(enemy.getRandom(), -0.7, 0.7),
+                            MathUtils.randomDouble(enemy.getRandom(), -0.7, 0.7)
+                    );
+                    Vec3 vel3 = new Vec3(0, 2, 0);
+
+                    for (int e = 0; e < 15; e++) {
+                        enemy.level().addParticle(
+                                ModParticles.DIAMOND_SPARKLE.get(),
+                                v3.x,
+                                v3.y,
+                                v3.z,
+                                vel3.x + MathUtils.randomDouble(enemy.getRandom(), -2, 2),
+                                vel3.y + MathUtils.randomDouble(enemy.getRandom(), -2, 2),
+                                vel3.z + MathUtils.randomDouble(enemy.getRandom(), -2, 2)
+                        );
+                    }
                 }
             }
         }
