@@ -22,9 +22,9 @@
     "creature": [
       {
         "type": "minecraft:spider",
-        "weight": 5,
+        "weight": 7,
         "minCount": 1,
-        "maxCount": 1
+        "maxCount": 2
       },
       {
         "type": "farworld:bloomed",

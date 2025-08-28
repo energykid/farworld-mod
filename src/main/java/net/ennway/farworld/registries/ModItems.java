@@ -29,6 +29,9 @@ public class ModItems
     public static final DeferredItem<Item> WISHBONE = ITEMS_ALL.register("wishbone",
             Wishbone::new);
 
+    public static final DeferredItem<BrittlePowderItem> BRITTLE_POWDER = ITEMS_ALL.register("brittle_powder",
+            () -> new BrittlePowderItem(new BrittlePowderItem.Properties()));
+
     public static final DeferredItem<Item> GLOOMSPORES = ITEMS_ALL.register("gloomspores",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL = ITEMS_ALL.register("soul_steel",
