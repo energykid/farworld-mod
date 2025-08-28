@@ -225,10 +225,10 @@ public class BloomedEntity extends TamableAnimal {
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
-    private int idleAnimationTimeout = 0;
+    public final AnimationState tamedAnimationState = new AnimationState();
     public float walkAnimationScale = 0F;
     public float tamedAnimationScale = 0F;
-    public final AnimationState tamedAnimationState = new AnimationState();
+    private int idleAnimationTimeout = 0;
 
     @Override
     protected void registerGoals() {

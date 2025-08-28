@@ -1,4 +1,4 @@
-package net.ennway.farworld.entity.animations;// Save this class in your mod and generate all required imports
+package net.ennway.farworld.entity.animations;
 
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationChannel.Interpolations;

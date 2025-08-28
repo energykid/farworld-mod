@@ -8,6 +8,7 @@
   "item.farworld.allsaw_precision" : "§eAllsaw §f(Precision)",
   "item.farworld.bloomed_spawn_egg" : "Bloomed Spawn Egg",
   "item.farworld.soul_golem_spawn_egg" : "Soul Steel Golem Spawn Egg",
+  "item.farworld.brittle_spawn_egg" : "Brittle Spawn Egg",
   "item.farworld.gloomspores" : "Gloomspores",
   "item.farworld.wishbone" : "Wishbone",
   "item.farworld.consumed_wishbone" : "§7Wishbone (Consumed)",
@@ -64,6 +65,7 @@
 
   "entity.farworld.bloomed" : "Bloomed",
   "entity.farworld.soul_golem" : "Soul Steel Golem",
+  "entity.farworld.brittle" : "Brittle",
 
   "enchantment.farworld.scything" : "Scything",
   "enchantment.farworld.scything.desc" : "Negates mining speed decreases while in precision mode.",

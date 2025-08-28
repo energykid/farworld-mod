@@ -3,9 +3,11 @@ package net.ennway.farworld.registries;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.client.bloomed.BloomedModel;
 import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
+import net.ennway.farworld.entity.client.brittle.BrittleModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.entity.custom.BloomedEntity;
+import net.ennway.farworld.entity.custom.BrittleEntity;
 import net.ennway.farworld.entity.custom.SoulGolemEntity;
 import net.ennway.farworld.registries.entity_definitions.MobLayerDefinition;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -30,6 +32,10 @@ public class ModEntities {
             new MobLayerDefinition(
                     SoulGolemModel.LAYER_LOCATION,
                     SoulGolemModel::createBodyLayer
+            ),
+            new MobLayerDefinition(
+                    BrittleModel.LAYER_LOCATION,
+                    BrittleModel::createBodyLayer
             )
     );
 
@@ -42,4 +48,9 @@ public class ModEntities {
             "soul_golem", () -> EntityType.Builder.of(SoulGolemEntity::new, MobCategory.MISC)
                     .sized(1, 2.75f)
                     .build("soul_golem"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BrittleEntity>> BRITTLE = ENTITY_TYPES.register(
+            "brittle", () -> EntityType.Builder.of(BrittleEntity::new, MobCategory.MISC)
+                    .sized(1, 2)
+                    .build("brittle"));
 }

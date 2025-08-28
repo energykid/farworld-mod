@@ -184,6 +184,8 @@ public class ModItems
             () -> new SpawnEggItem(ModEntities.BLOOMED.get(), 0x9B691F, 0x9BFC1F, new Item.Properties()));
     public static final DeferredItem<Item> SOUL_GOLEM_SPAWN_EGG = ITEMS_ALL.register("soul_golem_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SOUL_GOLEM.get(), 0x494358, 0xFE8738, new Item.Properties()));
+    public static final DeferredItem<Item> BRITTLE_SPAWN_EGG = ITEMS_ALL.register("brittle_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.BRITTLE.get(), 0x5D463E, 0xFFE31B, new Item.Properties()));
 
     public static final DeferredItem<Item> WHIRLING_WORLD_DISC = ITEMS_ALL.register("disc_whirlingworld",
             () -> new Item(new Item.Properties()
