@@ -36,7 +36,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.entity.player.BonemealEvent;
 
-public class BrittlePowderItem extends Item {
+public class BrittlePowder extends Item {
     public static final int GRASS_SPREAD_WIDTH = 3;
     public static final int GRASS_SPREAD_HEIGHT = 1;
     public static final int GRASS_COUNT_MULTIPLIER = 3;
@@ -45,7 +45,7 @@ public class BrittlePowderItem extends Item {
             BuiltInRegistries.BLOCK.key(),
             ResourceLocation.withDefaultNamespace("crops"));
 
-    public BrittlePowderItem(Item.Properties properties) {
+    public BrittlePowder(Item.Properties properties) {
         super(properties);
     }
 

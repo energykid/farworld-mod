@@ -23,6 +23,8 @@ public class BrittleRenderer extends MobRenderer<BrittleEntity, BrittleModel<Bri
         return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/brittle.png");
     }
 
+
+
     @Override
     public void render(BrittleEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         if (entity.isBaby())

@@ -3,6 +3,7 @@ package net.ennway.farworld.event;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.custom.BloomedEntity;
 import net.ennway.farworld.entity.custom.BrittleEntity;
+import net.ennway.farworld.entity.custom.DustbugEntity;
 import net.ennway.farworld.entity.custom.SoulGolemEntity;
 import net.ennway.farworld.registries.ModEntities;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -17,5 +18,6 @@ public class ModEventBusEvents {
         event.put(ModEntities.BLOOMED.get(), BloomedEntity.createAttributes().build());
         event.put(ModEntities.SOUL_GOLEM.get(), SoulGolemEntity.createAttributes().build());
         event.put(ModEntities.BRITTLE.get(), BrittleEntity.createAttributes().build());
+        event.put(ModEntities.DUSTBUG.get(), DustbugEntity.createAttributes().build());
     }
 }

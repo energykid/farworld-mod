@@ -29,8 +29,8 @@ public class ModItems
     public static final DeferredItem<Item> WISHBONE = ITEMS_ALL.register("wishbone",
             Wishbone::new);
 
-    public static final DeferredItem<BrittlePowderItem> BRITTLE_POWDER = ITEMS_ALL.register("brittle_powder",
-            () -> new BrittlePowderItem(new BrittlePowderItem.Properties()));
+    public static final DeferredItem<BrittlePowder> BRITTLE_POWDER = ITEMS_ALL.register("brittle_powder",
+            () -> new BrittlePowder(new BrittlePowder.Properties()));
 
     public static final DeferredItem<Item> GLOOMSPORES = ITEMS_ALL.register("gloomspores",
             () -> new Item(new Item.Properties()));
@@ -188,7 +188,9 @@ public class ModItems
     public static final DeferredItem<Item> SOUL_GOLEM_SPAWN_EGG = ITEMS_ALL.register("soul_golem_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SOUL_GOLEM.get(), 0x494358, 0xFE8738, new Item.Properties()));
     public static final DeferredItem<Item> BRITTLE_SPAWN_EGG = ITEMS_ALL.register("brittle_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.BRITTLE.get(), 0x5D463E, 0xFFE31B, new Item.Properties()));
+            () -> new SpawnEggItem(ModEntities.BRITTLE.get(), 0x59555D, 0xFFE31B, new Item.Properties()));
+    public static final DeferredItem<Item> DUSTBUG_SPAWN_EGG = ITEMS_ALL.register("dustbug_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.DUSTBUG.get(), 0x282828, 0x666666, new Item.Properties()));
 
     public static final DeferredItem<Item> WHIRLING_WORLD_DISC = ITEMS_ALL.register("disc_whirlingworld",
             () -> new Item(new Item.Properties()

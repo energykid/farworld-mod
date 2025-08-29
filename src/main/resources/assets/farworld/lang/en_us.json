@@ -6,9 +6,6 @@
   "item.farworld.enchanted_mystic_pear" : "Enchanted Mystic Pear",
   "item.farworld.allsaw" : "§eAllsaw",
   "item.farworld.allsaw_precision" : "§eAllsaw §f(Precision)",
-  "item.farworld.bloomed_spawn_egg" : "Bloomed Spawn Egg",
-  "item.farworld.soul_golem_spawn_egg" : "Soul Steel Golem Spawn Egg",
-  "item.farworld.brittle_spawn_egg" : "Brittle Spawn Egg",
   "item.farworld.brittle_powder" : "Brittle Powder",
   "item.farworld.gloomspores" : "Gloomspores",
   "item.farworld.wishbone" : "Wishbone",
@@ -36,6 +33,11 @@
   "item.farworld.soul_steel_boots" : "Soul Steel Boots",
   "item.farworld.soul_steel_upgrade_smithing_template" : "Smithing Template",
   "item.farworld.breeze_boots" : "Breeze Treads",
+
+  "item.farworld.bloomed_spawn_egg" : "Bloomed Spawn Egg",
+  "item.farworld.soul_golem_spawn_egg" : "Soul Steel Golem Spawn Egg",
+  "item.farworld.brittle_spawn_egg" : "Brittle Spawn Egg",
+  "item.farworld.dustbug_spawn_egg" : "Dustbug Spawn Egg",
 
   "item.farworld.soul_steel_upgrade_smithing_template.type" : "§7Soul Steel Upgrade",
   "item.farworld.soul_steel_upgrade_smithing_template.applies_to" : "§9Iron Equipment",
@@ -67,6 +69,7 @@
   "entity.farworld.bloomed" : "Bloomed",
   "entity.farworld.soul_golem" : "Soul Steel Golem",
   "entity.farworld.brittle" : "Brittle",
+  "entity.farworld.dustbug" : "Dustbug",
 
   "enchantment.farworld.scything" : "Scything",
   "enchantment.farworld.scything.desc" : "Negates mining speed decreases while in precision mode.",

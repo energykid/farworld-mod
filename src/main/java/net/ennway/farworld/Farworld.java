@@ -2,14 +2,24 @@ package net.ennway.farworld;
 
 import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
 import net.ennway.farworld.entity.client.brittle.BrittleRenderer;
+import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
+import net.ennway.farworld.entity.custom.BrittleEntity;
+import net.ennway.farworld.entity.custom.DustbugEntity;
 import net.ennway.farworld.registries.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.NaturalSpawner;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -28,6 +38,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
+import java.util.function.Predicate;
 import java.util.logging.Level;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -153,6 +164,7 @@ public class Farworld
             event.accept(ModItems.BLOOMED_SPAWN_EGG);
             event.accept(ModItems.SOUL_GOLEM_SPAWN_EGG);
             event.accept(ModItems.BRITTLE_SPAWN_EGG);
+            event.accept(ModItems.DUSTBUG_SPAWN_EGG);
         }
     }
 
@@ -171,6 +183,7 @@ public class Farworld
         {
             EntityRenderers.register(ModEntities.BLOOMED.get(), BloomedRenderer::new);
             EntityRenderers.register(ModEntities.BRITTLE.get(), BrittleRenderer::new);
+            EntityRenderers.register(ModEntities.DUSTBUG.get(), DustbugRenderer::new);
             EntityRenderers.register(ModEntities.SOUL_GOLEM.get(), SoulGolemRenderer::new);
         }
     }

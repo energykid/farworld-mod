@@ -59,16 +59,7 @@ import java.util.List;
 
 public class BrittleEntity extends Monster {
 
-    //public static final EntityDataAccessor<Integer> ACTIVITY_SCALE = SynchedEntityData.defineId(SoulGolemEntity.class, EntityDataSerializers.INT);
-
-    public static TagKey<Item> ALLOWED_ITEMS = TagKey.create(BuiltInRegistries.ITEM.key(),
-            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "soul_golem_fuel"));
-
-    public float activityScale = 0F;
     public float walkAnimationScale = 0F;
-
-    public float moveDist2 = 0f;
-    public boolean fwoosh = false;
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
@@ -81,35 +72,11 @@ public class BrittleEntity extends Monster {
         this.setPathfindingMalus(PathType.WATER, -1.5F);
     }
 
-    protected void addBehaviourGoals() {
-    }
-
     public double getEyeY() {
         return this.getPosition(0).y + 2D;
     }
 
-    @Override
-    public void addAdditionalSaveData(@NotNull CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-    }
-
-    @Override
-    public void readAdditionalSaveData(@NotNull CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        // stuff relating to brittle spike projectiles
-    }
-
     public final TargetingConditions targeting = TargetingConditions.forCombat().range(4.0).ignoreLineOfSight();
-
-    @Override
-    protected void customServerAiStep() {
-        super.customServerAiStep();
-    }
 
     @Override
     protected void registerGoals() {
@@ -120,8 +87,6 @@ public class BrittleEntity extends Monster {
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0, false));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
-
-        this.addBehaviourGoals();
     }
 
     @Override
@@ -156,11 +121,6 @@ public class BrittleEntity extends Monster {
         this.walkAnimationState.startIfStopped(this.tickCount);
     }
 
-
-
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState state) { }
-
     @Override
     protected @Nullable SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
         this.hurtAnimationState.start(this.tickCount);
@@ -174,7 +134,7 @@ public class BrittleEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes()
     {
-        return AbstractGolem.createLivingAttributes()
+        return Mob.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 14D)
                 .add(Attributes.FOLLOW_RANGE, 10D)
                 .add(Attributes.ATTACK_DAMAGE, 5)

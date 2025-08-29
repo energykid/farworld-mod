@@ -19,6 +19,9 @@
   "bloomeddeath": {
     "sounds": ["farworld:bloomeddeath"]
   },
+  "dustbug_screech": {
+    "sounds": ["farworld:dustbug_screech"]
+  },
   "wishbonecrack": {
     "sounds": ["farworld:wishbonecrack"]
   },

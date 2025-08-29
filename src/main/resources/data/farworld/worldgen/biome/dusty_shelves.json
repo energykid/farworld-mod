@@ -2,7 +2,7 @@
   "temperature": 0,
   "downfall": 0,
   "has_precipitation": false,
-  "creature_spawn_probability": 0.01,
+  "creature_spawn_probability": 0.001,
   "effects": {
     "sky_color": 10392176,
     "fog_color": 10392176,
@@ -15,31 +15,25 @@
       "options": {
         "type": "minecraft:ash"
       },
-      "probability": 0.025
+      "probability": 0.01
     }
   },
   "spawners": {
     "monster": [
       {
-        "type": "minecraft:cave_spider",
-        "weight": 1,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "minecraft:silverfish",
-        "weight": 1,
-        "minCount": 2,
-        "maxCount": 4
-      },
-      {
         "type": "farworld:brittle",
-        "weight": 4,
+        "weight": 3,
         "minCount": 1,
         "maxCount": 2
       },
       {
-        "type": "minecraft:spider",
+        "type": "farworld:dustbug",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:skeleton",
         "weight": 1,
         "minCount": 1,
         "maxCount": 2

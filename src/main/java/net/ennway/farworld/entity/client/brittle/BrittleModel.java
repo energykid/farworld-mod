@@ -1,10 +1,9 @@
-package net.ennway.farworld.entity.client.brittle;// Made with Blockbench 4.12.6
-// Exported for Minecraft version 1.17 or later with Mojang mappings
-// Paste this class into your mod and generate all required imports
+package net.ennway.farworld.entity.client.brittle;
 
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.animations.BloomedAnimations;
 import net.ennway.farworld.entity.animations.BrittleAnimations;
 import net.ennway.farworld.entity.custom.BloomedEntity;
@@ -21,7 +20,7 @@ import net.minecraft.world.entity.Entity;
 
 public class BrittleModel<T extends BrittleEntity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "brittle"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "brittle"), "main");
 	private final ModelPart all;
 	private final ModelPart waist;
 	private final ModelPart Body;

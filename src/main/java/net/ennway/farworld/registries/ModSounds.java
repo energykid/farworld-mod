@@ -27,6 +27,8 @@ public class ModSounds {
     public static final Supplier<SoundEvent> SOUL_GOLEM_ACTIVATE = createSoundEvent("soulgolemactivate");
     public static final Supplier<SoundEvent> SOUL_GOLEM_DEACTIVATE = createSoundEvent("soulgolemdeactivate");
 
+    public static final Supplier<SoundEvent> DUSTBUG_SCREECH = createSoundEvent("dustbug_screech");
+
     public static final Supplier<SoundEvent> WISHBONE_CRACK = createSoundEvent("wishbonecrack");
     public static final Supplier<SoundEvent> WISHBONE_SHATTER = createSoundEvent("wishboneshatter");
 

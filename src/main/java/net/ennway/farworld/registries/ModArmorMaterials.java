@@ -23,7 +23,7 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.CHESTPLATE, 7);
                 attribute.put(ArmorItem.Type.HELMET, 3);
                 attribute.put(ArmorItem.Type.BODY, 11);
-            }), 10, 1f, 0.25f, ModItems.SOUL_STEEL);
+            }), 10, 1f, 0.15f, ModItems.SOUL_STEEL);
 
     public static final Holder<ArmorMaterial> IRIDIUM_ARMOR_MATERIAL = register("iridium",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
@@ -37,7 +37,7 @@ public class ModArmorMaterials {
     public static final Holder<ArmorMaterial> BREEZE_ARMOR_MATERIAL = register("breeze",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
                 attribute.put(ArmorItem.Type.BOOTS, 2);
-            }), 5, 0f, 0f,
+            }), 11, 0f, 0f,
             () -> Items.BREEZE_ROD);
 
     private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection,
