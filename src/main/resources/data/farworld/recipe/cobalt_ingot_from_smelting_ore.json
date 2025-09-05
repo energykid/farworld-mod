@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1,
+  "group": "cobalt_ingot",
+  "ingredient": {
+    "item": "farworld:cobalt_ore"
+  },
+  "result": {
+    "id": "farworld:cobalt_ingot"
+  }
+}

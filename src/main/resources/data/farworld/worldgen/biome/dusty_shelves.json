@@ -11,6 +11,12 @@
     "grass_color": 5526612,
     "foliage_color": 3687733,
     "ambient_sound": "farworld:dusty_shelves_ambiance",
+    "music": {
+      "sound": "farworld:music.igneous",
+      "min_delay": 8000,
+      "max_delay": 14000,
+      "replace_current_music": false
+    },
     "particle": {
       "options": {
         "type": "minecraft:ash"
@@ -46,7 +52,7 @@
     [
       "farworld:ore_dense_coal_placed",
       "farworld:ore_dense_iron_placed",
-      "farworld:ore_iridium_placed",
+      "farworld:ore_cobalt_placed",
       "farworld:flowstone_caches_placed",
       "farworld:tuff_piles_placed"
     ]

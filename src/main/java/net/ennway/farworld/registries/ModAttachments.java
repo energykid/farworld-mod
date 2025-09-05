@@ -12,6 +12,9 @@ import java.util.function.Supplier;
 public class ModAttachments {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Farworld.MOD_ID);
 
+    public static final Supplier<AttachmentType<Float>> DIMENSION_TRANSITION_COOLDOWN = ATTACHMENT_TYPES.register(
+            "dimension_transition_cooldown", () -> AttachmentType.builder(() -> 0f).serialize(Codec.FLOAT).build()
+    );
     public static final Supplier<AttachmentType<Float>> DIMENSION_TRANSITION = ATTACHMENT_TYPES.register(
             "dimension_transition", () -> AttachmentType.builder(() -> 0f).serialize(Codec.FLOAT).build()
     );

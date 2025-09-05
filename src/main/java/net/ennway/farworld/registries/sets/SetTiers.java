@@ -17,12 +17,12 @@ public class SetTiers {
             () -> Ingredient.of(ModItems.SOUL_STEEL)
     );
 
-    public static final Tier IRIDIUM_TIER = new SimpleTier(
+    public static final Tier COBALT_TIER = new SimpleTier(
             BlockTags.NEEDS_DIAMOND_TOOL,
             450,
             8.0F,
             3.0F,
             12,
-            () -> Ingredient.of(ModItems.IRIDIUM_INGOT)
+            () -> Ingredient.of(ModItems.COBALT_INGOT)
     );
 }

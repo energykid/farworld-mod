@@ -11,6 +11,12 @@
     "grass_color": 5027146,
     "foliage_color": 3635038,
     "ambient_sound": "farworld:lush_shallows_ambiance",
+    "music": {
+      "sound": "farworld:music.deeplost",
+      "min_delay": 10000,
+      "max_delay": 12000,
+      "replace_current_music": false
+    },
     "particle": {
       "options": {
         "type": "farworld:phosphen_particle"
@@ -40,5 +46,6 @@
     [
       "farworld:ore_dense_coal_placed",
       "farworld:ore_dense_gold_placed"
-    ]]
+    ]
+  ]
 }

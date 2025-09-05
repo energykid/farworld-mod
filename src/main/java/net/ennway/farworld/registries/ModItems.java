@@ -3,7 +3,7 @@ package net.ennway.farworld.registries;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.*;
 import net.ennway.farworld.item.tool.*;
-import net.ennway.farworld.item.tool.iridium.*;
+import net.ennway.farworld.item.tool.cobalt.*;
 import net.ennway.farworld.item.tool.soul_steel.*;
 import net.ennway.farworld.utils.SmithingUtils;
 import net.minecraft.network.chat.Component;
@@ -36,9 +36,9 @@ public class ModItems
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL = ITEMS_ALL.register("soul_steel",
             () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> RAW_IRIDIUM = ITEMS_ALL.register("raw_iridium",
+    public static final DeferredItem<Item> RAW_COBALT = ITEMS_ALL.register("raw_cobalt",
             () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> IRIDIUM_INGOT = ITEMS_ALL.register("iridium_ingot",
+    public static final DeferredItem<Item> COBALT_INGOT = ITEMS_ALL.register("cobalt_ingot",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE = ITEMS_ALL.register("soul_steel_upgrade_smithing_template",
             ModItems::createSoulSteelUpgradeTemplate);
@@ -94,52 +94,52 @@ public class ModItems
     );
     //endregion
 
-    //region Iridium Gear
-    public static final DeferredItem<Item> IRIDIUM_SWORD = ITEMS_ALL.register(
-            "iridium_sword",
-            () -> new IridiumSword(new Item.Properties())
+    //region Cobalt Gear
+    public static final DeferredItem<Item> COBALT_SWORD = ITEMS_ALL.register(
+            "cobalt_sword",
+            () -> new CobaltSword(new Item.Properties())
     );
-    public static final DeferredItem<Item> IRIDIUM_AXE = ITEMS_ALL.register(
-            "iridium_axe",
-            () -> new IridiumAxe(new Item.Properties())
+    public static final DeferredItem<Item> COBALT_AXE = ITEMS_ALL.register(
+            "cobalt_axe",
+            () -> new CobaltAxe(new Item.Properties())
     );
-    public static final DeferredItem<Item> IRIDIUM_PICKAXE = ITEMS_ALL.register(
-            "iridium_pickaxe",
-            () -> new IridiumPickaxe(new Item.Properties())
+    public static final DeferredItem<Item> COBALT_PICKAXE = ITEMS_ALL.register(
+            "cobalt_pickaxe",
+            () -> new CobaltPickaxe(new Item.Properties())
     );
-    public static final DeferredItem<Item> IRIDIUM_SHOVEL = ITEMS_ALL.register(
-            "iridium_shovel",
-            () -> new IridiumShovel(new Item.Properties())
+    public static final DeferredItem<Item> COBALT_SHOVEL = ITEMS_ALL.register(
+            "cobalt_shovel",
+            () -> new CobaltShovel(new Item.Properties())
     );
-    public static final DeferredItem<Item> IRIDIUM_HOE = ITEMS_ALL.register(
-            "iridium_hoe",
-            () -> new IridiumHoe(new Item.Properties())
+    public static final DeferredItem<Item> COBALT_HOE = ITEMS_ALL.register(
+            "cobalt_hoe",
+            () -> new CobaltHoe(new Item.Properties())
     );
 
-    public static final DeferredItem<ArmorItem> IRIDIUM_HELMET = ITEMS_ALL.register(
-            "iridium_helmet",
-            () -> new ArmorItem(ModArmorMaterials.IRIDIUM_ARMOR_MATERIAL,
+    public static final DeferredItem<ArmorItem> COBALT_HELMET = ITEMS_ALL.register(
+            "cobalt_helmet",
+            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
                     ArmorItem.Type.HELMET,
                     new Item.Properties().durability(312))
     );
 
-    public static final DeferredItem<ArmorItem> IRIDIUM_CHESTPLATE = ITEMS_ALL.register(
-            "iridium_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.IRIDIUM_ARMOR_MATERIAL,
+    public static final DeferredItem<ArmorItem> COBALT_CHESTPLATE = ITEMS_ALL.register(
+            "cobalt_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
                     ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(428))
     );
 
-    public static final DeferredItem<ArmorItem> IRIDIUM_LEGGINGS = ITEMS_ALL.register(
-            "iridium_leggings",
-            () -> new ArmorItem(ModArmorMaterials.IRIDIUM_ARMOR_MATERIAL,
+    public static final DeferredItem<ArmorItem> COBALT_LEGGINGS = ITEMS_ALL.register(
+            "cobalt_leggings",
+            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
                     ArmorItem.Type.LEGGINGS,
                     new Item.Properties().durability(350))
     );
 
-    public static final DeferredItem<ArmorItem> IRIDIUM_BOOTS = ITEMS_ALL.register(
-            "iridium_boots",
-            () -> new ArmorItem(ModArmorMaterials.IRIDIUM_ARMOR_MATERIAL,
+    public static final DeferredItem<ArmorItem> COBALT_BOOTS = ITEMS_ALL.register(
+            "cobalt_boots",
+            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
                     ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(290))
     );
@@ -178,8 +178,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.DENSE_IRON_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DENSE_GOLD_ORE = ITEMS_ALL.register("dense_gold_ore",
             () -> new BlockItem(ModBlocks.DENSE_GOLD_ORE.get(), new Item.Properties()).asItem());
-    public static final DeferredItem<Item> IRIDIUM_ORE = ITEMS_ALL.register("iridium_ore",
-            () -> new BlockItem(ModBlocks.IRIDIUM_ORE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> COBALT_ORE = ITEMS_ALL.register("cobalt_ore",
+            () -> new BlockItem(ModBlocks.COBALT_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE_CACHE = ITEMS_ALL.register("flowstone_cache",
             () -> new BlockItem(ModBlocks.FLOWSTONE_CACHE.get(), new Item.Properties()).asItem());
 

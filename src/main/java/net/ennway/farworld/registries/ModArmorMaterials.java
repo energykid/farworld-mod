@@ -25,14 +25,14 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.BODY, 11);
             }), 10, 1f, 0.15f, ModItems.SOUL_STEEL);
 
-    public static final Holder<ArmorMaterial> IRIDIUM_ARMOR_MATERIAL = register("iridium",
+    public static final Holder<ArmorMaterial> COBALT_ARMOR_MATERIAL = register("cobalt",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
                 attribute.put(ArmorItem.Type.BOOTS, 3);
                 attribute.put(ArmorItem.Type.LEGGINGS, 6);
                 attribute.put(ArmorItem.Type.CHESTPLATE, 8);
                 attribute.put(ArmorItem.Type.HELMET, 4);
                 attribute.put(ArmorItem.Type.BODY, 11);
-            }), 7, 2f, 0.05f, ModItems.IRIDIUM_INGOT);
+            }), 7, 2f, 0.05f, ModItems.COBALT_INGOT);
 
     public static final Holder<ArmorMaterial> BREEZE_ARMOR_MATERIAL = register("breeze",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {

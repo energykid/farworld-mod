@@ -32,6 +32,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -40,13 +41,16 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -55,6 +59,7 @@ import net.minecraft.world.level.block.Portal;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.portal.DimensionTransition;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.attachment.AttachmentType;
@@ -83,44 +88,51 @@ public class FarworldDimensionTransitions {
                 1000,
                 PoiManager.Occupancy.ANY
         );
-        return opt.orElse(null);
+
+        BlockPos pos = opt.orElse(null);
+
+        if (pos != null)
+        {
+
+        }
+
+        return pos;
     }
 
     @SubscribeEvent
     public static void runDimensionTransitions(EntityTickEvent.Post event) {
-        if (event.getEntity() instanceof LivingEntity entity) {
-            if (entity instanceof ServerPlayer servPlayer) {
+        Entity entity = event.getEntity();
+
+        if (entity instanceof Mob mob)
+        {
+            if (entity.getServer() != null)
+            {
                 boolean shouldBeMoving = false;
                 BlockPos blockPos = BlockPos.containing(entity.getEyePosition());
                 BlockState currentBlockState = entity.level().getBlockState(blockPos);
-                for (int i = 0; i < AllDimensionLinks.links.length; i++) {
-                    DimensionLink link = AllDimensionLinks.links[i];
-                    if (currentBlockState.is(link.portalBlock)) {
+                for (int i = 0; i < AllDimensionLinks.links.length + 1; i++) {
+                    if (i < AllDimensionLinks.links.length)
+                    {
+                        DimensionLink link = AllDimensionLinks.links[i];
+                        if (currentBlockState.is(link.portalBlock)) {
 
-                        if (entity.getData(ModAttachments.DIMENSION_TRANSITION) == 0) {
-                            ((ServerPlayer) entity).playNotifySound(ModSounds.BYSTONE_PORTAL_ENTER.get(), SoundSource.AMBIENT, 1f, 1f);
-                        }
-
-                        entity.setData(ModAttachments.DIMENSION_TRANSITION, entity.getData(ModAttachments.DIMENSION_TRANSITION) + 1f);
-                        entity.setData(ModAttachments.DIMENSION_TRANSITION_VISUAL, entity.getData(ModAttachments.DIMENSION_TRANSITION));
-                        entity.setData(ModAttachments.DIMENSION_TRANSITION_RESOURCE, link.resourceLocation.getPath());
-                        PortalLayerEvents.transitionOpacity = Mth.lerp(0.03f, PortalLayerEvents.transitionOpacity, 0.85f);
-                        PortalLayerEvents.transitionResource = entity.getData(ModAttachments.DIMENSION_TRANSITION_RESOURCE);
-                        shouldBeMoving = true;
-                        if (entity.getData(ModAttachments.DIMENSION_TRANSITION) == link.transitionTime) {
-                            try {
+                            shouldBeMoving = true;
+                            if (entity.getData(ModAttachments.DIMENSION_TRANSITION_COOLDOWN) <= 0) {
                                 double xx = entity.getX();
                                 double yy = Math.clamp(entity.getY(), link.minY, link.maxY);
                                 double zz = entity.getZ();
 
                                 BlockPos pos = new BlockPos((int) xx, (int) yy, (int) zz);
-                                ServerLevel levelTo = entity.level().getServer().getLevel(link.level2);
-                                if (servPlayer.level().dimension() == link.level2) {
-                                    levelTo = entity.level().getServer().getLevel(link.level1);
+
+                                ServerLevel levelTo = entity.getServer().getLevel(link.level2);
+                                if (mob.level().dimension() == link.level2) {
+                                    levelTo = entity.getServer().getLevel(link.level1);
                                 }
+                                assert levelTo != null;
                                 BlockPos pos2 = findNearestPortalTo(levelTo, pos, link.poiType);
                                 if (pos2 != null) {
-                                    servPlayer.teleportTo(levelTo, pos2.getX(), pos2.getY(), pos2.getZ(), 0f, 0f);
+                                    entity.setData(ModAttachments.DIMENSION_TRANSITION_COOLDOWN, 30f);
+                                    mob.teleportTo(levelTo, pos2.getX(), pos2.getY(), pos2.getZ(), Set.of(), mob.getXRot(), mob.getYRot());
                                 } else {
                                     int dir = 1;
                                     int bedrocks = 0;
@@ -133,20 +145,81 @@ public class FarworldDimensionTransitions {
                                         if (levelTo.getBlockState(pos).is(Blocks.AIR) && levelTo.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())).is(Blocks.AIR) && !levelTo.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())).canBeReplaced())
                                             break;
                                     }
-                                    servPlayer.teleportTo(levelTo, pos.getX(), pos.getY(), pos.getZ(), 0f, 0f);
+                                    entity.setData(ModAttachments.DIMENSION_TRANSITION_COOLDOWN, 30f);
+                                    mob.teleportTo(levelTo, pos.getX(), pos.getY(), pos.getZ(), Set.of(), mob.getXRot(), mob.getYRot());
                                     link.setPortal(pos, levelTo);
                                 }
-                            } finally {
-                                ((ServerPlayer) entity).playNotifySound(ModSounds.BYSTONE_PORTAL_EXIT.get(), SoundSource.AMBIENT, 1f, 1f);
                             }
+
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        entity.setData(ModAttachments.DIMENSION_TRANSITION_COOLDOWN, entity.getData(ModAttachments.DIMENSION_TRANSITION_COOLDOWN) - 1f);
+                    }
+                }
+            }
+        }
+
+        if (entity instanceof ServerPlayer servPlayer) {
+            boolean shouldBeMoving = false;
+            BlockPos blockPos = BlockPos.containing(entity.getEyePosition());
+            BlockState currentBlockState = entity.level().getBlockState(blockPos);
+            for (int i = 0; i < AllDimensionLinks.links.length; i++) {
+                DimensionLink link = AllDimensionLinks.links[i];
+                if (currentBlockState.is(link.portalBlock)) {
+
+                    if (entity.getData(ModAttachments.DIMENSION_TRANSITION) == 0) {
+                        ((ServerPlayer) entity).playNotifySound(ModSounds.BYSTONE_PORTAL_ENTER.get(), SoundSource.AMBIENT, 1f, 1f);
+                    }
+
+                    entity.setData(ModAttachments.DIMENSION_TRANSITION, entity.getData(ModAttachments.DIMENSION_TRANSITION) + 1f);
+                    entity.setData(ModAttachments.DIMENSION_TRANSITION_VISUAL, entity.getData(ModAttachments.DIMENSION_TRANSITION));
+                    entity.setData(ModAttachments.DIMENSION_TRANSITION_RESOURCE, link.resourceLocation.getPath());
+                    PortalLayerEvents.transitionOpacity = Mth.lerp(0.03f, PortalLayerEvents.transitionOpacity, 0.85f);
+                    PortalLayerEvents.transitionResource = entity.getData(ModAttachments.DIMENSION_TRANSITION_RESOURCE);
+                    shouldBeMoving = true;
+                    if (entity.getData(ModAttachments.DIMENSION_TRANSITION) == link.transitionTime) {
+                        try {
+                            double xx = entity.getX();
+                            double yy = Math.clamp(entity.getY(), link.minY, link.maxY);
+                            double zz = entity.getZ();
+
+                            BlockPos pos = new BlockPos((int) xx, (int) yy, (int) zz);
+                            ServerLevel levelTo = entity.getServer().getLevel(link.level2);
+                            if (servPlayer.level().dimension() == link.level2) {
+                                levelTo = entity.getServer().getLevel(link.level1);
+                            }
+                            assert levelTo != null;
+                            BlockPos pos2 = findNearestPortalTo(levelTo, pos, link.poiType);
+                            if (pos2 != null) {
+                                servPlayer.teleportTo(levelTo, pos2.getX(), pos2.getY(), pos2.getZ(), 0f, 0f);
+                            } else {
+                                int dir = 1;
+                                int bedrocks = 0;
+                                for (int j = 0; j < 1000; j++) {
+                                    pos = new BlockPos(pos.getX(), pos.getY() + dir, pos.getZ());
+                                    if (levelTo.getBlockState(pos).is(Blocks.BEDROCK)) {
+                                        bedrocks++;
+                                        dir = -dir;
+                                    }
+                                    if (levelTo.getBlockState(pos).is(Blocks.AIR) && levelTo.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())).is(Blocks.AIR) && !levelTo.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())).canBeReplaced())
+                                        break;
+                                }
+                                servPlayer.teleportTo(levelTo, pos.getX(), pos.getY(), pos.getZ(), 0f, 0f);
+                                link.setPortal(pos, levelTo);
+                            }
+                        } finally {
+                            ((ServerPlayer) entity).playNotifySound(ModSounds.BYSTONE_PORTAL_EXIT.get(), SoundSource.AMBIENT, 1f, 1f);
                         }
                     }
                 }
-                if (!shouldBeMoving) {
-                    PortalLayerEvents.transitionOpacity = Mth.lerp(0.06f, PortalLayerEvents.transitionOpacity, 0f);
-                    entity.setData(ModAttachments.DIMENSION_TRANSITION, 0f);
-                    entity.setData(ModAttachments.DIMENSION_TRANSITION_VISUAL, entity.getData(ModAttachments.DIMENSION_TRANSITION_VISUAL) * 0.95f);
-                }
+            }
+            if (!shouldBeMoving) {
+                PortalLayerEvents.transitionOpacity = Mth.lerp(0.06f, PortalLayerEvents.transitionOpacity, 0f);
+                entity.setData(ModAttachments.DIMENSION_TRANSITION, 0f);
+                entity.setData(ModAttachments.DIMENSION_TRANSITION_VISUAL, entity.getData(ModAttachments.DIMENSION_TRANSITION_VISUAL) * 0.95f);
             }
         }
     }

@@ -40,10 +40,10 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        trimmedArmorItem(ModItems.IRIDIUM_HELMET);
-        trimmedArmorItem(ModItems.IRIDIUM_CHESTPLATE);
-        trimmedArmorItem(ModItems.IRIDIUM_LEGGINGS);
-        trimmedArmorItem(ModItems.IRIDIUM_BOOTS);
+        trimmedArmorItem(ModItems.COBALT_HELMET);
+        trimmedArmorItem(ModItems.COBALT_CHESTPLATE);
+        trimmedArmorItem(ModItems.COBALT_LEGGINGS);
+        trimmedArmorItem(ModItems.COBALT_BOOTS);
     }
 
     // Shoutout to El_Redstoniano for making this

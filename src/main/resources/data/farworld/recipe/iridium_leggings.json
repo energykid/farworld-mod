@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "X": {
-      "item": "farworld:iridium_ingot"
+      "item": "farworld:cobalt_ingot"
     }
   },
   "pattern": [
@@ -13,6 +13,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "farworld:iridium_leggings"
+    "id": "farworld:cobalt_leggings"
   }
 }

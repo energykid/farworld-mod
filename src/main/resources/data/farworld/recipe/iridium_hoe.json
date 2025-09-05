@@ -6,7 +6,7 @@
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "farworld:iridium_ingot"
+      "item": "farworld:cobalt_ingot"
     }
   },
   "pattern": [
@@ -16,6 +16,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "farworld:iridium_hoe"
+    "id": "farworld:cobalt_hoe"
   }
 }

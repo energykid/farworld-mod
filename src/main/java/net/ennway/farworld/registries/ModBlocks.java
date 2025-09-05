@@ -63,8 +63,8 @@ public class ModBlocks {
                     .strength(1.8F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
 
-    public static final DeferredBlock<Block> IRIDIUM_ORE = BLOCKS_ALL.register(
-            "iridium_ore",
+    public static final DeferredBlock<Block> COBALT_ORE = BLOCKS_ALL.register(
+            "cobalt_ore",
             registryName -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_YELLOW).requiresCorrectToolForDrops()
                     .strength(1.8F, 6.0F)

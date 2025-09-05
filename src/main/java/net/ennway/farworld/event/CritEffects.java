@@ -86,12 +86,12 @@ public class CritEffects {
 
                     spawnFireEffect(enemy, ModParticles.DIAMOND_SPARKLE, ModParticles.DIAMOND_DUST);
                 }
-                if (stack.is(ModItems.IRIDIUM_SWORD) || stack.is(ModItems.IRIDIUM_AXE))
+                if (stack.is(ModItems.COBALT_SWORD) || stack.is(ModItems.COBALT_AXE))
                 {
-                    if (stack.is(ModItems.IRIDIUM_AXE))
-                        enemy.level().playSound(enemy, enemy.blockPosition(), ModSounds.IRIDIUM_HIT.get(), SoundSource.PLAYERS, 1f, (float)MathUtils.randomDouble(enemy.getRandom(), 0.8, 0.95));
+                    if (stack.is(ModItems.COBALT_AXE))
+                        enemy.level().playSound(enemy, enemy.blockPosition(), ModSounds.COBALT_HIT.get(), SoundSource.PLAYERS, 1f, (float)MathUtils.randomDouble(enemy.getRandom(), 0.8, 0.95));
                     else
-                        enemy.level().playSound(enemy, enemy.blockPosition(), ModSounds.IRIDIUM_HIT.get(), SoundSource.PLAYERS, 1f, (float)MathUtils.randomDouble(enemy.getRandom(), 1.0, 1.1));
+                        enemy.level().playSound(enemy, enemy.blockPosition(), ModSounds.COBALT_HIT.get(), SoundSource.PLAYERS, 1f, (float)MathUtils.randomDouble(enemy.getRandom(), 1.0, 1.1));
 
                     Vec3 v3 = enemy.position().add(enemy.getBbWidth() / 2, enemy.getBbHeight() / 2, enemy.getBbWidth() / 2).add(
                             MathUtils.randomDouble(enemy.getRandom(), -0.7, 0.7),

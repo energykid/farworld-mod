@@ -3,11 +3,11 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1,
-  "group": "iridium_ingot",
+  "group": "cobalt_ingot",
   "ingredient": {
-    "item": "farworld:iridium_ore"
+    "item": "farworld:cobalt_ore"
   },
   "result": {
-    "id": "farworld:iridium_ingot"
+    "id": "farworld:cobalt_ingot"
   }
 }
