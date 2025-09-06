@@ -9,6 +9,9 @@
     "farworld:lush_flowstone",
     "farworld:dense_coal_ore",
     "farworld:dense_iron_ore",
-    "farworld:dense_gold_ore"
+    "farworld:dense_gold_ore",
+    "farworld:stonewood_log",
+    "farworld:stripped_stonewood_log",
+    "farworld:stonewood_planks"
   ]
 }

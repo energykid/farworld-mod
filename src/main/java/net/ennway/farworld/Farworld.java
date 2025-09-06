@@ -91,6 +91,18 @@ public class Farworld
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
         {
             event.insertAfter(Items.NETHERITE_BLOCK.getDefaultInstance(), ModItems.SOUL_STEEL_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.CHERRY_BUTTON.getDefaultInstance(), ModItems.STONEWOOD_LOG.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STONEWOOD_LOG.toStack(), ModItems.STONEWOOD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STONEWOOD.toStack(), ModItems.STRIPPED_STONEWOOD_LOG.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STRIPPED_STONEWOOD_LOG.toStack(), ModItems.STRIPPED_STONEWOOD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STRIPPED_STONEWOOD.toStack(), ModItems.STONEWOOD_PLANKS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STONEWOOD_PLANKS.toStack(), ModItems.STONEWOOD_DOOR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STONEWOOD_DOOR.toStack(), ModItems.STONEWOOD_TRAPDOOR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        }
+        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
+        {
+
         }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS)
         {

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:dense_gold_ore"
+    "farworld:dense_gold_ore",
+    "farworld:cobalt_ore"
   ]
 }

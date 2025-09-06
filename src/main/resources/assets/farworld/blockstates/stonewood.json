@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "farworld:block/stonewood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "farworld:block/stonewood"
+    },
+    "axis=z": {
+      "model": "farworld:block/stonewood",
+      "x": 90
+    }
+  }
+}

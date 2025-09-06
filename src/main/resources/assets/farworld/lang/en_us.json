@@ -65,6 +65,13 @@
   "block.farworld.dense_gold_ore" : "Dense Gold Ore",
   "block.farworld.cobalt_ore" : "Cobalt Ore",
   "block.farworld.flowstone_cache" : "Geocache Block",
+  "block.farworld.stonewood_log" : "Stonewood Log",
+  "block.farworld.stonewood" : "Stonewood",
+  "block.farworld.stripped_stonewood_log" : "Stripped Stonewood Log",
+  "block.farworld.stripped_stonewood" : "Stripped Stonewood",
+  "block.farworld.stonewood_planks" : "Stonewood Planks",
+  "block.farworld.stonewood_door" : "Stonewood Door",
+  "block.farworld.stonewood_trapdoor" : "Stonewood Trapdoor",
 
   "entity.farworld.bloomed" : "Bloomed",
   "entity.farworld.soul_golem" : "Soul Steel Golem",

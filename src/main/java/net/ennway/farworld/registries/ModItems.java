@@ -168,6 +168,20 @@ public class ModItems
             () -> new BlockItem(ModBlocks.SOUL_STEEL_BLOCK.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE = ITEMS_ALL.register("flowstone",
             () -> new BlockItem(ModBlocks.FLOWSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_LOG = ITEMS_ALL.register("stonewood_log",
+            () -> new BlockItem(ModBlocks.STONEWOOD_LOG.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD = ITEMS_ALL.register("stonewood",
+            () -> new BlockItem(ModBlocks.STONEWOOD.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STRIPPED_STONEWOOD = ITEMS_ALL.register("stripped_stonewood",
+            () -> new BlockItem(ModBlocks.STRIPPED_STONEWOOD.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STRIPPED_STONEWOOD_LOG = ITEMS_ALL.register("stripped_stonewood_log",
+            () -> new BlockItem(ModBlocks.STRIPPED_STONEWOOD_LOG.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_PLANKS = ITEMS_ALL.register("stonewood_planks",
+            () -> new BlockItem(ModBlocks.STONEWOOD_PLANKS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_DOOR = ITEMS_ALL.register("stonewood_door",
+            () -> new BlockItem(ModBlocks.STONEWOOD_DOOR.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_TRAPDOOR = ITEMS_ALL.register("stonewood_trapdoor",
+            () -> new BlockItem(ModBlocks.STONEWOOD_TRAPDOOR.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> COBBLED_FLOWSTONE = ITEMS_ALL.register("cobbled_flowstone",
             () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> LUSH_FLOWSTONE = ITEMS_ALL.register("lush_flowstone",

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "planks",
+  "ingredients": [
+    {
+      "item": "farworld:stonewood"
+    }
+  ],
+  "result": {
+    "id": "farworld:stonewood_planks",
+    "count": 4
+  }
+}
