@@ -29,8 +29,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Function;
 
 public class StonewoodLogBlock extends RotatedPillarBlock {
-    public StonewoodLogBlock(Properties p_52591_) {
+    public static Block strippedVersion;
+
+    public StonewoodLogBlock(Block stripped, Properties p_52591_) {
         super(p_52591_);
+        strippedVersion = stripped;
     }
 
     public static <B extends Block> MapCodec<B> simpleCodec(@NotNull Function<Properties, B> factory) {
@@ -46,7 +49,7 @@ public class StonewoodLogBlock extends RotatedPillarBlock {
             var ax = level.getBlockState(pos).getValue(RotatedPillarBlock.AXIS);
 
             level.playSound(player, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS);
-            level.setBlock(pos, ModBlocks.STRIPPED_STONEWOOD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, ax), 0);
+            level.setBlock(pos, strippedVersion.defaultBlockState().setValue(RotatedPillarBlock.AXIS, ax), 0);
 
             return ItemInteractionResult.SUCCESS;
         }

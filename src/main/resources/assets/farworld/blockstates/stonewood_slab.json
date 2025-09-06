@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "farworld:block/stonewood_slab"
+    },
+    "type=double": {
+      "model": "farworld:block/stonewood_planks"
+    },
+    "type=top": {
+      "model": "farworld:block/stonewood_slab_top"
+    }
+  }
+}

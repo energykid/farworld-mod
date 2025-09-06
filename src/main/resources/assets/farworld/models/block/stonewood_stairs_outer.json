@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "farworld:block/stonewood_planks",
+    "side": "farworld:block/stonewood_planks",
+    "top": "farworld:block/stonewood_planks"
+  }
+}

@@ -178,10 +178,22 @@ public class ModItems
             () -> new BlockItem(ModBlocks.STRIPPED_STONEWOOD_LOG.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_PLANKS = ITEMS_ALL.register("stonewood_planks",
             () -> new BlockItem(ModBlocks.STONEWOOD_PLANKS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_STAIRS = ITEMS_ALL.register("stonewood_stairs",
+            () -> new BlockItem(ModBlocks.STONEWOOD_STAIRS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_SLAB = ITEMS_ALL.register("stonewood_slab",
+            () -> new BlockItem(ModBlocks.STONEWOOD_SLAB.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_DOOR = ITEMS_ALL.register("stonewood_door",
             () -> new BlockItem(ModBlocks.STONEWOOD_DOOR.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_TRAPDOOR = ITEMS_ALL.register("stonewood_trapdoor",
             () -> new BlockItem(ModBlocks.STONEWOOD_TRAPDOOR.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_FENCE = ITEMS_ALL.register("stonewood_fence",
+            () -> new BlockItem(ModBlocks.STONEWOOD_FENCE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_FENCE_GATE = ITEMS_ALL.register("stonewood_fence_gate",
+            () -> new BlockItem(ModBlocks.STONEWOOD_FENCE_GATE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_BUTTON = ITEMS_ALL.register("stonewood_button",
+            () -> new BlockItem(ModBlocks.STONEWOOD_BUTTON.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_PRESSURE_PLATE = ITEMS_ALL.register("stonewood_pressure_plate",
+            () -> new BlockItem(ModBlocks.STONEWOOD_PRESSURE_PLATE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> COBBLED_FLOWSTONE = ITEMS_ALL.register("cobbled_flowstone",
             () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> LUSH_FLOWSTONE = ITEMS_ALL.register("lush_flowstone",

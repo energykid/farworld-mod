@@ -2,14 +2,18 @@ package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.block.*;
+import net.ennway.farworld.registries.sets.WoodTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
@@ -78,20 +82,6 @@ public class ModBlocks {
                     .strength(1.1F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
 
-    public static final DeferredBlock<Block> STONEWOOD_LOG = BLOCKS_ALL.register(
-            "stonewood_log",
-            registryName -> new StonewoodLogBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_GRAY)
-                    .strength(1.2F, 3.0F)
-                    .sound(SoundType.NETHER_WOOD)));
-
-    public static final DeferredBlock<Block> STONEWOOD = BLOCKS_ALL.register(
-            "stonewood",
-            registryName -> new StonewoodLogBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_GRAY)
-                    .strength(1.2F, 3.0F)
-                    .sound(SoundType.NETHER_WOOD)));
-
     public static final DeferredBlock<Block> STRIPPED_STONEWOOD_LOG = BLOCKS_ALL.register(
             "stripped_stonewood_log",
             registryName -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
@@ -101,7 +91,21 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> STRIPPED_STONEWOOD = BLOCKS_ALL.register(
             "stripped_stonewood",
-            registryName -> new StonewoodLogBlock(BlockBehaviour.Properties.of()
+            registryName -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> STONEWOOD_LOG = BLOCKS_ALL.register(
+            "stonewood_log",
+            registryName -> new StonewoodLogBlock(STRIPPED_STONEWOOD_LOG.get(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> STONEWOOD = BLOCKS_ALL.register(
+            "stonewood",
+            registryName -> new StonewoodLogBlock(STRIPPED_STONEWOOD.get(), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY)
                     .strength(1.2F, 3.0F)
                     .sound(SoundType.NETHER_WOOD)));
@@ -109,6 +113,20 @@ public class ModBlocks {
     public static final DeferredBlock<Block> STONEWOOD_PLANKS = BLOCKS_ALL.register(
             "stonewood_planks",
             registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> STONEWOOD_STAIRS = BLOCKS_ALL.register(
+            "stonewood_stairs",
+            registryName -> new StairBlock(STONEWOOD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> STONEWOOD_SLAB = BLOCKS_ALL.register(
+            "stonewood_slab",
+            registryName -> new SlabBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY)
                     .strength(1.2F, 3.0F)
                     .sound(SoundType.NETHER_WOOD)));
@@ -123,6 +141,34 @@ public class ModBlocks {
     public static final DeferredBlock<Block> STONEWOOD_TRAPDOOR = BLOCKS_ALL.register(
             "stonewood_trapdoor",
             registryName -> new TrapDoorBlock(BlockSetType.STONE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> STONEWOOD_FENCE = BLOCKS_ALL.register(
+            "stonewood_fence",
+            registryName -> new FenceBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> STONEWOOD_FENCE_GATE = BLOCKS_ALL.register(
+            "stonewood_fence_gate",
+            registryName -> new FenceGateBlock(WoodTypes.STONEWOOD_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> STONEWOOD_PRESSURE_PLATE = BLOCKS_ALL.register(
+            "stonewood_pressure_plate",
+            registryName -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> STONEWOOD_BUTTON = BLOCKS_ALL.register(
+            "stonewood_button",
+            registryName -> new ButtonBlock(BlockSetType.STONE, 10, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY)
                     .strength(1.2F, 3.0F)
                     .sound(SoundType.NETHER_WOOD)));
