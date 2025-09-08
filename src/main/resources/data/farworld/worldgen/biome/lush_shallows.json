@@ -45,7 +45,9 @@
   "features": [
     [
       "farworld:ore_dense_coal_placed",
-      "farworld:ore_dense_gold_placed"
+      "farworld:ore_dense_gold_placed",
+      "farworld:lush_shelves_trees_placed",
+      "farworld:lush_shelves_flora_placed"
     ]
   ]
 }

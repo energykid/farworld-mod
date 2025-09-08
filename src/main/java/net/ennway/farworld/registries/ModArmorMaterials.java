@@ -36,7 +36,7 @@ public class ModArmorMaterials {
 
     public static final Holder<ArmorMaterial> BREEZE_ARMOR_MATERIAL = register("breeze",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
-                attribute.put(ArmorItem.Type.BOOTS, 2);
+                attribute.put(ArmorItem.Type.BOOTS, 1);
             }), 11, 0f, 0f,
             () -> Items.BREEZE_ROD);
 

@@ -12,7 +12,7 @@
     "foliage_color": 3687733,
     "ambient_sound": "farworld:dusty_shelves_ambiance",
     "music": {
-      "sound": "farworld:music.igneous",
+      "sound": "farworld:music.dusty_shelves",
       "min_delay": 8000,
       "max_delay": 14000,
       "replace_current_music": false

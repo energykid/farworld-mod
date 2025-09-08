@@ -44,8 +44,8 @@
     "sounds": ["farworld:music/armageddon_simple_things"],
     "stream": true
   },
-  "music.igneous": {
-    "sounds": ["farworld:music/igneous"],
+  "music.dusty_shelves": {
+    "sounds": ["farworld:music/igneous", "farworld:music/deeplost"],
     "stream": true
   },
   "music.deeplost": {

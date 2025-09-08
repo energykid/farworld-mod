@@ -29,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Function;
 
 public class StonewoodLogBlock extends RotatedPillarBlock {
-    public static Block strippedVersion;
+    Block strippedVersion;
 
     public StonewoodLogBlock(Block stripped, Properties p_52591_) {
         super(p_52591_);
