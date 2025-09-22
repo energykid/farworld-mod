@@ -45,9 +45,9 @@ public class ModSounds {
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_ENTER = createSoundEvent("bystone_portal_enter");
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_EXIT = createSoundEvent("bystone_portal_exit");
 
-    public static final Supplier<SoundEvent> MUSIC_DEEPLOST = createSoundEvent("music.deeplost");
+    public static final Supplier<SoundEvent> MUSIC_LUSH_SHALLOWS = createSoundEvent("music.lush_shallows");
     public static final Supplier<SoundEvent> MUSIC_ARMAGEDDON_SIMPLE_THINGS = createSoundEvent("music.armageddon_simple_things");
-    public static final Supplier<SoundEvent> MUSIC_IGNEOUS = createSoundEvent("music.igneous");
+    public static final Supplier<SoundEvent> MUSIC_DUSTY_SHELVES = createSoundEvent("music.dusty_shelves");
 
     private static ResourceKey<JukeboxSong> createSong(String name)
     {

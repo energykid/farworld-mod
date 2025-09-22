@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cross",
+    "textures": {
+        "cross": "farworld:block/hanging_vines"
+    },
+    "render_type": "cutout"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "": {
+      "model": "farworld:block/hanging_vines"
+    },
+    "short=false": {
+      "model": "farworld:block/hanging_vines"
+    },
+    "short=true": {
+      "model": "farworld:block/hanging_vines_end"
+    }
+  }
+}

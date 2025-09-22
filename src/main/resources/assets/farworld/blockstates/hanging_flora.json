@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "": {
+      "model": "farworld:block/hanging_flora"
+    },
+    "short=false": {
+      "model": "farworld:block/hanging_flora"
+    },
+    "short=true": {
+      "model": "farworld:block/hanging_flora_end"
+    }
+  }
+}

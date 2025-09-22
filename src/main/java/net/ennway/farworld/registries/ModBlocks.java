@@ -173,6 +173,45 @@ public class ModBlocks {
                     .strength(1.2F, 3.0F)
                     .sound(SoundType.NETHER_WOOD)));
 
+    public static final DeferredBlock<Block> STONEWOOD_LEAVES = BLOCKS_ALL.register(
+            "stonewood_leaves",
+            registryName -> new LeavesBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .strength(0.4F, 0F)
+                    .sound(SoundType.AZALEA_LEAVES)
+                    .noOcclusion()
+                    .isViewBlocking((a,b,c) -> false)));
+
+    public static final DeferredBlock<Block> STONEWOOD_LEAVES_FLOWERED = BLOCKS_ALL.register(
+            "stonewood_leaves_flowered",
+            registryName -> new LeavesBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_YELLOW)
+                    .strength(0.4F, 0F)
+                    .noOcclusion()
+                    .sound(SoundType.AZALEA_LEAVES)
+                    .isViewBlocking((a,b,c) -> false)));
+
+    public static final DeferredBlock<Block> HANGING_VINES = BLOCKS_ALL.register(
+            "hanging_vines",
+            registryName -> new VineBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .strength(0F, 0F)
+                    .sound(SoundType.AZALEA_LEAVES)
+                    .noOcclusion()
+                    .noCollission()
+                    .isViewBlocking((a,b,c) -> false)));
+
+    public static final DeferredBlock<Block> HANGING_FLORA = BLOCKS_ALL.register(
+            "hanging_flora",
+            registryName -> new VineBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_YELLOW)
+                    .strength(0F, 0F)
+                    .sound(SoundType.AZALEA_LEAVES)
+                    .noOcclusion()
+                    .noCollission()
+                    .isViewBlocking((a,b,c) -> false)));
+
+
     public static final DeferredBlock<Block> COBBLED_FLOWSTONE = BLOCKS_ALL.register(
             "cobbled_flowstone",
             registryName -> new Block(BlockBehaviour.Properties.of()

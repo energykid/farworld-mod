@@ -48,8 +48,8 @@
     "sounds": ["farworld:music/igneous", "farworld:music/deeplost"],
     "stream": true
   },
-  "music.deeplost": {
-    "sounds": ["farworld:music/deeplost"],
+  "music.lush_shallows": {
+    "sounds": ["farworld:music/unfettered", "farworld:music/deeplost"],
     "stream": true
   },
 

@@ -196,6 +196,10 @@ public class ModItems
             () -> new BlockItem(ModBlocks.STONEWOOD_PRESSURE_PLATE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> COBBLED_FLOWSTONE = ITEMS_ALL.register("cobbled_flowstone",
             () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_LEAVES = ITEMS_ALL.register("stonewood_leaves",
+            () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_LEAVES_FLOWERED = ITEMS_ALL.register("stonewood_leaves_flowered",
+            () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES_FLOWERED.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> LUSH_FLOWSTONE = ITEMS_ALL.register("lush_flowstone",
             () -> new BlockItem(ModBlocks.LUSH_FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DENSE_COAL_ORE = ITEMS_ALL.register("dense_coal_ore",

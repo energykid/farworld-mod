@@ -34,7 +34,7 @@
           "entries": [
             {
               "data": {
-                "Name": "minecraft:azalea_leaves",
+                "Name": "farworld:hanging_vines",
                 "Properties": {
                   "persistent": "true"
                 }
@@ -43,7 +43,7 @@
             },
             {
               "data": {
-                "Name": "minecraft:flowering_azalea_leaves",
+                "Name": "farworld:hanging_flora",
                 "Properties": {
                   "persistent": "true"
                 }

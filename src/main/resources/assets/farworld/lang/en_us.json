@@ -78,6 +78,10 @@
   "block.farworld.stonewood_fence_gate" : "Stonewood Fence Gate",
   "block.farworld.stonewood_pressure_plate" : "Stonewood Pressure Plate",
   "block.farworld.stonewood_button" : "Stonewood Button",
+  "block.farworld.stonewood_leaves" : "Stonewood Leaves",
+  "block.farworld.stonewood_leaves_flowered" : "Stonewood Flora",
+  "block.farworld.hanging_vines" : "Hanging Vines",
+  "block.farworld.hanging_flora" : "Hanging Flora",
 
   "entity.farworld.bloomed" : "Bloomed",
   "entity.farworld.soul_golem" : "Soul Steel Golem",

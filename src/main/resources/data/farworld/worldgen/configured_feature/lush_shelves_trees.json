@@ -19,15 +19,39 @@
       "height": 2
     },
     "foliage_provider": {
-      "type": "minecraft:simple_state_provider",
+      "type": "minecraft:weighted_state_provider",
       "state": {
-        "Name": "minecraft:azalea_leaves",
+        "Name": "farworld:stonewood_leaves",
         "Properties": {
           "distance": "7",
           "persistent": "false",
           "waterlogged": "false"
         }
-      }
+      },
+      "entries": [
+        {
+          "weight": 1,
+          "data": {
+            "Name": "farworld:stonewood_leaves_flowered",
+            "Properties": {
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "weight": 8,
+          "data": {
+            "Name": "farworld:stonewood_leaves",
+            "Properties": {
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          }
+        }
+      ]
     },
     "force_dirt": true,
     "ignore_vines": true,

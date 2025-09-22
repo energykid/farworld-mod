@@ -12,7 +12,7 @@
     "foliage_color": 3635038,
     "ambient_sound": "farworld:lush_shallows_ambiance",
     "music": {
-      "sound": "farworld:music.deeplost",
+      "sound": "farworld:music.lush_shallows",
       "min_delay": 10000,
       "max_delay": 12000,
       "replace_current_music": false
