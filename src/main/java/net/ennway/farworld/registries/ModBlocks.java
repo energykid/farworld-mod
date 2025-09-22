@@ -193,7 +193,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> HANGING_VINES = BLOCKS_ALL.register(
             "hanging_vines",
-            registryName -> new VineBlock(BlockBehaviour.Properties.of()
+            registryName -> new HangingVines(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_LIGHT_GREEN)
                     .strength(0F, 0F)
                     .sound(SoundType.AZALEA_LEAVES)
@@ -203,7 +203,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> HANGING_FLORA = BLOCKS_ALL.register(
             "hanging_flora",
-            registryName -> new VineBlock(BlockBehaviour.Properties.of()
+            registryName -> new HangingVines(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_YELLOW)
                     .strength(0F, 0F)
                     .sound(SoundType.AZALEA_LEAVES)
