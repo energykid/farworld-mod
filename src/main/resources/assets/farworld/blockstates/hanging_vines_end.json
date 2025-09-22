@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "farworld:block/hanging_vines_end"
+    },
+    "berries=true": {
+      "model": "farworld:block/hanging_flora_end"
+    }
+  }
+}

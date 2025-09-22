@@ -1,11 +1,14 @@
 package net.ennway.farworld.registries;
 
+import com.mojang.serialization.MapCodec;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.block.*;
 import net.ennway.farworld.registries.sets.WoodTypes;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -193,24 +196,23 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> HANGING_VINES = BLOCKS_ALL.register(
             "hanging_vines",
-            registryName -> new HangingVines(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_LIGHT_GREEN)
+            registryName -> new HangingVinesBodyBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
                     .strength(0F, 0F)
-                    .sound(SoundType.AZALEA_LEAVES)
                     .noOcclusion()
                     .noCollission()
+                    .sound(SoundType.AZALEA_LEAVES)
                     .isViewBlocking((a,b,c) -> false)));
 
-    public static final DeferredBlock<Block> HANGING_FLORA = BLOCKS_ALL.register(
-            "hanging_flora",
-            registryName -> new HangingVines(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_YELLOW)
+    public static final DeferredBlock<GrowingPlantHeadBlock> HANGING_VINES_END = BLOCKS_ALL.register(
+            "hanging_vines_end",
+            registryName -> new HangingVinesBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
                     .strength(0F, 0F)
-                    .sound(SoundType.AZALEA_LEAVES)
                     .noOcclusion()
                     .noCollission()
+                    .sound(SoundType.AZALEA_LEAVES)
                     .isViewBlocking((a,b,c) -> false)));
-
 
     public static final DeferredBlock<Block> COBBLED_FLOWSTONE = BLOCKS_ALL.register(
             "cobbled_flowstone",

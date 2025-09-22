@@ -116,7 +116,9 @@ public class DustbugEntity extends Monster {
 
     public static final TagKey<Block> DUSTBUG_SUMMON_BLOCKS = TagKey.create(
             BuiltInRegistries.BLOCK.key(),
-            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "dustbug_summon_blocks"));
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "dustbug_summonable"));
+
+
 
     @Override
     public void aiStep() {

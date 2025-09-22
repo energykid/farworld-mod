@@ -134,6 +134,8 @@ public class Farworld
 
             event.insertAfter(Items.FLOWERING_AZALEA.getDefaultInstance(), ModItems.STONEWOOD_LEAVES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.STONEWOOD_LEAVES.toStack(), ModItems.STONEWOOD_LEAVES_FLOWERED.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STONEWOOD_LEAVES_FLOWERED.toStack(), ModItems.HANGING_VINES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.HANGING_VINES.toStack(), ModItems.HANGING_FLORA.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
         {

@@ -105,6 +105,7 @@ public class SoulGolemEntity extends AbstractGolem {
         return super.getDeltaMovement().multiply(moveScale, 1f, moveScale);
     }
 
+
     @Override
     public void aiStep() {
         super.aiStep();

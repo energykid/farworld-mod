@@ -200,6 +200,10 @@ public class ModItems
             () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES_FLOWERED = ITEMS_ALL.register("stonewood_leaves_flowered",
             () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES_FLOWERED.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> HANGING_FLORA = ITEMS_ALL.register("hanging_flora",
+            () -> new HangingFloraItem(ModBlocks.HANGING_VINES_END.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> HANGING_VINES = ITEMS_ALL.register("hanging_vines",
+            () -> new BlockItem(ModBlocks.HANGING_VINES_END.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> LUSH_FLOWSTONE = ITEMS_ALL.register("lush_flowstone",
             () -> new BlockItem(ModBlocks.LUSH_FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DENSE_COAL_ORE = ITEMS_ALL.register("dense_coal_ore",

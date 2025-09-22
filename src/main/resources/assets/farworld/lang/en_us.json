@@ -81,7 +81,9 @@
   "block.farworld.stonewood_leaves" : "Stonewood Leaves",
   "block.farworld.stonewood_leaves_flowered" : "Stonewood Flora",
   "block.farworld.hanging_vines" : "Hanging Vines",
+  "block.farworld.hanging_vines_end" : "Hanging Vines",
   "block.farworld.hanging_flora" : "Hanging Flora",
+  "block.farworld.hanging_flora_end" : "Hanging Flora",
 
   "entity.farworld.bloomed" : "Bloomed",
   "entity.farworld.soul_golem" : "Soul Steel Golem",
