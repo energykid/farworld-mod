@@ -1,8 +1,5 @@
 {
   "variants": {
-    "": {
-      "model": "farworld:block/hanging_flora"
-    },
     "short=false": {
       "model": "farworld:block/hanging_flora"
     },

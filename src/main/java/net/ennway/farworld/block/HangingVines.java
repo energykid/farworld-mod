@@ -24,49 +24,51 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class HangingVines extends Block implements BonemealableBlock {
 
-    public static final BooleanProperty SHORT;
-
-    static {
-        SHORT = BlockStateProperties.SHORT;
-    }
-
     public static final TagKey<Block> LUSH_SHALLOWS_HANGING_VINES = TagKey.create(
             BuiltInRegistries.BLOCK.key(),
             ResourceLocation.withDefaultNamespace("lush_shallows_hanging_vines"));
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{SHORT});
+        builder.add(new Property[]{BlockStateProperties.SHORT});
     }
+
 
     public HangingVines(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(SHORT, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(BlockStateProperties.SHORT, false));
+    }
+
+    void updateState(Level level, BlockPos pos)
+    {
+        BlockState stateAbove = level.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()));
+        BlockState stateBelow = level.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()));
+
+        if (stateAbove.is(LUSH_SHALLOWS_HANGING_VINES) && !level.getBlockState(pos).is(LUSH_SHALLOWS_HANGING_VINES))
+        {
+            stateAbove.setValue(BlockStateProperties.SHORT, true);
+        }
+        else
+        {
+            stateAbove.setValue(BlockStateProperties.SHORT, false);
+
+            if (!stateBelow.is(LUSH_SHALLOWS_HANGING_VINES))
+            {
+                level.getBlockState(pos).setValue(BlockStateProperties.SHORT, true);
+            }
+        }
+
     }
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
-        if (level.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())).is(LUSH_SHALLOWS_HANGING_VINES) && !level.getBlockState(pos).is(LUSH_SHALLOWS_HANGING_VINES))
-        {
-            state.setValue(SHORT, true);
-        }
-        else
-        {
-            state.setValue(SHORT, false);
-        }
+        updateState(level, pos);
     }
 
     @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         super.onPlace(state, level, pos, oldState, movedByPiston);
-        if (level.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())).is(LUSH_SHALLOWS_HANGING_VINES) && !level.getBlockState(pos).is(LUSH_SHALLOWS_HANGING_VINES))
-        {
-            state.setValue(SHORT, true);
-        }
-        else
-        {
-            state.setValue(SHORT, false);
-        }
+        updateState(level, pos);
     }
 
     protected static final VoxelShape SHAPE = Block.box(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
