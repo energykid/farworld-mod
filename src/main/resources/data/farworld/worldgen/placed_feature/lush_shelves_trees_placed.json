@@ -1,5 +1,5 @@
 {
-  "feature": "farworld:lush_shelves_trees",
+  "feature": "farworld:stonewood_tree",
   "placement": [
     {
       "type": "minecraft:count_on_every_layer",

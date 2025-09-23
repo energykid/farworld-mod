@@ -3,6 +3,7 @@
     "#minecraft:mineable/pickaxe",
     "minecraft:grass_block",
     "minecraft:dirt",
-    "minecraft:gravel"
+    "minecraft:gravel",
+    "minecraft:sand"
   ]
 }

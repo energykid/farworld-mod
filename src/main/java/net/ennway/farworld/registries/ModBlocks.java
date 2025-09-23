@@ -6,10 +6,13 @@ import net.ennway.farworld.block.*;
 import net.ennway.farworld.registries.sets.WoodTypes;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
@@ -17,11 +20,14 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.Optional;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS_ALL = DeferredRegister.createBlocks(Farworld.MOD_ID);
@@ -208,6 +214,18 @@ public class ModBlocks {
             "hanging_vines_end",
             registryName -> new HangingVinesBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GREEN)
+                    .strength(0F, 0F)
+                    .noOcclusion()
+                    .noCollission()
+                    .sound(SoundType.AZALEA_LEAVES)
+                    .isViewBlocking((a,b,c) -> false)));
+
+
+    public static final DeferredBlock<SaplingBlock> STONEWOOD_SAPLING = BLOCKS_ALL.register(
+            "stonewood_sapling",
+            registryName -> new StonewoodSaplingBlock(
+                    BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
                     .strength(0F, 0F)
                     .noOcclusion()
                     .noCollission()
