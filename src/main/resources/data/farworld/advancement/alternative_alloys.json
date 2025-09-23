@@ -1,11 +1,11 @@
 {
-  "parent": "minecraft:story/follow_ender_eye",
+  "parent": "minecraft:story/enter_the_nether",
   "criteria": {
-    "allsaw": {
+    "soulsteel": {
       "conditions": {
         "items": [
           {
-            "items": "farworld:allsaw"
+            "items": "farworld:soul_steel"
           }
         ]
       },
@@ -14,19 +14,19 @@
   },
   "display": {
     "description": {
-      "translate": "advancement.farworld.saw_it_all.desc"
+      "translate": "advancement.farworld.alternative_alloys.desc"
     },
     "icon": {
       "count": 1,
-      "id": "farworld:allsaw"
+      "id": "farworld:soul_steel"
     },
     "title": {
-      "translate": "advancement.farworld.saw_it_all"
+      "translate": "advancement.farworld.alternative_alloys"
     }
   },
   "requirements": [
     [
-      "allsaw"
+      "soulsteel"
     ]
   ],
   "sends_telemetry_event": true

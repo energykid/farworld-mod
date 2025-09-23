@@ -1,38 +1,40 @@
 {
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "tame_bloomed": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "farworld:bloomed"
+            }
+          }
+        ],
+        "item": {
+          "items": "minecraft:potato"
+        }
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    }
+  },
   "display": {
-    "icon": {
-      "id": "minecraft:potato"
-    },
-
-    "title": {
-      "translate": "advancement.farworld.friend_of_arthropods"
-    },
     "description": {
       "translate": "advancement.farworld.friend_of_arthropods.desc"
     },
-
-    "frame": "task",
-    "show_toast": true,
-    "announce_to_chat": true
-  },
-  "parent": "minecraft:husbandry/root",
-  "criteria": {
-    "requirement": {
-      "trigger": "minecraft:player_interacted_with_entity",
-      "conditions": {
-        "item": {
-          "items": "minecraft:potato",
-          "count": {
-            "min": 1,
-            "max": 64
-          }
-        },
-        "entity": {
-          "type_specific": {
-            "type": "farworld:bloomed"
-          }
-        }
-      }
+    "icon": {
+      "count": 1,
+      "id": "minecraft:potato"
+    },
+    "title": {
+      "translate": "advancement.farworld.friend_of_arthropods"
     }
-  }
+  },
+  "requirements": [
+    [
+      "tame_bloomed"
+    ]
+  ],
+  "sends_telemetry_event": true
 }

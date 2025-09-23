@@ -1,26 +1,11 @@
 {
-  "parent": "minecraft:story/mine_diamond",
+  "parent": "minecraft:story/iron_tools",
   "criteria": {
-    "light_bystone_portal": {
+    "entered_bystone": {
       "conditions": {
-        "location": [
-          {
-            "condition": "minecraft:location_check",
-            "predicate": {
-              "block": {
-                "blocks": "minecraft:lantern"
-              }
-            }
-          },
-          {
-            "condition": "minecraft:match_tool",
-            "predicate": {
-              "items": "minecraft:echo_shard"
-            }
-          }
-        ]
+        "to": "farworld:bystone"
       },
-      "trigger": "minecraft:item_used_on_block"
+      "trigger": "minecraft:changed_dimension"
     }
   },
   "display": {
@@ -37,7 +22,7 @@
   },
   "requirements": [
     [
-      "light_bystone_portal"
+      "entered_bystone"
     ]
   ],
   "sends_telemetry_event": true

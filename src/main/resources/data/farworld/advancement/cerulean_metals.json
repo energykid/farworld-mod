@@ -1,11 +1,11 @@
 {
-  "parent": "minecraft:story/follow_ender_eye",
+  "parent": "farworld:black_light",
   "criteria": {
-    "allsaw": {
+    "cobalt": {
       "conditions": {
         "items": [
           {
-            "items": "farworld:allsaw"
+            "items": "farworld:cobalt_ingot"
           }
         ]
       },
@@ -14,19 +14,19 @@
   },
   "display": {
     "description": {
-      "translate": "advancement.farworld.saw_it_all.desc"
+      "translate": "advancement.farworld.cerulean_metals.desc"
     },
     "icon": {
       "count": 1,
-      "id": "farworld:allsaw"
+      "id": "farworld:cobalt_ingot"
     },
     "title": {
-      "translate": "advancement.farworld.saw_it_all"
+      "translate": "advancement.farworld.cerulean_metals"
     }
   },
   "requirements": [
     [
-      "allsaw"
+      "cobalt"
     ]
   ],
   "sends_telemetry_event": true

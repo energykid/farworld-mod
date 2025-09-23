@@ -1,11 +1,11 @@
 {
-  "parent": "minecraft:story/follow_ender_eye",
+  "parent": "farworld:black_light",
   "criteria": {
-    "allsaw": {
+    "diamond": {
       "conditions": {
         "items": [
           {
-            "items": "farworld:allsaw"
+            "items": "minecraft:diamond"
           }
         ]
       },
@@ -14,19 +14,19 @@
   },
   "display": {
     "description": {
-      "translate": "advancement.farworld.saw_it_all.desc"
+      "translate": "advancements.story.mine_diamond.description"
     },
     "icon": {
       "count": 1,
-      "id": "farworld:allsaw"
+      "id": "minecraft:diamond"
     },
     "title": {
-      "translate": "advancement.farworld.saw_it_all"
+      "translate": "advancements.story.mine_diamond.title"
     }
   },
   "requirements": [
     [
-      "allsaw"
+      "diamond"
     ]
   ],
   "sends_telemetry_event": true

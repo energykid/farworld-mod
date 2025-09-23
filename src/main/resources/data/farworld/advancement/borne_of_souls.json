@@ -1,0 +1,38 @@
+{
+  "parent": "farworld:alternative_alloys",
+  "criteria": {
+    "summoned_golem": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "farworld:soul_golem"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:summoned_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.farworld.borne_of_souls.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:shroomlight"
+    },
+    "title": {
+      "translate": "advancement.farworld.borne_of_souls"
+    }
+  },
+  "requirements": [
+    [
+      "summoned_golem"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
