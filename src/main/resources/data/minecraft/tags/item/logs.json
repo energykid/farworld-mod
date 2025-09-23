@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "farworld:stonewood_log",
+    "farworld:stonewood",
+    "farworld:stripped_stonewood_log",
+    "farworld:stripped_stonewood"
+  ]
+}
