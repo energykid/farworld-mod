@@ -146,7 +146,7 @@ public class FarworldDimensionTransitions {
                                             break;
                                     }
                                     entity.setData(ModAttachments.DIMENSION_TRANSITION_COOLDOWN, 30f);
-                                    mob.teleportTo(levelTo, pos.getX(), pos.getY(), pos.getZ(), Set.of(), mob.getXRot(), mob.getYRot());
+                                    mob.teleportTo(levelTo, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, Set.of(), mob.getXRot(), mob.getYRot());
                                     link.setPortal(pos, levelTo);
                                 }
                             }
