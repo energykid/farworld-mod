@@ -90,6 +90,7 @@ public class Farworld
     {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
         {
+            event.insertAfter(Items.IRON_BLOCK.getDefaultInstance(), ModItems.COBALT_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.NETHERITE_BLOCK.getDefaultInstance(), ModItems.SOUL_STEEL_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.CHERRY_BUTTON.getDefaultInstance(), ModItems.STONEWOOD_LOG.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

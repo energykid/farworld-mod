@@ -75,6 +75,8 @@
   "lore.farworld.nether_iron_ore" : "An ore that can be smelted or mined to reveal the Iron inside.",
   "block.farworld.soul_steel_block" : "Block of Soul Steel",
   "lore.farworld.soul_steel_block" : "A solid block of Soul Steel.",
+  "block.farworld.cobalt_block" : "Block of Cobalt",
+  "lore.farworld.cobalt_block" : "A solid block of Cobalt.",
   "block.farworld.flowstone" : "Flowstone",
   "lore.farworld.flowstone" : "A smooth block of stone gathered from the Bystone.",
   "block.farworld.cobbled_flowstone" : "Cobbled Flowstone",

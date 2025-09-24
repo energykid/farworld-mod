@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "farworld:cobalt_block"
+    }
+  ],
+  "result": {
+    "id": "farworld:cobalt_ingot",
+    "count": 9
+  }
+}

@@ -3,6 +3,16 @@
   "values": [
     "farworld:stonewood_log",
     "farworld:stripped_stonewood_log",
-    "farworld:stonewood_planks"
+    "farworld:stonewood",
+    "farworld:stripped_stonewood",
+    "farworld:stonewood_planks",
+    "farworld:stonewood_slab",
+    "farworld:stonewood_stairs",
+    "farworld:stonewood_fence",
+    "farworld:stonewood_fence_gate",
+    "farworld:stonewood_button",
+    "farworld:stonewood_pressure_plate",
+    "farworld:stonewood_door",
+    "farworld:stonewood_trapdoor"
   ]
 }

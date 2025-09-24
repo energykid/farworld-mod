@@ -3,6 +3,7 @@
   "values": [
     "farworld:nether_iron_ore",
     "farworld:soul_steel_block",
+    "farworld:cobalt_block",
     "farworld:flowstone",
     "farworld:cobbled_flowstone",
     "farworld:flowstone_cache",
@@ -13,7 +14,17 @@
     "farworld:dense_gold_ore",
     "farworld:stonewood_log",
     "farworld:stripped_stonewood_log",
+    "farworld:stonewood",
+    "farworld:stripped_stonewood",
     "farworld:stonewood_planks",
+    "farworld:stonewood_slab",
+    "farworld:stonewood_stairs",
+    "farworld:stonewood_fence",
+    "farworld:stonewood_fence_gate",
+    "farworld:stonewood_button",
+    "farworld:stonewood_pressure_plate",
+    "farworld:stonewood_door",
+    "farworld:stonewood_trapdoor",
     "farworld:geode_nut"
   ]
 }

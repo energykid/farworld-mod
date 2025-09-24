@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "farworld:cobalt_ingot"
+    }
+  },
+  "result": {
+    "id": "farworld:cobalt_block"
+  }
+}

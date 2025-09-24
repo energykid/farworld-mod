@@ -53,8 +53,15 @@ public class ModBlocks {
             "soul_steel_block",
             registryName -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
-                    .strength(30.0F, 800.0F)
+                    .strength(2.0F, 10.0F)
                     .sound(SoundType.NETHERITE_BLOCK)));
+
+    public static final DeferredBlock<Block> COBALT_BLOCK = BLOCKS_ALL.register(
+            "cobalt_block",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLUE).requiresCorrectToolForDrops()
+                    .strength(1.6F, 12.0F)
+                    .sound(SoundType.METAL)));
 
     public static final DeferredBlock<Block> DENSE_COAL_ORE = BLOCKS_ALL.register(
             "dense_coal_ore",

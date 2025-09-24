@@ -170,6 +170,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.NETHER_IRON_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> SOUL_STEEL_BLOCK = ITEMS_ALL.register("soul_steel_block",
             () -> new BlockItem(ModBlocks.SOUL_STEEL_BLOCK.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> COBALT_BLOCK = ITEMS_ALL.register("cobalt_block",
+            () -> new BlockItem(ModBlocks.COBALT_BLOCK.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE = ITEMS_ALL.register("flowstone",
             () -> new BlockItem(ModBlocks.FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LOG = ITEMS_ALL.register("stonewood_log",
