@@ -262,6 +262,15 @@ public class ModBlocks {
                     .lightLevel(lamb -> {return 7;})
                     .pushReaction(PushReaction.BLOCK)));
 
+    public static final DeferredBlock<Block> GEODE_NUT = BLOCKS_ALL.register(
+            "geode_nut",
+            registryName -> new GeodeNut(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(0.8F, 6.0F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.TUFF_BRICKS)
+                    .pushReaction(PushReaction.DESTROY)));
+
     public static final DeferredBlock<Block> BYSTONE_PORTAL = BLOCKS_ALL.register(
             "bystone_portal",
             registryName -> new BystonePortalBlock(BlockBehaviour.Properties.of()

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=true": {
+      "model": "farworld:block/geode_nut_tree"
+    },
+    "hanging=false": {
+      "model": "farworld:block/geode_nut_ground"
+    }
+  }
+}

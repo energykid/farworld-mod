@@ -19,6 +19,8 @@ public class ModItems
             Cherries::new);
     public static final DeferredItem<Item> PEAR = ITEMS_ALL.register("pear",
             Pear::new);
+    public static final DeferredItem<Item> GEODE_FRUIT = ITEMS_ALL.register("geode_fruit",
+            GeodeFruit::new);
     public static final DeferredItem<Item> MYSTIC_PEAR = ITEMS_ALL.register("mystic_pear",
             MysticPear::new);
     public static final DeferredItem<Item> ENCHANTED_MYSTIC_PEAR = ITEMS_ALL.register("enchanted_mystic_pear",
@@ -162,6 +164,8 @@ public class ModItems
 
     public static final DeferredItem<Item> GLOOMCAP_BLOCK = ITEMS_ALL.register("gloomcap",
             () -> new BlockItem(ModBlocks.GLOOMCAP.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> GEODE_NUT = ITEMS_ALL.register("geode_nut",
+            () -> new BlockItem(ModBlocks.GEODE_NUT.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> NETHER_IRON_ORE = ITEMS_ALL.register("nether_iron_ore",
             () -> new BlockItem(ModBlocks.NETHER_IRON_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> SOUL_STEEL_BLOCK = ITEMS_ALL.register("soul_steel_block",

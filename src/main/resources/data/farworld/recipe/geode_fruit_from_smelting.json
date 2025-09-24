@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 2,
+  "group": "cobalt_ingot",
+  "ingredient": {
+    "item": "farworld:geode_nut"
+  },
+  "result": {
+    "id": "farworld:geode_fruit"
+  }
+}

@@ -2,6 +2,16 @@
   "feature": "farworld:stonewood_tree",
   "placement": [
     {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:not",
+        "predicate": {
+          "type": "minecraft:matching_block_tag",
+          "tag": "minecraft:leaves"
+        }
+      }
+    },
+    {
       "type": "minecraft:count_on_every_layer",
       "count": 3
     },

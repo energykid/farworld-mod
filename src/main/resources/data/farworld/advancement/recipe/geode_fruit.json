@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farworld:geode_nut"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+      "has_item"
+  ],
+  "rewards": {
+    "recipes": [
+      [
+        "farworld:geode_fruit_from_blasting",
+        "farworld:geode_fruit_from_smelting"
+      ]
+    ]
+  }
+}

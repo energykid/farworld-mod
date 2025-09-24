@@ -1,7 +1,27 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "decorators": [],
+    "decorators": [
+      {
+        "type": "minecraft:attached_to_leaves",
+        "probability": 0.2,
+        "exclusion_radius_xz": 1,
+        "exclusion_radius_y": 1,
+        "required_empty_blocks": 1,
+        "block_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "farworld:geode_nut",
+            "Properties": {
+              "hanging": "true"
+            }
+          }
+        },
+        "directions": [
+          "down"
+        ]
+      }
+    ],
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {

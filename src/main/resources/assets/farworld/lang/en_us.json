@@ -14,6 +14,8 @@
   "lore.farworld.brittle_powder" : "An item that can be used to rapidly grow plants, flowers, and crops at surplus rates. Does not work on saplings.",
   "item.farworld.gloomspores" : "Gloomspores",
   "lore.farworld.gloomspores" : "This item can be used to brew Potions of Paralysis, or combined with stone tools at a Smithing Table to craft Gloomstone tools.",
+  "item.farworld.geode_fruit" : "Geode Fruit",
+  "lore.farworld.geode_fruit" : "A tasty fruit grown inside the Geode Nuts that can be found on Stonewood trees.",
   "item.farworld.wishbone" : "Wishbone",
   "lore.farworld.wishbone" : "A small, brittle trinket that can teleport you back home once. Can be repaired using Bottles o' Enchanting.",
   "item.farworld.consumed_wishbone" : "§7Wishbone (Consumed)",
@@ -67,6 +69,8 @@
 
   "block.farworld.gloomcap" : "Gloomcap",
   "lore.farworld.gloomcap" : "A highly toxic mushroom found in Dark Forest biomes. Drops Gloomspores unless sheared.",
+  "block.farworld.geode_nut" : "Geode Nut",
+  "lore.farworld.geode_nut" : "A form of nut that grows from Stonewood trees. The nut can be roasted to reveal the fruit inside.",
   "block.farworld.nether_iron_ore" : "Nether Iron Ore",
   "lore.farworld.nether_iron_ore" : "An ore that can be smelted or mined to reveal the Iron inside.",
   "block.farworld.soul_steel_block" : "Block of Soul Steel",
