@@ -2,7 +2,8 @@ package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.*;
-import net.ennway.farworld.item.accessory.AccessoryItem;
+import net.ennway.farworld.item.AccessoryItem;
+import net.ennway.farworld.item.accessory.ObsidianKeepsake;
 import net.ennway.farworld.item.tool.*;
 import net.ennway.farworld.item.tool.cobalt.*;
 import net.ennway.farworld.item.tool.soul_steel.*;
@@ -125,9 +126,17 @@ public class ModItems
 
     public static final DeferredItem<Item> OBSIDIAN_KEEPSAKE = ITEMS_ALL.register(
             "obsidian_keepsake",
-            () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
+            () -> new ObsidianKeepsake(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
                     Attributes.KNOCKBACK_RESISTANCE,
                     new AttributeModifier(Attributes.KNOCKBACK_RESISTANCE.getKey().location(), 0.2, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY).build()))
+    );
+
+    public static final DeferredItem<Item> IRON_CUFF = ITEMS_ALL.register(
+            "iron_cuff",
+            () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
+                    Attributes.ARMOR,
+                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 4, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY).build()))
     );
 

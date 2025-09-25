@@ -48,7 +48,9 @@
   "lore.farworld.breeze_boots" : "Boots that, when worn, grant extra movement speed.",
 
   "item.farworld.obsidian_keepsake" : "Obsidian Keepsake",
-  "accessory.item.farworld.obsidian_keepsake.desc" : "Gain knockback resistance and repel nearby enemies on taking damage",
+  "accessory.item.farworld.obsidian_keepsake.desc" : "Gain knockback resistance and harm nearby enemies on taking damage",
+  "item.farworld.iron_cuff" : "Iron Cuff",
+  "accessory.item.farworld.iron_cuff.desc" : "Extra defense",
 
   "item.farworld.bloomed_spawn_egg" : "Bloomed Spawn Egg",
   "item.farworld.soul_golem_spawn_egg" : "Soul Steel Golem Spawn Egg",

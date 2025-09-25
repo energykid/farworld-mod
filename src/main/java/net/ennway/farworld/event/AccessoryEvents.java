@@ -1,21 +1,45 @@
 package net.ennway.farworld.event;
 
 import net.ennway.farworld.Farworld;
-import net.ennway.farworld.mixin.ArmoryMixin;
+import net.ennway.farworld.item.AccessoryItem;
+import net.ennway.farworld.utils.AccessoryUtils;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class AccessoryEvents {
+
+    @SubscribeEvent
+    public static void onEntityHurt(LivingDamageEvent.Pre event)
+    {
+        if (event.getEntity() instanceof Player player)
+        {
+            if (event.getSource().getEntity() != null)
+            {
+                List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+
+                for (AccessoryItem item : items)
+                {
+                    item.onDamagedByEnemy(event.getSource().getEntity(), player);
+                }
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void modifyAttributes(ItemAttributeModifierEvent event)

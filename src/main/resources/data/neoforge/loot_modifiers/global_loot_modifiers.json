@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
+    "farworld:obsidian_keepsake_injection",
     "farworld:allsaw_injection",
     "farworld:pear_injection",
     "farworld:cherries_injection",
