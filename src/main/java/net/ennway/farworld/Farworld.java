@@ -111,6 +111,11 @@ public class Farworld
         {
 
         }
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS)
+        {
+            event.insertAfter(Items.BAMBOO_HANGING_SIGN.getDefaultInstance(), ModItems.STONEWOOD_SIGN.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STONEWOOD_SIGN.toStack(), ModItems.STONEWOOD_HANGING_SIGN.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS)
         {
             event.insertAfter(Items.ENCHANTED_GOLDEN_APPLE.getDefaultInstance(), ModItems.PEAR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -193,6 +198,7 @@ public class Farworld
             event.insertAfter(ModItems.IRON_CUFF.toStack(), ModItems.COBALT_CUFF.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBALT_CUFF.toStack(), ModItems.OBSIDIAN_KEEPSAKE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.OBSIDIAN_KEEPSAKE.toStack(), ModItems.BLAZE_LOCKET.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.BLAZE_LOCKET.toStack(), ModItems.BREEZE_RING.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
         {

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "cuff",
+  "key": {
+    "B": {
+      "item": "minecraft:chain"
+    },
+    "R": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "pattern": [
+    " B ",
+    "B B",
+    " R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:blaze_locket"
+  }
+}

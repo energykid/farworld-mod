@@ -1,9 +1,11 @@
 package net.ennway.farworld.registries;
 
+import com.mojang.authlib.yggdrasil.response.UserAttributesResponse;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.*;
 import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.item.accessory.BlazeLocket;
+import net.ennway.farworld.item.accessory.BreezeRing;
 import net.ennway.farworld.item.accessory.ObsidianKeepsake;
 import net.ennway.farworld.item.tool.*;
 import net.ennway.farworld.item.tool.cobalt.*;
@@ -157,6 +159,15 @@ public class ModItems
             () -> new BlazeLocket(new Item.Properties())
     );
 
+    public static final DeferredItem<Item> BREEZE_RING = ITEMS_ALL.register(
+            "breeze_ring",
+            () -> new BreezeRing(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
+                    Attributes.ATTACK_SPEED,
+                    new AttributeModifier(Attributes.ATTACK_SPEED.getKey().location(), 0.7, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY
+            ).build()))
+    );
+
     public static final DeferredItem<ArmorItem> COBALT_HELMET = ITEMS_ALL.register(
             "cobalt_helmet",
             () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
@@ -239,6 +250,10 @@ public class ModItems
             () -> new BlockItem(ModBlocks.STONEWOOD_BUTTON.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_PRESSURE_PLATE = ITEMS_ALL.register("stonewood_pressure_plate",
             () -> new BlockItem(ModBlocks.STONEWOOD_PRESSURE_PLATE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_SIGN = ITEMS_ALL.register("stonewood_sign",
+            () -> new SignItem(new Item.Properties(), ModBlocks.STONEWOOD_SIGN.get(), ModBlocks.STONEWOOD_SIGN_WALL.get()).asItem());
+    public static final DeferredItem<Item> STONEWOOD_HANGING_SIGN = ITEMS_ALL.register("stonewood_hanging_sign",
+            () -> new HangingSignItem(ModBlocks.STONEWOOD_SIGN_HANGING.get(), ModBlocks.STONEWOOD_SIGN_WALL_HANGING.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> COBBLED_FLOWSTONE = ITEMS_ALL.register("cobbled_flowstone",
             () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES = ITEMS_ALL.register("stonewood_leaves",

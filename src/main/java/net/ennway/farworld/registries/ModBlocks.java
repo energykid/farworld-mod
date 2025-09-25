@@ -189,6 +189,40 @@ public class ModBlocks {
                     .strength(1.2F, 3.0F)
                     .sound(SoundType.NETHER_WOOD)));
 
+    public static final DeferredBlock<StandingSignBlock> STONEWOOD_SIGN = BLOCKS_ALL.register(
+            "stonewood_sign",
+            registryName -> new StandingSignBlock(WoodTypes.STONEWOOD_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .noCollission()));
+
+    public static final DeferredBlock<WallSignBlock> STONEWOOD_SIGN_WALL = BLOCKS_ALL.register(
+            "stonewood_wall_sign",
+            registryName -> new WallSignBlock(WoodTypes.STONEWOOD_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .noCollission()
+                    .dropsLike(STONEWOOD_SIGN.get())));
+
+    public static final DeferredBlock<CeilingHangingSignBlock> STONEWOOD_SIGN_HANGING = BLOCKS_ALL.register(
+            "stonewood_hanging_sign",
+            registryName -> new CeilingHangingSignBlock(WoodTypes.STONEWOOD_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .noCollission()));
+
+    public static final DeferredBlock<WallHangingSignBlock> STONEWOOD_SIGN_WALL_HANGING = BLOCKS_ALL.register(
+            "stonewood_wall_hanging_sign",
+            registryName -> new WallHangingSignBlock(WoodTypes.STONEWOOD_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .noCollission()
+                    .dropsLike(STONEWOOD_SIGN_HANGING.get())));
+
     public static final DeferredBlock<Block> STONEWOOD_LEAVES = BLOCKS_ALL.register(
             "stonewood_leaves",
             registryName -> new LeavesBlock(BlockBehaviour.Properties.of()

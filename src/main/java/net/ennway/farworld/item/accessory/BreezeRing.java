@@ -3,29 +3,27 @@ package net.ennway.farworld.item.accessory;
 import net.ennway.farworld.item.AccessoryItem;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
-public class BlazeLocket extends AccessoryItem {
+public class BreezeRing extends AccessoryItem {
 
-    public BlazeLocket(Properties properties) {
+    public BreezeRing(Properties properties) {
         super(properties);
     }
 
     @Override
     public void onDamageEnemy(Entity player, Entity enemy, Level level, LivingDamageEvent.Pre event) {
         Player pl = (Player)player;
-        if (pl.swingTime == 0)
+        if (player.getWeaponItem().is(ItemTags.SWORDS) && pl.swingTime == 0)
         {
-            event.setNewDamage(event.getNewDamage() + 3);
-            if (player.getWeaponItem().is(ItemTags.AXES))
-            {
-                enemy.setRemainingFireTicks((int)Mth.absMax(50, enemy.getRemainingFireTicks()));
-            }
+            ((Mob)enemy).addEffect(new MobEffectInstance(MobEffects.WIND_CHARGED, 20));
         }
     }
 }
