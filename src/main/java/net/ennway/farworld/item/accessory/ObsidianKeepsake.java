@@ -15,11 +15,14 @@ public class ObsidianKeepsake extends AccessoryItem {
 
     @Override
     public void onDamagedByEnemy(Entity enemy, Entity player) {
-        AABB range = new AABB(player.getX() - 2.0, player.getY() - 1.0, player.getZ() - 2.0, player.getX() + 2.0, player.getY() + 2.0, player.getZ() + 2.0);
+        double distance = 3.0;
+
+        AABB range = new AABB(player.getX() - distance, player.getY() - distance, player.getZ() - distance, player.getX() + distance, player.getY() + distance, player.getZ() + distance);
 
         for (LivingEntity mob : player.level().getEntitiesOfClass(LivingEntity.class, range))
         {
-            mob.hurt(mob.damageSources().playerAttack((Player)player), 4f);
+            if (!mob.is(player) && mob.canAttack((LivingEntity)player))
+                mob.hurt(mob.damageSources().playerAttack((Player)player), 4f);
         }
     }
 }
