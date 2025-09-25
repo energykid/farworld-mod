@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = ItemInHandRenderer.class)
-public abstract class ItemAnimationMixin {
+public class ItemAnimationMixin {
     @Unique
     public float farworld$handAnimationScale = 0f;
 

@@ -4,6 +4,7 @@ import net.ennway.farworld.Farworld;
 import net.ennway.farworld.registries.ModItems;
 import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.registries.ModSounds;
+import net.ennway.farworld.utils.AccessoryUtils;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvents;
@@ -65,8 +66,15 @@ public class CritEffects {
 
         if (event.getTarget() instanceof LivingEntity enemy) {
 
-            if (!enemy.isDeadOrDying() && player.fallDistance > 0f && player.canAttack(enemy) && !player.swinging)
+            if (!stack.isEmpty() && !enemy.isDeadOrDying() && player.fallDistance > 0f && player.canAttack(enemy) && !player.swinging)
             {
+                if (AccessoryUtils.playerHasAccessory(player, Items.DIAMOND))
+                {
+                    enemy.level().playSound(enemy, enemy.blockPosition(), ModSounds.DIAMOND_HIT.get(), SoundSource.PLAYERS, 1f, (float)MathUtils.randomDouble(enemy.getRandom(), 0.5, 1.0));
+
+                    spawnFireEffect(enemy, ModParticles.DIAMOND_SPARKLE, ModParticles.DIAMOND_DUST);
+                }
+
                 if (stack.is(ModItems.SOUL_STEEL_SWORD) || stack.is(ModItems.SOUL_STEEL_AXE))
                 {
                     enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1f, 1.6f);

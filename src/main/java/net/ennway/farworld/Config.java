@@ -19,9 +19,9 @@ public class Config
 {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    private static final ModConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-            .comment("Whether to use FARWORLD's diamond progression changes")
-            .define("diamondGenerationNerf", true);
+    private static final ModConfigSpec.BooleanValue USE_ACCESSORY_SYSTEM = BUILDER
+            .comment("Whether to use FARWORLD's accessory system (Will act as TRUE unconditionally if Curios API is not enabled)")
+            .define("useAccessorySystem", true);
 
     /*
     private static final ModConfigSpec.IntValue MAGIC_NUMBER = BUILDER
@@ -40,7 +40,7 @@ public class Config
 
     static final ModConfigSpec SPEC = BUILDER.build();
 
-    public static boolean logDirtBlock;
+    public static boolean useAccessorySystem;
     /*
     public static int magicNumber;
     public static String magicNumberIntroduction;
@@ -54,7 +54,7 @@ public class Config
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-        logDirtBlock = LOG_DIRT_BLOCK.get();
+        useAccessorySystem = USE_ACCESSORY_SYSTEM.get();
         /*
         magicNumber = MAGIC_NUMBER.get();
         magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
