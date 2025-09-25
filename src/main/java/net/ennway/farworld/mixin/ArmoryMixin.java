@@ -6,11 +6,17 @@ import net.minecraft.client.renderer.entity.DisplayRenderer;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.SlotAccess;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
@@ -20,6 +26,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.BundleContents;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -50,6 +57,11 @@ public abstract class ArmoryMixin {
     @Unique
     private void farworld_mod$playInsertSound(Entity entity) {
         entity.playSound(SoundEvents.BUNDLE_INSERT, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
+    }
+
+    @Unique
+    private void farworld_mod$playTestSound(Entity entity) {
+        entity.playSound(SoundEvents.FIRECHARGE_USE, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
     }
 
     @Unique
@@ -178,7 +190,6 @@ public abstract class ArmoryMixin {
 
         if (shouldRunLogic)
         {
-
             if (stack.getCount() != 1) {
 
             } else if (slot.allowModification(player)) {
@@ -192,6 +203,7 @@ public abstract class ArmoryMixin {
                             access.set(itemstack);
                         }
                     } else {
+                        ItemStack itemstack = slot.getItem();
                         int i = bundlecontents$mutable.tryInsert(other);
                         if (i > 0) {
                             this.farworld_mod$playInsertSound(player);

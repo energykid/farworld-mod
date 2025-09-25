@@ -2,12 +2,17 @@ package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.*;
+import net.ennway.farworld.item.accessory.AccessoryItem;
 import net.ennway.farworld.item.tool.*;
 import net.ennway.farworld.item.tool.cobalt.*;
 import net.ennway.farworld.item.tool.soul_steel.*;
 import net.ennway.farworld.utils.SmithingUtils;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -116,6 +121,14 @@ public class ModItems
     public static final DeferredItem<Item> COBALT_HOE = ITEMS_ALL.register(
             "cobalt_hoe",
             () -> new CobaltHoe(new Item.Properties())
+    );
+
+    public static final DeferredItem<Item> OBSIDIAN_KEEPSAKE = ITEMS_ALL.register(
+            "obsidian_keepsake",
+            () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
+                    Attributes.KNOCKBACK_RESISTANCE,
+                    new AttributeModifier(Attributes.KNOCKBACK_RESISTANCE.getKey().location(), 0.2, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY).build()))
     );
 
     public static final DeferredItem<ArmorItem> COBALT_HELMET = ITEMS_ALL.register(
