@@ -4,6 +4,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 
 public class AccessoryItem extends Item {
+
+
     public AccessoryItem(Properties properties) {
         super(properties);
     }

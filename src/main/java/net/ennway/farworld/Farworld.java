@@ -190,7 +190,8 @@ public class Farworld
             event.insertAfter(ModItems.COBALT_LEGGINGS.toStack(), ModItems.COBALT_BOOTS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(ModItems.BREEZE_BOOTS.toStack(), ModItems.IRON_CUFF.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.IRON_CUFF.toStack(), ModItems.OBSIDIAN_KEEPSAKE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.IRON_CUFF.toStack(), ModItems.COBALT_CUFF.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBALT_CUFF.toStack(), ModItems.OBSIDIAN_KEEPSAKE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
         {

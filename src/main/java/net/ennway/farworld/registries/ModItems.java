@@ -140,6 +140,17 @@ public class ModItems
                     EquipmentSlotGroup.ANY).build()))
     );
 
+    public static final DeferredItem<Item> COBALT_CUFF = ITEMS_ALL.register(
+            "cobalt_cuff",
+            () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
+                    Attributes.ARMOR_TOUGHNESS,
+                    new AttributeModifier(Attributes.ARMOR_TOUGHNESS.getKey().location(), 3, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY).add(
+                    Attributes.ARMOR,
+                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 4, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY).build()))
+    );
+
     public static final DeferredItem<ArmorItem> COBALT_HELMET = ITEMS_ALL.register(
             "cobalt_helmet",
             () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
