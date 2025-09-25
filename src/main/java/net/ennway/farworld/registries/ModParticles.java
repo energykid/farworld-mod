@@ -57,5 +57,9 @@ public class ModParticles {
             "bystone_portal",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> OBSIDIAN_SHATTER = PARTICLE_TYPES.register(
+            "obsidian_shatter",
+            () -> new SimpleParticleType(false)
+    );
 
 }

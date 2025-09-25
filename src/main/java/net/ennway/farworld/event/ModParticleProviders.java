@@ -23,6 +23,8 @@ public class ModParticleProviders {
         event.registerSpriteSet(ModParticles.WISHBONE_SPARKLE.get(), WishboneSparkleParticleProvider::new);
         event.registerSpriteSet(ModParticles.WISHBONE_PORTAL.get(), WishbonePortalParticleProvider::new);
 
+        event.registerSpriteSet(ModParticles.OBSIDIAN_SHATTER.get(), ObsidianShatterParticleProvider::new);
+
         event.registerSpriteSet(ModParticles.SOUL_SMOKE.get(), SoulSmokeParticleProvider::new);
         event.registerSpriteSet(ModParticles.SOUL_FIRE_TENDRIL.get(), SoulFireTendrilParticleProvider::new);
 
