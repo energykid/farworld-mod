@@ -23,13 +23,9 @@ public class ObsidianShatterParticle extends TextureSheetParticle {
 
         this.hasPhysics = false;
 
-        this.lifetime = 15;
+        this.lifetime = level.getRandom().nextInt(10, 15);
 
-        this.scale(10f);
-
-        this.xd = 0;
-        this.yd = 0;
-        this.zd = 0;
+        //this.scale(10f);
 
         this.setSpriteFromAge(spriteSet);
     }
@@ -37,6 +33,9 @@ public class ObsidianShatterParticle extends TextureSheetParticle {
     @Override
     public void tick() {
         this.setSpriteFromAge(spriteSet);
+        this.xd *= 0.5;
+        this.yd *= 0.5;
+        this.zd *= 0.5;
         super.tick();
     }
 

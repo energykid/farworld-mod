@@ -53,6 +53,8 @@
   "accessory.item.farworld.iron_cuff.desc" : "Extra armor",
   "item.farworld.cobalt_cuff" : "Cobalt Cuff",
   "accessory.item.farworld.cobalt_cuff.desc" : "Extra armor and armor toughness",
+  "item.farworld.blaze_locket" : "Blaze Locket",
+  "accessory.item.farworld.blaze_locket.desc" : "Axes deal extra damage and light enemies on fire",
 
   "item.farworld.bloomed_spawn_egg" : "Bloomed Spawn Egg",
   "item.farworld.soul_golem_spawn_egg" : "Soul Steel Golem Spawn Egg",

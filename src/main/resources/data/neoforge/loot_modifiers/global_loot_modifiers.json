@@ -2,6 +2,8 @@
   "replace": false,
   "entries": [
     "farworld:obsidian_keepsake_injection",
+    "farworld:blaze_locket_injection_bridge",
+    "farworld:blaze_locket_injection_treasure",
     "farworld:allsaw_injection",
     "farworld:pear_injection",
     "farworld:cherries_injection",

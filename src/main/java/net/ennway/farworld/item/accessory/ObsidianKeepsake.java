@@ -7,8 +7,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 public class ObsidianKeepsake extends AccessoryItem {
@@ -17,9 +19,10 @@ public class ObsidianKeepsake extends AccessoryItem {
         super(properties);
     }
 
+    double distance = 4.5;
+
     @Override
-    public void onDamagedByEnemy(Entity enemy, Entity player, LivingDamageEvent.Pre event) {
-        double distance = 3.0;
+    public void onDamagedByEnemy(Entity enemy, Entity player, Level level, LivingDamageEvent.Pre event) {
 
         AABB range = new AABB(player.getX() - distance, player.getY() - distance, player.getZ() - distance, player.getX() + distance, player.getY() + distance, player.getZ() + distance);
 
@@ -29,23 +32,11 @@ public class ObsidianKeepsake extends AccessoryItem {
             {
                 mob.hurt(mob.damageSources().playerAttack((Player)player), 4f);
 
-                Vec3 v3 = mob.position().add(mob.getBbWidth() / 2, mob.getBbHeight() / 2, mob.getBbWidth() / 2).add(
-                        MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7),
-                        MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7),
-                        MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7)
-                );
+                Vec3 v3 = player.position();
 
-                mob.level().addParticle(
-                        ModParticles.OBSIDIAN_SHATTER.get(),
-                        v3.x,
-                        v3.y,
-                        v3.z,
-                        0f,
-                        0f,
-                        0f
-                );
+                level.addParticle(ModParticles.OBSIDIAN_SHATTER.get(), v3.x, v3.y + 1, v3.z, 0f, 0f, 0f);
 
-                mob.playSound(SoundEvents.DEEPSLATE_BREAK, 1f, -0.5f);
+                mob.playSound(SoundEvents.DECORATED_POT_SHATTER);
             }
         }
     }

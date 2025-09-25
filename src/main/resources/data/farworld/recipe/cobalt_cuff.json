@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "cuff",
+  "key": {
+    "#": {
+      "item": "minecraft:cobalt_ingot"
+    }
+  },
+  "pattern": [
+    " # ",
+    "# #",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:cobalt_cuff"
+  }
+}

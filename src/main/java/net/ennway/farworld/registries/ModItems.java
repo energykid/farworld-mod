@@ -3,6 +3,7 @@ package net.ennway.farworld.registries;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.*;
 import net.ennway.farworld.item.AccessoryItem;
+import net.ennway.farworld.item.accessory.BlazeLocket;
 import net.ennway.farworld.item.accessory.ObsidianKeepsake;
 import net.ennway.farworld.item.tool.*;
 import net.ennway.farworld.item.tool.cobalt.*;
@@ -136,7 +137,7 @@ public class ModItems
             "iron_cuff",
             () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
                     Attributes.ARMOR,
-                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 4, AttributeModifier.Operation.ADD_VALUE),
+                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 2, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY).build()))
     );
 
@@ -144,11 +145,16 @@ public class ModItems
             "cobalt_cuff",
             () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
                     Attributes.ARMOR_TOUGHNESS,
-                    new AttributeModifier(Attributes.ARMOR_TOUGHNESS.getKey().location(), 3, AttributeModifier.Operation.ADD_VALUE),
+                    new AttributeModifier(Attributes.ARMOR_TOUGHNESS.getKey().location(), 2, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY).add(
                     Attributes.ARMOR,
-                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 4, AttributeModifier.Operation.ADD_VALUE),
+                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 3, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY).build()))
+    );
+
+    public static final DeferredItem<Item> BLAZE_LOCKET = ITEMS_ALL.register(
+            "blaze_locket",
+            () -> new BlazeLocket(new Item.Properties())
     );
 
     public static final DeferredItem<ArmorItem> COBALT_HELMET = ITEMS_ALL.register(

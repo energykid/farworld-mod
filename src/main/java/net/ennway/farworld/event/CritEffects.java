@@ -66,7 +66,7 @@ public class CritEffects {
 
         if (event.getTarget() instanceof LivingEntity enemy) {
 
-            if (!stack.isEmpty() && !enemy.isDeadOrDying() && player.fallDistance > 0f && player.canAttack(enemy) && !player.swinging)
+            if (!stack.isEmpty() && !enemy.isDeadOrDying() && player.fallDistance > 0f && player.canAttack(enemy) && player.swingTime == 0)
             {
                 if (stack.is(ModItems.SOUL_STEEL_SWORD) || stack.is(ModItems.SOUL_STEEL_AXE))
                 {

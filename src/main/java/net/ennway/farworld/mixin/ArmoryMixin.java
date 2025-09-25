@@ -60,11 +60,6 @@ public abstract class ArmoryMixin {
     }
 
     @Unique
-    private void farworld_mod$playTestSound(Entity entity) {
-        entity.playSound(SoundEvents.FIRECHARGE_USE, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
-    }
-
-    @Unique
     private boolean farworld_mod$countsAsArmorForAccessories(ItemStack stack)
     {
         return (stack.is(ItemTags.HEAD_ARMOR) || stack.is(ItemTags.CHEST_ARMOR) || stack.is(ItemTags.LEG_ARMOR) || stack.is(ItemTags.FOOT_ARMOR));

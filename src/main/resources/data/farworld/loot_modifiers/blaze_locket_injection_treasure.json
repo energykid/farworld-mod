@@ -1,0 +1,12 @@
+{
+  "type": "farworld:basic_loot_modifier",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/bastion_treasure"
+    }
+  ],
+  "chance": 0.4,
+  "amount": 1,
+  "item_type": "farworld:blaze_locket"
+}

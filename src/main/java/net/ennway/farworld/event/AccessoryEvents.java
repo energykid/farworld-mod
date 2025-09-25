@@ -36,7 +36,7 @@ public class AccessoryEvents {
 
                 for (AccessoryItem item : items)
                 {
-                    item.onDamagedByEnemy(event.getSource().getEntity(), player, event);
+                    item.onDamagedByEnemy(event.getSource().getEntity(), player, event.getEntity().level(), event);
                 }
             }
         }
@@ -49,7 +49,7 @@ public class AccessoryEvents {
 
                 for (AccessoryItem item : items)
                 {
-                    item.onDamageEnemy(player, mob, event);
+                    item.onDamageEnemy(player, mob, event.getEntity().level(), event);
                 }
             }
         }
