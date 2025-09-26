@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -22,7 +23,7 @@ public class ObsidianKeepsake extends AccessoryItem {
     double distance = 4.5;
 
     @Override
-    public void onDamagedByEnemy(Entity enemy, Entity player, Level level, LivingDamageEvent.Pre event) {
+    public void onDamagedByEnemy(Entity enemy, Entity player, ItemStack stack, LivingDamageEvent.Pre event) {
 
         AABB range = new AABB(player.getX() - distance, player.getY() - distance, player.getZ() - distance, player.getX() + distance, player.getY() + distance, player.getZ() + distance);
 
@@ -33,8 +34,6 @@ public class ObsidianKeepsake extends AccessoryItem {
                 mob.hurt(mob.damageSources().playerAttack((Player)player), 4f);
 
                 Vec3 v3 = player.position();
-
-                level.addParticle(ModParticles.OBSIDIAN_SHATTER.get(), v3.x, v3.y + 1, v3.z, 0f, 0f, 0f);
 
                 mob.playSound(SoundEvents.DECORATED_POT_SHATTER);
             }

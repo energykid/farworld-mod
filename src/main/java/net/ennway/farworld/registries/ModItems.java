@@ -6,6 +6,7 @@ import net.ennway.farworld.item.*;
 import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.item.accessory.BlazeLocket;
 import net.ennway.farworld.item.accessory.BreezeRing;
+import net.ennway.farworld.item.accessory.GlitteringAspect;
 import net.ennway.farworld.item.accessory.ObsidianKeepsake;
 import net.ennway.farworld.item.tool.*;
 import net.ennway.farworld.item.tool.cobalt.*;
@@ -156,7 +157,16 @@ public class ModItems
 
     public static final DeferredItem<Item> BLAZE_LOCKET = ITEMS_ALL.register(
             "blaze_locket",
-            () -> new BlazeLocket(new Item.Properties())
+            () -> new BlazeLocket(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
+                    Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier(Attributes.ATTACK_DAMAGE.getKey().location(), 2, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY
+            ).build()))
+    );
+
+    public static final DeferredItem<Item> GLITTERING_ASPECT = ITEMS_ALL.register(
+            "glittering_aspect",
+            () -> new GlitteringAspect(new Item.Properties())
     );
 
     public static final DeferredItem<Item> BREEZE_RING = ITEMS_ALL.register(

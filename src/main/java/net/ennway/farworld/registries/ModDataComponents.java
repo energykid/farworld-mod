@@ -21,6 +21,11 @@ public class ModDataComponents {
             builder -> builder.persistent(Codec.INT)
     );
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> ACCESSORY_VALUE = register(
+            "accessory_value",
+            builder -> builder.persistent(Codec.INT)
+    );
+
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator)
     {
         return DATA_COMPONENT_TYPES.register(name, () -> builderOperator.apply(DataComponentType.builder()).build());

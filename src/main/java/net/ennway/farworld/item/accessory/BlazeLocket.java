@@ -6,6 +6,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -17,11 +18,11 @@ public class BlazeLocket extends AccessoryItem {
     }
 
     @Override
-    public void onDamageEnemy(Entity player, Entity enemy, Level level, LivingDamageEvent.Pre event) {
+    public void onDamageEnemy(Entity player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event) {
         Player pl = (Player)player;
         if (pl.swingTime == 0)
         {
-            event.setNewDamage(event.getNewDamage() + 3);
+            //event.setNewDamage(event.getNewDamage() + 3);
             if (player.getWeaponItem().is(ItemTags.AXES))
             {
                 enemy.setRemainingFireTicks((int)Mth.absMax(50, enemy.getRemainingFireTicks()));

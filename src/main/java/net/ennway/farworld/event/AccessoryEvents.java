@@ -4,6 +4,7 @@ import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.utils.AccessoryUtils;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -19,6 +20,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 import java.util.List;
 
@@ -33,10 +36,11 @@ public class AccessoryEvents {
             if (event.getSource().getEntity() != null)
             {
                 List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+                List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
 
-                for (AccessoryItem item : items)
+                for (int i = 0; i < items.size(); i++)
                 {
-                    item.onDamagedByEnemy(event.getSource().getEntity(), player, event.getEntity().level(), event);
+                    items.get(i).onDamagedByEnemy(event.getSource().getEntity(), player, itemStacks.get(i), event);
                 }
             }
         }
@@ -46,11 +50,42 @@ public class AccessoryEvents {
             if (event.getSource().getEntity() instanceof Player player)
             {
                 List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+                List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
 
-                for (AccessoryItem item : items)
+                for (int i = 0; i < items.size(); i++)
                 {
-                    item.onDamageEnemy(player, mob, event.getEntity().level(), event);
+                    items.get(i).onDamageEnemy(player, mob, itemStacks.get(i), event);
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void postTick(EntityTickEvent.Post event)
+    {
+        if (event.getEntity() instanceof Player player)
+        {
+            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+            for (int i = 0; i < items.size(); i++)
+            {
+                items.get(i).postTick(player, itemStacks.get(i), event);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void preTick(EntityTickEvent.Pre event)
+    {
+        if (event.getEntity() instanceof Player player)
+        {
+            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+            for (int i = 0; i < items.size(); i++)
+            {
+                items.get(i).preTick(player, itemStacks.get(i), event);
             }
         }
     }

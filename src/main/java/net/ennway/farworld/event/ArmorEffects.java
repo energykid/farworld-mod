@@ -23,7 +23,7 @@ public class ArmorEffects {
             {
                 if (player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof BreezeBoots)
                 {
-                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20, 1));
+                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20));
                 }
             }
         }

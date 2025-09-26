@@ -54,6 +54,20 @@
           "weight": 6
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 9
+        },
+        {
+          "type": "minecraft:item",
+          "name": "farworld:glittering_aspect",
+          "weight": 1
+        }
+      ]
     }
   ],
   "random_sequence": "farworld:blocks/dense_iron_ore"

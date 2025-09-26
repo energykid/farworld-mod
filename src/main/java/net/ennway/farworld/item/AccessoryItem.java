@@ -1,9 +1,13 @@
 package net.ennway.farworld.item;
 
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 public class AccessoryItem extends Item {
 
@@ -11,11 +15,19 @@ public class AccessoryItem extends Item {
         super(properties.stacksTo(1));
     }
 
-    public void onDamageEnemy(Entity player, Entity enemy, Level level, LivingDamageEvent.Pre event)
+    public void onDamageEnemy(Entity player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event)
     {
     }
 
-    public void onDamagedByEnemy(Entity enemy, Entity player, Level level, LivingDamageEvent.Pre event)
+    public void onDamagedByEnemy(Entity enemy, Entity player, ItemStack stack, LivingDamageEvent.Pre event)
+    {
+    }
+
+    public void preTick(Player player, ItemStack stack, EntityTickEvent.Pre event)
+    {
+    }
+
+    public void postTick(Player player, ItemStack stack, EntityTickEvent.Post event)
     {
     }
 }
