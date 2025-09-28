@@ -18,11 +18,10 @@ public class BlazeLocket extends AccessoryItem {
     }
 
     @Override
-    public void onDamageEnemy(Entity player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event) {
+    public void onDamageEnemy(Player player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event) {
         Player pl = (Player)player;
         if (pl.swingTime == 0)
         {
-            //event.setNewDamage(event.getNewDamage() + 3);
             if (player.getWeaponItem().is(ItemTags.AXES))
             {
                 enemy.setRemainingFireTicks((int)Mth.absMax(50, enemy.getRemainingFireTicks()));

@@ -44,6 +44,11 @@
   "item.farworld.soul_steel_leggings" : "Soul Steel Leggings",
   "item.farworld.soul_steel_boots" : "Soul Steel Boots",
   "item.farworld.soul_steel_upgrade_smithing_template" : "Smithing Template",
+  "item.farworld.gloomstone_sword" : "Gloomstone Sword",
+  "item.farworld.gloomstone_axe" : "Gloomstone Axe",
+  "item.farworld.gloomstone_pickaxe" : "Gloomstone Pickaxe",
+  "item.farworld.gloomstone_shovel" : "Gloomstone Shovel",
+  "item.farworld.gloomstone_hoe" : "Gloomstone Hoe",
   "item.farworld.breeze_boots" : "Breeze Treads",
   "lore.farworld.breeze_boots" : "Boots that, when worn, grant extra movement speed.",
 

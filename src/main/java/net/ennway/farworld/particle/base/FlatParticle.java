@@ -37,11 +37,11 @@ public class FlatParticle extends TextureSheetParticle {
 		float f4 = this.getQuadSize(ticks);
 		for (int i = 0; i < 4; ++i) {
 			Vector3f vector3f = vector3fs[i];
-			vector3f.rotate(QUATERNION);
+			vector3f.rotate(QUATERNION.add(0F, 0F, 0F, 0F));
 			vector3f.mul(f4);
 			vector3f.add(x, y, z);
 			Vector3f vector3fBottom = vector3fsBottom[i];
-			vector3fBottom.rotate(QUATERNION);
+			vector3fBottom.rotate(QUATERNION.add(0F, 0F, 0F, 0F));
 			vector3fBottom.mul(f4);
 			vector3fBottom.add(x, y - 0.1F, z);
 		}
@@ -74,18 +74,5 @@ public class FlatParticle extends TextureSheetParticle {
 	@Override
 	public ParticleRenderType getRenderType() {
 		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
-	}
-
-	@OnlyIn(Dist.CLIENT)
-	public static class Provider implements ParticleProvider<SimpleParticleType> {
-		private final SpriteSet sprites;
-
-		public Provider(SpriteSet spriteSet) {
-			this.sprites = spriteSet;
-		}
-
-		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double dx, double dy, double dz) {
-			return new FlatParticle(level, x, y, z, this.sprites);
-		}
 	}
 }

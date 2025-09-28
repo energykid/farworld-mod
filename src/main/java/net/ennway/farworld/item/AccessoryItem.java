@@ -15,11 +15,11 @@ public class AccessoryItem extends Item {
         super(properties.stacksTo(1));
     }
 
-    public void onDamageEnemy(Entity player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event)
+    public void onDamageEnemy(Player player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event)
     {
     }
 
-    public void onDamagedByEnemy(Entity enemy, Entity player, ItemStack stack, LivingDamageEvent.Pre event)
+    public void onDamagedByEnemy(Entity enemy, Player player, ItemStack stack, LivingDamageEvent.Pre event)
     {
     }
 

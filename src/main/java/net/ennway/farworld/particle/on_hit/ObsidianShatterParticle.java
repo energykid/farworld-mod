@@ -23,9 +23,9 @@ public class ObsidianShatterParticle extends TextureSheetParticle {
 
         this.hasPhysics = false;
 
-        this.lifetime = level.getRandom().nextInt(10, 15);
+        this.lifetime = level.getRandom().nextInt(5, 8);
 
-        //this.scale(10f);
+        this.scale(10f);
 
         this.setSpriteFromAge(spriteSet);
     }
@@ -41,7 +41,7 @@ public class ObsidianShatterParticle extends TextureSheetParticle {
 
     @Override
     public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+        return ParticleRenderType.PARTICLE_SHEET_LIT;
     }
 }
 

@@ -30,12 +30,12 @@ public class GlitteringAspect extends AccessoryItem {
     @Override
     public void preTick(Player player, ItemStack stack, EntityTickEvent.Pre event) {
 
-        if (player.getFoodData().getSaturationLevel() > 0)
+        if (player.getFoodData().getFoodLevel() >= 20)
         {
             // Speed 1
             player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 0, true, false));
 
-            // Speed 3, if Breeze Boots are equipped
+            // Speed 2, if Breeze Boots are equipped
             for (ItemStack stack2 : player.getArmorSlots())
             {
                 if (stack2.is(ModItems.BREEZE_BOOTS))
@@ -45,7 +45,6 @@ public class GlitteringAspect extends AccessoryItem {
             }
 
             // Particles
-
             if (player.isSprinting())
             {
                 if (player.onGround() && (player.getRandom().nextFloat() % 1f) > 0.7f)

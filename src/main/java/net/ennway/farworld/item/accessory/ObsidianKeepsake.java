@@ -25,7 +25,7 @@ public class ObsidianKeepsake extends AccessoryItem {
     double distance = 4.5;
 
     @Override
-    public void onDamagedByEnemy(Entity enemy, Entity player, ItemStack stack, LivingDamageEvent.Pre event) {
+    public void onDamagedByEnemy(Entity enemy, Player player, ItemStack stack, LivingDamageEvent.Pre event) {
 
         AABB range = new AABB(player.getX() - distance, player.getY() - distance, player.getZ() - distance, player.getX() + distance, player.getY() + distance, player.getZ() + distance);
 
@@ -33,9 +33,16 @@ public class ObsidianKeepsake extends AccessoryItem {
         {
             if (!mob.is(player) && mob.canAttack((LivingEntity)player))
             {
-                mob.hurt(mob.damageSources().playerAttack((Player)player), 4f);
+                mob.hurt(mob.damageSources().playerAttack((Player)player), event.getOriginalDamage());
 
-                Vec3 v3 = mob.position().add(new Vec3(0.0f, mob.getBbHeight() / 2.0f, 0.0f));
+                Vec3 v = mob.position().add(mob.getBbWidth() / 2, mob.getBbHeight() / 2, mob.getBbWidth() / 2).add(
+                        MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7),
+                        MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7),
+                        MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7)
+                );
+
+                mob.level().getServer().getLevel(player.level().dimension()).sendParticles(ModParticles.OBSIDIAN_SHATTER.get(),
+                        v.x, v.y, v.z, 1, 0, 0, 0, 0);
 
                 mob.playSound(SoundEvents.DECORATED_POT_SHATTER);
             }

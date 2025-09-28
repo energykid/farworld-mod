@@ -20,7 +20,7 @@ public class BreezeRing extends AccessoryItem {
     }
 
     @Override
-    public void onDamageEnemy(Entity player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event) {
+    public void onDamageEnemy(Player player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event) {
         Player pl = (Player)player;
         if (player.getWeaponItem().is(ItemTags.SWORDS) && pl.swingTime == 0)
         {
