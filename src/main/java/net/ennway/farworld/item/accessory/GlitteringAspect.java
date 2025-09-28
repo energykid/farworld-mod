@@ -33,14 +33,14 @@ public class GlitteringAspect extends AccessoryItem {
         if (player.getFoodData().getSaturationLevel() > 0)
         {
             // Speed 1
-            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10));
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 0, true, false));
 
             // Speed 3, if Breeze Boots are equipped
             for (ItemStack stack2 : player.getArmorSlots())
             {
                 if (stack2.is(ModItems.BREEZE_BOOTS))
                 {
-                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 1));
+                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 1, true, false));
                 }
             }
 
