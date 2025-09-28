@@ -61,5 +61,9 @@ public class ModParticles {
             "obsidian_shatter",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> GLITTERING_PARTICLE = PARTICLE_TYPES.register(
+            "glittering_particle",
+            () -> new SimpleParticleType(false)
+    );
 
 }

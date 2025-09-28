@@ -25,6 +25,8 @@ public class ModParticleProviders {
 
         event.registerSpriteSet(ModParticles.OBSIDIAN_SHATTER.get(), ObsidianShatterParticleProvider::new);
 
+        event.registerSpriteSet(ModParticles.GLITTERING_PARTICLE.get(), GlitteringParticleProvider::new);
+
         event.registerSpriteSet(ModParticles.SOUL_SMOKE.get(), SoulSmokeParticleProvider::new);
         event.registerSpriteSet(ModParticles.SOUL_FIRE_TENDRIL.get(), SoulFireTendrilParticleProvider::new);
 

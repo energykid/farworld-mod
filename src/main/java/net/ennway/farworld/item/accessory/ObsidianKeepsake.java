@@ -13,6 +13,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.network.negotiation.NetworkComponentNegotiator;
+import net.neoforged.neoforge.network.registration.NetworkChannel;
 
 public class ObsidianKeepsake extends AccessoryItem {
 
@@ -33,7 +35,7 @@ public class ObsidianKeepsake extends AccessoryItem {
             {
                 mob.hurt(mob.damageSources().playerAttack((Player)player), 4f);
 
-                Vec3 v3 = player.position();
+                Vec3 v3 = mob.position().add(new Vec3(0.0f, mob.getBbHeight() / 2.0f, 0.0f));
 
                 mob.playSound(SoundEvents.DECORATED_POT_SHATTER);
             }

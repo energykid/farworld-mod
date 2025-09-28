@@ -3,6 +3,7 @@ package net.ennway.farworld.item.accessory;
 import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModItems;
+import net.ennway.farworld.registries.ModParticles;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
@@ -41,6 +42,22 @@ public class GlitteringAspect extends AccessoryItem {
                 {
                     player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 1));
                 }
+            }
+
+            // Particles
+
+            if (player.isSprinting())
+            {
+                if (player.onGround() && (player.getRandom().nextFloat() % 1f) > 0.7f)
+                {
+                    player.level().addParticle(ModParticles.GLITTERING_PARTICLE.get(),
+                            player.getX(), player.getY() + 0.05, player.getZ(),
+                            0, 0, 0);
+                }
+
+                player.level().addParticle(ModParticles.DIAMOND_SPARKLE.get(),
+                        player.getX(), player.getY() + 1, player.getZ(),
+                        player.getRandomX(0.1), player.getRandom().nextFloat() % 0.4, player.getRandomZ(0.1));
             }
         }
     }
