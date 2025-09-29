@@ -283,8 +283,10 @@ public class ModItems
                 SmithingUtils.gloomsporeIcon());
     }
 
-    public static final DeferredItem<Item> GLOOMCAP_BLOCK = ITEMS_ALL.register("gloomcap",
+    public static final DeferredItem<Item> GLOOMCAP = ITEMS_ALL.register("gloomcap",
             () -> new BlockItem(ModBlocks.GLOOMCAP.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> LUSH_FOLIAGE = ITEMS_ALL.register("lush_foliage",
+            () -> new BlockItem(ModBlocks.LUSH_FOLIAGE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> GEODE_NUT = ITEMS_ALL.register("geode_nut",
             () -> new BlockItem(ModBlocks.GEODE_NUT.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> NETHER_IRON_ORE = ITEMS_ALL.register("nether_iron_ore",

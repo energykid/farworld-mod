@@ -151,6 +151,8 @@
   "block.farworld.hanging_vines" : "Hanging Vines",
   "block.farworld.hanging_vines_end" : "Hanging Vines",
   "lore.farworld.hanging_vines_end" : "Vines grown in the Lush Shallows.",
+  "block.farworld.lush_foliage" : "Lush Foliage",
+  "lore.farworld.lush_foliage" : "Grass grown from the floor of the Lush Shallows.",
   "block.farworld.hanging_flora" : "Hanging Flora",
   "block.farworld.hanging_flora_end" : "Hanging Flora",
   "lore.farworld.hanging_flora" : "Flowering vines grown in the Lush Shallows.",
