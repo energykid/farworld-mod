@@ -65,5 +65,9 @@ public class ModParticles {
             "glittering_particle",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> SPUR_PARTICLE = PARTICLE_TYPES.register(
+            "spur_particle",
+            () -> new SimpleParticleType(false)
+    );
 
 }

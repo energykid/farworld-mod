@@ -1,9 +1,8 @@
-package net.ennway.farworld.event;
+package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.particle.*;
 import net.ennway.farworld.particle.on_hit.*;
-import net.ennway.farworld.registries.ModParticles;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -26,6 +25,8 @@ public class ModParticleProviders {
         event.registerSpriteSet(ModParticles.OBSIDIAN_SHATTER.get(), ObsidianShatterParticleProvider::new);
 
         event.registerSpriteSet(ModParticles.GLITTERING_PARTICLE.get(), GlitteringParticleProvider::new);
+
+        event.registerSpriteSet(ModParticles.SPUR_PARTICLE.get(), SpurParticleProvider::new);
 
         event.registerSpriteSet(ModParticles.SOUL_SMOKE.get(), SoulSmokeParticleProvider::new);
         event.registerSpriteSet(ModParticles.SOUL_FIRE_TENDRIL.get(), SoulFireTendrilParticleProvider::new);
