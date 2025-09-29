@@ -22,6 +22,8 @@ import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import java.util.List;
 
@@ -61,22 +63,21 @@ public class AccessoryEvents {
     }
 
     @SubscribeEvent
-    public static void postTick(EntityTickEvent.Post event)
+    public static void runOnAllClients(PlayerTickEvent.Post event)
     {
-        if (event.getEntity() instanceof Player player)
-        {
-            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
-            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+        Player player = event.getEntity();
 
-            for (int i = 0; i < items.size(); i++)
-            {
-                items.get(i).postTick(player, itemStacks.get(i), event);
-            }
+        List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+        List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+        for (int i = 0; i < items.size(); i++)
+        {
+            items.get(i).postTick(player, itemStacks.get(i), event);
         }
     }
 
     @SubscribeEvent
-    public static void preTick(EntityTickEvent.Pre event)
+    public static void preTick(PlayerTickEvent.Pre event)
     {
         if (event.getEntity() instanceof Player player)
         {

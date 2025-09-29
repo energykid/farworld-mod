@@ -8,6 +8,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 public class AccessoryItem extends Item {
 
@@ -23,11 +24,11 @@ public class AccessoryItem extends Item {
     {
     }
 
-    public void preTick(Player player, ItemStack stack, EntityTickEvent.Pre event)
+    public void preTick(Player player, ItemStack stack, PlayerTickEvent.Pre event)
     {
     }
 
-    public void postTick(Player player, ItemStack stack, EntityTickEvent.Post event)
+    public void postTick(Player player, ItemStack stack, PlayerTickEvent.Post event)
     {
     }
 }

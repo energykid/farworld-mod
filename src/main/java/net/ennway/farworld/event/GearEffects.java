@@ -11,18 +11,23 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityEvent;
+import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
+import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 import java.util.function.Supplier;
 
 @EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
-public class CritEffects {
+public class GearEffects {
 
     public static void spawnFireEffect(Entity entityAt, Supplier<SimpleParticleType> particleType, Supplier<SimpleParticleType> tendrilType)
     {
@@ -54,6 +59,26 @@ public class CritEffects {
                     0f,
                     0f
             );
+        }
+    }
+
+    @SubscribeEvent
+    public static void dontDealEnderPearlDamage(EntityTeleportEvent.EnderPearl event)
+    {
+        Player player = event.getPlayer();
+
+        if (AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get()))
+        {
+            event.setAttackDamage(0);
+        }
+    }
+
+    @SubscribeEvent
+    public static void dontAggro(EnderManAngerEvent event)
+    {
+        if (AccessoryUtils.playerHasAccessory(event.getPlayer(), ModItems.APOCALYPSE_CORE.get()))
+        {
+            event.setCanceled(true);
         }
     }
 

@@ -4,10 +4,7 @@ import com.mojang.authlib.yggdrasil.response.UserAttributesResponse;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.*;
 import net.ennway.farworld.item.AccessoryItem;
-import net.ennway.farworld.item.accessory.BlazeLocket;
-import net.ennway.farworld.item.accessory.BreezeRing;
-import net.ennway.farworld.item.accessory.GlitteringAspect;
-import net.ennway.farworld.item.accessory.ObsidianKeepsake;
+import net.ennway.farworld.item.accessory.*;
 import net.ennway.farworld.item.tool.*;
 import net.ennway.farworld.item.tool.cobalt.*;
 import net.ennway.farworld.item.tool.soul_steel.*;
@@ -176,6 +173,33 @@ public class ModItems
                     new AttributeModifier(Attributes.ATTACK_SPEED.getKey().location(), 0.7, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY
             ).build()))
+    );
+
+    public static final DeferredItem<Item> APOCALYPSE_CORE = ITEMS_ALL.register(
+            "apocalypse_core",
+            () -> new ApocalypseCore(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
+                    Attributes.ATTACK_SPEED,
+                    new AttributeModifier(Attributes.ATTACK_SPEED.getKey().location(), 0.5, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY
+            ).add(
+                    Attributes.ARMOR,
+                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 3, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY
+            ).add(
+                    Attributes.ARMOR_TOUGHNESS,
+                    new AttributeModifier(Attributes.ARMOR_TOUGHNESS.getKey().location(), 3, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY
+            ).build()))
+    );
+
+    public static final DeferredItem<Item> GOLEM_HEART = ITEMS_ALL.register(
+            "golem_heart",
+            () -> new GolemHeart(new Item.Properties().attributes(ItemAttributeModifiers.builder().build()))
+    );
+
+    public static final DeferredItem<Item> MAGIC_SPUR = ITEMS_ALL.register(
+            "magic_spur",
+            () -> new MagicSpur(new Item.Properties().attributes(ItemAttributeModifiers.builder().build()))
     );
 
     public static final DeferredItem<ArmorItem> COBALT_HELMET = ITEMS_ALL.register(

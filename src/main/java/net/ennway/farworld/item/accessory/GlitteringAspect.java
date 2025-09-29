@@ -20,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 public class GlitteringAspect extends AccessoryItem {
 
@@ -28,7 +29,7 @@ public class GlitteringAspect extends AccessoryItem {
     }
 
     @Override
-    public void preTick(Player player, ItemStack stack, EntityTickEvent.Pre event) {
+    public void preTick(Player player, ItemStack stack, PlayerTickEvent.Pre event) {
 
         if (player.getFoodData().getFoodLevel() >= 20)
         {

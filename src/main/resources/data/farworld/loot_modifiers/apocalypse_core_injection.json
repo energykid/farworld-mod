@@ -3,10 +3,10 @@
   "conditions": [
     {
       "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/bastion_treasure"
+      "loot_table_id": "minecraft:entities/ender_dragon"
     }
   ],
-  "chance": 0.4,
+  "chance": 1.0,
   "amount": 1,
-  "item_type": "farworld:blaze_locket"
+  "item_type": "farworld:apocalypse_core"
 }
