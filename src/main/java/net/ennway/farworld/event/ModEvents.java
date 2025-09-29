@@ -101,8 +101,9 @@ public class ModEvents {
         Entity entity = event.getEntity();
         if (entity instanceof LivingEntity livEnt) {
             if (livEnt.hasEffect(ModEffects.PARALYSIS)) {
-
-                entity.setDeltaMovement(0.0, 0.0, 0.0);
+                double yy = 0.0;
+                if (!livEnt.isNoGravity()) yy = livEnt.getDeltaMovement().y;
+                entity.setDeltaMovement(0.0, yy, 0.0);
                 entity.teleportTo(entity.getX() - entity.getDeltaMovement().x(), entity.getY(), entity.getZ() - entity.getDeltaMovement().z());
             }
         }

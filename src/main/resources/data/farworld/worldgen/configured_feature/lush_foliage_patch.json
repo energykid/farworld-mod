@@ -6,10 +6,24 @@
         "type": "minecraft:simple_block",
         "config": {
           "to_place": {
-            "type": "minecraft:simple_state_provider",
+            "type": "minecraft:weighted_state_provider",
             "state": {
               "Name": "farworld:lush_foliage"
-            }
+            },
+            "entries": [
+              {
+                "weight": 2,
+                "data": {
+                  "Name": "farworld:lush_foliage"
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "farworld:flowering_lush_foliage"
+                }
+              }
+            ]
           }
         }
       },

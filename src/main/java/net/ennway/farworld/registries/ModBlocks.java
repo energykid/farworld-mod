@@ -296,6 +296,15 @@ public class ModBlocks {
                     .noCollission()
                     .noOcclusion()));
 
+    public static final DeferredBlock<Block> FLOWERING_LUSH_FOLIAGE = BLOCKS_ALL.register(
+            "flowering_lush_foliage",
+            registryName -> new LushFoliage(BlockBehaviour.Properties.of()
+                    .sound(SoundType.GRASS)
+                    .ignitedByLava()
+                    .isViewBlocking((a,b,c) -> false)
+                    .noCollission()
+                    .noOcclusion()));
+
     public static final DeferredBlock<Block> FLOWSTONE_CACHE = BLOCKS_ALL.register(
             "flowstone_cache",
             registryName -> new Block(BlockBehaviour.Properties.of()

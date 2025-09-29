@@ -287,6 +287,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.GLOOMCAP.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> LUSH_FOLIAGE = ITEMS_ALL.register("lush_foliage",
             () -> new BlockItem(ModBlocks.LUSH_FOLIAGE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> FLOWERING_LUSH_FOLIAGE = ITEMS_ALL.register("flowering_lush_foliage",
+            () -> new BlockItem(ModBlocks.FLOWERING_LUSH_FOLIAGE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> GEODE_NUT = ITEMS_ALL.register("geode_nut",
             () -> new BlockItem(ModBlocks.GEODE_NUT.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> NETHER_IRON_ORE = ITEMS_ALL.register("nether_iron_ore",

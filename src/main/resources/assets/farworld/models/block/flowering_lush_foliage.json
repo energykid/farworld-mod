@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "farworld:block/flowering_lush_foliage"
+  },
+  "render_type": "cutout"
+}
