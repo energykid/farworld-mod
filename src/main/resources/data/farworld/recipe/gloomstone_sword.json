@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "farworld:gloomstone_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "minecraft:stone_sword"
+  },
+  "addition": {
+    "item": "farworld:gloomspores"
+  },
+  "result": {
+    "id": "farworld:gloomstone_sword",
+    "count": 1
+  }
+}

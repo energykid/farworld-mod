@@ -7,6 +7,7 @@ import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.item.accessory.*;
 import net.ennway.farworld.item.tool.*;
 import net.ennway.farworld.item.tool.cobalt.*;
+import net.ennway.farworld.item.tool.gloomstone.*;
 import net.ennway.farworld.item.tool.soul_steel.*;
 import net.ennway.farworld.utils.SmithingUtils;
 import net.minecraft.network.chat.Component;
@@ -51,6 +52,8 @@ public class ModItems
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE = ITEMS_ALL.register("soul_steel_upgrade_smithing_template",
             ModItems::createSoulSteelUpgradeTemplate);
+    public static final DeferredItem<Item> GLOOMSTONE_UPGRADE_SMITHING_TEMPLATE = ITEMS_ALL.register("gloomstone_upgrade_smithing_template",
+            ModItems::createGloomstoneUpgradeTemplate);
 
     //region Soul Steel Gear
     public static final DeferredItem<Item> SOUL_STEEL_SWORD = ITEMS_ALL.register(
@@ -124,6 +127,30 @@ public class ModItems
             "cobalt_hoe",
             () -> new CobaltHoe(new Item.Properties())
     );
+    //endregion
+
+    //region Gloomstone Gear
+    public static final DeferredItem<Item> GLOOMSTONE_SWORD = ITEMS_ALL.register(
+            "gloomstone_sword",
+            () -> new GloomstoneSword(new Item.Properties())
+    );
+    public static final DeferredItem<Item> GLOOMSTONE_AXE = ITEMS_ALL.register(
+            "gloomstone_axe",
+            () -> new GloomstoneAxe(new Item.Properties())
+    );
+    public static final DeferredItem<Item> GLOOMSTONE_PICKAXE = ITEMS_ALL.register(
+            "gloomstone_pickaxe",
+            () -> new GloomstonePickaxe(new Item.Properties())
+    );
+    public static final DeferredItem<Item> GLOOMSTONE_SHOVEL = ITEMS_ALL.register(
+            "gloomstone_shovel",
+            () -> new GloomstoneShovel(new Item.Properties())
+    );
+    public static final DeferredItem<Item> GLOOMSTONE_HOE = ITEMS_ALL.register(
+            "gloomstone_hoe",
+            () -> new GloomstoneHoe(new Item.Properties())
+    );
+    //endregion
 
     public static final DeferredItem<Item> OBSIDIAN_KEEPSAKE = ITEMS_ALL.register(
             "obsidian_keepsake",
@@ -244,6 +271,16 @@ public class ModItems
                 Component.translatable("item.farworld.soul_steel_upgrade_smithing_template.additions_slot_description"),
                 SmithingUtils.equipmentIconList(),
                 SmithingUtils.singleIngotIcon());
+    }
+    public static SmithingTemplateItem createGloomstoneUpgradeTemplate() {
+        return new SmithingTemplateItem(
+                Component.translatable("item.farworld.gloomstone_upgrade_smithing_template.applies_to"),
+                Component.translatable("item.farworld.gloomstone_upgrade_smithing_template.ingredient"),
+                Component.translatable("item.farworld.gloomstone_upgrade_smithing_template.type"),
+                Component.translatable("item.farworld.gloomstone_upgrade_smithing_template.base_slot_description"),
+                Component.translatable("item.farworld.gloomstone_upgrade_smithing_template.additions_slot_description"),
+                SmithingUtils.equipmentIconListNoArmor(),
+                SmithingUtils.gloomsporeIcon());
     }
 
     public static final DeferredItem<Item> GLOOMCAP_BLOCK = ITEMS_ALL.register("gloomcap",

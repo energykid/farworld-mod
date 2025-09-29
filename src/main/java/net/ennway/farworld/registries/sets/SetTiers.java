@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
@@ -13,6 +14,15 @@ import net.neoforged.neoforge.common.SimpleTier;
 import net.neoforged.neoforge.common.Tags;
 
 public class SetTiers {
+    public static final Tier GLOOMSTONE_TIER = new SimpleTier(
+            BlockTags.NEEDS_IRON_TOOL,
+            375,
+            8.0F,
+            2.5F,
+            7,
+            () -> Ingredient.of(ModItems.GLOOMSPORES)
+    );
+
     public static final Tier SOUL_STEEL_TIER = new SimpleTier(
             BlockTags.NEEDS_DIAMOND_TOOL,
             450,

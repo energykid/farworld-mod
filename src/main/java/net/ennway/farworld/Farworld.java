@@ -155,6 +155,7 @@ public class Farworld
             event.insertAfter(Items.GOLD_INGOT.getDefaultInstance(), ModItems.COBALT_INGOT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.NETHERITE_INGOT.getDefaultInstance(), ModItems.SOUL_STEEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.getDefaultInstance(), ModItems.SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertBefore(ModItems.SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE.toStack(), ModItems.GLOOMSTONE_UPGRADE_SMITHING_TEMPLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
@@ -169,7 +170,12 @@ public class Farworld
             event.insertAfter(ModItems.SOUL_STEEL_PICKAXE.toStack(), ModItems.SOUL_STEEL_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SOUL_STEEL_AXE.toStack(), ModItems.SOUL_STEEL_HOE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
-            event.insertAfter(Items.GOLDEN_HOE.getDefaultInstance(), ModItems.COBALT_SHOVEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.GOLDEN_HOE.getDefaultInstance(), ModItems.GLOOMSTONE_SHOVEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GLOOMSTONE_SHOVEL.toStack(), ModItems.GLOOMSTONE_PICKAXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GLOOMSTONE_PICKAXE.toStack(), ModItems.GLOOMSTONE_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GLOOMSTONE_AXE.toStack(), ModItems.GLOOMSTONE_HOE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(ModItems.GLOOMSTONE_HOE.toStack(), ModItems.COBALT_SHOVEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBALT_SHOVEL.toStack(), ModItems.COBALT_PICKAXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBALT_PICKAXE.toStack(), ModItems.COBALT_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBALT_AXE.toStack(), ModItems.COBALT_HOE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -182,8 +188,11 @@ public class Farworld
             event.insertAfter(Items.DIAMOND_SWORD.getDefaultInstance(), ModItems.SOUL_STEEL_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.DIAMOND_AXE.getDefaultInstance(), ModItems.SOUL_STEEL_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
-            event.insertAfter(Items.GOLDEN_SWORD.getDefaultInstance(), ModItems.COBALT_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(Items.GOLDEN_AXE.getDefaultInstance(), ModItems.COBALT_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.GOLDEN_SWORD.getDefaultInstance(), ModItems.GLOOMSTONE_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.GOLDEN_AXE.getDefaultInstance(), ModItems.GLOOMSTONE_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(ModItems.GLOOMSTONE_SWORD.toStack(), ModItems.COBALT_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GLOOMSTONE_AXE.toStack(), ModItems.COBALT_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.TURTLE_HELMET.getDefaultInstance(), ModItems.BREEZE_BOOTS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 

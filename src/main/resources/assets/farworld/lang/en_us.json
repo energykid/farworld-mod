@@ -49,6 +49,7 @@
   "item.farworld.gloomstone_pickaxe" : "Gloomstone Pickaxe",
   "item.farworld.gloomstone_shovel" : "Gloomstone Shovel",
   "item.farworld.gloomstone_hoe" : "Gloomstone Hoe",
+  "item.farworld.gloomstone_upgrade_smithing_template" : "Smithing Template",
   "item.farworld.breeze_boots" : "Breeze Treads",
   "lore.farworld.breeze_boots" : "Boots that, when worn, grant extra movement speed.",
 
@@ -81,6 +82,12 @@
   "item.farworld.soul_steel_upgrade_smithing_template.ingredient" : "§9Soul Steel Ingot",
   "item.farworld.soul_steel_upgrade_smithing_template.base_slot_description" : "Add iron armor, weapon, or tool",
   "item.farworld.soul_steel_upgrade_smithing_template.additions_slot_description" : "Add Soul Steel Ingot",
+
+  "item.farworld.gloomstone_upgrade_smithing_template.type" : "§7Gloomstone Upgrade",
+  "item.farworld.gloomstone_upgrade_smithing_template.applies_to" : "§9Stone Equipment",
+  "item.farworld.gloomstone_upgrade_smithing_template.ingredient" : "§9Gloomspores",
+  "item.farworld.gloomstone_upgrade_smithing_template.base_slot_description" : "Add stone weapon or tool",
+  "item.farworld.gloomstone_upgrade_smithing_template.additions_slot_description" : "Add Gloomspores",
 
   "item.farworld.disc_whirlingworld" : "Music Disc",
   "item.farworld.disc_whirlingworld.desc" : "ENNWAY - whirling world",
