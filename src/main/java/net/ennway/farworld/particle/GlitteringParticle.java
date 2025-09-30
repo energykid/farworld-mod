@@ -25,7 +25,7 @@ public class GlitteringParticle extends FlatParticle {
 
         this.lifetime = level.getRandom().nextInt(7, 12);
 
-        float roll = level.getRandom().nextFloat();
+        float roll = level.getRandom().nextFloat() * (level.getRandom().nextBoolean() ? 1 : -1);
 
         this.roll = roll;
         this.oRoll = roll;

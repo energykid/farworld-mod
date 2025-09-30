@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "#S#",
+    "#C#",
+    "DDD"
+  ],
+  "key": {
+    "#": {
+      "item": "farworld:cobalt_ingot"
+    },
+    "C": {
+      "item": "farworld:cobbled_flowstone"
+    },
+    "S": {
+      "item": "farworld:gloomstone_upgrade_smithing_template"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "id": "farworld:gloomstone_upgrade_smithing_template",
+    "count": 2
+  }
+}

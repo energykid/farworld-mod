@@ -63,6 +63,8 @@
   "accessory.item.farworld.cobalt_cuff.desc" : "Extra armor and armor toughness",
   "item.farworld.magic_spur" : "Magic Spur",
   "accessory.item.farworld.magic_spur.desc" : "Nearby crops grow faster",
+  "item.farworld.skeleton_arm" : "Skeleton Arm",
+  "accessory.item.farworld.skeleton_arm.desc" : "Tools can reach farther",
   "item.farworld.blaze_locket" : "Blaze Locket",
   "accessory.item.farworld.blaze_locket.desc" : "Axes light enemies on fire - all weapons deal extra damage",
   "item.farworld.breeze_ring" : "Breeze Ring",

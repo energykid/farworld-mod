@@ -1,6 +1,7 @@
 package net.ennway.farworld.particle.base;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.ennway.farworld.utils.QuaternionUtils;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -9,13 +10,16 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.checkerframework.checker.units.qual.Angle;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class FlatParticle extends TextureSheetParticle {
 	protected SpriteSet sprites;
-	protected static final Quaternionf QUATERNION = new Quaternionf(0F, -0.7F, 0.7F, 0F);
 	private static final int FULL_BRIGHT = 15728880;
+	public Quaternionf QUATERNION = new Quaternionf(0F, -0.7F, 0.7F, 0F);
+
+	public float rot = 0;
 
 	protected FlatParticle(ClientLevel world, double x, double y, double z, SpriteSet sprites) {
 		super(world, x, y, z, 0.0, 0.0, 0.0);
@@ -36,12 +40,31 @@ public class FlatParticle extends TextureSheetParticle {
 		Vector3f[] vector3fsBottom = new Vector3f[]{new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, -1.0F, 0.0F)};
 		float f4 = this.getQuadSize(ticks);
 		for (int i = 0; i < 4; ++i) {
+
+			float rotation_angle = this.roll;
+			Vector3f rotation_axis = new Vector3f(0.0f, 0.0f, 1.0f);
+
+			QUATERNION.rotateY(Mth.lerp(ticks, this.oRoll, this.roll));
+
+			Quaternionf quaternionf = QuaternionUtils.flatQuaternion();
+
+			if (this.roll != 0.0F) {
+				quaternionf.rotateZ(Mth.lerp(ticks, this.oRoll, this.roll));
+			}
+
+			double half_angle_rad = Math.toRadians(rotation_angle / 2.0);
+			double rot_w = Math.cos(half_angle_rad);
+			double rot_x = rotation_axis.x * Math.sin(half_angle_rad);
+			double rot_y = rotation_axis.y * Math.sin(half_angle_rad);
+			double rot_z = rotation_axis.z * Math.sin(half_angle_rad);
+
+			Quaternionf qu2 = new Quaternionf(rot_x, rot_y, rot_z, rot_w);
 			Vector3f vector3f = vector3fs[i];
-			vector3f.rotate(QUATERNION.add(0F, 0F, 0F, 0F));
+			vector3f.rotate(quaternionf);
 			vector3f.mul(f4);
 			vector3f.add(x, y, z);
 			Vector3f vector3fBottom = vector3fsBottom[i];
-			vector3fBottom.rotate(QUATERNION.add(0F, 0F, 0F, 0F));
+			vector3fBottom.rotate(quaternionf);
 			vector3fBottom.mul(f4);
 			vector3fBottom.add(x, y - 0.1F, z);
 		}

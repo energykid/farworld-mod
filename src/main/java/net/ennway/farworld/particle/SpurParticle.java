@@ -1,8 +1,12 @@
 package net.ennway.farworld.particle;
 
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.ennway.farworld.particle.base.FlatParticle;
+import net.minecraft.client.Camera;
+import net.minecraft.client.main.GameConfig;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.SpriteSet;
+import net.neoforged.neoforge.common.CommonHooks;
 
 public class SpurParticle extends FlatParticle {
 
@@ -21,6 +25,13 @@ public class SpurParticle extends FlatParticle {
         this.oRoll = roll;
 
         this.setSpriteFromAge(this.sprites);
+    }
+
+    @Override
+    public void render(VertexConsumer buffer, Camera camera, float ticks) {
+        super.render(buffer, camera, ticks);
+        this.roll += 0.05f;
+        this.oRoll += 0.05f;
     }
 
     @Override

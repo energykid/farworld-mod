@@ -188,11 +188,6 @@ public class ModItems
             ).build()))
     );
 
-    public static final DeferredItem<Item> GLITTERING_ASPECT = ITEMS_ALL.register(
-            "glittering_aspect",
-            () -> new GlitteringAspect(new Item.Properties())
-    );
-
     public static final DeferredItem<Item> BREEZE_RING = ITEMS_ALL.register(
             "breeze_ring",
             () -> new BreezeRing(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
@@ -200,6 +195,20 @@ public class ModItems
                     new AttributeModifier(Attributes.ATTACK_SPEED.getKey().location(), 0.7, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY
             ).build()))
+    );
+
+    public static final DeferredItem<Item> SKELETON_ARM = ITEMS_ALL.register(
+            "skeleton_arm",
+            () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
+                    Attributes.BLOCK_INTERACTION_RANGE,
+                    new AttributeModifier(Attributes.BLOCK_INTERACTION_RANGE.getKey().location(), 1.5, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY
+            ).build()))
+    );
+
+    public static final DeferredItem<Item> GLITTERING_ASPECT = ITEMS_ALL.register(
+            "glittering_aspect",
+            () -> new GlitteringAspect(new Item.Properties())
     );
 
     public static final DeferredItem<Item> APOCALYPSE_CORE = ITEMS_ALL.register(

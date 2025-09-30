@@ -293,6 +293,7 @@ public class ModBlocks {
                     .sound(SoundType.GRASS)
                     .ignitedByLava()
                     .isViewBlocking((a,b,c) -> false)
+                    .replaceable()
                     .noCollission()
                     .noOcclusion()));
 
@@ -302,6 +303,7 @@ public class ModBlocks {
                     .sound(SoundType.GRASS)
                     .ignitedByLava()
                     .isViewBlocking((a,b,c) -> false)
+                    .replaceable()
                     .noCollission()
                     .noOcclusion()));
 

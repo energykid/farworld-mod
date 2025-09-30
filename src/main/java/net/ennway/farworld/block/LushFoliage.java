@@ -23,7 +23,7 @@ public class LushFoliage extends BushBlock {
         return simpleCodec(LushFoliage::new);
     }
 
-    protected static final VoxelShape SHAPE = Block.box(4.0, 0.0, 4.0, 12.0, 10.0, 12.0);
+    protected static final VoxelShape SHAPE = Block.box(2.0, 0.0, 2.0, 14.0, 10.0, 14.0);
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -33,6 +33,6 @@ public class LushFoliage extends BushBlock {
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState st = level.getBlockState(pos.below());
-        return st.is(ModBlocks.LUSH_FLOWSTONE);
+        return super.canSurvive(state, level, pos) || st.is(ModBlocks.LUSH_FLOWSTONE);
     }
 }
