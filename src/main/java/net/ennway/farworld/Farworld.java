@@ -182,6 +182,11 @@ public class Farworld
             event.insertAfter(ModItems.COBALT_PICKAXE.toStack(), ModItems.COBALT_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBALT_AXE.toStack(), ModItems.COBALT_HOE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
+            event.insertAfter(Items.NETHERITE_HOE.getDefaultInstance(), ModItems.BLACK_ICE_SHOVEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.BLACK_ICE_SHOVEL.toStack(), ModItems.BLACK_ICE_PICKAXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.BLACK_ICE_PICKAXE.toStack(), ModItems.BLACK_ICE_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.BLACK_ICE_AXE.toStack(), ModItems.BLACK_ICE_HOE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.ELYTRA.getDefaultInstance(), ModItems.MAGIC_SPUR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.MAGIC_SPUR.toStack(), ModItems.SKELETON_ARM.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SKELETON_ARM.toStack(), ModItems.GLITTERING_ASPECT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

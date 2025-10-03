@@ -50,6 +50,11 @@
   "item.farworld.gloomstone_shovel" : "Gloomstone Shovel",
   "item.farworld.gloomstone_hoe" : "Gloomstone Hoe",
   "item.farworld.gloomstone_upgrade_smithing_template" : "Smithing Template",
+  "item.farworld.black_ice_sword" : "Black Ice Sword",
+  "item.farworld.black_ice_axe" : "Black Ice Axe",
+  "item.farworld.black_ice_pickaxe" : "Black Ice Pickaxe",
+  "item.farworld.black_ice_shovel" : "Black Ice Shovel",
+  "item.farworld.black_ice_hoe" : "Black Ice Hoe",
   "item.farworld.breeze_boots" : "Breeze Treads",
   "lore.farworld.breeze_boots" : "Boots that, when worn, grant extra movement speed.",
 

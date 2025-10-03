@@ -6,6 +6,7 @@ import net.ennway.farworld.item.*;
 import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.item.accessory.*;
 import net.ennway.farworld.item.tool.*;
+import net.ennway.farworld.item.tool.black_ice.*;
 import net.ennway.farworld.item.tool.cobalt.*;
 import net.ennway.farworld.item.tool.gloomstone.*;
 import net.ennway.farworld.item.tool.soul_steel.*;
@@ -49,6 +50,10 @@ public class ModItems
     public static final DeferredItem<Item> RAW_COBALT = ITEMS_ALL.register("raw_cobalt",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> COBALT_INGOT = ITEMS_ALL.register("cobalt_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BLACK_ICE_SHARDS = ITEMS_ALL.register("black_ice_shards",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BLACK_ICE_GEM = ITEMS_ALL.register("black_ice_gem",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE = ITEMS_ALL.register("soul_steel_upgrade_smithing_template",
             ModItems::createSoulSteelUpgradeTemplate);
@@ -149,6 +154,29 @@ public class ModItems
     public static final DeferredItem<Item> GLOOMSTONE_HOE = ITEMS_ALL.register(
             "gloomstone_hoe",
             () -> new GloomstoneHoe(new Item.Properties())
+    );
+    //endregion
+
+    //region Black Ice Gear
+    public static final DeferredItem<Item> BLACK_ICE_SWORD = ITEMS_ALL.register(
+            "black_ice_sword",
+            () -> new BlackIceSword(new Item.Properties())
+    );
+    public static final DeferredItem<Item> BLACK_ICE_AXE = ITEMS_ALL.register(
+            "black_ice_axe",
+            () -> new BlackIceAxe(new Item.Properties())
+    );
+    public static final DeferredItem<Item> BLACK_ICE_PICKAXE = ITEMS_ALL.register(
+            "black_ice_pickaxe",
+            () -> new BlackIcePickaxe(new Item.Properties())
+    );
+    public static final DeferredItem<Item> BLACK_ICE_SHOVEL = ITEMS_ALL.register(
+            "black_ice_shovel",
+            () -> new BlackIceShovel(new Item.Properties())
+    );
+    public static final DeferredItem<Item> BLACK_ICE_HOE = ITEMS_ALL.register(
+            "black_ice_hoe",
+            () -> new BlackIceHoe(new Item.Properties())
     );
     //endregion
 

@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
@@ -19,7 +20,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.LinkedHashMap;
 
-public class ModItemModelProvider extends ItemModelProvider {
+public class ItemGenerator extends ItemModelProvider {
     private static LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
     static {
         trimMaterials.put(TrimMaterials.QUARTZ, 0.1F);
@@ -34,16 +35,31 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimMaterials.put(TrimMaterials.AMETHYST, 1.0F);
     }
 
-    public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+    private void gearItem(DeferredItem<Item> itemDeferredItem) {
+
+        this.withExistingParent(itemDeferredItem.getId().getPath(),
+                        mcLoc("item/handheld"))
+                .texture("layer0", modLoc(itemDeferredItem.getRegisteredName()));
+    }
+
+    public ItemGenerator(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, Farworld.MOD_ID, existingFileHelper);
     }
 
     @Override
     protected void registerModels() {
-        trimmedArmorItem(ModItems.COBALT_HELMET);
-        trimmedArmorItem(ModItems.COBALT_CHESTPLATE);
-        trimmedArmorItem(ModItems.COBALT_LEGGINGS);
-        trimmedArmorItem(ModItems.COBALT_BOOTS);
+        //trimmedArmorItem(ModItems.COBALT_HELMET);
+        //trimmedArmorItem(ModItems.COBALT_CHESTPLATE);
+        //trimmedArmorItem(ModItems.COBALT_LEGGINGS);
+        //trimmedArmorItem(ModItems.COBALT_BOOTS);
+        basicItem(ModItems.BLACK_ICE_SHARDS.get());
+        basicItem(ModItems.BLACK_ICE_GEM.get());
+
+        handheldItem(ModItems.BLACK_ICE_AXE.get());
+        handheldItem(ModItems.BLACK_ICE_PICKAXE.get());
+        handheldItem(ModItems.BLACK_ICE_SHOVEL.get());
+        handheldItem(ModItems.BLACK_ICE_SWORD.get());
+        handheldItem(ModItems.BLACK_ICE_HOE.get());
     }
 
     // Shoutout to El_Redstoniano for making this
@@ -96,11 +112,5 @@ public class ModItemModelProvider extends ItemModelProvider {
         this.withExistingParent(block.getId().getPath(), mcLoc(texture))
                 .texture("texture",  ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID,
                         "block/" + baseBlock.getId().getPath()));
-    }
-
-    private ItemModelBuilder handheldItem(DeferredItem<?> item) {
-        return withExistingParent(item.getId().getPath(),
-                ResourceLocation.parse("item/handheld")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID,"item/" + item.getId().getPath()));
     }
 }

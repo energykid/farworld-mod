@@ -44,4 +44,17 @@ public class SetTiers {
             12,
             () -> Ingredient.of(ModItems.COBALT_INGOT)
     );
+
+    public static final TagKey<Block> NEEDS_BLACK_ICE_TOOL = TagKey.create(
+            BuiltInRegistries.BLOCK.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "needs_black_ice_tool"));
+
+    public static final Tier BLACK_ICE_TIER = new SimpleTier(
+            NEEDS_BLACK_ICE_TOOL,
+            1500,
+            8.0F,
+            3.5F,
+            10,
+            () -> Ingredient.of(ModItems.BLACK_ICE_GEM)
+    );
 }
