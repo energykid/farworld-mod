@@ -1,0 +1,84 @@
+package net.ennway.farworld.entity.projectile;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.ennway.farworld.entity.client.brittle.BrittleModel;
+import net.ennway.farworld.entity.custom.BloomedEntity;
+import net.ennway.farworld.entity.custom.BrittleEntity;
+import net.ennway.farworld.registries.ModDataComponents;
+import net.ennway.farworld.registries.ModEntities;
+import net.ennway.farworld.registries.ModParticles;
+import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.Tags;
+
+public class BlackIceImplosionProjectile extends Projectile {
+    public BlackIceImplosionProjectile(EntityType<? extends Projectile> entityType, Level level) {
+        super(entityType, level);
+    }
+    private static final EntityDataAccessor<Integer> TIMER = SynchedEntityData.defineId(BlackIceImplosionProjectile.class, EntityDataSerializers.INT);
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(TIMER, 0)
+                .build();
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        int timer = this.getEntityData().get(TIMER);
+
+        if (timer == 10)
+        {
+            AABB mobs = new AABB(
+                    this.position().add(new Vec3(-3, -3, -3)),
+                    this.position().add(new Vec3(3, 3, 3))
+            );
+
+            for (Entity mob : level().getEntitiesOfClass(Mob.class, mobs))
+            {
+                mob.hurt(mob.damageSources().magic(), 6);
+            }
+
+            this.remove(RemovalReason.DISCARDED);
+        }
+        else
+        {
+            for (int i = 0; i < 3; i++) {
+                Vec3 pos = this.position().add(new Vec3(
+                        this.random.nextInt(-20, 20) / 5.0,
+                        this.random.nextInt(-20, 20) / 5.0,
+                        this.random.nextInt(-20, 20) / 5.0
+                ));
+
+                Vec3 vel = this.position().subtract(pos).multiply(0.2, 0.2, 0.2);
+
+                level().addParticle(ModParticles.BLACK_ICE_AOE.get(), true, pos.x, pos.y, pos.z, vel.x, vel.y, vel.z);
+            }
+        }
+
+        this.getEntityData().set(TIMER, timer + 1);
+    }
+}

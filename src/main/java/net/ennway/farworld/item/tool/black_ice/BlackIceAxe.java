@@ -1,10 +1,14 @@
 package net.ennway.farworld.item.tool.black_ice;
 
+import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
+import net.ennway.farworld.registries.ModEntities;
 import net.ennway.farworld.registries.sets.SetTiers;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 public class BlackIceAxe extends AxeItem {
@@ -18,5 +22,15 @@ public class BlackIceAxe extends AxeItem {
                                 new AttributeModifier(BASE_ATTACK_SPEED_ID, -3.1, AttributeModifier.Operation.ADD_VALUE),
                                 EquipmentSlotGroup.MAINHAND)
                 .build()));
+    }
+
+    @Override
+    public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        super.postHurtEnemy(stack, target, attacker);
+
+        BlackIceImplosionProjectile proj = new BlackIceImplosionProjectile(ModEntities.BLACK_ICE_AOE_ENTITY.get(), target.level());
+        proj.setPos(target.position());
+
+        target.level().addFreshEntity(proj);
     }
 }

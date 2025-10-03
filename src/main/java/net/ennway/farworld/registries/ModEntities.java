@@ -11,12 +11,15 @@ import net.ennway.farworld.entity.custom.BloomedEntity;
 import net.ennway.farworld.entity.custom.BrittleEntity;
 import net.ennway.farworld.entity.custom.DustbugEntity;
 import net.ennway.farworld.entity.custom.SoulGolemEntity;
+import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
 import net.ennway.farworld.registries.entity_definitions.MobLayerDefinition;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
@@ -69,4 +72,11 @@ public class ModEntities {
                     .sized(1.2f, 0.15f)
                     .eyeHeight(0.1f)
                     .build("dustbug"));
+
+    //region Projectiles
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BlackIceImplosionProjectile>> BLACK_ICE_AOE_ENTITY = ENTITY_TYPES.register(
+            "black_ice_aoe", () -> EntityType.Builder.of(BlackIceImplosionProjectile::new, MobCategory.MISC).build("black_ice_aoe"));
+
+    //endregion
 }

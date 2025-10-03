@@ -61,6 +61,10 @@ public class ModParticles {
             "obsidian_shatter",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> BLACK_ICE_AOE = PARTICLE_TYPES.register(
+            "black_ice_aoe_particle",
+            () -> new SimpleParticleType(false)
+    );
     public static final Supplier<SimpleParticleType> GLITTERING_PARTICLE = PARTICLE_TYPES.register(
             "glittering_particle",
             () -> new SimpleParticleType(false)

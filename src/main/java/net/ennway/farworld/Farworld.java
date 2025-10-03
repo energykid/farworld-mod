@@ -8,6 +8,7 @@ import net.ennway.farworld.entity.custom.BrittleEntity;
 import net.ennway.farworld.entity.custom.DustbugEntity;
 import net.ennway.farworld.registries.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -244,6 +245,7 @@ public class Farworld
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            EntityRenderers.register(ModEntities.BLACK_ICE_AOE_ENTITY.get(), NoopRenderer::new);
             EntityRenderers.register(ModEntities.BLOOMED.get(), BloomedRenderer::new);
             EntityRenderers.register(ModEntities.BRITTLE.get(), BrittleRenderer::new);
             EntityRenderers.register(ModEntities.DUSTBUG.get(), DustbugRenderer::new);
