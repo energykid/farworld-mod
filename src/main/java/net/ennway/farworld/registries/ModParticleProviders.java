@@ -16,6 +16,7 @@ public class ModParticleProviders {
         event.registerSpriteSet(ModParticles.PARALYSIS.get(), ParalysisParticleProvider::new);
 
         event.registerSpriteSet(ModParticles.BLACK_ICE_AOE.get(), BlackIceParticleProvider::new);
+        event.registerSpriteSet(ModParticles.BLACK_ICE_WORMHOLE.get(), BlackIceWormholeProvider::new);
 
         event.registerSpriteSet(ModParticles.PHOSPHEN_PARTICLE.get(), PhosphenParticleProvider::new);
 

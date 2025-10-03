@@ -14,18 +14,18 @@ import net.minecraft.client.renderer.texture.TextureManager;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
-public class ObsidianShatterParticle extends TextureSheetParticle {
+public class BlackIceWormhole extends TextureSheetParticle {
 
     private final SpriteSet spriteSet;
-    public ObsidianShatterParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
+    public BlackIceWormhole(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z);
         this.spriteSet = spriteSet;
 
         this.hasPhysics = false;
 
-        this.lifetime = level.getRandom().nextInt(5, 8);
+        this.lifetime = 7;
 
-        this.scale(8f);
+        this.scale(9f);
 
         this.setSpriteFromAge(spriteSet);
     }
@@ -39,9 +39,29 @@ public class ObsidianShatterParticle extends TextureSheetParticle {
         super.tick();
     }
 
+
     @Override
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_LIT;
+    public @NotNull ParticleRenderType getRenderType() {
+
+        Vector3f v3 = new Vector3f(1f, 1f, 1f);
+
+        return new ParticleRenderType() {
+            public BufferBuilder begin(@NotNull Tesselator tesselator, @NotNull TextureManager textureManager) {
+                RenderSystem.disableBlend();
+                RenderSystem.depthMask(true);
+                RenderSystem.setShaderLights(v3, v3);
+                RenderSystem.setShaderTexture(0, TextureAtlas.LOCATION_PARTICLES);
+                return tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.PARTICLE);
+            }
+
+            public String toString() {
+                return "PARTICLE_SHEET_LIT";
+            }
+
+            public boolean isTranslucent() {
+                return false;
+            }
+        };
     }
 }
 

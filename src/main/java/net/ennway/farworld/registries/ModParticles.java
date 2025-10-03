@@ -65,6 +65,10 @@ public class ModParticles {
             "black_ice_aoe_particle",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> BLACK_ICE_WORMHOLE = PARTICLE_TYPES.register(
+            "black_ice_wormhole",
+            () -> new SimpleParticleType(false)
+    );
     public static final Supplier<SimpleParticleType> GLITTERING_PARTICLE = PARTICLE_TYPES.register(
             "glittering_particle",
             () -> new SimpleParticleType(false)

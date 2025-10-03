@@ -41,6 +41,9 @@ public class ModSounds {
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");
     public static final Supplier<SoundEvent> COBALT_HIT = createSoundEvent("cobalt_hit");
 
+    public static final Supplier<SoundEvent> BLACK_ICE_OUTWARDS = createSoundEvent("black_ice_outwards");
+    public static final Supplier<SoundEvent> BLACK_ICE_INWARDS = createSoundEvent("black_ice_inwards");
+
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_IDLE = createSoundEvent("bystone_portal_idle");
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_ENTER = createSoundEvent("bystone_portal_enter");
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_EXIT = createSoundEvent("bystone_portal_exit");

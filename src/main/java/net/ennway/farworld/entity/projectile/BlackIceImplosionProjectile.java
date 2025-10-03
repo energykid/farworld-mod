@@ -8,6 +8,7 @@ import net.ennway.farworld.entity.custom.BrittleEntity;
 import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModEntities;
 import net.ennway.farworld.registries.ModParticles;
+import net.ennway.farworld.registries.ModSounds;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -21,6 +22,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -50,8 +53,16 @@ public class BlackIceImplosionProjectile extends Projectile {
         super.tick();
         int timer = this.getEntityData().get(TIMER);
 
-        if (timer == 10)
+        if (timer == 0) {
+            this.playSound(ModSounds.BLACK_ICE_INWARDS.get());
+        }
+        if (timer == 6)
         {
+            this.playSound(ModSounds.BLACK_ICE_OUTWARDS.get());
+
+            this.level().getServer().getLevel(this.level().dimension()).sendParticles(ModParticles.BLACK_ICE_WORMHOLE.get(),
+                    this.position().x, this.position().y, this.position().z, 1, 0, 0, 0, 0);
+
             AABB mobs = new AABB(
                     this.position().add(new Vec3(-3, -3, -3)),
                     this.position().add(new Vec3(3, 3, 3))
@@ -62,20 +73,23 @@ public class BlackIceImplosionProjectile extends Projectile {
                 mob.hurt(mob.damageSources().magic(), 6);
             }
 
+
             this.remove(RemovalReason.DISCARDED);
         }
         else
         {
+            int dist = (int)Mth.lerp(((float)timer) / 6.0, 5f, 20f);
+
             for (int i = 0; i < 3; i++) {
                 Vec3 pos = this.position().add(new Vec3(
-                        this.random.nextInt(-20, 20) / 5.0,
-                        this.random.nextInt(-20, 20) / 5.0,
-                        this.random.nextInt(-20, 20) / 5.0
+                        this.random.nextInt(-dist, dist) / 5.0,
+                        this.random.nextInt(-dist, dist) / 5.0,
+                        this.random.nextInt(-dist, dist) / 5.0
                 ));
 
                 Vec3 vel = this.position().subtract(pos).multiply(0.2, 0.2, 0.2);
 
-                level().addParticle(ModParticles.BLACK_ICE_AOE.get(), true, pos.x, pos.y, pos.z, vel.x, vel.y, vel.z);
+                this.level().addParticle(ModParticles.BLACK_ICE_AOE.get(), true, pos.x, pos.y, pos.z, vel.x, vel.y, vel.z);
             }
         }
 

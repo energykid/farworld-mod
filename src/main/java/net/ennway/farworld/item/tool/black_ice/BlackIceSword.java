@@ -10,6 +10,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.phys.Vec3;
 
 public class BlackIceSword extends SwordItem {
     public BlackIceSword(Properties properties) {
@@ -29,7 +30,7 @@ public class BlackIceSword extends SwordItem {
         super.postHurtEnemy(stack, target, attacker);
 
         BlackIceImplosionProjectile proj = new BlackIceImplosionProjectile(ModEntities.BLACK_ICE_AOE_ENTITY.get(), target.level());
-        proj.setPos(target.position());
+        proj.setPos(target.position().add(new Vec3(0.0, target.getBbHeight() / 2.0, 0.0)));
 
         target.level().addFreshEntity(proj);
     }

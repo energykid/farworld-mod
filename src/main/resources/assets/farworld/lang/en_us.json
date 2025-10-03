@@ -176,6 +176,7 @@
   "lore.farworld.brittle" : "A decrepit, crumbling skeleton from a corpse long dehydrated. Even so much as touching it makes you feel weak.",
   "entity.farworld.dustbug" : "Dustbug",
   "lore.farworld.dustbug" : "A larger Silverfish which will run away from you. If disturbed, it will send its brothers and sisters to fight you in schools.",
+  "entity.farworld.black_ice_aoe" : "Black Ice Wormhole",
 
   "enchantment.farworld.scything" : "Scything",
   "enchantment.farworld.scything.desc" : "Negates mining speed decreases while in precision mode.",

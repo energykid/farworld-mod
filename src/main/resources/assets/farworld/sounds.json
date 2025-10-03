@@ -74,5 +74,12 @@
   },
   "bystone_portal_exit": {
     "sounds": ["farworld:bystone_portal_exit"]
+  },
+
+  "black_ice_inwards": {
+    "sounds": ["farworld:black_ice_inwards"]
+  },
+  "black_ice_outwards": {
+    "sounds": ["farworld:black_ice_outwards"]
   }
 }
