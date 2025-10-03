@@ -30,7 +30,7 @@
   },
 
   "whirlingworld": {
-    "sounds": ["farworld:whirlingworld"]
+    "sounds": ["farworld:music/whirlingworld"]
   },
 
   "dusty_shelves_ambiance": {
@@ -49,7 +49,7 @@
     "stream": true
   },
   "music.lush_shallows": {
-    "sounds": ["farworld:music/unfettered", "farworld:music/deeplost"],
+    "sounds": ["farworld:music/unfettered", "farworld:music/forestry"],
     "stream": true
   },
 
