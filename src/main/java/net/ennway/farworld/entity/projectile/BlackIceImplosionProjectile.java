@@ -53,15 +53,14 @@ public class BlackIceImplosionProjectile extends Projectile {
         super.tick();
         int timer = this.getEntityData().get(TIMER);
 
-        if (timer == 0) {
+        if (timer == 1) {
             this.playSound(ModSounds.BLACK_ICE_INWARDS.get());
         }
         if (timer == 6)
         {
             this.playSound(ModSounds.BLACK_ICE_OUTWARDS.get());
 
-            this.level().getServer().getLevel(this.level().dimension()).sendParticles(ModParticles.BLACK_ICE_WORMHOLE.get(),
-                    this.position().x, this.position().y, this.position().z, 1, 0, 0, 0, 0);
+            this.level().addParticle(ModParticles.BLACK_ICE_WORMHOLE.get(), this.position().x, this.position().y, this.position().z, 0,0,0);
 
             AABB mobs = new AABB(
                     this.position().add(new Vec3(-3, -3, -3)),
@@ -72,11 +71,8 @@ public class BlackIceImplosionProjectile extends Projectile {
             {
                 mob.hurt(mob.damageSources().magic(), 6);
             }
-
-
-            this.remove(RemovalReason.DISCARDED);
         }
-        else
+        if (timer < 4)
         {
             int dist = (int)Mth.lerp(((float)timer) / 6.0, 5f, 20f);
 
@@ -91,6 +87,11 @@ public class BlackIceImplosionProjectile extends Projectile {
 
                 this.level().addParticle(ModParticles.BLACK_ICE_AOE.get(), true, pos.x, pos.y, pos.z, vel.x, vel.y, vel.z);
             }
+        }
+
+        if (timer == 7)
+        {
+            this.remove(RemovalReason.DISCARDED);
         }
 
         this.getEntityData().set(TIMER, timer + 1);

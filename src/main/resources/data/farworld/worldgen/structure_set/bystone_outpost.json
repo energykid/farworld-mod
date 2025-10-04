@@ -2,14 +2,14 @@
   "placement": {
     "type": "minecraft:random_spread",
     "salt": 14357921,
-    "separation": 3,
-    "spacing": 7,
+    "separation": 8,
+    "spacing": 12,
     "frequency_reduction_method": "legacy_type_2",
-    "frequency": 0.15
+    "frequency": 0.08
   },
   "structures": [
     {
-      "structure": "farworld:tuff_spike",
+      "structure": "farworld:bystone_outpost",
       "weight": 1
     }
   ]

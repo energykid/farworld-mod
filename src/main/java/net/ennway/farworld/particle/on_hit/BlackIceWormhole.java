@@ -23,11 +23,17 @@ public class BlackIceWormhole extends TextureSheetParticle {
 
         this.hasPhysics = false;
 
-        this.lifetime = 7;
+        this.lifetime = 11;
 
-        this.scale(9f);
+        this.quadSize = 1.2f;
+        this.scale(1.7f);
 
         this.setSpriteFromAge(spriteSet);
+    }
+
+    @Override
+    public int getLightColor(float partialTick) {
+        return 15728880;
     }
 
     @Override
@@ -42,26 +48,7 @@ public class BlackIceWormhole extends TextureSheetParticle {
 
     @Override
     public @NotNull ParticleRenderType getRenderType() {
-
-        Vector3f v3 = new Vector3f(1f, 1f, 1f);
-
-        return new ParticleRenderType() {
-            public BufferBuilder begin(@NotNull Tesselator tesselator, @NotNull TextureManager textureManager) {
-                RenderSystem.disableBlend();
-                RenderSystem.depthMask(true);
-                RenderSystem.setShaderLights(v3, v3);
-                RenderSystem.setShaderTexture(0, TextureAtlas.LOCATION_PARTICLES);
-                return tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.PARTICLE);
-            }
-
-            public String toString() {
-                return "PARTICLE_SHEET_LIT";
-            }
-
-            public boolean isTranslucent() {
-                return false;
-            }
-        };
+        return ParticleRenderType.PARTICLE_SHEET_LIT;
     }
 }
 

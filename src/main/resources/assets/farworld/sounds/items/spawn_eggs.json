@@ -1,7 +1,9 @@
 {
   "keys": [
     "farworld:bloomed_spawn_egg",
-    "farworld:soul_golem_spawn_egg"
+    "farworld:soul_golem_spawn_egg",
+    "farworld:brittle_spawn_egg",
+    "farworld:dustbug_spawn_egg"
   ],
   "soundEvent": "minecraft:block.sniffer_egg.plop"
 }

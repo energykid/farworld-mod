@@ -203,6 +203,9 @@ public class Farworld
             event.insertAfter(ModItems.GLOOMSTONE_SWORD.toStack(), ModItems.COBALT_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GLOOMSTONE_AXE.toStack(), ModItems.COBALT_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
+            event.insertAfter(Items.NETHERITE_SWORD.getDefaultInstance(), ModItems.BLACK_ICE_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.NETHERITE_AXE.getDefaultInstance(), ModItems.BLACK_ICE_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.TURTLE_HELMET.getDefaultInstance(), ModItems.BREEZE_BOOTS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.DIAMOND_BOOTS.getDefaultInstance(), ModItems.SOUL_STEEL_HELMET.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

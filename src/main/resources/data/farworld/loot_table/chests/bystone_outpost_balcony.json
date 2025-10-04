@@ -1,0 +1,85 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 3,
+      "bonus_rolls": {
+        "type": "minecraft:uniform",
+        "min": 0,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farworld:cobalt_ingot",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "farworld:brittle_powder",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 5,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farworld:cobalt_pickaxe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "farworld:cobalt_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "farworld:cobalt_sword"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "farworld:cobalt_hoe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "farworld:cobalt_shovel"
+        }
+      ]
+    },
+    {
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:echo_shard"
+        }
+      ]
+    }
+  ],
+  "functions": [],
+  "random_sequence": "minecraft:chests/abandoned_mineshaft"
+}

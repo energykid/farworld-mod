@@ -22,7 +22,7 @@ public class BlackIceParticle extends TextureSheetParticle {
         super(level, x, y, z);
         this.spriteSet = spriteSet;
         this.scale(1 + (level.getRandom().nextFloat() * 1));
-        this.lifetime = level.getRandom().nextInt(10, 15);
+        this.lifetime = 5;
         this.xd = vel.x;
         this.yd = vel.y;
         this.zd = vel.z;

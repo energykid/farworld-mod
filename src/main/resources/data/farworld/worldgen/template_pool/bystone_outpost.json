@@ -1,0 +1,18 @@
+{
+  "name": "bystone_outpost",
+  "fallback": "farworld:bystone_outpost",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "farworld:bystone_outpost",
+        "processors": {
+          "processors": []
+        },
+        "override_liquid_settings": "ignore_waterlogging"
+      }
+    }
+  ]
+}
