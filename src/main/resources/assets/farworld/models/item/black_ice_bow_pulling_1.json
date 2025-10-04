@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "farworld:item/black_ice_bow_pulling_1"
+  }
+}

@@ -47,26 +47,7 @@ public class WishbonePortalParticle extends TextureSheetParticle {
 
     @Override
     public @NotNull ParticleRenderType getRenderType() {
-
-        Vector3f v3 = new Vector3f(1f, 1f, 1f);
-
-        return new ParticleRenderType() {
-            public BufferBuilder begin(@NotNull Tesselator tesselator, @NotNull TextureManager textureManager) {
-                RenderSystem.disableBlend();
-                RenderSystem.depthMask(true);
-                RenderSystem.setShaderLights(v3, v3);
-                RenderSystem.setShaderTexture(0, TextureAtlas.LOCATION_PARTICLES);
-                return tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.PARTICLE);
-            }
-
-            public String toString() {
-                return "PARTICLE_SHEET_LIT";
-            }
-
-            public boolean isTranslucent() {
-                return false;
-            }
-        };
+        return ParticleRenderType.PARTICLE_SHEET_LIT;
     }
 }
 

@@ -205,6 +205,8 @@ public class Farworld
 
             event.insertAfter(Items.NETHERITE_SWORD.getDefaultInstance(), ModItems.BLACK_ICE_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.NETHERITE_AXE.getDefaultInstance(), ModItems.BLACK_ICE_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.BOW.getDefaultInstance(), ModItems.BLACK_ICE_BOW.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.CROSSBOW.getDefaultInstance(), ModItems.BLACK_ICE_CROSSBOW.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.TURTLE_HELMET.getDefaultInstance(), ModItems.BREEZE_BOOTS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 

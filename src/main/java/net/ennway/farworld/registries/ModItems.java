@@ -1,6 +1,5 @@
 package net.ennway.farworld.registries;
 
-import com.mojang.authlib.yggdrasil.response.UserAttributesResponse;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.*;
 import net.ennway.farworld.item.AccessoryItem;
@@ -51,7 +50,7 @@ public class ModItems
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> COBALT_INGOT = ITEMS_ALL.register("cobalt_ingot",
             () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> BLACK_ICE_SHARDS = ITEMS_ALL.register("black_ice_shards",
+    public static final DeferredItem<Item> BLACK_ICE_SHARD = ITEMS_ALL.register("black_ice_shard",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BLACK_ICE_GEM = ITEMS_ALL.register("black_ice_gem",
             () -> new Item(new Item.Properties()));
@@ -177,6 +176,14 @@ public class ModItems
     public static final DeferredItem<Item> BLACK_ICE_HOE = ITEMS_ALL.register(
             "black_ice_hoe",
             () -> new BlackIceHoe(new Item.Properties())
+    );
+    public static final DeferredItem<Item> BLACK_ICE_BOW = ITEMS_ALL.register(
+            "black_ice_bow",
+            () -> new BlackIceBow(new Item.Properties())
+    );
+    public static final DeferredItem<Item> BLACK_ICE_CROSSBOW = ITEMS_ALL.register(
+            "black_ice_crossbow",
+            () -> new BlackIceCrossbow(new Item.Properties())
     );
     //endregion
 

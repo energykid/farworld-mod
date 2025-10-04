@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/crossbow",
+  "textures": {
+    "layer0": "farworld:item/black_ice_crossbow_arrow"
+  }
+}

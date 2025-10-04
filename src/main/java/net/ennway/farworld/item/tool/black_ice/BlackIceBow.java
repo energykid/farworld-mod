@@ -1,0 +1,35 @@
+package net.ennway.farworld.item.tool.black_ice;
+
+import net.ennway.farworld.item.tool.AbstractBowItem;
+import net.ennway.farworld.registries.ModItems;
+import net.ennway.farworld.registries.ModSounds;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
+
+public class BlackIceBow extends AbstractBowItem {
+
+    public BlackIceBow(Item.Properties properties) {
+        super(1600, Rarity.UNCOMMON);
+    }
+
+    @Override
+    public boolean isValidRepairItem(ItemStack stack, ItemStack repairCandidate) {
+        return stack.is(ModItems.BLACK_ICE_GEM);
+    }
+
+    @Override
+    public void onDraw(Level level, LivingEntity livingEntity) {
+        livingEntity.playSound(ModSounds.BLACK_ICE_INWARDS.get());
+    }
+
+    @Override
+    public void onShoot(Level level, LivingEntity livingEntity) {
+        livingEntity.playSound(ModSounds.BLACK_ICE_OUTWARDS.get());
+    }
+}

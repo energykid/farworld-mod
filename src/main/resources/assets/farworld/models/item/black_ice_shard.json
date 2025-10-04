@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "farworld:item/black_ice_shards"
+    "layer0": "farworld:item/black_ice_shard"
   }
 }
