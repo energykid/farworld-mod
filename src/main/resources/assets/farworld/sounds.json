@@ -81,5 +81,11 @@
   },
   "black_ice_outwards": {
     "sounds": ["farworld:black_ice_outwards"]
+  },
+  "void_bow_release": {
+    "sounds": ["farworld:void_bow_release"]
+  },
+  "void_crossbow_inwards": {
+    "sounds": ["farworld:void_crossbow_inwards"]
   }
 }

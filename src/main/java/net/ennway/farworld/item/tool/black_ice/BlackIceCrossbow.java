@@ -20,7 +20,7 @@ import java.util.Optional;
 public class BlackIceCrossbow extends AbstractCrossbowItem {
 
     public BlackIceCrossbow(Item.Properties properties) {
-        super(1800, Rarity.UNCOMMON);
+        super(1800, Rarity.UNCOMMON, 1.35f);
     }
 
     @Override
@@ -30,16 +30,11 @@ public class BlackIceCrossbow extends AbstractCrossbowItem {
 
     @Override
     public void onBeginLoad(Level level, LivingEntity livingEntity, ItemStack stack) {
-        livingEntity.playSound(ModSounds.BLACK_ICE_OUTWARDS.get());
-    }
-
-    @Override
-    public void onLoad(Level level, LivingEntity livingEntity, ItemStack stack) {
-        livingEntity.playSound(ModSounds.BLACK_ICE_OUTWARDS.get(), 1, 1.5f);
+        level.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ModSounds.VOID_CROSSBOW_INWARDS.get(), livingEntity.getSoundSource());
     }
 
     @Override
     public void onShoot(Level level, LivingEntity livingEntity) {
-        livingEntity.playSound(ModSounds.BLACK_ICE_OUTWARDS.get());
+        level.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ModSounds.VOID_BOW_RELEASE.get(), livingEntity.getSoundSource());
     }
 }

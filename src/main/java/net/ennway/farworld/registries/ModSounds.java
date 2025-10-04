@@ -44,6 +44,9 @@ public class ModSounds {
     public static final Supplier<SoundEvent> BLACK_ICE_OUTWARDS = createSoundEvent("black_ice_outwards");
     public static final Supplier<SoundEvent> BLACK_ICE_INWARDS = createSoundEvent("black_ice_inwards");
 
+    public static final Supplier<SoundEvent> VOID_BOW_RELEASE = createSoundEvent("void_bow_release");
+    public static final Supplier<SoundEvent> VOID_CROSSBOW_INWARDS = createSoundEvent("void_crossbow_inwards");
+
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_IDLE = createSoundEvent("bystone_portal_idle");
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_ENTER = createSoundEvent("bystone_portal_enter");
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_EXIT = createSoundEvent("bystone_portal_exit");

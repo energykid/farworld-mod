@@ -83,7 +83,6 @@ public class Farworld
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
     }
 
     // Add the example block item to the building blocks tab
@@ -255,6 +254,8 @@ public class Farworld
             EntityRenderers.register(ModEntities.BRITTLE.get(), BrittleRenderer::new);
             EntityRenderers.register(ModEntities.DUSTBUG.get(), DustbugRenderer::new);
             EntityRenderers.register(ModEntities.SOUL_GOLEM.get(), SoulGolemRenderer::new);
+
+            ModItemProperties.addCustomItemProperties();
         }
     }
 }
