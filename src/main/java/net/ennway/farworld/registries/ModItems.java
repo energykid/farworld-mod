@@ -58,6 +58,8 @@ public class ModItems
             ModItems::createSoulSteelUpgradeTemplate);
     public static final DeferredItem<Item> GLOOMSTONE_UPGRADE_SMITHING_TEMPLATE = ITEMS_ALL.register("gloomstone_upgrade_smithing_template",
             ModItems::createGloomstoneUpgradeTemplate);
+    public static final DeferredItem<Item> BLACK_ICE_UPGRADE_SMITHING_TEMPLATE = ITEMS_ALL.register("black_ice_upgrade_smithing_template",
+            ModItems::createBlackIceUpgradeTemplate);
 
     //region Soul Steel Gear
     public static final DeferredItem<Item> SOUL_STEEL_SWORD = ITEMS_ALL.register(
@@ -131,6 +133,34 @@ public class ModItems
             "cobalt_hoe",
             () -> new CobaltHoe(new Item.Properties())
     );
+
+    public static final DeferredItem<ArmorItem> COBALT_HELMET = ITEMS_ALL.register(
+            "cobalt_helmet",
+            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
+                    ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(312))
+    );
+
+    public static final DeferredItem<ArmorItem> COBALT_CHESTPLATE = ITEMS_ALL.register(
+            "cobalt_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
+                    ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(428))
+    );
+
+    public static final DeferredItem<ArmorItem> COBALT_LEGGINGS = ITEMS_ALL.register(
+            "cobalt_leggings",
+            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
+                    ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(350))
+    );
+
+    public static final DeferredItem<ArmorItem> COBALT_BOOTS = ITEMS_ALL.register(
+            "cobalt_boots",
+            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
+                    ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(290))
+    );
     //endregion
 
     //region Gloomstone Gear
@@ -184,6 +214,34 @@ public class ModItems
     public static final DeferredItem<Item> BLACK_ICE_CROSSBOW = ITEMS_ALL.register(
             "black_ice_crossbow",
             () -> new BlackIceCrossbow(new Item.Properties())
+    );
+
+    public static final DeferredItem<ArmorItem> BLACK_ICE_HELMET = ITEMS_ALL.register(
+            "black_ice_helmet",
+            () -> new ArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
+                    ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(712))
+    );
+
+    public static final DeferredItem<ArmorItem> BLACK_ICE_CHESTPLATE = ITEMS_ALL.register(
+            "black_ice_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
+                    ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(828))
+    );
+
+    public static final DeferredItem<ArmorItem> BLACK_ICE_LEGGINGS = ITEMS_ALL.register(
+            "black_ice_leggings",
+            () -> new ArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
+                    ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(750))
+    );
+
+    public static final DeferredItem<ArmorItem> BLACK_ICE_BOOTS = ITEMS_ALL.register(
+            "black_ice_boots",
+            () -> new ArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
+                    ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(690))
     );
     //endregion
 
@@ -272,34 +330,6 @@ public class ModItems
             "magic_spur",
             () -> new MagicSpur(new Item.Properties().attributes(ItemAttributeModifiers.builder().build()))
     );
-
-    public static final DeferredItem<ArmorItem> COBALT_HELMET = ITEMS_ALL.register(
-            "cobalt_helmet",
-            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
-                    ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(312))
-    );
-
-    public static final DeferredItem<ArmorItem> COBALT_CHESTPLATE = ITEMS_ALL.register(
-            "cobalt_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
-                    ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(428))
-    );
-
-    public static final DeferredItem<ArmorItem> COBALT_LEGGINGS = ITEMS_ALL.register(
-            "cobalt_leggings",
-            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
-                    ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(350))
-    );
-
-    public static final DeferredItem<ArmorItem> COBALT_BOOTS = ITEMS_ALL.register(
-            "cobalt_boots",
-            () -> new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL,
-                    ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(290))
-    );
     //endregion
 
     public static final DeferredItem<ArmorItem> BREEZE_BOOTS = ITEMS_ALL.register(
@@ -325,6 +355,16 @@ public class ModItems
                 Component.translatable("item.farworld.gloomstone_upgrade_smithing_template.additions_slot_description"),
                 SmithingUtils.equipmentIconListNoArmor(),
                 SmithingUtils.gloomsporeIcon());
+    }
+    public static SmithingTemplateItem createBlackIceUpgradeTemplate() {
+        return new SmithingTemplateItem(
+                Component.translatable("item.farworld.black_ice_upgrade_smithing_template.applies_to"),
+                Component.translatable("item.farworld.black_ice_upgrade_smithing_template.ingredient"),
+                Component.translatable("item.farworld.black_ice_upgrade_smithing_template.type"),
+                Component.translatable("item.farworld.black_ice_upgrade_smithing_template.base_slot_description"),
+                Component.translatable("item.farworld.black_ice_upgrade_smithing_template.additions_slot_description"),
+                SmithingUtils.equipmentIconListNoArmor(),
+                SmithingUtils.blackIceGemIcon());
     }
 
     public static final DeferredItem<Item> GLOOMCAP = ITEMS_ALL.register("gloomcap",

@@ -48,22 +48,6 @@ public class ItemGenerator extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        /*
-        trimmedArmorItem(ModItems.COBALT_HELMET);
-        trimmedArmorItem(ModItems.COBALT_CHESTPLATE);
-        trimmedArmorItem(ModItems.COBALT_LEGGINGS);
-        trimmedArmorItem(ModItems.COBALT_BOOTS);
-        basicItem(ModItems.BLACK_ICE_SHARD.get());
-        basicItem(ModItems.BLACK_ICE_GEM.get());
-
-        handheldItem(ModItems.BLACK_ICE_AXE.get());
-        handheldItem(ModItems.BLACK_ICE_PICKAXE.get());
-        handheldItem(ModItems.BLACK_ICE_SHOVEL.get());
-        handheldItem(ModItems.BLACK_ICE_SWORD.get());
-        handheldItem(ModItems.BLACK_ICE_HOE.get());
-        */
-
-
     }
 
     // Shoutout to El_Redstoniano for making this

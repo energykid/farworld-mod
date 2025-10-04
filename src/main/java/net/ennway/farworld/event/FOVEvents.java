@@ -57,8 +57,6 @@ public class FOVEvents {
     @SubscribeEvent
     public static void fov(ComputeFovModifierEvent event)
     {
-        event.setNewFovModifier(event.getNewFovModifier() * bowMod(event.getPlayer()));
-
         if (event.getPlayer().getInBlockState().is(ModBlocks.BYSTONE_PORTAL.get())) {
             bystoneFOVMod = Mth.lerp(0.2f, bystoneFOVMod, (float)(event.getPlayer().getData(ModAttachments.DIMENSION_TRANSITION_VISUAL.get()) / 80f));
         }
@@ -66,6 +64,6 @@ public class FOVEvents {
             bystoneFOVMod = Mth.lerp(0.2f, bystoneFOVMod, 0f);
         }
 
-        event.setNewFovModifier(event.getNewFovModifier() * (1f - bystoneFOVMod));
+        event.setNewFovModifier(event.getNewFovModifier() * bowMod(event.getPlayer()) * (1f - bystoneFOVMod));
     }
 }

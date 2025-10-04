@@ -12,7 +12,7 @@ public class CobaltAxe extends AxeItem {
         super(SetTiers.COBALT_TIER, properties
                 .attributes(ItemAttributeModifiers.builder()
                         .add(Attributes.ATTACK_DAMAGE,
-                                new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 8.5, AttributeModifier.Operation.ADD_VALUE),
+                                new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 8, AttributeModifier.Operation.ADD_VALUE),
                                 EquipmentSlotGroup.MAINHAND)
                         .add(Attributes.ATTACK_SPEED,
                                 new AttributeModifier(BASE_ATTACK_SPEED_ID, -3.1, AttributeModifier.Operation.ADD_VALUE),

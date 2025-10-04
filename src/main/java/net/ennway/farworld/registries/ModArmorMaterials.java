@@ -34,6 +34,15 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.BODY, 11);
             }), 7, 2f, 0.05f, ModItems.COBALT_INGOT);
 
+    public static final Holder<ArmorMaterial> BLACK_ICE_ARMOR_MATERIAL = register("black_ice",
+            Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
+                attribute.put(ArmorItem.Type.BOOTS, 4);
+                attribute.put(ArmorItem.Type.LEGGINGS, 7);
+                attribute.put(ArmorItem.Type.CHESTPLATE, 9);
+                attribute.put(ArmorItem.Type.HELMET, 4);
+                attribute.put(ArmorItem.Type.BODY, 15);
+            }), 20, 4f, 0.1f, ModItems.BLACK_ICE_GEM);
+
     public static final Holder<ArmorMaterial> BREEZE_ARMOR_MATERIAL = register("breeze",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
                 attribute.put(ArmorItem.Type.BOOTS, 1);
