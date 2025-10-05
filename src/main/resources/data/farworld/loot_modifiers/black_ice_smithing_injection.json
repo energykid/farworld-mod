@@ -6,7 +6,7 @@
       "loot_table_id": "minecraft:chests/end_city_treasure"
     }
   ],
-  "chance": 0.15,
+  "chance": 0.5,
   "amount": 1,
   "item_type": "farworld:black_ice_upgrade_smithing_template"
 }

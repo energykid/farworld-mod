@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "minecraft:small_end_islands",
+  "features": "farworld:black_ice_clumps_placed",
+  "step": "top_layer_modification"
+}
