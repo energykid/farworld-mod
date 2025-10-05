@@ -12,24 +12,19 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Shadow;
 
 public class NetheriteCrossbow extends AbstractCrossbowItem {
 
-    float kickback = 0.6f;
-
     public NetheriteCrossbow() {
         super(1800, Rarity.COMMON, 1.2f);
+        this.kickback = 0.5f;
+        this.kickbackYMod = 1.15f;
     }
 
     @Override
     public boolean isValidRepairItem(ItemStack stack, ItemStack repairCandidate) {
         return stack.is(Items.NETHERITE_INGOT);
-    }
-
-    @Override
-    public void performShooting(Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float velocity, float inaccuracy, @Nullable LivingEntity target) {
-        super.performShooting(level, shooter, hand, weapon, velocity, inaccuracy, target);
-        shooter.addDeltaMovement(shooter.getLookAngle().multiply(-kickback, -kickback, -kickback));
     }
 
     @Override

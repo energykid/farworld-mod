@@ -22,10 +22,10 @@ import java.util.Optional;
 
 public class BlackIceCrossbow extends AbstractCrossbowItem {
 
-    float kickback = 0.8f;
-
     public BlackIceCrossbow(Item.Properties properties) {
         super(1800, Rarity.UNCOMMON, 1.35f);
+        this.kickback = 0.5f;
+        this.kickbackYMod = 1.25f;
     }
 
     @Override
@@ -36,12 +36,6 @@ public class BlackIceCrossbow extends AbstractCrossbowItem {
     @Override
     public void onBeginLoad(Level level, LivingEntity livingEntity, ItemStack stack) {
         level.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ModSounds.VOID_CROSSBOW_INWARDS.get(), livingEntity.getSoundSource());
-    }
-
-    @Override
-    public void performShooting(Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float velocity, float inaccuracy, @Nullable LivingEntity target) {
-        super.performShooting(level, shooter, hand, weapon, velocity, inaccuracy, target);
-        shooter.addDeltaMovement(shooter.getLookAngle().multiply(-kickback, -kickback, -kickback));
     }
 
     @Override

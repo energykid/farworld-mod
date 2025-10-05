@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -25,6 +26,9 @@ import java.util.Optional;
 public class AbstractCrossbowItem extends CrossbowItem {
 
     public float velocityMultiplier = 1.0f;
+
+    public float kickback = 0.5f;
+    public float kickbackYMod = 1.5f;
 
     public AbstractCrossbowItem(int durability, Rarity rarity, float velMult) {
         super(new Properties()
@@ -62,6 +66,26 @@ public class AbstractCrossbowItem extends CrossbowItem {
 
         Vector3f vector3f2 = (new Vector3f(vector3f)).rotateAxis(1.5707964F, vector3f1.x, vector3f1.y, vector3f1.z);
         return (new Vector3f(vector3f)).rotateAxis(angle * 0.017453292F, vector3f2.x, vector3f2.y, vector3f2.z);
+    }
+
+    @Override
+    public void performShooting(Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float velocity, float inaccuracy, @Nullable LivingEntity target) {
+        super.performShooting(level, shooter, hand, weapon, velocity, inaccuracy, target);
+        if (kickback > 0f) {
+            if (!shooter.onGround()) {
+                if (shooter instanceof Player player) {
+                    if (!player.isCreative()) {
+                        if (kickback > 0f) {
+                            shooter.fallDistance = 0;
+                            shooter.addDeltaMovement(shooter.getLookAngle().multiply(-kickback, -kickback * kickbackYMod, -kickback));
+                        }
+                    }
+                } else {
+                    shooter.fallDistance = 0;
+                    shooter.addDeltaMovement(shooter.getLookAngle().multiply(-kickback, -kickback * kickbackYMod, -kickback));
+                }
+            }
+        }
     }
 
     private static float getRandomShotPitch(boolean isHighPitched, RandomSource random) {

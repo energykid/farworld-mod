@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "farworld:netherite_crossbow",
     "farworld:black_ice_crossbow"
   ]
 }
