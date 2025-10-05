@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "farworld:black_ice",
     "farworld:nether_iron_ore",
     "farworld:soul_steel_block",
     "farworld:cobalt_block",

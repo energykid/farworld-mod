@@ -156,6 +156,10 @@ public class Farworld
             event.insertAfter(Items.RAW_GOLD.getDefaultInstance(), ModItems.RAW_COBALT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.GOLD_INGOT.getDefaultInstance(), ModItems.COBALT_INGOT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.NETHERITE_INGOT.getDefaultInstance(), ModItems.SOUL_STEEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.NETHERITE_INGOT.getDefaultInstance(), ModItems.BLACK_ICE_SHARD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.BLACK_ICE_SHARD.toStack(), ModItems.BLACK_ICE_GEM.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.ANCIENT_DEBRIS.getDefaultInstance(), ModItems.BLACK_ICE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             // Pre-Netherite smithing templates
             event.insertBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.getDefaultInstance(), ModItems.SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "farworld:black_ice_upgrade_smithing_template"
+  },
+  "base": [
+    {
+      "item": "minecraft:netherite_chestplate"
+    },
+    {
+      "item": "farworld:soul_steel_chestplate"
+    }
+  ],
+  "addition": {
+    "item": "farworld:black_ice_gem"
+  },
+  "result": {
+    "id": "farworld:black_ice_chestplate",
+    "count": 1
+  }
+}

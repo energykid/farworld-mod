@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:soul_steel_block"
+    "farworld:soul_steel_block",
+    "farworld:black_ice"
   ]
 }

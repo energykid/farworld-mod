@@ -437,6 +437,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.COBALT_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE_CACHE = ITEMS_ALL.register("flowstone_cache",
             () -> new BlockItem(ModBlocks.FLOWSTONE_CACHE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> BLACK_ICE = ITEMS_ALL.register("black_ice",
+            () -> new BlockItem(ModBlocks.BLACK_ICE.get(), new Item.Properties()).asItem());
 
     public static final DeferredItem<Item> BLOOMED_SPAWN_EGG = ITEMS_ALL.register("bloomed_spawn_egg",
             () -> new SpawnEggItem(ModEntities.BLOOMED.get(), 0x9B691F, 0x9BFC1F, new Item.Properties()));

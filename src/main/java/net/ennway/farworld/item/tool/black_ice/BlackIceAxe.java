@@ -15,7 +15,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class BlackIceAxe extends AxeItem {
     public BlackIceAxe(Properties properties) {
-        super(SetTiers.COBALT_TIER, properties
+        super(SetTiers.BLACK_ICE_TIER, properties
                 .attributes(ItemAttributeModifiers.builder()
                         .add(Attributes.ATTACK_DAMAGE,
                                 new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 9, AttributeModifier.Operation.ADD_VALUE),

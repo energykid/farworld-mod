@@ -182,6 +182,8 @@
   "lore.farworld.hanging_flora" : "Flowering vines grown in the Lush Shallows.",
   "block.farworld.stonewood_sapling" : "Stonewood Sapling",
   "lore.farworld.stonewood_sapling" : "A sapling that grows into a Stonewood tree when planted on Flowstone or Lush Flowstone.",
+  "block.farworld.black_ice" : "Black Ice",
+  "lore.farworld.black_ice" : "A deposit of highly pressurized ice formed in the End's extreme conditions.",
   "block.farworld.echo_lantern" : "Echo Lantern",
   "lore.farworld.echo_lantern" : "A lantern infused with Echo Shards.",
   "block.farworld.bystone_portal" : "Bystone Portal",

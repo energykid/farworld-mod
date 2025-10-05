@@ -41,6 +41,14 @@ public class ModBlocks {
                     .noCollission()
                     .noOcclusion()));
 
+    public static final DeferredBlock<Block> BLACK_ICE = BLOCKS_ALL.register(
+            "black_ice",
+            registryName -> new HalfTransparentBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.GLASS)
+                    .strength(1.25F, 4.2F)
+                    .forceSolidOn()
+                    .requiresCorrectToolForDrops()));
+
     public static final DeferredBlock<Block> NETHER_IRON_ORE = BLOCKS_ALL.register(
             "nether_iron_ore",
             registryName -> new NetherIronOreBlock(BlockBehaviour.Properties.of()

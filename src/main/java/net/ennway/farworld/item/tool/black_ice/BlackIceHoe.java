@@ -10,7 +10,7 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 public class BlackIceHoe extends HoeItem {
     public BlackIceHoe(Properties properties) {
-        super(SetTiers.COBALT_TIER, properties
+        super(SetTiers.BLACK_ICE_TIER, properties
                 .attributes(ItemAttributeModifiers.builder()
                         .add(Attributes.ATTACK_DAMAGE,
                                 new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 0, AttributeModifier.Operation.ADD_VALUE),

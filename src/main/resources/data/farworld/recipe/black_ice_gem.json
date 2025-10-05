@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "black_ice",
+  "key": {
+    "#": {
+      "item": "farworld:black_ice_shard"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:black_ice_gem"
+  }
+}
