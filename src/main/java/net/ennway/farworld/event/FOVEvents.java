@@ -2,6 +2,7 @@ package net.ennway.farworld.event;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.block.dimensiontransitions.FarworldDimensionTransitions;
+import net.ennway.farworld.item.tool.AbstractBowItem;
 import net.ennway.farworld.registries.ModAttachments;
 import net.ennway.farworld.registries.ModBlocks;
 import net.ennway.farworld.registries.ModDataComponents;
@@ -26,16 +27,12 @@ import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 @EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public class FOVEvents {
 
-    public static final TagKey<Item> BOWS = TagKey.create(
-            BuiltInRegistries.ITEM.key(),
-            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "custom_bows"));
-
     public static float bowMod(Player player)
     {
         float f = 1.0F;
         ItemStack itemstack = player.getUseItem();
         if (player.isUsingItem()) {
-            if (itemstack.is(BOWS)) {
+            if (itemstack.getItem() instanceof AbstractBowItem) {
                 int i = player.getTicksUsingItem();
                 float f1 = (float)i / 20.0F;
                 if (f1 > 1.0F) {

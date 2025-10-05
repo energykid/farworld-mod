@@ -58,7 +58,9 @@ public class ModItemProperties {
 
     public static void addCustomItemProperties()
     {
+        registerBow(ModItems.SOUL_STEEL_BOW.asItem());
         registerBow(ModItems.BLACK_ICE_BOW.asItem());
+        registerCrossbow(ModItems.NETHERITE_CROSSBOW.asItem());
         registerCrossbow(ModItems.BLACK_ICE_CROSSBOW.asItem());
     }
 }

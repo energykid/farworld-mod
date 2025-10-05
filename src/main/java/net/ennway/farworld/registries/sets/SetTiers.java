@@ -24,7 +24,7 @@ public class SetTiers {
     );
 
     public static final Tier SOUL_STEEL_TIER = new SimpleTier(
-            BlockTags.NEEDS_DIAMOND_TOOL,
+            BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
             450,
             8.0F,
             3.0F,
@@ -33,7 +33,7 @@ public class SetTiers {
     );
 
     public static final Tier COBALT_TIER = new SimpleTier(
-            BlockTags.NEEDS_DIAMOND_TOOL,
+            BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
             450,
             8.0F,
             3.0F,
@@ -41,12 +41,12 @@ public class SetTiers {
             () -> Ingredient.of(ModItems.COBALT_INGOT)
     );
 
-    public static final TagKey<Block> NEEDS_BLACK_ICE_TOOL = TagKey.create(
+    public static final TagKey<Block> INCORRECT_FOR_BLACK_ICE_TOOL = TagKey.create(
             BuiltInRegistries.BLOCK.key(),
-            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "needs_black_ice_tool"));
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "incorrect_for__black_ice_tool"));
 
     public static final Tier BLACK_ICE_TIER = new SimpleTier(
-            NEEDS_BLACK_ICE_TOOL,
+            INCORRECT_FOR_BLACK_ICE_TOOL,
             1500,
             8.0F,
             3.5F,

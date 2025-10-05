@@ -82,6 +82,10 @@ public class ModItems
             "soul_steel_hoe",
             () -> new SoulSteelHoe(new Item.Properties())
     );
+    public static final DeferredItem<Item> SOUL_STEEL_BOW = ITEMS_ALL.register(
+            "soul_steel_bow",
+            () -> new SoulSteelBow()
+    );
 
     public static final DeferredItem<ArmorItem> SOUL_STEEL_HELMET = ITEMS_ALL.register(
             "soul_steel_helmet",
@@ -244,6 +248,11 @@ public class ModItems
                     new Item.Properties().durability(690))
     );
     //endregion
+
+    public static final DeferredItem<Item> NETHERITE_CROSSBOW = ITEMS_ALL.register(
+            "netherite_crossbow",
+            () -> new NetheriteCrossbow()
+    );
 
     public static final DeferredItem<Item> OBSIDIAN_KEEPSAKE = ITEMS_ALL.register(
             "obsidian_keepsake",
