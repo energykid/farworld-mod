@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:smooth_basalt"
+        }
+      },
+      "rules": []
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 3,
+      "max_inclusive": 5
+    },
+    "half_height": 2,
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "farworld:flowstone",
+        "minecraft:deepslate"
+      ]
+    }
+  }
+}

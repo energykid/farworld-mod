@@ -1,0 +1,27 @@
+{
+  "feature": "farworld:ore_dense_coal",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:count",
+      "count": 6
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "above_bottom": 10
+        },
+        "max_inclusive": {
+          "below_top": 35
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

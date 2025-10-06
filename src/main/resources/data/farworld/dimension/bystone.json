@@ -2,14 +2,47 @@
   "type": "farworld:bystone",
   "generator": {
     "type": "minecraft:noise",
-    "settings": "farworld:bystone",
     "biome_source": {
-      "type": "minecraft:checkerboard",
-      "scale": 8,
       "biomes": [
-        "farworld:lush_shallows",
-        "farworld:dusty_shelves"
-      ]
-    }
+        {
+          "biome": "farworld:dusty_shelves",
+          "parameters": {
+            "continentalness": 0,
+            "depth": 0,
+            "erosion": 0,
+            "humidity": 0,
+            "offset": 0,
+            "temperature": 0,
+            "weirdness": 0
+          }
+        },
+        {
+          "biome": "farworld:lush_shallows",
+          "parameters": {
+            "continentalness": 0,
+            "depth": 0,
+            "erosion": 0,
+            "humidity": 0,
+            "offset": 0,
+            "temperature": 0.25,
+            "weirdness": 0
+          }
+        },
+        {
+          "biome": "farworld:geodic_columns",
+          "parameters": {
+            "continentalness": 0,
+            "depth": 0,
+            "erosion": 0,
+            "humidity": 0,
+            "offset": 0,
+            "temperature": 0.5,
+            "weirdness": 0
+          }
+        }
+      ],
+      "type": "minecraft:multi_noise"
+    },
+    "settings": "farworld:bystone"
   }
 }
