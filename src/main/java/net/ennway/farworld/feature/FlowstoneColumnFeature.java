@@ -30,20 +30,21 @@ public class FlowstoneColumnFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         BlockPos origin = featurePlaceContext.origin();
 
-        featurePlaceContext.level().playSound(null, origin, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS);
-
-        BlockPos.MutableBlockPos pos = new BlockPos(origin.getX(), -95, origin.getZ()).mutable();
+        BlockPos.MutableBlockPos pos = new BlockPos(origin.getX(), -94, origin.getZ()).mutable();
 
         float size2 = Mth.randomBetweenInclusive(featurePlaceContext.random(), 2, 6);
         float size3 = Mth.randomBetweenInclusive(featurePlaceContext.random(), 2, 6);
 
-        float size = size2;
+        float factor = 0.6f + (featurePlaceContext.random().nextFloat() % 0.4f);
 
-        while (pos.getY() < 127)
+        size2 *= factor;
+        size3 *= factor;
+
+        while (pos.getY() < 126)
         {
             pos.move(0, 1, 0);
 
-            size = Mth.lerp(((float)pos.getY() + 96f) / 224f, size2, size3);
+            float size = Mth.lerp(((float)pos.getY() + 96f) / 224f, size2, size3);
 
             for (float x = -size; x <= size; x++)
             {

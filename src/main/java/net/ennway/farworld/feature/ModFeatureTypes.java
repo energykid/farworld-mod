@@ -23,5 +23,12 @@ public class ModFeatureTypes {
         }
     });
 
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> EMBEDDED_AMETHYST_GEODE = FEATURES_ALL.register("embedded_geode", new Supplier<Feature<NoneFeatureConfiguration>>() {
+        @Override
+        public Feature<NoneFeatureConfiguration> get() {
+            return new EmbeddedGeodeFeature(NoneFeatureConfiguration.CODEC);
+        }
+    });
+
 
 }
