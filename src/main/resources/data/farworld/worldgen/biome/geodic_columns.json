@@ -48,8 +48,7 @@
       "farworld:basalt_layering_placed",
       "farworld:calcite_layering_placed",
       "farworld:ore_sparse_dense_coal_placed",
-      "farworld:embedded_geode_placed_floor",
-      "farworld:embedded_geode_placed_ceiling"
+      "farworld:embedded_geode_placed"
     ]
   ]
 }

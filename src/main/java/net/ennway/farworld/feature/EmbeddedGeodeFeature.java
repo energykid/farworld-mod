@@ -23,16 +23,15 @@ public class EmbeddedGeodeFeature extends Feature<NoneFeatureConfiguration> {
 
         int size = Mth.randomBetweenInclusive(featurePlaceContext.random(), 34, 44);
 
-        for (int i = -size; i < size; i++) {
-            for (int j = -size; j < size; j++) {
-                for (int k = -size; k < size; k++) {
+        for (int i = -size / 2; i < size / 2; i++) {
+            for (int j = -size / 2; j < size / 2; j++) {
+                for (int k = -size / 2; k < size / 2; k++) {
                     Vec3i pos = new Vec3i(origin.getX(), origin.getY(), origin.getZ());
                     Vec3i pos2 = new Vec3i(origin.getX() + i, origin.getY() + j, origin.getZ() + k);
 
                     int s1 = (int)(size * 0.45f);
                     int s2 = (int)(size * 0.7f);
                     int s3 = (int)(size * 0.85f);
-                    int s4 = size;
 
                     double dist = pos.distSqr(pos2);
 
@@ -45,7 +44,7 @@ public class EmbeddedGeodeFeature extends Feature<NoneFeatureConfiguration> {
                             this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.AMETHYST_BLOCK.defaultBlockState());
                         } else if (dist < s3) {
                             this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.CALCITE.defaultBlockState());
-                        } else {
+                        } else if (dist < size) {
                             this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.SMOOTH_BASALT.defaultBlockState());
                         }
                     }
