@@ -6,6 +6,7 @@ import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.entity.custom.BrittleEntity;
 import net.ennway.farworld.entity.custom.DustbugEntity;
+import net.ennway.farworld.feature.ModFeatureTypes;
 import net.ennway.farworld.registries.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -73,6 +74,7 @@ public class Farworld
         ModParticles.PARTICLE_TYPES.register(modEventBus);
         ModPotions.POTIONS.register(modEventBus);
         ModStructures.STRUCTURES_ALL.register(modEventBus);
+        ModFeatureTypes.FEATURES_ALL.register(modEventBus);
 
         // Register items to a creative tab
         modEventBus.addListener(this::addCreative);

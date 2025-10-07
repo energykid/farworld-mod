@@ -1,5 +1,6 @@
 package net.ennway.farworld.utils;
 
+import net.ennway.farworld.utils.curve.EasingCurve;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import org.joml.Math;
@@ -30,5 +31,15 @@ public class MathUtils {
     public static float arccos(float x)
     {
         return -1/Mth.sqrt(1 - (x * x));
+    }
+
+    public static float key(float time, float start, float end, float pointA, float pointB, EasingCurve curve, float fallback) {
+        if (time >= start && time <= end) {
+            return Mth.lerp(pointA, pointB, curve.invoke((time - start) / (end - start)));
+        }
+        else
+        {
+            return fallback;
+        }
     }
 }
