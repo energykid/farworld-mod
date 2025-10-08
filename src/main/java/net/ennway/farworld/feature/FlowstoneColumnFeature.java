@@ -54,8 +54,10 @@ public class FlowstoneColumnFeature extends Feature<NoneFeatureConfiguration> {
 
                     int dist = (int)Math.sqrt(Math.pow((double)pos2.getX() - (double)pos.getX(), 2) + Math.pow((double)pos2.getZ() - (double)pos.getZ(), 2));
 
-                    if (dist < size)
-                        this.setBlock(featurePlaceContext.level(), pos2, ModBlocks.FLOWSTONE.get().defaultBlockState());
+                    if (dist < size) {
+                        if (featurePlaceContext.level().getBlockState(pos2).is(Blocks.AIR))
+                            this.setBlock(featurePlaceContext.level(), pos2, ModBlocks.FLOWSTONE.get().defaultBlockState());
+                    }
                 }
             }
         }

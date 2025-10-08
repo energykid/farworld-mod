@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -38,7 +39,7 @@ public class RedstonePillarFeature extends Feature<NoneFeatureConfiguration> {
                     int dist = (int) Math.sqrt(Math.pow((double) pos2.getX() - (double) pos.getX(), 2) + Math.pow((double) pos2.getZ() - (double) pos.getZ(), 2));
 
                     if (dist < size) {
-                        this.setBlock(featurePlaceContext.level(), pos2, ModBlocks.REDSTONE_PILLAR_BLOCK.get().defaultBlockState());
+                        this.setBlock(featurePlaceContext.level(), pos2, ModBlocks.REDSTONE_PILLAR_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.CRACKED, true));
                     }
 
                     posclone.move(0, 1, 0);

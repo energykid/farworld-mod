@@ -37,9 +37,9 @@ public class RedstoneChargeParticle extends TextureSheetParticle {
     @Override
     public void tick() {
         this.setSpriteFromAge(spriteSet);
-        this.xd *= 0.8;
-        this.yd *= 0.8;
-        this.zd *= 0.8;
+        this.xd *= 0.4;
+        this.yd *= 0.4;
+        this.zd *= 0.4;
         super.tick();
     }
 
