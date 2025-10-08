@@ -54,7 +54,8 @@
       "farworld:ore_dense_iron_placed",
       "farworld:ore_cobalt_placed",
       "farworld:flowstone_caches_placed",
-      "farworld:tuff_piles_placed"
+      "farworld:tuff_piles_placed",
+      "farworld:dust_piles_placed"
     ]
   ]
 }

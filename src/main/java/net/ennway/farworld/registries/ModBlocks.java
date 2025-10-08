@@ -129,6 +129,20 @@ public class ModBlocks {
                     .strength(1.1F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
 
+    public static final DeferredBlock<Block> DUST_BLOCK = BLOCKS_ALL.register(
+            "dust_block",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1F, 1.0F)
+                    .sound(SoundType.SAND)));
+
+    public static final DeferredBlock<Block> DUST_SHEET = BLOCKS_ALL.register(
+            "dust_sheet",
+            registryName -> new SnowLayerBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1F, 1.0F)
+                    .sound(SoundType.SAND)));
+
     public static final DeferredBlock<Block> STRIPPED_STONEWOOD_LOG = BLOCKS_ALL.register(
             "stripped_stonewood_log",
             registryName -> new RotatedPillarBlock(BlockBehaviour.Properties.of()

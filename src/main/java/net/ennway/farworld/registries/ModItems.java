@@ -392,6 +392,10 @@ public class ModItems
             () -> new BlockItem(ModBlocks.COBALT_BLOCK.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE = ITEMS_ALL.register("flowstone",
             () -> new BlockItem(ModBlocks.FLOWSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> DUST_BLOCK = ITEMS_ALL.register("dust_block",
+            () -> new BlockItem(ModBlocks.DUST_BLOCK.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> DUST_SHEET = ITEMS_ALL.register("dust_sheet",
+            () -> new BlockItem(ModBlocks.DUST_SHEET.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LOG = ITEMS_ALL.register("stonewood_log",
             () -> new BlockItem(ModBlocks.STONEWOOD_LOG.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD = ITEMS_ALL.register("stonewood",
