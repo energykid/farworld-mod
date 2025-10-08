@@ -1,0 +1,12 @@
+{
+  "textures": [
+    "farworld:redstone_charge_particle/redstone_charge_particle1",
+    "farworld:redstone_charge_particle/redstone_charge_particle2",
+    "farworld:redstone_charge_particle/redstone_charge_particle3",
+    "farworld:redstone_charge_particle/redstone_charge_particle4",
+    "farworld:redstone_charge_particle/redstone_charge_particle5",
+    "farworld:redstone_charge_particle/redstone_charge_particle6",
+    "farworld:redstone_charge_particle/redstone_charge_particle7",
+    "farworld:redstone_charge_particle/redstone_charge_particle8"
+  ]
+}

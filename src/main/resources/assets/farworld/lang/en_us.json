@@ -144,6 +144,8 @@
   "lore.farworld.dense_iron_ore" : "A densely-packed ore that can be mined with a Stone tool or higher to obtain Iron at surplus rates.",
   "block.farworld.dense_gold_ore" : "Dense Gold Ore",
   "lore.farworld.dense_gold_ore" : "A densely-packed ore that can be mined with an Iron tool or higher to obtain Gold at surplus rates.",
+  "block.farworld.dense_redstone_ore" : "Dense Redstone Ore",
+  "lore.farworld.dense_redstone_ore" : "A densely-packed ore that can be mined with an Iron tool or higher to obtain Redstone at surplus rates.",
   "block.farworld.cobalt_ore" : "Cobalt Ore",
   "lore.farworld.cobalt_ore" : "A densely-packed ore that can be mined with an Iron tool or higher to obtain some Cobalt.",
   "block.farworld.flowstone_cache" : "Geocache Block",

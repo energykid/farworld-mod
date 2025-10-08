@@ -1,8 +1,6 @@
 package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
-import net.ennway.farworld.particle.ParalysisParticle;
-import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -75,6 +73,10 @@ public class ModParticles {
     );
     public static final Supplier<SimpleParticleType> SPUR_PARTICLE = PARTICLE_TYPES.register(
             "spur_particle",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> REDSTONE_CHARGE_PARTICLE = PARTICLE_TYPES.register(
+            "redstone_charge_particle",
             () -> new SimpleParticleType(false)
     );
 

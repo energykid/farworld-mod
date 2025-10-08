@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "farworld:block/dense_redstone_ore"
+    },
+    "lit=true": {
+      "model": "farworld:block/dense_redstone_ore_lit"
+    }
+  }
+}

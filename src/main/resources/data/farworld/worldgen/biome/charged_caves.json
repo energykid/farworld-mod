@@ -1,0 +1,30 @@
+{
+  "temperature": 0,
+  "downfall": 0,
+  "has_precipitation": false,
+  "creature_spawn_probability": 0.00015,
+  "effects": {
+    "sky_color": 16736870,
+    "fog_color": 9386554,
+    "water_color": 4144959,
+    "water_fog_color": 4539717,
+    "grass_color": 4012340,
+    "foliage_color": 3947838,
+    "particle": {
+      "options": {
+        "type": "farworld:redstone_charge_particle"
+      },
+      "probability": 0.001
+    }
+  },
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "farworld:ore_dense_iron_placed",
+      "farworld:ore_dense_redstone_placed",
+      "farworld:redstone_pillar_placed"
+    ]
+  ]
+}

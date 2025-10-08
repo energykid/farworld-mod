@@ -442,12 +442,16 @@ public class ModItems
             () -> new BlockItem(ModBlocks.DENSE_IRON_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DENSE_GOLD_ORE = ITEMS_ALL.register("dense_gold_ore",
             () -> new BlockItem(ModBlocks.DENSE_GOLD_ORE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> DENSE_REDSTONE_ORE = ITEMS_ALL.register("dense_redstone_ore",
+            () -> new BlockItem(ModBlocks.DENSE_REDSTONE_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> COBALT_ORE = ITEMS_ALL.register("cobalt_ore",
             () -> new BlockItem(ModBlocks.COBALT_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE_CACHE = ITEMS_ALL.register("flowstone_cache",
             () -> new BlockItem(ModBlocks.FLOWSTONE_CACHE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> BLACK_ICE = ITEMS_ALL.register("black_ice",
             () -> new BlockItem(ModBlocks.BLACK_ICE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> REDSTONE_PILLAR_BLOCK = ITEMS_ALL.register("redstone_pillar_block",
+            () -> new BlockItem(ModBlocks.REDSTONE_PILLAR_BLOCK.get(), new Item.Properties()).asItem());
 
     public static final DeferredItem<Item> BLOOMED_SPAWN_EGG = ITEMS_ALL.register("bloomed_spawn_egg",
             () -> new SpawnEggItem(ModEntities.BLOOMED.get(), 0x9B691F, 0x9BFC1F, new Item.Properties()));

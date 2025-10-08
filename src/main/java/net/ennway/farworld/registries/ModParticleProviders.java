@@ -3,6 +3,11 @@ package net.ennway.farworld.registries;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.particle.*;
 import net.ennway.farworld.particle.on_hit.*;
+import net.minecraft.client.particle.SimpleAnimatedParticle;
+import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.RandomSource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -11,8 +16,27 @@ import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 @EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModParticleProviders {
 
+    public SpriteSet setFrom(TextureAtlasSprite sprite)
+    {
+
+
+        return new SpriteSet() {
+            @Override
+            public TextureAtlasSprite get(int i, int i1) {
+                return sprite;
+            }
+
+            @Override
+            public TextureAtlasSprite get(RandomSource randomSource) {
+                return sprite;
+            }
+        };
+    }
+
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(ModParticles.REDSTONE_CHARGE_PARTICLE.get(), RedstoneChargeParticle.Provider::new);
+
         event.registerSpriteSet(ModParticles.PARALYSIS.get(), ParalysisParticleProvider::new);
 
         event.registerSpriteSet(ModParticles.BLACK_ICE_AOE.get(), BlackIceParticleProvider::new);

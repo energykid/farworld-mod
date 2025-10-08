@@ -1,0 +1,8 @@
+{
+  "parent": "farworld:block/two_sided_pillar",
+  "textures": {
+    "side": "farworld:block/redstone_pillar",
+    "back": "farworld:block/redstone_pillar_base",
+    "front": "farworld:block/redstone_pillar_end"
+  }
+}

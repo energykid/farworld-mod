@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.block.*;
 import net.ennway.farworld.registries.sets.WoodTypes;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -11,6 +12,7 @@ import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -93,12 +95,32 @@ public class ModBlocks {
                     .strength(1.8F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
 
+    public static final DeferredBlock<Block> DENSE_REDSTONE_ORE = BLOCKS_ALL.register(
+            "dense_redstone_ore",
+            registryName -> new RedStoneOreBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
+                    .strength(1.8F, 6.0F)
+                    .sound(SoundType.NETHERRACK)));
+
     public static final DeferredBlock<Block> COBALT_ORE = BLOCKS_ALL.register(
             "cobalt_ore",
             registryName -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_YELLOW).requiresCorrectToolForDrops()
                     .strength(1.8F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
+
+    public static final DeferredBlock<Block> REDSTONE_PILLAR_BLOCK = BLOCKS_ALL.register(
+            "redstone_pillar_block",
+            registryName -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
+                    .emissiveRendering(new BlockBehaviour.StatePredicate() {
+                        @Override
+                        public boolean test(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
+                            return true;
+                        }
+                    })
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
+                    .strength(1F, 3.0F)
+                    .sound(SoundType.STONE)));
 
     public static final DeferredBlock<Block> FLOWSTONE = BLOCKS_ALL.register(
             "flowstone",
