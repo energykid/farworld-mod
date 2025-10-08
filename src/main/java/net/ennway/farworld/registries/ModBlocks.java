@@ -111,7 +111,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> REDSTONE_PILLAR_BLOCK = BLOCKS_ALL.register(
             "redstone_pillar_block",
-            registryName -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
+            registryName -> new RedstonePillarBlock(BlockBehaviour.Properties.of()
                     .emissiveRendering(new BlockBehaviour.StatePredicate() {
                         @Override
                         public boolean test(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {

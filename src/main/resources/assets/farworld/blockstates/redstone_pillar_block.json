@@ -1,16 +1,27 @@
 {
   "variants": {
-    "axis=x": {
-      "model": "farworld:block/redstone_pillar_block",
-      "x": 90,
-      "y": 90
-    },
-    "axis=y": {
-      "model": "farworld:block/redstone_pillar_block"
-    },
-    "axis=z": {
+    "facing=down": {
       "model": "farworld:block/redstone_pillar_block",
       "x": 90
+    },
+    "facing=east": {
+      "model": "farworld:block/redstone_pillar_block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "farworld:block/redstone_pillar_block"
+    },
+    "facing=south": {
+      "model": "farworld:block/redstone_pillar_block",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "farworld:block/redstone_pillar_block",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "farworld:block/redstone_pillar_block",
+      "y": 270
     }
   }
 }

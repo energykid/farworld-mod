@@ -37,6 +37,8 @@ public class ModSounds {
 
     public static final Supplier<SoundEvent> DUSTY_SHELVES_AMBIANCE = createSoundEvent("dusty_shelves_ambiance");
     public static final Supplier<SoundEvent> LUSH_SHALLOWS_AMBIANCE = createSoundEvent("lush_shallows_ambiance");
+    public static final Supplier<SoundEvent> CHARGED_CAVES_AMBIANCE = createSoundEvent("charged_caves_ambiance");
+    public static final Supplier<SoundEvent> GEODIC_COLUMNS_AMBIANCE = createSoundEvent("geodic_columns_ambiance");
 
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");
     public static final Supplier<SoundEvent> COBALT_HIT = createSoundEvent("cobalt_hit");

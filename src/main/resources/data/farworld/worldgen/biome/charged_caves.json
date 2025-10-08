@@ -10,11 +10,12 @@
     "water_fog_color": 4539717,
     "grass_color": 4012340,
     "foliage_color": 3947838,
+    "ambient_sound": "farworld:charged_caves_ambiance",
     "particle": {
       "options": {
         "type": "farworld:redstone_charge_particle"
       },
-      "probability": 0.001
+      "probability": 0.006
     }
   },
   "spawners": {},

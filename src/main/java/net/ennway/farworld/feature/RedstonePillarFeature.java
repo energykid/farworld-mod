@@ -19,26 +19,29 @@ public class RedstonePillarFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         BlockPos origin = featurePlaceContext.origin();
 
-        int size = Mth.randomBetweenInclusive(featurePlaceContext.random(), 2, 4);
+        int size = Mth.randomBetweenInclusive(featurePlaceContext.random(), 2, 3);
 
         BlockPos.MutableBlockPos pos = origin.mutable().move(0, -2, 0);
 
         float y = pos.getY() + Mth.randomBetweenInclusive(featurePlaceContext.random(), 8, 20);
 
-        while (pos.getY() < y)
+        for (float x = -size / 2f; x <= size / 2f; x++)
         {
-            pos.move(0, 1, 0);
-
-            for (float x = -size / 2f; x <= size / 2f; x++)
+            for (float z = -size / 2f; z <= size / 2f; z++)
             {
-                for (float z = -size / 2f; z <= size / 2f; z++)
-                {
-                    BlockPos pos2 = new BlockPos(pos.getX() + (int) x, pos.getY(), pos.getZ() + (int) z);
+                BlockPos.MutableBlockPos posclone = new BlockPos(pos.getX(), pos.getY(), pos.getZ()).mutable();
+                float y2 = y + Mth.randomBetweenInclusive(featurePlaceContext.random(), -1, 2);
 
-                    int dist = (int)Math.sqrt(Math.pow((double)pos2.getX() - (double)pos.getX(), 2) + Math.pow((double)pos2.getZ() - (double)pos.getZ(), 2));
+                while (posclone.getY() < y2) {
+                    BlockPos pos2 = new BlockPos(pos.getX() + (int) x, posclone.getY(), pos.getZ() + (int) z);
 
-                    if (dist < size)
+                    int dist = (int) Math.sqrt(Math.pow((double) pos2.getX() - (double) pos.getX(), 2) + Math.pow((double) pos2.getZ() - (double) pos.getZ(), 2));
+
+                    if (dist < size) {
                         this.setBlock(featurePlaceContext.level(), pos2, ModBlocks.REDSTONE_PILLAR_BLOCK.get().defaultBlockState());
+                    }
+
+                    posclone.move(0, 1, 0);
                 }
             }
         }

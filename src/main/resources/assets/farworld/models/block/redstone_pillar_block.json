@@ -1,8 +1,8 @@
 {
-  "parent": "farworld:block/two_sided_pillar",
+  "parent": "minecraft:block/template_piston",
   "textures": {
-    "side": "farworld:block/redstone_pillar",
-    "back": "farworld:block/redstone_pillar_base",
-    "front": "farworld:block/redstone_pillar_end"
+    "bottom": "farworld:block/redstone_pillar_base",
+    "platform": "farworld:block/redstone_pillar_end",
+    "side": "farworld:block/redstone_pillar"
   }
 }

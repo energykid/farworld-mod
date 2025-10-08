@@ -10,6 +10,7 @@
     "water_fog_color": 4664415,
     "grass_color": 3748670,
     "foliage_color": 3424581,
+    "ambient_sound": "farworld:geodic_columns_ambiance",
     "particle": {
       "options": {
         "type": "minecraft:end_rod"
