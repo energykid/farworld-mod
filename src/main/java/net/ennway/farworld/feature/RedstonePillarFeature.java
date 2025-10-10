@@ -5,6 +5,7 @@ import net.ennway.farworld.registries.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -20,7 +21,10 @@ public class RedstonePillarFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         BlockPos origin = featurePlaceContext.origin();
 
-        int size = Mth.randomBetweenInclusive(featurePlaceContext.random(), 2, 3);
+        ChunkPos pos1 = featurePlaceContext.level().getChunk(origin).getPos();
+        if (!featurePlaceContext.level().hasChunk(pos1.x, pos1.z)) return false;
+
+        int size = 5;
 
         BlockPos.MutableBlockPos pos = origin.mutable().move(0, -2, 0);
 
@@ -38,7 +42,7 @@ public class RedstonePillarFeature extends Feature<NoneFeatureConfiguration> {
 
                     int dist = (int) Math.sqrt(Math.pow((double) pos2.getX() - (double) pos.getX(), 2) + Math.pow((double) pos2.getZ() - (double) pos.getZ(), 2));
 
-                    if (dist < size) {
+                    if (dist < size / 2) {
                         this.setBlock(featurePlaceContext.level(), pos2, ModBlocks.REDSTONE_PILLAR_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.CRACKED, true));
                     }
 

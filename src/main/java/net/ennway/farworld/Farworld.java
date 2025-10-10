@@ -129,7 +129,10 @@ public class Farworld
         }
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS)
         {
-            event.insertAfter(Items.WARPED_FUNGUS.getDefaultInstance(), ModItems.GLOOMCAP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.SNOW.getDefaultInstance(), ModItems.DUST_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DUST_BLOCK.toStack(), ModItems.DUST_SHEET.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+             event.insertAfter(Items.WARPED_FUNGUS.getDefaultInstance(), ModItems.GLOOMCAP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.NETHER_QUARTZ_ORE.getDefaultInstance(), ModItems.NETHER_IRON_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.DEEPSLATE_COAL_ORE.getDefaultInstance(), ModItems.DENSE_COAL_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
