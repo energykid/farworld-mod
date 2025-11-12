@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cross",
+    "textures": {
+        "cross": "farworld:block/pointed_amethyst_down_middle"
+    },
+    "render_type": "cutout"
+}

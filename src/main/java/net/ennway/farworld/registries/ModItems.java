@@ -432,6 +432,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES_FLOWERED = ITEMS_ALL.register("stonewood_leaves_flowered",
             () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES_FLOWERED.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> POINTED_AMETHYST = ITEMS_ALL.register("pointed_amethyst",
+            () -> new BlockItem(ModBlocks.POINTED_AMETHYST.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> HANGING_FLORA = ITEMS_ALL.register("hanging_flora",
             () -> new HangingFloraItem(ModBlocks.HANGING_VINES_END.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> HANGING_VINES = ITEMS_ALL.register("hanging_vines",

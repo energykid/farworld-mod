@@ -129,6 +129,13 @@ public class ModBlocks {
                     .strength(1.1F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
 
+    public static final DeferredBlock<Block> POINTED_AMETHYST = BLOCKS_ALL.register(
+            "pointed_amethyst",
+            registryName -> new PointedAmethystBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.1F, 6.0F)
+                    .sound(SoundType.AMETHYST_CLUSTER)));
+
     public static final DeferredBlock<Block> DUST_BLOCK = BLOCKS_ALL.register(
             "dust_block",
             registryName -> new Block(BlockBehaviour.Properties.of()
