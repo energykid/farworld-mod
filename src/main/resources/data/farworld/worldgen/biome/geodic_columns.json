@@ -49,7 +49,8 @@
       "farworld:basalt_layering_placed",
       "farworld:calcite_layering_placed",
       "farworld:ore_sparse_dense_coal_placed",
-      "farworld:embedded_geode_placed"
+      "farworld:embedded_geode_placed",
+      "farworld:pointed_amethyst_placed"
     ]
   ]
 }

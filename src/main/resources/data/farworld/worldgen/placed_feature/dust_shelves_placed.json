@@ -1,0 +1,11 @@
+{
+  "feature": "farworld:dust_shelf",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

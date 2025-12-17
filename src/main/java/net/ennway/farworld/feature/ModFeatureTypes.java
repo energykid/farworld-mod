@@ -1,12 +1,10 @@
 package net.ennway.farworld.feature;
 
 import net.ennway.farworld.Farworld;
-import net.ennway.farworld.structure.SurfacedStructures;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.StructureType;
+import net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -48,6 +46,13 @@ public class ModFeatureTypes {
         @Override
         public Feature<NoneFeatureConfiguration> get() {
             return new EmbeddedGeodeFeature(NoneFeatureConfiguration.CODEC);
+        }
+    });
+
+    public static final DeferredHolder<Feature<?>, Feature<PointedDripstoneConfiguration>> POINTED_AMETHYST = FEATURES_ALL.register("pointed_amethyst", new Supplier<Feature<PointedDripstoneConfiguration>>() {
+        @Override
+        public Feature<PointedDripstoneConfiguration> get() {
+            return new PointedAmethystFeature(PointedDripstoneConfiguration.CODEC);
         }
     });
 }
