@@ -1,0 +1,90 @@
+{
+  "parent": "farworld:surplus_fashion",
+  "criteria": {
+    "acc": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:enchantable/head_armor",
+            "components": {},
+            "predicates": {
+              "minecraft:bundle_contents": {
+                "items": {
+                  "contains": [
+                    {
+                      "items": "#farworld:accessories"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "items": "#minecraft:enchantable/chest_armor",
+            "components": {},
+            "predicates": {
+              "minecraft:bundle_contents": {
+                "items": {
+                  "contains": [
+                    {
+                      "items": "#farworld:accessories"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "items": "#minecraft:enchantable/leg_armor",
+            "components": {},
+            "predicates": {
+              "minecraft:bundle_contents": {
+                "items": {
+                  "contains": [
+                    {
+                      "items": "#farworld:accessories"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "items": "#minecraft:enchantable/foot_armor",
+            "components": {},
+            "predicates": {
+              "minecraft:bundle_contents": {
+                "items": {
+                  "contains": [
+                    {
+                      "items": "#farworld:accessories"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.farworld.decked_out.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "farworld:cobalt_cuff"
+    },
+    "title": {
+      "translate": "advancement.farworld.decked_out"
+    }
+  },
+  "requirements": [
+    [
+      "acc"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:story/obtain_armor",
+  "criteria": {
+    "acc": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:enchantable/equippable",
+            "components": {},
+            "predicates": {
+              "minecraft:bundle_contents": {
+                "items": {
+                  "contains": [
+                    {
+                      "items": "#farworld:accessories"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.farworld.surplus_fashion.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "farworld:iron_cuff"
+    },
+    "title": {
+      "translate": "advancement.farworld.surplus_fashion"
+    }
+  },
+  "requirements": [
+    [
+      "acc"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

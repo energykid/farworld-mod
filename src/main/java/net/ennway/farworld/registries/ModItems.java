@@ -285,7 +285,7 @@ public class ModItems
             "blaze_locket",
             () -> new BlazeLocket(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
                     Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(Attributes.ATTACK_DAMAGE.getKey().location(), 2, AttributeModifier.Operation.ADD_VALUE),
+                    new AttributeModifier(Attributes.ATTACK_DAMAGE.getKey().location(), 1, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY
             ).build()))
     );
