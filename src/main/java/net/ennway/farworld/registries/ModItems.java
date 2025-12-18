@@ -467,6 +467,8 @@ public class ModItems
             () -> new SpawnEggItem(ModEntities.BRITTLE.get(), 0x59555D, 0xFFE31B, new Item.Properties()));
     public static final DeferredItem<Item> DUSTBUG_SPAWN_EGG = ITEMS_ALL.register("dustbug_spawn_egg",
             () -> new SpawnEggItem(ModEntities.DUSTBUG.get(), 0x282828, 0x666666, new Item.Properties()));
+    public static final DeferredItem<Item> GOLIATH_SPAWN_EGG = ITEMS_ALL.register("goliath_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.GOLIATH.get(), 0x3A7190, 0x4A4848, new Item.Properties()));
 
     public static final DeferredItem<Item> WHIRLING_WORLD_DISC = ITEMS_ALL.register("disc_whirlingworld",
             () -> new Item(new Item.Properties()

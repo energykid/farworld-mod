@@ -22,5 +22,6 @@ public class EntityDataEvents {
         event.register(ModEntities.BLOOMED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(ModEntities.BRITTLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(ModEntities.DUSTBUG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.GOLIATH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }

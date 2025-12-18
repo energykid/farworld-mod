@@ -5,12 +5,10 @@ import net.ennway.farworld.entity.client.bloomed.BloomedModel;
 import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
 import net.ennway.farworld.entity.client.brittle.BrittleModel;
 import net.ennway.farworld.entity.client.dustbug.DustbugModel;
+import net.ennway.farworld.entity.client.goliath.GoliathModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
-import net.ennway.farworld.entity.custom.BloomedEntity;
-import net.ennway.farworld.entity.custom.BrittleEntity;
-import net.ennway.farworld.entity.custom.DustbugEntity;
-import net.ennway.farworld.entity.custom.SoulGolemEntity;
+import net.ennway.farworld.entity.custom.*;
 import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
 import net.ennway.farworld.registries.entity_definitions.MobLayerDefinition;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -46,32 +44,42 @@ public class ModEntities {
             new MobLayerDefinition(
                     DustbugModel.LAYER_LOCATION,
                     DustbugModel::createBodyLayer
+            ),
+            new MobLayerDefinition(
+                    GoliathModel.LAYER_LOCATION,
+                    GoliathModel::createBodyLayer
             )
     );
 
     public static final DeferredHolder<EntityType<?>, EntityType<BloomedEntity>> BLOOMED = ENTITY_TYPES.register(
             "bloomed", () -> EntityType.Builder.of(BloomedEntity::new, MobCategory.CREATURE)
-                    .sized(0.5f, 0.5f)
                     .eyeHeight(0.25f)
+                    .sized(0.5f, 0.5f)
                     .build("bloomed"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<SoulGolemEntity>> SOUL_GOLEM = ENTITY_TYPES.register(
             "soul_golem", () -> EntityType.Builder.of(SoulGolemEntity::new, MobCategory.MISC)
-                    .sized(1, 2.75f)
                     .eyeHeight(2.55f)
+                    .sized(1, 2.75f)
                     .build("soul_golem"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<BrittleEntity>> BRITTLE = ENTITY_TYPES.register(
             "brittle", () -> EntityType.Builder.of(BrittleEntity::new, MobCategory.MONSTER)
-                    .sized(0.75f, 1.5f)
                     .eyeHeight(1.35f)
+                    .sized(0.75f, 1.5f)
                     .build("brittle"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<DustbugEntity>> DUSTBUG = ENTITY_TYPES.register(
-            "dustbug", () -> EntityType.Builder.of(DustbugEntity::new, MobCategory.MONSTER)
-                    .sized(1.2f, 0.15f)
+            "dustbug", () -> EntityType.Builder.of(DustbugEntity::new, MobCategory.CREATURE)
                     .eyeHeight(0.1f)
+                    .sized(1.2f, 0.15f)
                     .build("dustbug"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<GoliathEntity>> GOLIATH = ENTITY_TYPES.register(
+            "goliath", () -> EntityType.Builder.of(GoliathEntity::new, MobCategory.CREATURE)
+                    .eyeHeight(2f)
+                    .sized(2.5f, 1.5f)
+                    .build("goliath"));
 
     //region Projectiles
 

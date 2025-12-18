@@ -3,6 +3,7 @@ package net.ennway.farworld;
 import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
 import net.ennway.farworld.entity.client.brittle.BrittleRenderer;
 import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
+import net.ennway.farworld.entity.client.goliath.GoliathRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.entity.custom.BrittleEntity;
 import net.ennway.farworld.entity.custom.DustbugEntity;
@@ -258,6 +259,7 @@ public class Farworld
             event.accept(ModItems.SOUL_GOLEM_SPAWN_EGG);
             event.accept(ModItems.BRITTLE_SPAWN_EGG);
             event.accept(ModItems.DUSTBUG_SPAWN_EGG);
+            event.accept(ModItems.GOLIATH_SPAWN_EGG);
         }
     }
 
@@ -277,8 +279,9 @@ public class Farworld
             EntityRenderers.register(ModEntities.BLACK_ICE_AOE_ENTITY.get(), NoopRenderer::new);
             EntityRenderers.register(ModEntities.BLOOMED.get(), BloomedRenderer::new);
             EntityRenderers.register(ModEntities.BRITTLE.get(), BrittleRenderer::new);
-            EntityRenderers.register(ModEntities.DUSTBUG.get(), DustbugRenderer::new);
             EntityRenderers.register(ModEntities.SOUL_GOLEM.get(), SoulGolemRenderer::new);
+            EntityRenderers.register(ModEntities.DUSTBUG.get(), DustbugRenderer::new);
+            EntityRenderers.register(ModEntities.GOLIATH.get(), GoliathRenderer::new);
 
             ModItemProperties.addCustomItemProperties();
         }

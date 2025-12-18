@@ -94,6 +94,7 @@
   "item.farworld.soul_golem_spawn_egg" : "Soul Steel Golem Spawn Egg",
   "item.farworld.brittle_spawn_egg" : "Brittle Spawn Egg",
   "item.farworld.dustbug_spawn_egg" : "Dustbug Spawn Egg",
+  "item.farworld.goliath_spawn_egg" : "Goliath Spawn Egg",
 
   "item.farworld.soul_steel_upgrade_smithing_template.type" : "§7Soul Steel Upgrade",
   "item.farworld.soul_steel_upgrade_smithing_template.applies_to" : "§9Iron Equipment",
@@ -209,6 +210,8 @@
   "lore.farworld.brittle" : "A decrepit, crumbling skeleton from a corpse long dehydrated. Even so much as touching it makes you feel weak.",
   "entity.farworld.dustbug" : "Dustbug",
   "lore.farworld.dustbug" : "A larger Silverfish which will run away from you. If disturbed, it will send its brothers and sisters to fight you in schools.",
+  "entity.farworld.goliath" : "Goliath",
+  "lore.farworld.goliath" : "A hulking spider found in the Bystone. It can be befriended using Gloomspores, but if you have none, it's highly protective of its territory.",
   "entity.farworld.black_ice_aoe" : "Black Ice Wormhole",
 
   "enchantment.farworld.scything" : "Scything",
