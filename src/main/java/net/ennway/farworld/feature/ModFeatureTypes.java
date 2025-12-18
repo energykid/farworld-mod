@@ -4,7 +4,6 @@ import net.ennway.farworld.Farworld;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -14,10 +13,10 @@ public class ModFeatureTypes {
 
     public static final DeferredRegister<Feature<?>> FEATURES_ALL = DeferredRegister.create(Registries.FEATURE, Farworld.MOD_ID);
 
-    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> FLOWSTONE_COLUMN = FEATURES_ALL.register("flowstone_column_feature", new Supplier<Feature<NoneFeatureConfiguration>>() {
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> BASALT_COLUMN = FEATURES_ALL.register("basalt_column", new Supplier<Feature<NoneFeatureConfiguration>>() {
         @Override
         public Feature<NoneFeatureConfiguration> get() {
-            return new FlowstoneColumnFeature(NoneFeatureConfiguration.CODEC);
+            return new BasaltColumnFeature(NoneFeatureConfiguration.CODEC);
         }
     });
 
@@ -49,10 +48,10 @@ public class ModFeatureTypes {
         }
     });
 
-    public static final DeferredHolder<Feature<?>, Feature<PointedDripstoneConfiguration>> POINTED_AMETHYST = FEATURES_ALL.register("pointed_amethyst", new Supplier<Feature<PointedDripstoneConfiguration>>() {
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> POINTED_AMETHYST = FEATURES_ALL.register("pointed_amethyst", new Supplier<Feature<NoneFeatureConfiguration>>() {
         @Override
-        public Feature<PointedDripstoneConfiguration> get() {
-            return new PointedAmethystFeature(PointedDripstoneConfiguration.CODEC);
+        public Feature<NoneFeatureConfiguration> get() {
+            return new PointedAmethystFeature(NoneFeatureConfiguration.CODEC);
         }
     });
 }

@@ -90,24 +90,21 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
     public InteractionResult interactAt(Player player, Vec3 vec, InteractionHand hand) {
         if (!isTame() && isFood(player.getItemInHand(hand)))
         {
-            this.setTame(true, true);
-            this.setOwnerUUID(player.getUUID());
-            return InteractionResult.SUCCESS;
+            setTame(true, true);
+            return InteractionResult.CONSUME;
         }
-        else if (isTame() && player.getItemInHand(hand).isEmpty() && player.isCrouching() && getEntityData().get(PET_TICKS) < -10)
+        if (isTame() && player.getItemInHand(hand).isEmpty() && player.isCrouching() && getEntityData().get(PET_TICKS) < -10)
         {
             petTheBuddyYippee();
             return InteractionResult.SUCCESS;
         }
-        else if (isTame() && isSaddled())
+        if (isTame() && isSaddled())
         {
             doPlayerRide(player);
             return InteractionResult.PASS;
         }
         return super.interactAt(player, vec, hand);
     }
-
-
 
     @Override
     public void onDamageTaken(DamageContainer damageContainer) {
@@ -131,7 +128,7 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
     protected void tickRidden(Player player, Vec3 travelVector) {
         super.tickRidden(player, travelVector);
 
-        if (this.horizontalCollision) setDeltaMovement(getDeltaMovement().x, 0.2f, getDeltaMovement().z);
+        if (this.horizontalCollision) setDeltaMovement(getDeltaMovement().x, 0.25f, getDeltaMovement().z);
 
         Vec2 vec2 = this.getRiddenRotation(player);
         this.setRot(vec2.y, vec2.x);
@@ -166,12 +163,7 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
             f1 *= 0.25F;
         }
 
-        return new Vec3((double)f, 0f, (double)f1);
-    }
-
-    public boolean shouldAttack(Player playerAt)
-    {
-        return !(isTame() || isFood((playerAt.getItemInHand(InteractionHand.MAIN_HAND))) || isFood((playerAt.getItemInHand(InteractionHand.OFF_HAND))));
+        return new Vec3(f, 0f, f1);
     }
 
     public void petTheBuddyYippee()
@@ -197,7 +189,7 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
 
     @Override
     protected Vec3 getPassengerAttachmentPoint(Entity entity, EntityDimensions dimensions, float partialTick) {
-        return super.getPassengerAttachmentPoint(entity, dimensions, partialTick).add((new Vec3(0.0, -0.25, 0.0)));
+        return super.getPassengerAttachmentPoint(entity, dimensions, partialTick).add((new Vec3(0.0, -0.35, 0.0)));
     }
 
     @Override

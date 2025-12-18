@@ -27,14 +27,6 @@ public class GoliathAttackPlayerGoal<T extends LivingEntity> extends TargetGoal 
         this(mob, targetType, 10, mustSee, false, (Predicate)null);
     }
 
-    public GoliathAttackPlayerGoal(Mob mob, Class<T> targetType, boolean mustSee, Predicate<LivingEntity> targetPredicate) {
-        this(mob, targetType, 10, mustSee, false, targetPredicate);
-    }
-
-    public GoliathAttackPlayerGoal(Mob mob, Class<T> targetType, boolean mustSee, boolean mustReach) {
-        this(mob, targetType, 10, mustSee, mustReach, (Predicate)null);
-    }
-
     public GoliathAttackPlayerGoal(Mob mob, Class<T> targetType, int randomInterval, boolean mustSee, boolean mustReach, @Nullable Predicate<LivingEntity> targetPredicate) {
         super(mob, mustSee, mustReach);
         this.targetType = targetType;
@@ -43,6 +35,7 @@ public class GoliathAttackPlayerGoal<T extends LivingEntity> extends TargetGoal 
         this.targetConditions = TargetingConditions.forCombat().range(this.getFollowDistance()).selector(targetPredicate);
     }
 
+    @Override
     public boolean canUse() {
         if (this.randomInterval > 0 && this.mob.getRandom().nextInt(this.randomInterval) != 0) {
             return false;
@@ -66,6 +59,12 @@ public class GoliathAttackPlayerGoal<T extends LivingEntity> extends TargetGoal 
         }
     }
 
+    @Override
+    public boolean canContinueToUse() {
+        return this.canUse();
+    }
+
+    @Override
     public void start() {
         this.mob.setTarget(this.target);
         super.start();
@@ -80,10 +79,20 @@ public class GoliathAttackPlayerGoal<T extends LivingEntity> extends TargetGoal 
                 if (this.mob instanceof GoliathEntity gol)
                 {
                     gol.walkAnimationSpeed = 2f;
-                    if (gol.isFood(plr.getItemInHand(InteractionHand.MAIN_HAND)) || gol.isFood(plr.getItemInHand(InteractionHand.OFF_HAND)))
+                    if (gol.isFood(plr.getItemInHand(InteractionHand.MAIN_HAND)))
                     {
                         this.target = null;
-                        gol.walkAnimationSpeed = 1f;
+                        ((GoliathEntity) this.mob).walkAnimationSpeed = 1f;
+                    }
+                    if (gol.isFood(plr.getItemInHand(InteractionHand.OFF_HAND)))
+                    {
+                        this.target = null;
+                        ((GoliathEntity) this.mob).walkAnimationSpeed = 1f;
+                    }
+                    if (gol.isTame())
+                    {
+                        this.target = null;
+                        ((GoliathEntity) this.mob).walkAnimationSpeed = 1f;
                     }
                 }
             }

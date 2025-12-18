@@ -44,13 +44,15 @@
   "carvers": {},
   "features": [
     [
-      "farworld:flowstone_column_placed",
+      "farworld:basalt_column_placed",
       "farworld:geodic_flowstone_caches_placed",
       "farworld:basalt_layering_placed",
       "farworld:calcite_layering_placed",
       "farworld:ore_sparse_dense_coal_placed",
       "farworld:embedded_geode_placed",
-      "farworld:pointed_amethyst_placed"
+      "farworld:embedded_geode_floor_placed",
+      "farworld:pointed_amethyst_placed",
+      "farworld:pointed_amethyst_floor_placed"
     ]
   ]
 }

@@ -78,7 +78,7 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<GoliathEntity>> GOLIATH = ENTITY_TYPES.register(
             "goliath", () -> EntityType.Builder.of(GoliathEntity::new, MobCategory.CREATURE)
                     .eyeHeight(2f)
-                    .sized(2.5f, 1.5f)
+                    .sized(0.5f, 1.5f)
                     .build("goliath"));
 
     //region Projectiles

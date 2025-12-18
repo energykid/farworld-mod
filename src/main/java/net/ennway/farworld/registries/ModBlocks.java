@@ -139,15 +139,15 @@ public class ModBlocks {
     public static final DeferredBlock<Block> DUST_BLOCK = BLOCKS_ALL.register(
             "dust_block",
             registryName -> new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
-                    .strength(1F, 1.0F)
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .strength(0.5F, 1.0F)
                     .sound(SoundType.SAND)));
 
     public static final DeferredBlock<Block> DUST_SHEET = BLOCKS_ALL.register(
             "dust_sheet",
             registryName -> new SnowLayerBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
-                    .strength(1F, 1.0F)
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .strength(0.5F, 1.0F)
                     .sound(SoundType.SAND)));
 
     public static final DeferredBlock<Block> STRIPPED_STONEWOOD_LOG = BLOCKS_ALL.register(
@@ -338,6 +338,13 @@ public class ModBlocks {
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(1.1F, 6.0F)
                     .sound(SoundType.NYLIUM)));
+
+    public static final DeferredBlock<Block> ENCRUSTED_BASALT = BLOCKS_ALL.register(
+            "encrusted_basalt",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE).requiresCorrectToolForDrops()
+                    .strength(1.2F, 4.0F)
+                    .sound(SoundType.BASALT)));
 
     public static final DeferredBlock<Block> LUSH_FOLIAGE = BLOCKS_ALL.register(
             "lush_foliage",

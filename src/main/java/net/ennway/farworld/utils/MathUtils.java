@@ -35,7 +35,7 @@ public class MathUtils {
 
     public static float key(float time, float start, float end, float pointA, float pointB, EasingCurve curve, float fallback) {
         if (time >= start && time <= end) {
-            return Mth.lerp(pointA, pointB, curve.invoke((time - start) / (end - start)));
+            return Mth.lerp(curve.invoke((time - start) / (end - start)), pointA, pointB);
         }
         else
         {

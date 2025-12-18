@@ -130,10 +130,8 @@ public class Farworld
         }
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS)
         {
-            event.insertAfter(Items.POINTED_DRIPSTONE.getDefaultInstance(), ModItems.POINTED_AMETHYST.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-
             event.insertAfter(Items.SNOW.getDefaultInstance(), ModItems.DUST_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.DUST_BLOCK.toStack(), ModItems.DUST_SHEET.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DUST_BLOCK.toStack(), ModItems.DUST_CLUMP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.WARPED_FUNGUS.getDefaultInstance(), ModItems.GLOOMCAP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.NETHER_QUARTZ_ORE.getDefaultInstance(), ModItems.NETHER_IRON_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -150,6 +148,9 @@ public class Farworld
             event.insertAfter(ModItems.LUSH_FLOWSTONE.toStack(), ModItems.LUSH_FOLIAGE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.LUSH_FOLIAGE.toStack(), ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), ModItems.FLOWSTONE_CACHE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.AMETHYST_CLUSTER.getDefaultInstance(), ModItems.POINTED_AMETHYST.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertBefore(Items.AMETHYST_BLOCK.getDefaultInstance(), ModItems.ENCRUSTED_BASALT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.FLOWERING_AZALEA.getDefaultInstance(), ModItems.STONEWOOD_LEAVES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.STONEWOOD_LEAVES.toStack(), ModItems.STONEWOOD_LEAVES_FLOWERED.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

@@ -29,9 +29,8 @@ public class EmbeddedGeodeFeature extends Feature<NoneFeatureConfiguration> {
                     Vec3i pos = new Vec3i(origin.getX(), origin.getY(), origin.getZ());
                     Vec3i pos2 = new Vec3i(origin.getX() + i, origin.getY() + j, origin.getZ() + k);
 
-                    int s1 = (int)(size * 0.45f);
-                    int s2 = (int)(size * 0.7f);
-                    int s3 = (int)(size * 0.85f);
+                    int s1 = (int)(size * 0.3f);
+                    int s2 = (int)(size * 0.6f);
 
                     double dist = pos.distSqr(pos2);
 
@@ -42,10 +41,8 @@ public class EmbeddedGeodeFeature extends Feature<NoneFeatureConfiguration> {
                     else if (!featurePlaceContext.level().getBlockState(new BlockPos(pos2)).isAir()) {
                         if (dist < s2) {
                             this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.AMETHYST_BLOCK.defaultBlockState());
-                        } else if (dist < s3) {
-                            this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.CALCITE.defaultBlockState());
                         } else if (dist < size) {
-                            this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.SMOOTH_BASALT.defaultBlockState());
+                            this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.CALCITE.defaultBlockState());
                         }
                     }
                 }
