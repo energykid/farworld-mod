@@ -38,6 +38,8 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3d;
+import org.joml.Vector3f;
 
 public class GoliathEntity extends TamableAnimal implements OwnableEntity, PlayerRideable, Saddleable {
 
@@ -48,11 +50,6 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
     public final AnimationState walkAnimationState = new AnimationState();
     public final AnimationState attackAnimationState = new AnimationState();
     public final AnimationState petAnimationState = new AnimationState();
-
-    @Override
-    public void baseTick() {
-        super.baseTick();
-    }
 
     @Override
     public boolean isWithinMeleeAttackRange(LivingEntity entity) {
@@ -92,13 +89,11 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new GoliathMeleeHurtGoal(this, 3.25f, true));
-        this.goalSelector.addGoal(2, new GoliathTargetGoal<>(this, Player.class));
+        this.goalSelector.addGoal(2, new GoliathMeleeHurtGoal(this, 3.25f, true));
+        this.goalSelector.addGoal(3, new GoliathTargetGoal<>(this, Player.class));
         this.goalSelector.addGoal(4, new FloatGoal(this));
-        this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 1.2f, 6f, 30f));
-        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(8, new RandomStrollGoal(this, 1.2f));
+        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(6, new RandomStrollGoal(this, 1.8f));
     }
 
     @Override
@@ -147,8 +142,6 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
     @Override
     protected void tickRidden(Player player, Vec3 travelVector) {
         super.tickRidden(player, travelVector);
-
-        if (this.horizontalCollision) setDeltaMovement(getDeltaMovement().x, 0.25f, getDeltaMovement().z);
 
         Vec2 vec2 = this.getRiddenRotation(player);
         this.setRot(vec2.y, vec2.x);
@@ -224,6 +217,9 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
 
     @Override
     public void tick() {
+        if (this.horizontalCollision) setDeltaMovement(getDeltaMovement().x, 0.25f, getDeltaMovement().z);
+
+        this.walkAnimationSpeed = (float)(new Vector3d(this.getDeltaMovement().x, 0d, this.getDeltaMovement().z).length()) / 0.12f * this.getEntityData().get(MOVE_SPEED_MULT) * 1.4f;
 
         getEntityData().set(ATTACK_TICKS, getEntityData().get(ATTACK_TICKS) + 1);
 
