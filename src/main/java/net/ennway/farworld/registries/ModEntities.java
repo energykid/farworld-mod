@@ -60,25 +60,25 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<SoulGolemEntity>> SOUL_GOLEM = ENTITY_TYPES.register(
             "soul_golem", () -> EntityType.Builder.of(SoulGolemEntity::new, MobCategory.MISC)
                     .eyeHeight(2.55f)
-                    .sized(1, 2.75f)
+                    .sized(1, 3f)
                     .build("soul_golem"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<BrittleEntity>> BRITTLE = ENTITY_TYPES.register(
             "brittle", () -> EntityType.Builder.of(BrittleEntity::new, MobCategory.MONSTER)
                     .eyeHeight(1.35f)
-                    .sized(0.75f, 1.5f)
+                    .sized(0.75f, 2f)
                     .build("brittle"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<DustbugEntity>> DUSTBUG = ENTITY_TYPES.register(
-            "dustbug", () -> EntityType.Builder.of(DustbugEntity::new, MobCategory.CREATURE)
+            "dustbug", () -> EntityType.Builder.of(DustbugEntity::new, MobCategory.MONSTER)
                     .eyeHeight(0.1f)
-                    .sized(1.2f, 0.15f)
+                    .sized(1.2f, 1f)
                     .build("dustbug"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<GoliathEntity>> GOLIATH = ENTITY_TYPES.register(
-            "goliath", () -> EntityType.Builder.of(GoliathEntity::new, MobCategory.CREATURE)
+            "goliath", () -> EntityType.Builder.of(GoliathEntity::new, MobCategory.MONSTER)
                     .eyeHeight(2f)
-                    .sized(1.5f, 1f)
+                    .sized(2.5f, 1f)
                     .build("goliath"));
 
     //region Projectiles

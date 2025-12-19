@@ -29,6 +29,7 @@ public class GoliathMeleeHurtGoal extends MeleeAttackGoal {
         else {
             this.mob.setAggressive(false);
         }
+        if (((GoliathEntity)this.mob).isTame()) stop();
     }
 
     @Override

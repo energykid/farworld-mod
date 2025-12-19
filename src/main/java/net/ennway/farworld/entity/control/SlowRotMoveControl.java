@@ -61,7 +61,7 @@ public class SlowRotMoveControl extends MoveControl {
             float f9 = (float) (Mth.atan2(d1, d0) * (double) (180F / (float) Math.PI)) - 90.0F;
             if (additionalRot < 1)
                 additionalRot += 0.1f;
-            this.mob.setYRot(this.rotlerp(this.mob.getYRot(), f9, 5 + additionalRot * 5));
+            this.mob.setYRot(this.rotlerp(this.mob.getYRot(), f9, 10 + additionalRot * 10));
             this.mob.setSpeed(((float) (this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED))));
             BlockPos blockpos = this.mob.blockPosition();
             BlockState blockstate = this.mob.level().getBlockState(blockpos);

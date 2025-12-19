@@ -56,7 +56,7 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
 
     @Override
     public boolean isWithinMeleeAttackRange(LivingEntity entity) {
-        return entity.distanceTo(this) < 2.2d;
+        return entity.distanceTo(this) < 3.2d;
     }
 
     public GoliathEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
@@ -168,6 +168,7 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
         super.addAdditionalSaveData(compound);
         compound.putBoolean("saddled", this.isSaddled());
         compound.putInt("attackTicks", this.getEntityData().get(ATTACK_TICKS));
+        compound.putBoolean("tamed", this.isTame());
     }
 
     @Override
@@ -175,6 +176,7 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
         super.readAdditionalSaveData(compound);
         this.getEntityData().set(SADDLED, compound.getBoolean("saddled"));
         this.getEntityData().set(ATTACK_TICKS, compound.getInt("attackTicks"));
+        this.setTame(compound.getBoolean("tamed"), false);
     }
 
     @Override

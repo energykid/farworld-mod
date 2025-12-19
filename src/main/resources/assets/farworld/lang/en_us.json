@@ -1,4 +1,6 @@
 {
+  "lore.minecraft.echo_shard": "An item that can be used to craft a Recovery Compass or light a Bystone portal. It's an uncommon find.",
+
   "item.farworld.cherries" : "Cherries",
   "lore.farworld.cherries" : "A food that drops in bulk from Cherry Leaves, which can be consumed quickly at any time to restore a slight amount of health and saturation.",
   "item.farworld.pear" : "Pear",
@@ -247,8 +249,6 @@
   "advancement.farworld.darker_than_dark.desc" : "Loot a Black Ice smithing template from an End City",
   "advancement.farworld.bang" : "Bang!",
   "advancement.farworld.bang.desc" : "Obtain a Netherite Crossbow",
-
-  "############ BELOW ARE UNIMPLEMENTED ADVANCEMENTS ############" : "",
   "advancement.farworld.dentists_nightmare" : "Dentist's Nightmare",
   "advancement.farworld.dentists_nightmare.desc" : "Give an Amethyst Construct an item to grind down",
 
