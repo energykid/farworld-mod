@@ -16,21 +16,9 @@ public class GoliathMeleeHurtGoal extends MeleeAttackGoal {
     @Override
     public boolean canUse() {
         if (this.mob instanceof GoliathEntity goliath) {
-            boolean b = true;
-            if (goliath.isTame()) b = false;
-            if (goliath.getTarget() instanceof Player plr)
-            {
-                if (goliath.isFood(plr.getItemInHand(InteractionHand.MAIN_HAND))) b = false;
-                if (goliath.isFood(plr.getItemInHand(InteractionHand.OFF_HAND))) b = false;
-            }
-            return b && super.canUse();
+            return ((GoliathEntity)this.mob).isHostileTowards(this.mob.getTarget());
         }
         return false;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.canUse();
     }
 
     public void tick() {
@@ -45,7 +33,7 @@ public class GoliathMeleeHurtGoal extends MeleeAttackGoal {
 
     @Override
     protected void checkAndPerformAttack(LivingEntity target) {
-        if (this.mob.isWithinMeleeAttackRange(target))
+        if (this.mob.isWithinMeleeAttackRange(target) && ((GoliathEntity)this.mob).isHostileTowards(target))
         {
             if (this.mob.getEntityData().get(GoliathEntity.ATTACK_TICKS) == 12)
             {

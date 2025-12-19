@@ -1,6 +1,7 @@
 package net.ennway.farworld.entity.custom;
 
-import net.ennway.farworld.entity.goal.GoliathAttackPlayerGoal;
+import net.ennway.farworld.entity.control.GoliathMoveControl;
+import net.ennway.farworld.entity.control.SlowRotMoveControl;
 import net.ennway.farworld.entity.goal.GoliathMeleeHurtGoal;
 import net.ennway.farworld.registries.ModItems;
 import net.minecraft.core.BlockPos;
@@ -26,6 +27,7 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -36,8 +38,6 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Objects;
 
 public class GoliathEntity extends TamableAnimal implements OwnableEntity, PlayerRideable, Saddleable {
 
@@ -54,31 +54,51 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
         super.baseTick();
     }
 
+    @Override
+    public boolean isWithinMeleeAttackRange(LivingEntity entity) {
+        return entity.distanceTo(this) < 2.2d;
+    }
+
     public GoliathEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
         this.setTame(false, false);
         this.setPathfindingMalus(PathType.POWDER_SNOW, -1.0F);
         this.setPathfindingMalus(PathType.DANGER_POWDER_SNOW, -1.0F);
         this.setPathfindingMalus(PathType.WATER, -1.5F);
+        this.moveControl = new GoliathMoveControl(this);
     }
 
     public double getEyeY() {
-        return this.getPosition(0).y + 2D;
+        return this.getPosition(0).y + 0.5D;
     }
 
     public final TargetingConditions targeting = TargetingConditions.forCombat().range(4.0).ignoreLineOfSight();
 
+    static class GoliathTargetGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
+        public GoliathTargetGoal(GoliathEntity spider, Class<T> entityTypeToTarget) {
+            super(spider, entityTypeToTarget, true);
+        }
+
+        public boolean canUse() {
+            if (this.target instanceof Player player)
+            {
+                boolean f = !((GoliathEntity)this.mob).isHostileTowards(player);
+                return f ? false : super.canUse();
+            }
+            return super.canUse();
+        }
+    }
+
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.targetSelector.addGoal(1, new GoliathAttackPlayerGoal<>(this, Player.class, true));
-        this.goalSelector.addGoal(1, new GoliathMeleeHurtGoal(this, 1.5, true));
-        this.goalSelector.addGoal(2, new TemptGoal(this, 1.0F, this::isFood, false));
-        this.goalSelector.addGoal(3, new FloatGoal(this));
-        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.0F, 6f, 100f));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(7, new RandomStrollGoal(this, 1.0));
+        this.goalSelector.addGoal(1, new GoliathMeleeHurtGoal(this, 3.25f, true));
+        this.goalSelector.addGoal(2, new GoliathTargetGoal<>(this, Player.class));
+        this.goalSelector.addGoal(4, new FloatGoal(this));
+        this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 1.2f, 6f, 30f));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(8, new RandomStrollGoal(this, 1.2f));
     }
 
     @Override
@@ -140,19 +160,21 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
     }
 
     protected float getRiddenSpeed(Player player) {
-        return (float)this.getAttributeValue(Attributes.MOVEMENT_SPEED);
+        return (float)this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 1.35f;
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("saddled", this.isSaddled());
+        compound.putInt("attackTicks", this.getEntityData().get(ATTACK_TICKS));
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         this.getEntityData().set(SADDLED, compound.getBoolean("saddled"));
+        this.getEntityData().set(ATTACK_TICKS, compound.getInt("attackTicks"));
     }
 
     @Override
@@ -164,6 +186,17 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
         }
 
         return new Vec3(f, 0f, f1);
+    }
+
+    public boolean isHostileTowards(LivingEntity ent)
+    {
+        if (ent instanceof Player plr)
+        {
+            boolean b = isFood(plr.getItemInHand(InteractionHand.MAIN_HAND)) || isFood(plr.getItemInHand(InteractionHand.OFF_HAND));
+            if (b) return false;
+            return !isTame();
+        }
+        return false;
     }
 
     public void petTheBuddyYippee()
@@ -188,11 +221,6 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
     }
 
     @Override
-    protected Vec3 getPassengerAttachmentPoint(Entity entity, EntityDimensions dimensions, float partialTick) {
-        return super.getPassengerAttachmentPoint(entity, dimensions, partialTick).add((new Vec3(0.0, -0.35, 0.0)));
-    }
-
-    @Override
     public void tick() {
 
         getEntityData().set(ATTACK_TICKS, getEntityData().get(ATTACK_TICKS) + 1);
@@ -208,6 +236,13 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
                 walkAnimationScale = Mth.lerp(0.25f, walkAnimationScale, 1f);
             else
                 walkAnimationScale = Mth.lerp(0.5f, walkAnimationScale, 0f);
+        }
+
+        if (this.entityData.get(ATTACK_TICKS) < 12){
+            this.getEntityData().set(MOVE_SPEED_MULT, 0f);
+        }
+        else {
+            this.getEntityData().set(MOVE_SPEED_MULT, Mth.lerp(0.1f, this.getEntityData().get(MOVE_SPEED_MULT), 1f));
         }
 
         super.tick();
@@ -252,13 +287,14 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
                 .add(Attributes.MAX_HEALTH, 80D)
                 .add(Attributes.FOLLOW_RANGE, 12D)
                 .add(Attributes.ATTACK_DAMAGE, 14)
-                .add(Attributes.MOVEMENT_SPEED, 0.25D);
+                .add(Attributes.MOVEMENT_SPEED, 0.12D);
     }
 
     public static final EntityDataAccessor<Boolean> SADDLED = SynchedEntityData.defineId(GoliathEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> TAMED = SynchedEntityData.defineId(GoliathEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Integer> PET_TICKS = SynchedEntityData.defineId(GoliathEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Integer> ATTACK_TICKS = SynchedEntityData.defineId(GoliathEntity.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Float> MOVE_SPEED_MULT = SynchedEntityData.defineId(GoliathEntity.class, EntityDataSerializers.FLOAT);
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
@@ -266,7 +302,8 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
                 .define(SADDLED, false)
                 .define(TAMED, false)
                 .define(PET_TICKS, -1)
-                .define(ATTACK_TICKS, 50));
+                .define(ATTACK_TICKS, 50)
+                .define(MOVE_SPEED_MULT, 1f));
     }
 
     @Override
@@ -277,7 +314,7 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
 
     @Override
     public boolean isFood(ItemStack itemStack) {
-        return itemStack.is(ModItems.GLOOMSPORES) || itemStack.is(ModItems.GLOOMCAP);
+        return itemStack.is(ModItems.GEODE_FRUIT);
     }
 
     @Override

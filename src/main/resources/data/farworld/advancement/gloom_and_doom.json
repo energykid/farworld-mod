@@ -1,0 +1,33 @@
+{
+  "parent": "farworld:black_light",
+  "criteria": {
+    "get_gloom_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farworld:gloomstone_upgrade_smithing_template"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.farworld.gloom_and_doom.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "farworld:gloomstone_upgrade_smithing_template"
+    },
+    "title": {
+      "translate": "advancement.farworld.gloom_and_doom"
+    }
+  },
+  "requirements": [
+    [
+      "get_gloom_template"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

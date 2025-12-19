@@ -43,7 +43,7 @@ public class SetTiers {
 
     public static final TagKey<Block> INCORRECT_FOR_BLACK_ICE_TOOL = TagKey.create(
             BuiltInRegistries.BLOCK.key(),
-            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "incorrect_for__black_ice_tool"));
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "incorrect_for_black_ice_tool"));
 
     public static final Tier BLACK_ICE_TIER = new SimpleTier(
             INCORRECT_FOR_BLACK_ICE_TOOL,

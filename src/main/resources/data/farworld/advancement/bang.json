@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:nether/obtain_ancient_debris",
+  "criteria": {
+    "get_netherite_crossbow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farworld:netherite_crossbow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.farworld.bang.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "farworld:netherite_crossbow"
+    },
+    "title": {
+      "translate": "advancement.farworld.bang"
+    }
+  },
+  "requirements": [
+    [
+      "get_netherite_crossbow"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "farworld:friend_of_arthropods",
+  "criteria": {
+    "tame_goliath": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "farworld:goliath"
+            }
+          }
+        ],
+        "item": {
+          "items": [
+            "farworld:geode_fruit"
+          ]
+        }
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.farworld.the_gentle_giant.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "farworld:geode_fruit"
+    },
+    "title": {
+      "translate": "advancement.farworld.the_gentle_giant"
+    }
+  },
+  "requirements": [
+    [
+      "tame_goliath"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
