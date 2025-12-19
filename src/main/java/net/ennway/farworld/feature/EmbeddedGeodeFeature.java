@@ -1,12 +1,18 @@
 package net.ennway.farworld.feature;
 
 import com.mojang.serialization.Codec;
+import net.ennway.farworld.Farworld;
 import net.ennway.farworld.registries.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -16,6 +22,10 @@ public class EmbeddedGeodeFeature extends Feature<NoneFeatureConfiguration> {
     public EmbeddedGeodeFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
     }
+
+    public static final TagKey<Block> GEODE_EMBEDDABLE = TagKey.create(
+            BuiltInRegistries.BLOCK.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "geode_embeddable"));
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
@@ -38,7 +48,7 @@ public class EmbeddedGeodeFeature extends Feature<NoneFeatureConfiguration> {
                     {
                         this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.AIR.defaultBlockState());
                     }
-                    else if (!featurePlaceContext.level().getBlockState(new BlockPos(pos2)).isAir()) {
+                    else if (featurePlaceContext.level().getBlockState(new BlockPos(pos2)).is(GEODE_EMBEDDABLE)) {
                         if (dist < s2) {
                             this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.AMETHYST_BLOCK.defaultBlockState());
                         } else if (dist < size) {

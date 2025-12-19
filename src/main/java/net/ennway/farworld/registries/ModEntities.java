@@ -52,7 +52,7 @@ public class ModEntities {
     );
 
     public static final DeferredHolder<EntityType<?>, EntityType<BloomedEntity>> BLOOMED = ENTITY_TYPES.register(
-            "bloomed", () -> EntityType.Builder.of(BloomedEntity::new, MobCategory.CREATURE)
+            "bloomed", () -> EntityType.Builder.of(BloomedEntity::new, MobCategory.MONSTER)
                     .eyeHeight(0.25f)
                     .sized(0.5f, 0.5f)
                     .build("bloomed"));
