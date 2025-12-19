@@ -44,12 +44,10 @@ public class EmbeddedGeodeFeature extends Feature<NoneFeatureConfiguration> {
 
                     double dist = pos.distSqr(pos2);
 
-                    if (dist < s1)
-                    {
-                        this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.AIR.defaultBlockState());
-                    }
-                    else if (featurePlaceContext.level().getBlockState(new BlockPos(pos2)).is(GEODE_EMBEDDABLE)) {
-                        if (dist < s2) {
+                    if (featurePlaceContext.level().getBlockState(new BlockPos(pos2)).is(GEODE_EMBEDDABLE)) {
+                        if (dist < s1){
+                            this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.AIR.defaultBlockState());
+                        } else if (dist < s2) {
                             this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.AMETHYST_BLOCK.defaultBlockState());
                         } else if (dist < size) {
                             this.setBlock(featurePlaceContext.level(), new BlockPos(pos2), Blocks.CALCITE.defaultBlockState());
