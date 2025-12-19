@@ -109,15 +109,15 @@ public class SoulGolemEntity extends AbstractGolem {
     @Override
     public void aiStep() {
         super.aiStep();
-        if (this.entityData.get(ENTITY_STATE_TIMER) == 60)
+        if (this.entityData.get(ENTITY_STATE_TIMER) == 10)
         {
             this.slamAnimationState.start(this.tickCount);
         }
-        if (this.entityData.get(ENTITY_STATE_TIMER) == 80)
+        if (this.entityData.get(ENTITY_STATE_TIMER) == 30)
         {
             this.slamAttack(true);
         }
-        if (this.entityData.get(ENTITY_STATE_TIMER) >= 110)
+        if (this.entityData.get(ENTITY_STATE_TIMER) >= 60)
         {
             this.slamAnimationState.stop();
         }
@@ -194,18 +194,18 @@ public class SoulGolemEntity extends AbstractGolem {
                 this.getNavigation().moveTo(vec3.x, vec3.y, vec3.z, 1.2f);
             }
 
-            if (hasTargetInRange || this.entityData.get(ENTITY_STATE_TIMER) > 60)
+            if (hasTargetInRange || this.entityData.get(ENTITY_STATE_TIMER) > 1)
             {
                 this.entityData.set(ENTITY_STATE_TIMER, this.entityData.get(ENTITY_STATE_TIMER) + 1);
             }
 
-            if (this.entityData.get(ENTITY_STATE_TIMER) == 80)
+            if (this.entityData.get(ENTITY_STATE_TIMER) == 40)
             {
                 this.slamAttack(false);
             }
-            if (this.entityData.get(ENTITY_STATE_TIMER) >= 112)
+            if (this.entityData.get(ENTITY_STATE_TIMER) >= 62)
             {
-                this.entityData.set(ENTITY_STATE_TIMER, 20 + this.random.nextInt(20));
+                this.entityData.set(ENTITY_STATE_TIMER, 0);
             }
         }
 
