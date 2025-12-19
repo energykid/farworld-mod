@@ -6,7 +6,19 @@
     },
     {
       "type": "minecraft:count",
-      "count": 1
+      "count": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "weight": 1,
+            "data": 1
+          },
+          {
+            "weight": 7,
+            "data": 0
+          }
+        ]
+      }
     },
     {
       "type": "minecraft:height_range",
