@@ -249,10 +249,13 @@
   "advancement.farworld.darker_than_dark.desc" : "Loot a Black Ice smithing template from an End City",
   "advancement.farworld.bang" : "Bang!",
   "advancement.farworld.bang.desc" : "Obtain a Netherite Crossbow",
+  "advancement.farworld.in_the_shade" : "In The Shade",
+  "advancement.farworld.in_the_shade.desc" : "Find a Gloomcap mushroom in a dark oak forest and harvest its spores",
   "advancement.farworld.dentists_nightmare" : "Dentist's Nightmare",
   "advancement.farworld.dentists_nightmare.desc" : "Give an Amethyst Construct an item to grind down",
 
   "accessory.farworld.accessory_attached": "§7Attached Accessories: §e",
+  "accessory.farworld.accessory_detach_hint": "§7Right click over an empty inventory slot to unequip",
   "accessory.farworld.accessory_helmet_description": "§cHelmet Accessory: §7Can be applied to helmets by right-clicking",
   "accessory.farworld.accessory_chestplate_description": "§cChestplate Accessory: §7Can be applied to chestplates by right-clicking",
   "accessory.farworld.accessory_leggings_description": "§cLegging Accessory: §7Can be applied to leggings by right-clicking",

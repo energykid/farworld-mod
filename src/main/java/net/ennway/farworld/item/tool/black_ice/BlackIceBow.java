@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 public class BlackIceBow extends AbstractBowItem {
 
     public BlackIceBow(Item.Properties properties) {
-        super(1600, Rarity.UNCOMMON, 1.25f);
+        super(1600, Rarity.UNCOMMON, 1.25f, 0.25f);
     }
 
     @Override

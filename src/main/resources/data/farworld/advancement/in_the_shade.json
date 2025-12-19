@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "gloomspores": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farworld:gloomspores",
+              "farworld:gloomcap"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.farworld.in_the_shade.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "farworld:gloomcap"
+    },
+    "title": {
+      "translate": "advancement.farworld.in_the_shade"
+    }
+  },
+  "requirements": [
+    [
+      "gloomspores"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

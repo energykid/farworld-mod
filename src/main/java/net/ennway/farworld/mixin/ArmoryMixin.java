@@ -82,6 +82,7 @@ public abstract class ArmoryMixin {
         if (farworld_mod$countsAsArmorForAccessories(stack) && stack.get(DataComponents.BUNDLE_CONTENTS) != null) {
             if (!stack.get(DataComponents.BUNDLE_CONTENTS).isEmpty()) {
                 tooltipComponents.add(Component.translatable("accessory.farworld.accessory_attached").append(stack.get(DataComponents.BUNDLE_CONTENTS).getItemUnsafe(0).getDisplayName()));
+                tooltipComponents.add(Component.translatable("accessory.farworld.accessory_detach_hint"));
             }
         }
 

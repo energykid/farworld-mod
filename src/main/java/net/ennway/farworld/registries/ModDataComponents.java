@@ -21,6 +21,11 @@ public class ModDataComponents {
             builder -> builder.persistent(Codec.INT)
     );
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Float>> BOW_DRAW_SPEED = register(
+            "bow_draw_speed",
+            builder -> builder.persistent(Codec.FLOAT)
+    );
+
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> ACCESSORY_VALUE = register(
             "accessory_value",
             builder -> builder.persistent(Codec.INT)

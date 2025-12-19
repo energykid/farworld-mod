@@ -1,5 +1,6 @@
 package net.ennway.farworld.item.tool;
 
+import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -26,7 +27,7 @@ public class AbstractBowItem extends BowItem {
 
     private boolean startSoundPlayed = false;
 
-    public float velocityMultiplier = 1.0f;
+    public static float velocityMultiplier = 1.0f;
 
     @Override
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int count) {
@@ -51,13 +52,27 @@ public class AbstractBowItem extends BowItem {
                 .durability(durability)
                 .stacksTo(1)
                 .rarity(rarity));
-        this.velocityMultiplier = velMult;
+        velocityMultiplier = velMult;
+    }
+
+    public AbstractBowItem(int durability, Rarity rarity, float velMult, float drawMult) {
+        super(new Properties()
+                .durability(durability)
+                .stacksTo(1)
+                .rarity(rarity)
+                .component(ModDataComponents.BOW_DRAW_SPEED, drawMult));
+        velocityMultiplier = velMult;
     }
 
     @Override
     public int getUseDuration(ItemStack stack, LivingEntity entity) {
-        return 65000;
+        float spd = 1f;
+        if (stack.getComponents().get(ModDataComponents.BOW_DRAW_SPEED.get()) != null)
+            spd = stack.getComponents().get(ModDataComponents.BOW_DRAW_SPEED.get());
+        return (int)(65000f * spd);
     }
+
+
 
     @Override
     public int getDefaultProjectileRange() {

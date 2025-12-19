@@ -29,9 +29,6 @@ public class SoulGolemRenderer extends MobRenderer<SoulGolemEntity, SoulGolemMod
             poseStack.scale(0.5f, 0.5f, 0.5f);
         }
 
-        poseStack.scale(10/9f, 10/9f, 10/9f);
-        super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
-        poseStack.scale(9/10f, 9/10f, 9/10f);
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 }

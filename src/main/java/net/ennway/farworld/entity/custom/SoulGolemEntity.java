@@ -170,6 +170,12 @@ public class SoulGolemEntity extends AbstractGolem {
 
         int activityScale = this.getEntityData().get(ACTIVITY_SCALE);
 
+        if (activityScale == 0)
+        {
+            Vec3 delt = getDeltaMovement();
+            if (delt.y > 0) delt = new Vec3(delt.x, 0, delt.z);
+            setDeltaMovement(delt);
+        }
         {
             boolean hasTargetInRange = this.getTarget() != null;
             if (hasTargetInRange)
