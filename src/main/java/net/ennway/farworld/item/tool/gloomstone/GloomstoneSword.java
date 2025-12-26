@@ -31,5 +31,6 @@ public class GloomstoneSword extends SwordItem {
         target.addEffect(
                 new MobEffectInstance(ModEffects.PARALYSIS, 6)
         );
+        super.postHurtEnemy(stack, target, attacker);
     }
 }

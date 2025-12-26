@@ -30,5 +30,6 @@ public class GloomstoneAxe extends AxeItem {
         target.addEffect(
                 new MobEffectInstance(ModEffects.PARALYSIS, 12)
         );
+        super.postHurtEnemy(stack, target, attacker);
     }
 }

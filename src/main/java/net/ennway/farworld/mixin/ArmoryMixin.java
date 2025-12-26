@@ -12,6 +12,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
@@ -86,8 +87,21 @@ public abstract class ArmoryMixin {
     @Inject(method = "appendHoverText", at = @At("TAIL"))
     void changeDescription(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, CallbackInfo ci) {
         if (farworld_mod$countsAsArmorForAccessories(stack) && stack.get(ModDataComponents.ARMOR_ACCESSORIES) != null) {
+            tooltipComponents.add(Component.translatable("accessory.farworld.accessory_slots").append(stack.get(ModDataComponents.ACCESSORY_SLOTS).toString()));
             if (!stack.get(ModDataComponents.ARMOR_ACCESSORIES).isEmpty()) {
-                tooltipComponents.add(Component.translatable("accessory.farworld.accessory_attached").append(stack.get(ModDataComponents.ARMOR_ACCESSORIES).getItemUnsafe(0).getDisplayName()));
+                MutableComponent str = Component.empty();
+
+                stack.get(ModDataComponents.ARMOR_ACCESSORIES).items().forEach(
+                        item -> {
+                            if (!str.equals(Component.empty()))
+                            {
+                                str.append(", ");
+                            }
+                            str.append(item.getDisplayName().getString());
+                        }
+                );
+
+                tooltipComponents.add(Component.translatable("accessory.farworld.accessory_attached").append(str));
                 tooltipComponents.add(Component.translatable("accessory.farworld.accessory_detach_hint"));
             }
         }

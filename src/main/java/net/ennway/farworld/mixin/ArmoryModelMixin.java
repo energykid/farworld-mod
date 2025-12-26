@@ -34,7 +34,7 @@ public class ArmoryModelMixin {
     @Inject(method = "render", at = @At("TAIL"))
     void postrender(ItemStack stack, ItemDisplayContext displayContext, boolean leftHand, PoseStack poseStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay, BakedModel p_model, CallbackInfo ci)
     {
-        if (!displayContext.firstPerson())
+        if (displayContext == ItemDisplayContext.GUI)
         {
             ItemRenderer rend = Minecraft.getInstance().getItemRenderer();
 
@@ -50,7 +50,7 @@ public class ArmoryModelMixin {
                         poseStack.scale(0.5f, 0.5f, 1.1f);
                         poseStack.mulPose(Axis.YP.rotationDegrees(0f));
 
-                        rend.renderStatic(stack2, ItemDisplayContext.GUI, combinedLight, combinedOverlay, poseStack, bufferSource, Minecraft.getInstance().level, 1);
+                        rend.renderStatic(stack2, displayContext, combinedLight, combinedOverlay, poseStack, bufferSource, Minecraft.getInstance().level, 1);
 
                         poseStack.popPose();
                     }

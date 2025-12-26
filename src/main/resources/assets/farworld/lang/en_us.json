@@ -251,9 +251,12 @@
   "advancement.farworld.bang.desc" : "Obtain a Netherite Crossbow",
   "advancement.farworld.in_the_shade" : "In The Shade",
   "advancement.farworld.in_the_shade.desc" : "Find a Gloomcap mushroom in a dark oak forest and harvest its spores",
+  "advancement.farworld.a_branching_path" : "A Branching Path...",
+  "advancement.farworld.a_branching_path.desc" : "Loot a Soul Steel smithing template from a Nether Fortress",
   "advancement.farworld.dentists_nightmare" : "Dentist's Nightmare",
   "advancement.farworld.dentists_nightmare.desc" : "Give an Amethyst Construct an item to grind down",
 
+  "accessory.farworld.accessory_slots": "§7Accessory Slots: ",
   "accessory.farworld.accessory_attached": "§7Attached Accessories: §e",
   "accessory.farworld.accessory_detach_hint": "§7Right click over an empty inventory slot to unequip",
   "accessory.farworld.accessory_helmet_description": "§cHelmet Accessory: §7Can be applied to helmets by right-clicking",
