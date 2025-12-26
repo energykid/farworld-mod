@@ -1,16 +1,21 @@
 package net.ennway.farworld.mixin;
 
+import net.ennway.farworld.Farworld;
+import net.ennway.farworld.item.data.ArmorAccessories;
+import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModItems;
 import net.ennway.farworld.registries.ModTags;
 import net.minecraft.client.renderer.entity.DisplayRenderer;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -27,6 +32,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.block.Block;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -79,9 +85,9 @@ public abstract class ArmoryMixin {
 
     @Inject(method = "appendHoverText", at = @At("TAIL"))
     void changeDescription(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, CallbackInfo ci) {
-        if (farworld_mod$countsAsArmorForAccessories(stack) && stack.get(DataComponents.BUNDLE_CONTENTS) != null) {
-            if (!stack.get(DataComponents.BUNDLE_CONTENTS).isEmpty()) {
-                tooltipComponents.add(Component.translatable("accessory.farworld.accessory_attached").append(stack.get(DataComponents.BUNDLE_CONTENTS).getItemUnsafe(0).getDisplayName()));
+        if (farworld_mod$countsAsArmorForAccessories(stack) && stack.get(ModDataComponents.ARMOR_ACCESSORIES) != null) {
+            if (!stack.get(ModDataComponents.ARMOR_ACCESSORIES).isEmpty()) {
+                tooltipComponents.add(Component.translatable("accessory.farworld.accessory_attached").append(stack.get(ModDataComponents.ARMOR_ACCESSORIES).getItemUnsafe(0).getDisplayName()));
                 tooltipComponents.add(Component.translatable("accessory.farworld.accessory_detach_hint"));
             }
         }
@@ -115,14 +121,30 @@ public abstract class ArmoryMixin {
         }
     }
 
+    private static final TagKey<Item> TWO_ACCESSORY_ARMOR = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "two_accessory_armor"));
+
+    private static final TagKey<Item> THREE_ACCESSORY_ARMOR = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "three_accessory_armor"));
 
     @Inject(method = "verifyComponentsAfterLoad", at = @At("TAIL"))
     void addComponents(ItemStack stack, CallbackInfo ci)
     {
         if (farworld_mod$countsAsArmorForAccessories(stack))
         {
-            if (stack.get(DataComponents.BUNDLE_CONTENTS) == null)
-                stack.set(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
+            if (stack.get(ModDataComponents.ARMOR_ACCESSORIES) == null)
+                stack.set(ModDataComponents.ARMOR_ACCESSORIES, ArmorAccessories.EMPTY);
+
+            if (stack.get(ModDataComponents.ACCESSORY_SLOTS) == null)
+            {
+                stack.set(ModDataComponents.ACCESSORY_SLOTS, 1);
+                if (stack.is(TWO_ACCESSORY_ARMOR))
+                    stack.set(ModDataComponents.ACCESSORY_SLOTS, 2);
+                if (stack.is(THREE_ACCESSORY_ARMOR))
+                    stack.set(ModDataComponents.ACCESSORY_SLOTS, 3);
+            }
         }
     }
 
@@ -143,27 +165,25 @@ public abstract class ArmoryMixin {
         if (shouldRunLogic)
         {
             if (stack.getCount() == 1) {
-                BundleContents bundlecontents = (BundleContents)stack.get(DataComponents.BUNDLE_CONTENTS);
-                if (bundlecontents == null) {
-
-                } else {
+                ArmorAccessories bundlecontents = (ArmorAccessories)stack.get(ModDataComponents.ARMOR_ACCESSORIES);
+                if (bundlecontents != null) {
                     ItemStack itemstack = slot.getItem();
-                    BundleContents.Mutable bundlecontents$mutable = new BundleContents.Mutable(bundlecontents);
+                    ArmorAccessories.Mutable bundlecontents$mutable = new ArmorAccessories.Mutable(bundlecontents);
                     if (itemstack.isEmpty()) {
                         this.farworld_mod$playRemoveOneSound(player);
                         ItemStack itemstack1 = bundlecontents$mutable.removeOne();
                         if (itemstack1 != null) {
                             ItemStack itemstack2 = slot.safeInsert(itemstack1);
-                            bundlecontents$mutable.tryInsert(itemstack2);
+                            bundlecontents$mutable.tryInsert(stack, itemstack2);
                         }
                     } else if (itemstack.getItem().canFitInsideContainerItems()) {
-                        int i = bundlecontents$mutable.tryTransfer(slot, player);
+                        int i = bundlecontents$mutable.tryInsert(stack, slot.getItem());
                         if (i > 0) {
                             this.farworld_mod$playInsertSound(player);
                         }
                     }
 
-                    stack.set(DataComponents.BUNDLE_CONTENTS, bundlecontents$mutable.toImmutable());
+                    stack.set(ModDataComponents.ARMOR_ACCESSORIES, bundlecontents$mutable.toImmutable());
                     cir.setReturnValue(true);
                 }
             }
@@ -186,12 +206,10 @@ public abstract class ArmoryMixin {
 
         if (shouldRunLogic)
         {
-            if (stack.getCount() != 1) {
-
-            } else if (slot.allowModification(player)) {
-                BundleContents bundlecontents = (BundleContents)stack.get(DataComponents.BUNDLE_CONTENTS);
+            if (stack.getCount() == 1 && slot.allowModification(player)) {
+                ArmorAccessories bundlecontents = (ArmorAccessories)stack.get(ModDataComponents.ARMOR_ACCESSORIES);
                 if (bundlecontents != null) {
-                    BundleContents.Mutable bundlecontents$mutable = new BundleContents.Mutable(bundlecontents);
+                    ArmorAccessories.Mutable bundlecontents$mutable = new ArmorAccessories.Mutable(bundlecontents);
                     if (other.isEmpty()) {
                         ItemStack itemstack = bundlecontents$mutable.removeOne();
                         if (itemstack != null) {
@@ -199,14 +217,16 @@ public abstract class ArmoryMixin {
                             access.set(itemstack);
                         }
                     } else {
-                        ItemStack itemstack = slot.getItem();
-                        int i = bundlecontents$mutable.tryInsert(other);
-                        if (i > 0) {
-                            this.farworld_mod$playInsertSound(player);
+                        if (!slot.getItem().isEmpty())
+                        {
+                            int i = bundlecontents$mutable.tryInsert(stack, other);
+                            if (i > 0) {
+                                this.farworld_mod$playInsertSound(player);
+                            }
                         }
                     }
 
-                    stack.set(DataComponents.BUNDLE_CONTENTS, bundlecontents$mutable.toImmutable());
+                    stack.set(ModDataComponents.ARMOR_ACCESSORIES, bundlecontents$mutable.toImmutable());
                     cir.setReturnValue(true);
                 }
             }

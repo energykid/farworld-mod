@@ -2,6 +2,8 @@ package net.ennway.farworld.event;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.item.AccessoryItem;
+import net.ennway.farworld.item.data.ArmorAccessories;
+import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.utils.AccessoryUtils;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
@@ -97,7 +99,7 @@ public class AccessoryEvents {
         ItemStack stack = event.getItemStack();
         if ((stack.is(ItemTags.HEAD_ARMOR) || stack.is(ItemTags.CHEST_ARMOR) || stack.is(ItemTags.LEG_ARMOR) || stack.is(ItemTags.FOOT_ARMOR)))
         {
-            BundleContents contents = stack.get(DataComponents.BUNDLE_CONTENTS);
+            ArmorAccessories contents = stack.get(ModDataComponents.ARMOR_ACCESSORIES);
             if (contents != null)
             {
                 for (ItemStack accStack : contents.items())

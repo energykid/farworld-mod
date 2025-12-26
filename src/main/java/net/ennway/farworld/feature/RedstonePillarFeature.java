@@ -21,9 +21,6 @@ public class RedstonePillarFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         BlockPos origin = featurePlaceContext.origin();
 
-        ChunkPos pos1 = featurePlaceContext.level().getChunk(origin).getPos();
-        if (!featurePlaceContext.level().hasChunk(pos1.x, pos1.z)) return false;
-
         int size = 5;
 
         BlockPos.MutableBlockPos pos = origin.mutable().move(0, -2, 0);

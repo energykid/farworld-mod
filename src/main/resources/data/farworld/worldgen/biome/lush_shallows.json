@@ -2,7 +2,8 @@
   "temperature": 0,
   "downfall": 0,
   "has_precipitation": false,
-  "creature_spawn_probability": 0.02,
+  "temperature_modifier": "none",
+  "creature_spawn_probability": 0.0035,
   "effects": {
     "sky_color": 14737816,
     "fog_color": 14737816,
@@ -25,17 +26,23 @@
     }
   },
   "spawners": {
-    "monster": [
+    "creature": [
       {
         "type": "farworld:bloomed",
         "weight": 5,
-        "minCount": 1,
-        "maxCount": 1
+        "minCount": 0,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:spider",
+        "weight": 4,
+        "minCount": 0,
+        "maxCount": 2
       },
       {
         "type": "farworld:goliath",
         "weight": 1,
-        "minCount": 1,
+        "minCount": 0,
         "maxCount": 1
       }
     ]
