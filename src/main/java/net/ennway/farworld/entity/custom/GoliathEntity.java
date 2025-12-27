@@ -41,7 +41,7 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3d;
 import org.joml.Vector3f;
 
-public class GoliathEntity extends TamableAnimal implements OwnableEntity, PlayerRideable, Saddleable {
+public class GoliathEntity extends BystoneTamableMonsterEntity implements OwnableEntity, PlayerRideable, Saddleable {
 
     public float walkAnimationScale = 0F;
     public float walkAnimationSpeed = 1F;
@@ -56,7 +56,7 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
         return entity.distanceTo(this) < 3.2d;
     }
 
-    public GoliathEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
+    public GoliathEntity(EntityType<? extends BystoneTamableMonsterEntity> entityType, Level level) {
         super(entityType, level);
         this.setTame(false, false);
         this.setPathfindingMalus(PathType.POWDER_SNOW, -1.0F);
@@ -250,11 +250,6 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
         }
     }
 
-    @Override
-    public @Nullable AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return null;
-    }
-
     private void setupAnimationStates()
     {
         this.idleAnimationState.startIfStopped(this.tickCount);
@@ -310,7 +305,6 @@ public class GoliathEntity extends TamableAnimal implements OwnableEntity, Playe
         return super.doHurtTarget(entity);
     }
 
-    @Override
     public boolean isFood(ItemStack itemStack) {
         return itemStack.is(ModItems.GEODE_FRUIT);
     }

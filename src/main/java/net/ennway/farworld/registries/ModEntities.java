@@ -52,7 +52,7 @@ public class ModEntities {
     );
 
     public static final DeferredHolder<EntityType<?>, EntityType<BloomedEntity>> BLOOMED = ENTITY_TYPES.register(
-            "bloomed", () -> EntityType.Builder.of(BloomedEntity::new, MobCategory.CREATURE)
+            "bloomed", () -> EntityType.Builder.of(BloomedEntity::new, MobCategory.MONSTER)
                     .eyeHeight(0.25f)
                     .sized(0.5f, 0.5f)
                     .build("bloomed"));
@@ -76,7 +76,7 @@ public class ModEntities {
                     .build("dustbug"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<GoliathEntity>> GOLIATH = ENTITY_TYPES.register(
-            "goliath", () -> EntityType.Builder.of(GoliathEntity::new, MobCategory.CREATURE)
+            "goliath", () -> EntityType.Builder.of(GoliathEntity::new, MobCategory.MONSTER)
                     .eyeHeight(2f)
                     .sized(2.5f, 1f)
                     .build("goliath"));
