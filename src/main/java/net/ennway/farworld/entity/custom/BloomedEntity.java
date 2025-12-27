@@ -150,6 +150,16 @@ public class BloomedEntity extends BystoneTamableMonsterEntity implements Ownabl
     @Override
     public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
 
+        if (!isTame() && isFood(player.getItemInHand(hand)))
+        {
+            tame(player);
+
+            this.tamedAnimationState.start(this.tickCount);
+            this.tamedAnimationScale = 1f;
+
+            return InteractionResult.CONSUME;
+        }
+
         if (!this.isArthur()) {
             ItemStack stack = player.getItemInHand(hand);
 
@@ -176,7 +186,6 @@ public class BloomedEntity extends BystoneTamableMonsterEntity implements Ownabl
                             )))));
 
                     this.getEntityData().set(FLOWER_TO_DISPLAY, "air");
-
                 }
             } else {
 
@@ -238,11 +247,9 @@ public class BloomedEntity extends BystoneTamableMonsterEntity implements Ownabl
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new BloomedSitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Endermite.class, 4F, 1.3F, 1.4F));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.0F, this::isFood, false));
-        this.goalSelector.addGoal(4, new BloomedFollowOwnerGoal(this, 1.0F, 6f, 20f));
         this.goalSelector.addGoal(5, new PanicGoal(this, 1.0F));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
