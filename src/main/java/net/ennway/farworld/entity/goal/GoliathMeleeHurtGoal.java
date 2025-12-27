@@ -1,6 +1,7 @@
 package net.ennway.farworld.entity.goal;
 
 import net.ennway.farworld.entity.custom.GoliathEntity;
+import net.ennway.farworld.registries.ModSounds;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
@@ -36,6 +37,11 @@ public class GoliathMeleeHurtGoal extends MeleeAttackGoal {
     protected void checkAndPerformAttack(LivingEntity target) {
         if (this.mob.isWithinMeleeAttackRange(target) && ((GoliathEntity)this.mob).isHostileTowards(target))
         {
+            if (this.mob.getEntityData().get(GoliathEntity.ATTACK_TICKS) == 1)
+            {
+                this.mob.playSound(ModSounds.GOLIATH_ATTACK.get());
+            }
+
             if (this.mob.getEntityData().get(GoliathEntity.ATTACK_TICKS) == 12)
             {
                 this.mob.doHurtTarget(target);

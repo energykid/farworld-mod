@@ -40,6 +40,11 @@ public class ModSounds {
     public static final Supplier<SoundEvent> CHARGED_CAVES_AMBIANCE = createSoundEvent("charged_caves_ambiance");
     public static final Supplier<SoundEvent> GEODIC_COLUMNS_AMBIANCE = createSoundEvent("geodic_columns_ambiance");
 
+    public static final Supplier<SoundEvent> GOLIATH_AMBIENT = createSoundEvent("goliath_ambient");
+    public static final Supplier<SoundEvent> GOLIATH_STEP = createSoundEvent("goliath_step");
+    public static final Supplier<SoundEvent> GOLIATH_ATTACK = createSoundEvent("goliath_attack");
+    public static final Supplier<SoundEvent> GOLIATH_DEATH = createSoundEvent("goliath_death");
+
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");
     public static final Supplier<SoundEvent> COBALT_HIT = createSoundEvent("cobalt_hit");
 

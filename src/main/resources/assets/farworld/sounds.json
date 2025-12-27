@@ -59,6 +59,29 @@
     "stream": true
   },
 
+  "goliath_ambient": {
+    "sounds": ["farworld:goliath_ambient_1",
+      "farworld:goliath_ambient_2",
+      "farworld:goliath_ambient_3",
+      "farworld:goliath_ambient_4"]
+  },
+
+  "goliath_attack": {
+    "sounds": ["farworld:goliath_attack_1",
+      "farworld:goliath_attack_2"]
+  },
+
+  "goliath_death": {
+    "sounds": ["farworld:goliath_death"]
+  },
+
+  "goliath_step": {
+    "sounds": ["farworld:goliath_step_1",
+      "farworld:goliath_step_2",
+      "farworld:goliath_step_3",
+      "farworld:goliath_step_4"]
+  },
+
   "diamond_hit": {
     "sounds": ["farworld:diamond_hit_1",
       "farworld:diamond_hit_2",

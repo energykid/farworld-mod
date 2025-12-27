@@ -19,11 +19,11 @@ public class Config
 {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    /*
     private static final ModConfigSpec.BooleanValue USE_ACCESSORY_SYSTEM = BUILDER
             .comment("Whether to use FARWORLD's accessory system (Will act as TRUE unconditionally if Curios API is not enabled)")
             .define("useAccessorySystem", true);
 
-    /*
     private static final ModConfigSpec.IntValue MAGIC_NUMBER = BUILDER
             .comment("A magic number")
             .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
@@ -40,8 +40,8 @@ public class Config
 
     static final ModConfigSpec SPEC = BUILDER.build();
 
-    public static boolean useAccessorySystem;
     /*
+    public static boolean useAccessorySystem;
     public static int magicNumber;
     public static String magicNumberIntroduction;
     public static Set<Item> items;
@@ -54,8 +54,8 @@ public class Config
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-        useAccessorySystem = USE_ACCESSORY_SYSTEM.get();
         /*
+        useAccessorySystem = USE_ACCESSORY_SYSTEM.get();
         magicNumber = MAGIC_NUMBER.get();
         magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
 

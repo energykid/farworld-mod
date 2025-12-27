@@ -4,6 +4,7 @@ import net.ennway.farworld.entity.control.GoliathMoveControl;
 import net.ennway.farworld.entity.control.SlowRotMoveControl;
 import net.ennway.farworld.entity.goal.GoliathMeleeHurtGoal;
 import net.ennway.farworld.registries.ModItems;
+import net.ennway.farworld.registries.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -54,6 +55,30 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
     @Override
     public boolean isWithinMeleeAttackRange(LivingEntity entity) {
         return entity.distanceTo(this) < 3.2d;
+    }
+
+    public void handleStepSounds()
+    {
+        float vel = rideSoundMoveSpeed();
+        if (vel >= 0.01)
+        {
+            this.stepCount += vel;
+            if (this.stepCount > 5)
+            {
+                this.playSound(ModSounds.GOLIATH_STEP.get());
+                this.stepCount = 0f;
+            }
+        }
+        else {
+            this.stepCount = 0f;
+        }
+    }
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+
+        handleStepSounds();
     }
 
     public GoliathEntity(EntityType<? extends BystoneTamableMonsterEntity> entityType, Level level) {
@@ -194,6 +219,16 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
         return false;
     }
 
+    @Override
+    public void playAmbientSound() {
+        this.playSound(ModSounds.GOLIATH_AMBIENT.get());
+    }
+
+    @Override
+    public float maxUpStep() {
+        return 1f;
+    }
+
     public void petTheBuddyYippee()
     {
         ParticleOptions particleoptions = ParticleTypes.HEART;
@@ -210,6 +245,24 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
         petAnimationState.start(this.tickCount);
     }
 
+    public float moveSpeed()
+    {
+        return (float)(new Vector3d(this.getDeltaMovement().x, 0d, this.getDeltaMovement().z).length()) / 0.12f * this.getEntityData().get(MOVE_SPEED_MULT) * 1.4f;
+    }
+
+    public float rideSoundMoveSpeed()
+    {
+        float a = (float)(new Vector3d(this.getKnownMovement().x, 0d, this.getKnownMovement().z).length()) / 0.12f * this.getEntityData().get(MOVE_SPEED_MULT) * 1.4f;
+
+        LivingEntity var2 = this.getControllingPassenger();
+        if (var2 instanceof Player player) {
+            if (this.isAlive()) {
+                return a / 2f;
+            }
+        }
+        return a;
+    }
+
     @Override
     protected void positionRider(Entity passenger, MoveFunction callback) {
         super.positionRider(passenger, callback);
@@ -219,7 +272,7 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
     public void tick() {
         if (this.horizontalCollision) setDeltaMovement(getDeltaMovement().x, 0.25f, getDeltaMovement().z);
 
-        this.walkAnimationSpeed = (float)(new Vector3d(this.getDeltaMovement().x, 0d, this.getDeltaMovement().z).length()) / 0.12f * this.getEntityData().get(MOVE_SPEED_MULT) * 1.4f;
+        this.walkAnimationSpeed = moveSpeed();
 
         getEntityData().set(ATTACK_TICKS, getEntityData().get(ATTACK_TICKS) + 1);
 
@@ -258,12 +311,12 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
 
     @Override
     protected @Nullable SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
-        return SoundEvents.SPIDER_HURT;
+        return ModSounds.GOLIATH_AMBIENT.get();
     }
 
     @Override
     protected @Nullable SoundEvent getDeathSound() {
-        return SoundEvents.SPIDER_DEATH;
+        return ModSounds.GOLIATH_DEATH.get();
     }
 
     protected void doPlayerRide(Player player) {
@@ -282,6 +335,8 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
                 .add(Attributes.ATTACK_DAMAGE, 14)
                 .add(Attributes.MOVEMENT_SPEED, 0.12D);
     }
+
+    public float stepCount = 0f;
 
     public static final EntityDataAccessor<Boolean> SADDLED = SynchedEntityData.defineId(GoliathEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> TAMED = SynchedEntityData.defineId(GoliathEntity.class, EntityDataSerializers.BOOLEAN);
@@ -311,7 +366,7 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
-        level().playSound(this, pos, SoundEvents.SPIDER_STEP, SoundSource.NEUTRAL, 0.5f, 1f);
+
     }
 
     @Override
