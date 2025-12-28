@@ -45,6 +45,8 @@ public class ModSounds {
     public static final Supplier<SoundEvent> GOLIATH_ATTACK = createSoundEvent("goliath_attack");
     public static final Supplier<SoundEvent> GOLIATH_DEATH = createSoundEvent("goliath_death");
 
+    public static final Supplier<SoundEvent> GLOOMSTONE_PICKUP = createSoundEvent("gloomstone_pickup");
+
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");
     public static final Supplier<SoundEvent> COBALT_HIT = createSoundEvent("cobalt_hit");
 

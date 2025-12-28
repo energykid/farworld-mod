@@ -20,4 +20,8 @@ public class ModTags {
     public static final TagKey<Item> BOOTS_ACCESSORIES = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "boot_accessories"));
+
+    public static final TagKey<Item> GLOOMSTONE_ITEMS = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "gloomstone_items"));
 }

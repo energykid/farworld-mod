@@ -82,6 +82,12 @@
       "farworld:goliath_step_4"]
   },
 
+  "gloomstone_pickup": {
+    "sounds": ["farworld:gloomstone_pickup_1",
+      "farworld:gloomstone_pickup_2",
+      "farworld:gloomstone_pickup_3"]
+  },
+
   "diamond_hit": {
     "sounds": ["farworld:diamond_hit_1",
       "farworld:diamond_hit_2",

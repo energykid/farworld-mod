@@ -7,6 +7,7 @@ import net.ennway.farworld.entity.client.goliath.GoliathRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.entity.custom.BrittleEntity;
 import net.ennway.farworld.entity.custom.DustbugEntity;
+import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
 import net.ennway.farworld.feature.ModFeatureTypes;
 import net.ennway.farworld.registries.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -278,6 +279,7 @@ public class Farworld
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.BLACK_ICE_AOE_ENTITY.get(), NoopRenderer::new);
+            EntityRenderers.register(ModEntities.GLOOMSTONE_PICKUP.get(), GloomstonePickupRenderer::new);
             EntityRenderers.register(ModEntities.BLOOMED.get(), BloomedRenderer::new);
             EntityRenderers.register(ModEntities.BRITTLE.get(), BrittleRenderer::new);
             EntityRenderers.register(ModEntities.SOUL_GOLEM.get(), SoulGolemRenderer::new);

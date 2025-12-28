@@ -167,26 +167,29 @@ public class DustbugEntity extends Monster {
             }
         }
         else { // if summon is not occurring
-            if (!this.level().getEntitiesOfClass(Player.class, new AABB(
+            var players = this.level().getEntitiesOfClass(Player.class, new AABB(
                     this.position().x - 6.5f,
                     this.position().y - 3f,
                     this.position().z - 6.5f,
                     this.position().x + 6.5f,
                     this.position().y + 3f,
-                    this.position().z + 6.5f)).isEmpty())
+                    this.position().z + 6.5f));
+            if (!players.isEmpty())
             {
-                // if there is a player nearby, increment entity_state_timer upwards
-                entityData.set(ENTITY_STATE_TIMER, entityData.get(ENTITY_STATE_TIMER) + 1);
-
-                if (entityData.get(ENTITY_STATE_TIMER) >= 50)
+                // if there is a player nearby, and said player is not creative, increment entity_state_timer upwards
+                if (!players.getFirst().isCreative())
                 {
-                    // set entity_summon_timer to 0. any value above or equal to 0 means that a summon is occurring
-                    entityData.set(ENTITY_SUMMON_TIMER, 0);
+                    entityData.set(ENTITY_STATE_TIMER, entityData.get(ENTITY_STATE_TIMER) + 1);
 
-                    this.playSound(ModSounds.DUSTBUG_SCREECH.get());
+                    if (entityData.get(ENTITY_STATE_TIMER) >= 50) {
+                        // set entity_summon_timer to 0. any value above or equal to 0 means that a summon is occurring
+                        entityData.set(ENTITY_SUMMON_TIMER, 0);
 
-                    // set entity_state_timer to 0 so that, after summoning the silverfish, it will reset the timer
-                    entityData.set(ENTITY_STATE_TIMER, 0);
+                        this.playSound(ModSounds.DUSTBUG_SCREECH.get());
+
+                        // set entity_state_timer to 0 so that, after summoning the silverfish, it will reset the timer
+                        entityData.set(ENTITY_STATE_TIMER, 0);
+                    }
                 }
             }
             else {

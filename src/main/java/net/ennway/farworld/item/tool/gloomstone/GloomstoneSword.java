@@ -28,9 +28,8 @@ public class GloomstoneSword extends SwordItem {
 
     @Override
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        target.addEffect(
-                new MobEffectInstance(ModEffects.PARALYSIS, 6)
-        );
+        GloomstoneEffects.doCombatEffect(target, attacker);
+
         super.postHurtEnemy(stack, target, attacker);
     }
 }
