@@ -44,7 +44,6 @@ public class AbstractCrossbowItem extends CrossbowItem {
     }
 
     private boolean startSoundPlayed = false;
-    private boolean startSoundPlayedBothSides = false;
     private boolean midLoadSoundPlayed = false;
     private static final ChargingSounds DEFAULT_SOUNDS;
 
@@ -72,7 +71,7 @@ public class AbstractCrossbowItem extends CrossbowItem {
     public void performShooting(Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float velocity, float inaccuracy, @Nullable LivingEntity target) {
         super.performShooting(level, shooter, hand, weapon, velocity, inaccuracy, target);
         if (kickback > 0f) {
-            if (!shooter.onGround()) {
+
                 if (shooter instanceof Player player) {
                     if (!player.isCreative()) {
                         if (kickback > 0f) {
@@ -84,7 +83,6 @@ public class AbstractCrossbowItem extends CrossbowItem {
                     shooter.fallDistance = 0;
                     shooter.addDeltaMovement(shooter.getLookAngle().multiply(-kickback, -kickback * kickbackYMod, -kickback));
                 }
-            }
         }
     }
 

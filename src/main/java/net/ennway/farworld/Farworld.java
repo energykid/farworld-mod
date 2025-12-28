@@ -126,8 +126,9 @@ public class Farworld
             event.insertAfter(ModItems.PEAR.toStack(), ModItems.MYSTIC_PEAR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.MYSTIC_PEAR.toStack(), ModItems.ENCHANTED_MYSTIC_PEAR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.SWEET_BERRIES.getDefaultInstance(), ModItems.CHERRIES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertBefore(ModItems.CHERRIES.toStack(), ModItems.GEODE_NUT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertBefore(ModItems.GEODE_NUT.toStack(), ModItems.GEODE_FRUIT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CHERRIES.toStack(), ModItems.GEODE_NUT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GEODE_NUT.toStack(), ModItems.GEODE_FRUIT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GEODE_FRUIT.toStack(), ModItems.MILK_BERRIES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS)
         {

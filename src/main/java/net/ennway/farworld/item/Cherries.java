@@ -17,7 +17,6 @@ public class Cherries extends Item {
                     .nutrition(2)
                     .saturationModifier(0.5f)
                     .fast()
-                    .alwaysEdible()
                     .build())
                 .stacksTo(16));
     }

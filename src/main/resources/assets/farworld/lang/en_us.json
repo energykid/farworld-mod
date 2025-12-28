@@ -125,6 +125,8 @@
   "item.minecraft.lingering_potion.effect.paralysis_potion" : "Lingering Potion of Paralysis",
   "item.minecraft.tipped_arrow.effect.paralysis_potion" : "Arrow of Paralysis",
 
+  "block.farworld.milk_berries" : "Milk Berries",
+  "lore.farworld.milk_berries" : "A food that can be scavenged in Dusty Shelves and can restore a small amount of saturation quickly.",
   "block.farworld.gloomcap" : "Gloomcap",
   "lore.farworld.gloomcap" : "A highly toxic mushroom found in Dark Forest biomes. Drops Gloomspores unless sheared.",
   "block.farworld.geode_nut" : "Geode Nut",

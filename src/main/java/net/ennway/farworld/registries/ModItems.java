@@ -27,6 +27,8 @@ public class ModItems
             Cherries::new);
     public static final DeferredItem<Item> PEAR = ITEMS_ALL.register("pear",
             Pear::new);
+    public static final DeferredItem<Item> MILK_BERRIES = ITEMS_ALL.register("milk_berries",
+            MilkBerries::new);
     public static final DeferredItem<Item> GEODE_FRUIT = ITEMS_ALL.register("geode_fruit",
             GeodeFruit::new);
     public static final DeferredItem<Item> MYSTIC_PEAR = ITEMS_ALL.register("mystic_pear",

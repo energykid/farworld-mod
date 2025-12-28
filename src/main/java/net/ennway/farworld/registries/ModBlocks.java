@@ -43,6 +43,15 @@ public class ModBlocks {
                     .noCollission()
                     .noOcclusion()));
 
+    public static final DeferredBlock<Block> MILK_BERRIES = BLOCKS_ALL.register(
+            "milk_berries",
+            registryName -> new MilkBerryCropBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.GRASS)
+                    .ignitedByLava()
+                    .isViewBlocking((a,b,c) -> false)
+                    .noCollission()
+                    .noOcclusion()));
+
     public static final DeferredBlock<HalfTransparentBlock> BLACK_ICE = BLOCKS_ALL.register(
             "black_ice",
             registryName -> new HalfTransparentBlock(BlockBehaviour.Properties.of()
