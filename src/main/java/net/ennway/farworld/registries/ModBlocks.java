@@ -63,7 +63,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> NETHER_IRON_ORE = BLOCKS_ALL.register(
             "nether_iron_ore",
-            registryName -> new NetherIronOreBlock(BlockBehaviour.Properties.of()
+            registryName -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
                     .sound(SoundType.BASALT)
                     .strength(1.25F, 4.2F)
                     .forceSolidOn()
