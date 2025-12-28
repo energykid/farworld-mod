@@ -27,7 +27,7 @@ public class AbstractBowItem extends BowItem {
 
     private boolean startSoundPlayed = false;
 
-    public static float velocityMultiplier = 1.0f;
+    public float velocityMultiplier = 1.0f;
 
     @Override
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int count) {
@@ -42,6 +42,47 @@ public class AbstractBowItem extends BowItem {
             }
     }
 
+    public float powerForTime(int charge)
+    {
+        float ff = 20.0F;
+        ff *= this.components().get(ModDataComponents.BOW_DRAW_SPEED.get()).floatValue();
+        float f = (float)charge / ff;
+        f = (f * f + f * 2.0F) / 3.0F;
+        if (f > 1.0F) {
+            f = 1.0F;
+        }
+
+        return f;
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity entityLiving, int timeLeft) {
+        if (entityLiving instanceof Player player) {
+            ItemStack itemstack = player.getProjectile(stack);
+            if (!itemstack.isEmpty()) {
+                int i = this.getUseDuration(stack, entityLiving) - timeLeft;
+                i = EventHooks.onArrowLoose(stack, level, player, i, !itemstack.isEmpty());
+                if (i < 0) {
+                    return;
+                }
+
+                float f = powerForTime(i);
+                if (!((double)f < 0.1)) {
+                    List<ItemStack> list = draw(stack, itemstack, player);
+                    if (level instanceof ServerLevel) {
+                        ServerLevel serverlevel = (ServerLevel)level;
+                        if (!list.isEmpty()) {
+                            this.shoot(serverlevel, player, player.getUsedItemHand(), stack, list, f * 3.0F, 1.0F, f == 1.0F, (LivingEntity)null);
+                        }
+                    }
+
+                    level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    player.awardStat(Stats.ITEM_USED.get(this));
+                }
+            }
+        }
+    }
+
     @Override
     public boolean isRepairable(ItemStack stack) {
         return true;
@@ -52,27 +93,22 @@ public class AbstractBowItem extends BowItem {
                 .durability(durability)
                 .stacksTo(1)
                 .rarity(rarity));
-        velocityMultiplier = velMult;
+        this.velocityMultiplier = velMult;
     }
 
-    public AbstractBowItem(int durability, Rarity rarity, float velMult, float drawMult) {
+    public AbstractBowItem(int durability, Rarity rarity, float velMult, double drawMult) {
         super(new Properties()
                 .durability(durability)
                 .stacksTo(1)
                 .rarity(rarity)
                 .component(ModDataComponents.BOW_DRAW_SPEED, drawMult));
-        velocityMultiplier = velMult;
+        this.velocityMultiplier = velMult;
     }
 
     @Override
-    public int getUseDuration(ItemStack stack, LivingEntity entity) {
-        float spd = 1f;
-        if (stack.getComponents().get(ModDataComponents.BOW_DRAW_SPEED.get()) != null)
-            spd = stack.getComponents().get(ModDataComponents.BOW_DRAW_SPEED.get());
-        return (int)(65000f * spd);
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BOW;
     }
-
-
 
     @Override
     public int getDefaultProjectileRange() {

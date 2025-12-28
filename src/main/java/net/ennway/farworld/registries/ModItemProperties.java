@@ -19,11 +19,13 @@ public class ModItemProperties {
 
     static void registerBow(Item item)
     {
-        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("pull"), (p_344163_, p_344164_, p_344165_, p_344166_) -> {
-            if (p_344165_ == null) {
+        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("pull"), (_item, _n1, _player, _n2) -> {
+            if (_player == null) {
                 return 0.0F;
             } else {
-                return p_344165_.getUseItem() != p_344163_ ? 0.0F : (float) (p_344163_.getUseDuration(p_344165_) - p_344165_.getUseItemRemainingTicks()) / 20.0F;
+                float r = 20.0F;
+                r *= _item.getComponents().get(ModDataComponents.BOW_DRAW_SPEED.get()).floatValue();
+                return _player.getUseItem() != _item ? 0.0F : (float) (_item.getUseDuration(_player) - _player.getUseItemRemainingTicks()) / r;
             }
         });
 

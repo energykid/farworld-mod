@@ -32,9 +32,11 @@ public class FOVEvents {
         float f = 1.0F;
         ItemStack itemstack = player.getUseItem();
         if (player.isUsingItem()) {
-            if (itemstack.getItem() instanceof AbstractBowItem) {
+            if (itemstack.getItem() instanceof AbstractBowItem abi) {
                 int i = player.getTicksUsingItem();
-                float f1 = (float)i / 20.0F;
+                float ff = 20.0F;
+                ff *= abi.components().get(ModDataComponents.BOW_DRAW_SPEED.get()).floatValue();
+                float f1 = (float)i / ff;
                 if (f1 > 1.0F) {
                     f1 = 1.0F;
                 } else {

@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 
 public class SoulSteelBow extends AbstractBowItem {
     public SoulSteelBow() {
-        super(450, Rarity.COMMON, 1.15f, 0.5f);
+        super(450, Rarity.COMMON, 1.15f, 0.8);
     }
 
     @Override

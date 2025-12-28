@@ -20,6 +20,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
 public class GloomstonePickupRenderer extends EntityRenderer<GloomstonePickup> {
@@ -56,7 +57,7 @@ public class GloomstonePickupRenderer extends EntityRenderer<GloomstonePickup> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(GloomstonePickup gloomstoneSaturationPickup) {
+    public @NotNull ResourceLocation getTextureLocation(@NotNull GloomstonePickup pickup) {
         return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/gloomstone_pickup.png");
     }
 
