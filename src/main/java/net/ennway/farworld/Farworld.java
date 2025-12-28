@@ -145,11 +145,11 @@ public class Farworld
             event.insertAfter(ModItems.DENSE_GOLD_ORE.toStack(), ModItems.COBALT_ORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.PRISMARINE.getDefaultInstance(), ModItems.FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.FLOWSTONE.toStack(), ModItems.COBBLED_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE.toStack(), ModItems.FLOWSTONE_CACHE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE_CACHE.toStack(), ModItems.COBBLED_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBBLED_FLOWSTONE.toStack(), ModItems.LUSH_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.LUSH_FLOWSTONE.toStack(), ModItems.LUSH_FOLIAGE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.LUSH_FOLIAGE.toStack(), ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), ModItems.FLOWSTONE_CACHE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.AMETHYST_CLUSTER.getDefaultInstance(), ModItems.POINTED_AMETHYST.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.AMETHYST_BLOCK.getDefaultInstance(), ModItems.ENCRUSTED_BASALT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -263,6 +263,16 @@ public class Farworld
             event.accept(ModItems.BRITTLE_SPAWN_EGG);
             event.accept(ModItems.DUSTBUG_SPAWN_EGG);
             event.accept(ModItems.GOLIATH_SPAWN_EGG);
+        }
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
+        {
+            event.insertAfter(Items.STONE_BRICKS.getDefaultInstance(), ModItems.COBBLED_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBBLED_FLOWSTONE.toStack(), ModItems.COBBLED_FLOWSTONE_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBBLED_FLOWSTONE_SLAB.toStack(), ModItems.COBBLED_FLOWSTONE_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBBLED_FLOWSTONE_STAIRS.toStack(), ModItems.FLOWSTONE_BRICKS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE_BRICKS.toStack(), ModItems.FLOWSTONE_BRICK_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE_BRICK_SLAB.toStack(), ModItems.FLOWSTONE_BRICK_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE_BRICK_STAIRS.toStack(), ModItems.FLOWSTONE_BRICK_WALL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 

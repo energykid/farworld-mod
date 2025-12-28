@@ -432,6 +432,18 @@ public class ModItems
             () -> new HangingSignItem(ModBlocks.STONEWOOD_SIGN_HANGING.get(), ModBlocks.STONEWOOD_SIGN_WALL_HANGING.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> COBBLED_FLOWSTONE = ITEMS_ALL.register("cobbled_flowstone",
             () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> COBBLED_FLOWSTONE_SLAB = ITEMS_ALL.register("cobbled_flowstone_slab",
+            () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE_SLAB.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> COBBLED_FLOWSTONE_STAIRS = ITEMS_ALL.register("cobbled_flowstone_stairs",
+            () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE_STAIRS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> FLOWSTONE_BRICKS = ITEMS_ALL.register("flowstone_bricks",
+            () -> new BlockItem(ModBlocks.FLOWSTONE_BRICKS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> FLOWSTONE_BRICK_SLAB = ITEMS_ALL.register("flowstone_brick_slab",
+            () -> new BlockItem(ModBlocks.FLOWSTONE_BRICK_SLAB.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> FLOWSTONE_BRICK_STAIRS = ITEMS_ALL.register("flowstone_brick_stairs",
+            () -> new BlockItem(ModBlocks.FLOWSTONE_BRICK_STAIRS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> FLOWSTONE_BRICK_WALL = ITEMS_ALL.register("flowstone_brick_wall",
+            () -> new BlockItem(ModBlocks.FLOWSTONE_BRICK_WALL.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES = ITEMS_ALL.register("stonewood_leaves",
             () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES_FLOWERED = ITEMS_ALL.register("stonewood_leaves_flowered",

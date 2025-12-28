@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "farworld:block/flowstone_bricks",
+    "side": "farworld:block/flowstone_bricks",
+    "top": "farworld:block/flowstone_bricks"
+  }
+}

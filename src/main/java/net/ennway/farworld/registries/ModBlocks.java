@@ -341,6 +341,49 @@ public class ModBlocks {
                     .strength(1.2F, 5.0F)
                     .sound(SoundType.NETHERRACK)));
 
+    public static final DeferredBlock<Block> COBBLED_FLOWSTONE_SLAB = BLOCKS_ALL.register(
+            "cobbled_flowstone_slab",
+            registryName -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.NETHERRACK)));
+
+    public static final DeferredBlock<Block> COBBLED_FLOWSTONE_STAIRS = BLOCKS_ALL.register(
+            "cobbled_flowstone_stairs",
+            registryName -> new StairBlock(COBBLED_FLOWSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.NETHERRACK)));
+
+
+    public static final DeferredBlock<Block> FLOWSTONE_BRICKS = BLOCKS_ALL.register(
+            "flowstone_bricks",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.NETHERRACK)));
+
+    public static final DeferredBlock<Block> FLOWSTONE_BRICK_SLAB = BLOCKS_ALL.register(
+            "flowstone_brick_slab",
+            registryName -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.NETHERRACK)));
+
+    public static final DeferredBlock<Block> FLOWSTONE_BRICK_WALL = BLOCKS_ALL.register(
+            "flowstone_brick_wall",
+            registryName -> new WallBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.NETHERRACK)));
+
+    public static final DeferredBlock<Block> FLOWSTONE_BRICK_STAIRS = BLOCKS_ALL.register(
+            "flowstone_brick_stairs",
+            registryName -> new StairBlock(COBBLED_FLOWSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.NETHERRACK)));
+
     public static final DeferredBlock<Block> LUSH_FLOWSTONE = BLOCKS_ALL.register(
             "lush_flowstone",
             registryName -> new LushFlowstoneBlock(BlockBehaviour.Properties.of()

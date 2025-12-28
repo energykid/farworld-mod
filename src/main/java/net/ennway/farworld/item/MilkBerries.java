@@ -8,10 +8,10 @@ public class MilkBerries extends BlockItem {
     public MilkBerries() {
 		super(ModBlocks.MILK_BERRIES.get(), new Properties().food(
                 new FoodProperties.Builder()
-                .nutrition(4)
+                .nutrition(2)
                 .fast()
                 .alwaysEdible()
-                .saturationModifier(1f)
+                .saturationModifier(1.5f)
                 .build()));
     }
 }

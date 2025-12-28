@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "farworld:block/flowstone_brick_slab"
+    },
+    "type=double": {
+      "model": "farworld:block/flowstone_brick"
+    },
+    "type=top": {
+      "model": "farworld:block/flowstone_brick_slab_top"
+    }
+  }
+}
