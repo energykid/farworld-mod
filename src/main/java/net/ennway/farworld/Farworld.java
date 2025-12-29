@@ -94,7 +94,8 @@ public class Farworld
     {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
         {
-            event.insertAfter(Items.STONE_BRICKS.getDefaultInstance(), ModItems.COBBLED_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertBefore(Items.NETHERRACK.getDefaultInstance(), ModItems.FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE.toStack(), ModItems.COBBLED_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBBLED_FLOWSTONE.toStack(), ModItems.COBBLED_FLOWSTONE_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBBLED_FLOWSTONE_SLAB.toStack(), ModItems.COBBLED_FLOWSTONE_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBBLED_FLOWSTONE_STAIRS.toStack(), ModItems.FLOWSTONE_BRICKS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -140,7 +141,8 @@ public class Farworld
         }
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS)
         {
-            event.insertBefore(Items.SHROOMLIGHT.getDefaultInstance(), ModItems.DIMLIGHT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertBefore(Items.SHROOMLIGHT.getDefaultInstance(), ModItems.DIMLIGHT_STEM.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertBefore(ModItems.DIMLIGHT_STEM.toStack(), ModItems.DIMLIGHT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.SNOW.getDefaultInstance(), ModItems.DUST_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.DUST_BLOCK.toStack(), ModItems.DUST_CLUMP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

@@ -10,6 +10,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -47,10 +48,10 @@ public class MilkBerryPatchFeature extends Feature<NoneFeatureConfiguration> {
         if (!MilkBerryCropBlock.canGrowOn(level.getBlockState(new BlockPos(posMid.getX(), posMid.getY() - 1, posMid.getZ()))))
             return false;
 
-        this.setBlock(level, posMid, ModBlocks.DIMLIGHT_STEM.get().defaultBlockState());
+        this.setBlock(level, posMid, ModBlocks.DIMLIGHT_STEM.get().defaultBlockState().setValue(BlockStateProperties.BLOOM, true));
         for (int i = 0; i < featurePlaceContext.random().nextInt(3); i++) {
             posMid.move(0, 1, 0);
-            this.setBlock(level, posMid, ModBlocks.DIMLIGHT_STEM.get().defaultBlockState());
+            this.setBlock(level, posMid, ModBlocks.DIMLIGHT_STEM.get().defaultBlockState().setValue(BlockStateProperties.BLOOM, true));
         }
         posMid.move(0, 1, 0);
         this.setBlock(level, posMid, ModBlocks.DIMLIGHT.get().defaultBlockState());

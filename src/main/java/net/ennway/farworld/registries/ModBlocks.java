@@ -111,7 +111,6 @@ public class ModBlocks {
                     .mapColor(MapColor.COLOR_LIGHT_GRAY)
                     .strength(0.5F, 1.0F)
                     .sound(SoundType.STEM)
-                    .noCollission()
                     .noOcclusion()
                     .isViewBlocking((a, b, c) -> false)));
 

@@ -396,6 +396,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DIMLIGHT = ITEMS_ALL.register("dimlight",
             () -> new BlockItem(ModBlocks.DIMLIGHT.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> DIMLIGHT_STEM = ITEMS_ALL.register("dimlight_stem",
+            () -> new BlockItem(ModBlocks.DIMLIGHT_STEM.get(), new DimlightStemItem.Properties()).asItem());
     public static final DeferredItem<Item> ENCRUSTED_BASALT = ITEMS_ALL.register("encrusted_basalt",
             () -> new BlockItem(ModBlocks.ENCRUSTED_BASALT.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DUST_BLOCK = ITEMS_ALL.register("dust_block",

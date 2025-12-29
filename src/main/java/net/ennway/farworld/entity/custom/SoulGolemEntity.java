@@ -199,7 +199,7 @@ public class SoulGolemEntity extends AbstractGolem {
                 this.entityData.set(ENTITY_STATE_TIMER, this.entityData.get(ENTITY_STATE_TIMER) + 1);
             }
 
-            if (this.entityData.get(ENTITY_STATE_TIMER) == 40)
+            if (this.entityData.get(ENTITY_STATE_TIMER) == 30)
             {
                 this.slamAttack(false);
             }
