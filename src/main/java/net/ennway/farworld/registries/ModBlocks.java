@@ -109,7 +109,7 @@ public class ModBlocks {
             "dimlight_stem",
             registryName -> new DimlightStemBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_LIGHT_GRAY)
-                    .strength(0F, 0.0F)
+                    .strength(0.5F, 1.0F)
                     .sound(SoundType.STEM)
                     .noCollission()
                     .noOcclusion()
