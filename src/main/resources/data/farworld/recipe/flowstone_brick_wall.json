@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "flowstone_brick_slab",
+  "key": {
+    "#": {
+      "item": "farworld:flowstone_bricks"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "farworld:flowstone_brick_wall"
+  }
+}

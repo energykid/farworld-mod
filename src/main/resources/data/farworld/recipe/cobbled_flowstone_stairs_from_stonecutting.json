@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "farworld:cobbled_flowstone"
+  },
+  "result": {
+    "count": 1,
+    "id": "farworld:cobbled_flowstone_stairs"
+  }
+}
