@@ -20,6 +20,13 @@ public class ModFeatureTypes {
         }
     });
 
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> MILK_BERRY_PATCH = FEATURES_ALL.register("milk_berry_patch", new Supplier<Feature<NoneFeatureConfiguration>>() {
+        @Override
+        public Feature<NoneFeatureConfiguration> get() {
+            return new MilkBerryPatchFeature(NoneFeatureConfiguration.CODEC);
+        }
+    });
+
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> FLOWSTONE_SPIKE = FEATURES_ALL.register("flowstone_spike", new Supplier<Feature<NoneFeatureConfiguration>>() {
         @Override
         public Feature<NoneFeatureConfiguration> get() {

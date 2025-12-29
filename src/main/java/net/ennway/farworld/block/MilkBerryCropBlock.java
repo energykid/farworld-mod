@@ -9,11 +9,14 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.PotatoBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
@@ -24,6 +27,11 @@ public class MilkBerryCropBlock extends CropBlock {
 
     public MilkBerryCropBlock(Properties properties) {
         super(properties);
+    }
+
+    public static boolean canGrowOn(BlockState state)
+    {
+        return state.is(ModBlocks.DUST_BLOCK) || (state.is(ModBlocks.DUST_SHEET) && state.getValue(SnowLayerBlock.LAYERS) == 8);
     }
 
     @Override
@@ -53,7 +61,14 @@ public class MilkBerryCropBlock extends CropBlock {
     }
 
     @Override
+    protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        return canGrowOn(level.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())));
+    }
+
+    @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(ModBlocks.DUST_BLOCK);
+        boolean b = state.is(ModBlocks.DUST_SHEET);
+        if (b && state.getValue(SnowLayerBlock.LAYERS) <= 7) b = false;
+        return state.is(ModBlocks.DUST_BLOCK) || b;
     }
 }

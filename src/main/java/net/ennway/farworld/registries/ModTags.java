@@ -4,6 +4,7 @@ import net.ennway.farworld.Farworld;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
 
 public class ModTags {

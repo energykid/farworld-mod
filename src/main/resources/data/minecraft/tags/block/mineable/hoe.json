@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "farworld:stonewood_leaves",
-    "farworld:stonewood_leaves_flowered"
+    "farworld:stonewood_leaves_flowered",
+    "farworld:dimlight"
   ]
 }

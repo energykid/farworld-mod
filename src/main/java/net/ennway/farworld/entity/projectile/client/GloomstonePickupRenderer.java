@@ -9,6 +9,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.projectile.GloomstonePickup;
+import net.ennway.farworld.utils.RenderingUtils;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -21,6 +22,7 @@ import net.minecraft.world.entity.ExperienceOrb;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
 
 @OnlyIn(Dist.CLIENT)
 public class GloomstonePickupRenderer extends EntityRenderer<GloomstonePickup> {
@@ -38,21 +40,9 @@ public class GloomstonePickupRenderer extends EntityRenderer<GloomstonePickup> {
     }
 
     public void render(GloomstonePickup entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        poseStack.pushPose();
-        float left = 0;
-        float right = 1.0f;
-        float top = 0;
-        float bottom = 1.0f;
-        poseStack.translate(0.0F, 0.1F, 0.0F);
-        poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-        poseStack.scale(0.3F, 0.3F, 0.3F);
-        VertexConsumer vertexconsumer = buffer.getBuffer(RENDER_TYPE);
-        PoseStack.Pose posestack$pose = poseStack.last();
-        vertex(vertexconsumer, posestack$pose, -0.5F, -0.25F, 255, 255, 255, left, bottom, packedLight);
-        vertex(vertexconsumer, posestack$pose, 0.5F, -0.25F, 255, 255, 255, right, bottom, packedLight);
-        vertex(vertexconsumer, posestack$pose, 0.5F, 0.75F, 255, 255, 255, right, top, packedLight);
-        vertex(vertexconsumer, posestack$pose, -0.5F, 0.75F, 255, 255, 255, left, top, packedLight);
-        poseStack.popPose();
+
+        RenderingUtils.renderEntitySprite(poseStack, this.entityRenderDispatcher.cameraOrientation(), getTextureLocation(entity), buffer, packedLight, new Vector3f(0f, 0.1f, 0f), 0.3f);
+
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 

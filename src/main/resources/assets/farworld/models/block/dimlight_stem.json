@@ -1,0 +1,7 @@
+{
+  "parent": "farworld:block/stem",
+  "textures": {
+    "crop": "farworld:block/dimlight_stem"
+  },
+  "render_type": "cutout"
+}

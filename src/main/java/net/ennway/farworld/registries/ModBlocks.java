@@ -97,6 +97,24 @@ public class ModBlocks {
                     .strength(1.8F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
 
+    public static final DeferredBlock<Block> DIMLIGHT = BLOCKS_ALL.register(
+            "dimlight",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLUE)
+                    .strength(0.9F, 1.0F)
+                    .sound(SoundType.SHROOMLIGHT)
+                    .lightLevel(lamb -> 14)));
+
+    public static final DeferredBlock<Block> DIMLIGHT_STEM = BLOCKS_ALL.register(
+            "dimlight_stem",
+            registryName -> new DimlightStemBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .strength(0F, 0.0F)
+                    .sound(SoundType.STEM)
+                    .noCollission()
+                    .noOcclusion()
+                    .isViewBlocking((a, b, c) -> false)));
+
     public static final DeferredBlock<Block> DENSE_GOLD_ORE = BLOCKS_ALL.register(
             "dense_gold_ore",
             registryName -> new Block(BlockBehaviour.Properties.of()
