@@ -3,8 +3,11 @@ package net.ennway.farworld.entity.custom;
 import net.ennway.farworld.entity.base.DelayedAttackingMonster;
 import net.ennway.farworld.entity.control.GoliathMoveControl;
 import net.ennway.farworld.entity.control.SlowRotMoveControl;
+import net.ennway.farworld.entity.goal.AmethystConstructFindItemGoal;
 import net.ennway.farworld.entity.goal.DelayedMeleeHurtGoal;
+import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.registries.ModSounds;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -28,6 +31,8 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
@@ -35,6 +40,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class AmethystConstructEntity extends DelayedAttackingMonster {
+    public static final EntityDataAccessor<ItemStack> ITEM_GRINDING = SynchedEntityData.defineId(AmethystConstructEntity.class, EntityDataSerializers.ITEM_STACK);
+    public static final EntityDataAccessor<Integer> ITEM_GRIND_TICKS = SynchedEntityData.defineId(AmethystConstructEntity.class, EntityDataSerializers.INT);
 
     public float walkAnimationScale = 0F;
 
@@ -56,17 +63,34 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
         return this.getPosition(0).y + 2D;
     }
 
-    public final TargetingConditions targeting = TargetingConditions.forCombat().range(4.0).ignoreLineOfSight();
-
-    static class AmethystGolemDelayedHurtGoal extends DelayedMeleeHurtGoal
+    public void slamAt(BlockPos pos, int maxDist)
     {
-        public AmethystGolemDelayedHurtGoal(PathfinderMob entity, double speedModifier, boolean followingTargetEvenIfNotSeen) {
+        for (int i = -maxDist; i <= maxDist; i++) {
+            for (int j = -maxDist; j <= maxDist; j++) {
+                for (int k = maxDist; k > -maxDist; k--) {
+                    BlockPos blockPos = new BlockPos(pos.getX() + i, pos.getY() + k, pos.getZ() + j);
+
+                    if (level().getBlockState(blockPos).entityCanStandOn(level(), blockPos, this))
+                    {
+                        float dist = Mth.sqrt((Mth.abs(i)^2) + (Mth.abs(j)^2));
+
+                        if (dist < maxDist / 2f)
+                        {
+                            level().addDestroyBlockEffect(blockPos, level().getBlockState(blockPos));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    static class AmethystConstructDelayedHurtGoal extends DelayedMeleeHurtGoal
+    {
+        public AmethystConstructDelayedHurtGoal(PathfinderMob entity, double speedModifier, boolean followingTargetEvenIfNotSeen) {
             super(entity, speedModifier, followingTargetEvenIfNotSeen);
             this.attackDelay = 16;
             this.attackLength = 30;
         }
-
-
 
         @Override
         public void onBeginAttack(LivingEntity target) {
@@ -83,11 +107,11 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
     protected void registerGoals() {
         super.registerGoals();
 
-        this.goalSelector.addGoal(1, new AmethystGolemDelayedHurtGoal(this, 1.0, false));
+        this.goalSelector.addGoal(1, new AmethystConstructFindItemGoal(this));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, true));
     }
 
     @Override
@@ -106,12 +130,19 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
             {
                 this.attackAnimationState.start(this.tickCount);
             }
+            if (getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) == 16)
+            {
+                slamAt(blockPosition(), 3);
+            }
         }
     }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder.define(DelayedAttackingMonster.ATTACK_TICKS, 0));
+        super.defineSynchedData(builder
+                .define(DelayedAttackingMonster.ATTACK_TICKS, 0)
+                .define(ITEM_GRINDING, ItemStack.EMPTY)
+                .define(ITEM_GRIND_TICKS, 0));
     }
 
     private void setupAnimationStates()
@@ -143,9 +174,10 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
     public static AttributeSupplier.Builder createAttributes()
     {
         return Mob.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 14D)
+                .add(Attributes.MAX_HEALTH, 28D)
                 .add(Attributes.FOLLOW_RANGE, 10D)
                 .add(Attributes.ATTACK_DAMAGE, 7)
+                .add(Attributes.ARMOR, 8)
                 .add(Attributes.MOVEMENT_SPEED, 0.15D);
     }
 }

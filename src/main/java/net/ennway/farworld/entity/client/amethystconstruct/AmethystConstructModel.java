@@ -26,14 +26,17 @@ public class AmethystConstructModel<T extends Entity> extends HierarchicalModel<
 
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "amethyst_construct"), "main");
 	private final ModelPart construct;
-	private final ModelPart upper;
+	public final ModelPart upper;
 	private final ModelPart arm_left;
 	private final ModelPart arm_right;
-	private final ModelPart extra_head_bone;
-	private final ModelPart head;
-	private final ModelPart jaw;
+	public final ModelPart extra_head_bone;
+	public final ModelPart head;
+	public final ModelPart jaw;
 	private final ModelPart leg_right;
 	private final ModelPart leg_left;
+
+	public float itemXrot = 0f;
+	public float itemYrot = 0f;
 
 	public AmethystConstructModel(ModelPart root) {
 		this.construct = root.getChild("construct");
@@ -86,6 +89,9 @@ public class AmethystConstructModel<T extends Entity> extends HierarchicalModel<
 
 		this.head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
 		this.head.xRot = pHeadPitch * ((float)Math.PI / 180F);
+
+		this.itemXrot = this.head.xRot;
+		this.itemYrot = this.head.yRot;
 	}
 
 	protected void animate(AnimationState animationState, AnimationDefinition animationDefinition, float ageInTicks, float speed, float scale) {
