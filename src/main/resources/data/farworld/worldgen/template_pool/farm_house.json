@@ -1,5 +1,5 @@
 {
-  "name": "bystone_outpost",
+  "name": "farm_house",
   "fallback": "minecraft:empty",
   "elements": [
     {
@@ -7,7 +7,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "farworld:bystone_outpost",
+        "location": "farworld:farm_house",
         "processors": {
           "processors": []
         },

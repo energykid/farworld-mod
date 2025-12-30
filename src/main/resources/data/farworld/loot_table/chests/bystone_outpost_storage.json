@@ -222,8 +222,8 @@
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 4,
-        "min": 2
+        "max": 2,
+        "min": 1
       }
     },
     {
@@ -246,8 +246,8 @@
           "weight": 15
         }
       ],
-      "rolls": 3
+      "rolls": 1
     }
   ],
-  "random_sequence": "minecraft:chests/abandoned_mineshaft"
+  "random_sequence": "farworld:chests/bystone_outpost_storage"
 }

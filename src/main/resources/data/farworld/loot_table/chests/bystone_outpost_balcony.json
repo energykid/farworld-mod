@@ -2,6 +2,15 @@
   "type": "minecraft:chest",
   "pools": [
     {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farworld:gloomstone_upgrade_smithing_template"
+        }
+      ]
+    },
+    {
       "rolls": 3,
       "bonus_rolls": {
         "type": "minecraft:uniform",
@@ -81,5 +90,5 @@
     }
   ],
   "functions": [],
-  "random_sequence": "minecraft:chests/abandoned_mineshaft"
+  "random_sequence": "farworld:chests/bystone_outpost_balcony"
 }

@@ -45,6 +45,14 @@ public class ModSounds {
     public static final Supplier<SoundEvent> GOLIATH_ATTACK = createSoundEvent("goliath_attack");
     public static final Supplier<SoundEvent> GOLIATH_DEATH = createSoundEvent("goliath_death");
 
+    public static final Supplier<SoundEvent> AMETHYST_CONSTRUCT_IDLE = createSoundEvent("amethyst_construct_idle");
+    public static final Supplier<SoundEvent> AMETHYST_CONSTRUCT_WINDUP = createSoundEvent("amethyst_construct_windup");
+    public static final Supplier<SoundEvent> AMETHYST_CONSTRUCT_SMASH = createSoundEvent("amethyst_construct_smash");
+    public static final Supplier<SoundEvent> AMETHYST_CONSTRUCT_HURT = createSoundEvent("amethyst_construct_hurt");
+    public static final Supplier<SoundEvent> AMETHYST_CONSTRUCT_DEATH = createSoundEvent("amethyst_construct_death");
+    public static final Supplier<SoundEvent> AMETHYST_CONSTRUCT_CRUNCH = createSoundEvent("amethyst_construct_crunch");
+    public static final Supplier<SoundEvent> AMETHYST_CONSTRUCT_SPIT = createSoundEvent("amethyst_construct_spit");
+
     public static final Supplier<SoundEvent> GLOOMSTONE_PICKUP = createSoundEvent("gloomstone_pickup");
 
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");

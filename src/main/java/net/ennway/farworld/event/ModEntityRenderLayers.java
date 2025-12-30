@@ -4,7 +4,7 @@ import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.client.bloomed.BloomedModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
 import net.ennway.farworld.registries.ModEntities;
-import net.ennway.farworld.registries.entity_definitions.MobLayerDefinition;
+import net.ennway.farworld.registries.entity_definitions.EntityLayerDefinition;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -16,9 +16,12 @@ public class ModEntityRenderLayers {
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
     {
         for (int i = 0; i < ModEntities.mobDefinitions.size(); i++) {
-            MobLayerDefinition def = ModEntities.mobDefinitions.get(i);
+            EntityLayerDefinition def = ModEntities.mobDefinitions.get(i);
 
-            event.registerLayerDefinition(def.location, def.definition);
+            if (def.location != null && def.definition != null)
+            {
+                event.registerLayerDefinition(def.location, def.definition);
+            }
         }
     }
 }

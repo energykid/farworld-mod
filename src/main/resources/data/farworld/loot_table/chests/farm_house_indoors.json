@@ -72,11 +72,7 @@
           "functions": [
             {
               "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2,
-                "min": 1
-              },
+              "count": 1,
               "function": "minecraft:set_count"
             }
           ],
@@ -90,8 +86,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 12,
-                "min": 8
+                "max": 8,
+                "min": 4
               },
               "function": "minecraft:set_count"
             }
@@ -106,5 +102,5 @@
       }
     }
   ],
-  "random_sequence": "farworld:chests/bystone_outpost_forge"
+  "random_sequence": "farworld:chests/farm_house_indoors"
 }

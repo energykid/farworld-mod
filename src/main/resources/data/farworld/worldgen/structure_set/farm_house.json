@@ -3,10 +3,10 @@
     "type": "minecraft:random_spread",
     "spread_type": "linear",
     "salt": 14357921,
-    "separation": 8,
-    "spacing": 12,
+    "separation": 4,
+    "spacing": 10,
     "frequency_reduction_method": "default",
-    "frequency": 0.08,
+    "frequency": 0.1,
     "locate_offset": [
       0,
       0,
@@ -15,7 +15,7 @@
   },
   "structures": [
     {
-      "structure": "farworld:bystone_outpost",
+      "structure": "farworld:farm_house",
       "weight": 1
     }
   ]

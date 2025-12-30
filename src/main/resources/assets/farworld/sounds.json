@@ -59,11 +59,39 @@
     "stream": true
   },
 
-  "goliath_ambient": {
-    "sounds": ["farworld:goliath_ambient_1",
-      "farworld:goliath_ambient_2",
-      "farworld:goliath_ambient_3",
-      "farworld:goliath_ambient_4"]
+  "amethyst_construct_windup": {
+    "sounds": ["farworld:amethyst_construct_windup"]
+  },
+
+  "amethyst_construct_death": {
+    "sounds": ["farworld:amethyst_construct_death"]
+  },
+
+  "amethyst_construct_spit": {
+    "sounds": ["farworld:amethyst_construct_spit_1",
+      "farworld:amethyst_construct_spit_2"]
+  },
+
+  "amethyst_construct_crunch": {
+    "sounds": ["farworld:amethyst_construct_crunch_1",
+      "farworld:amethyst_construct_crunch_2"]
+  },
+
+  "amethyst_construct_smash": {
+    "sounds": ["farworld:amethyst_construct_smash_1",
+      "farworld:amethyst_construct_smash_2"]
+  },
+
+  "amethyst_construct_hurt": {
+    "sounds": ["farworld:amethyst_construct_hurt_1",
+      "farworld:amethyst_construct_hurt_2",
+      "farworld:amethyst_construct_hurt_3"]
+  },
+
+  "amethyst_construct_idle": {
+    "sounds": ["farworld:amethyst_construct_idle_1",
+      "farworld:amethyst_construct_idle_2",
+      "farworld:amethyst_construct_idle_3"]
   },
 
   "goliath_attack": {

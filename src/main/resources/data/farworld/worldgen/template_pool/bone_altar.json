@@ -1,6 +1,6 @@
 {
   "name": "bone_altar",
-  "fallback": "farworld:bone_altar",
+  "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,

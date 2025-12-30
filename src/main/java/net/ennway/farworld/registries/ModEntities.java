@@ -1,17 +1,24 @@
 package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
+import net.ennway.farworld.entity.client.amethystconstruct.AmethystConstructModel;
+import net.ennway.farworld.entity.client.amethystconstruct.AmethystConstructRenderer;
 import net.ennway.farworld.entity.client.bloomed.BloomedModel;
 import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
 import net.ennway.farworld.entity.client.brittle.BrittleModel;
+import net.ennway.farworld.entity.client.brittle.BrittleRenderer;
 import net.ennway.farworld.entity.client.dustbug.DustbugModel;
+import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
 import net.ennway.farworld.entity.client.goliath.GoliathModel;
+import net.ennway.farworld.entity.client.goliath.GoliathRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.entity.custom.*;
 import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
 import net.ennway.farworld.entity.projectile.GloomstonePickup;
-import net.ennway.farworld.registries.entity_definitions.MobLayerDefinition;
+import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
+import net.ennway.farworld.registries.entity_definitions.EntityLayerDefinition;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -27,30 +34,6 @@ public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(
             BuiltInRegistries.ENTITY_TYPE,
             Farworld.MOD_ID);
-
-
-    public static final List<MobLayerDefinition> mobDefinitions = List.of(
-            new MobLayerDefinition(
-                    BloomedModel.LAYER_LOCATION,
-                    BloomedModel::createBodyLayer
-            ),
-            new MobLayerDefinition(
-                    SoulGolemModel.LAYER_LOCATION,
-                    SoulGolemModel::createBodyLayer
-            ),
-            new MobLayerDefinition(
-                    BrittleModel.LAYER_LOCATION,
-                    BrittleModel::createBodyLayer
-            ),
-            new MobLayerDefinition(
-                    DustbugModel.LAYER_LOCATION,
-                    DustbugModel::createBodyLayer
-            ),
-            new MobLayerDefinition(
-                    GoliathModel.LAYER_LOCATION,
-                    GoliathModel::createBodyLayer
-            )
-    );
 
     public static final DeferredHolder<EntityType<?>, EntityType<BloomedEntity>> BLOOMED = ENTITY_TYPES.register(
             "bloomed", () -> EntityType.Builder.of(BloomedEntity::new, MobCategory.MONSTER)
@@ -82,6 +65,12 @@ public class ModEntities {
                     .sized(2.5f, 1f)
                     .build("goliath"));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<AmethystConstructEntity>> AMETHYST_CONSTRUCT = ENTITY_TYPES.register(
+            "amethyst_construct", () -> EntityType.Builder.of(AmethystConstructEntity::new, MobCategory.MONSTER)
+                    .eyeHeight(1f)
+                    .sized(2.25f, 2f)
+                    .build("amethyst_construct"));
+
     //region Projectiles
 
     public static final DeferredHolder<EntityType<?>, EntityType<BlackIceImplosionProjectile>> BLACK_ICE_AOE_ENTITY = ENTITY_TYPES.register(
@@ -91,4 +80,55 @@ public class ModEntities {
             "gloomstone_pickup", () -> EntityType.Builder.of(GloomstonePickup::new, MobCategory.MISC).build("gloomstone_pickup"));
 
     //endregion
+
+    public static final List<EntityLayerDefinition> mobDefinitions = List.of(
+            new EntityLayerDefinition<BloomedEntity>(
+                    BLOOMED,
+                    BloomedModel.LAYER_LOCATION,
+                    BloomedModel::createBodyLayer,
+                    BloomedRenderer::new
+            ),
+            new EntityLayerDefinition<SoulGolemEntity>(
+                    SOUL_GOLEM,
+                    SoulGolemModel.LAYER_LOCATION,
+                    SoulGolemModel::createBodyLayer,
+                    SoulGolemRenderer::new
+            ),
+            new EntityLayerDefinition<BrittleEntity>(
+                    BRITTLE,
+                    BrittleModel.LAYER_LOCATION,
+                    BrittleModel::createBodyLayer,
+                    BrittleRenderer::new
+            ),
+            new EntityLayerDefinition<DustbugEntity>(
+                    DUSTBUG,
+                    DustbugModel.LAYER_LOCATION,
+                    DustbugModel::createBodyLayer,
+                    DustbugRenderer::new
+            ),
+            new EntityLayerDefinition<GoliathEntity>(
+                    GOLIATH,
+                    GoliathModel.LAYER_LOCATION,
+                    GoliathModel::createBodyLayer,
+                    GoliathRenderer::new
+            ),
+            new EntityLayerDefinition<AmethystConstructEntity>(
+                    AMETHYST_CONSTRUCT,
+                    AmethystConstructModel.LAYER_LOCATION,
+                    AmethystConstructModel::createBodyLayer,
+                    AmethystConstructRenderer::new
+            ),
+            new EntityLayerDefinition<BlackIceImplosionProjectile>(
+                    BLACK_ICE_AOE_ENTITY,
+                    null,
+                    null,
+                    NoopRenderer::new
+            ),
+            new EntityLayerDefinition<GloomstonePickup>(
+                    GLOOMSTONE_PICKUP,
+                    null,
+                    null,
+                    GloomstonePickupRenderer::new
+            )
+    );
 }

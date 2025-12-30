@@ -10,6 +10,7 @@ import net.ennway.farworld.entity.custom.DustbugEntity;
 import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
 import net.ennway.farworld.feature.ModFeatureTypes;
 import net.ennway.farworld.registries.*;
+import net.ennway.farworld.registries.entity_definitions.EntityLayerDefinition;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.core.BlockPos;
@@ -275,6 +276,7 @@ public class Farworld
             event.accept(ModItems.BRITTLE_SPAWN_EGG);
             event.accept(ModItems.DUSTBUG_SPAWN_EGG);
             event.accept(ModItems.GOLIATH_SPAWN_EGG);
+            event.accept(ModItems.AMETHYST_CONSTRUCT_SPAWN_EGG);
         }
     }
 
@@ -291,13 +293,9 @@ public class Farworld
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            EntityRenderers.register(ModEntities.BLACK_ICE_AOE_ENTITY.get(), NoopRenderer::new);
-            EntityRenderers.register(ModEntities.GLOOMSTONE_PICKUP.get(), GloomstonePickupRenderer::new);
-            EntityRenderers.register(ModEntities.BLOOMED.get(), BloomedRenderer::new);
-            EntityRenderers.register(ModEntities.BRITTLE.get(), BrittleRenderer::new);
-            EntityRenderers.register(ModEntities.SOUL_GOLEM.get(), SoulGolemRenderer::new);
-            EntityRenderers.register(ModEntities.DUSTBUG.get(), DustbugRenderer::new);
-            EntityRenderers.register(ModEntities.GOLIATH.get(), GoliathRenderer::new);
+            for (EntityLayerDefinition<Entity> def : ModEntities.mobDefinitions) {
+                EntityRenderers.register(def.type.get(), def.renderer);
+            }
 
             ModItemProperties.addCustomItemProperties();
         }
