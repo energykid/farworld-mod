@@ -39,34 +39,10 @@ public class AmethystConstructFindItemGoal extends Goal {
     {
         return (AmethystConstructEntity)this.mob;
     }
-    boolean itemSlotFree()
-    {
-        return ent().getEntityData().get(AmethystConstructEntity.ITEM_GRINDING) == ItemStack.EMPTY;
-    }
 
     @Override
     public boolean canUse() {
 
-        List<ItemEntity> items = this.mob.level().getEntitiesOfClass(ItemEntity.class,
-                new AABB(
-                        this.mob.getX() - 12, this.mob.getY() - 12, this.mob.getZ() - 12,
-                        this.mob.getX() + 12, this.mob.getY() + 12, this.mob.getZ() + 12
-                ));
-
-        items.sort((c1, c2) -> (int)c1.distanceToSqr(this.mob) - (int)c2.distanceToSqr(this.mob));
-
-        if (!items.isEmpty() && itemSlotFree())
-        {
-            this.target = items.getFirst();
-
-            if (this.target != null)
-            {
-                this.wantedX = this.target.getX();
-                this.wantedY = this.target.getY();
-                this.wantedZ = this.target.getZ();
-                return true;
-            }
-        }
         return false;
     }
 
@@ -77,15 +53,6 @@ public class AmethystConstructFindItemGoal extends Goal {
 
     @Override
     public void tick() {
-        if (this.target != null && itemSlotFree())
-        {
-            if (this.mob.distanceToSqr(this.target) < 1f)
-            {
-                this.mob.getEntityData().set(AmethystConstructEntity.ITEM_GRINDING, target.getItem());
-                this.target.remove(Entity.RemovalReason.DISCARDED);
-                this.stop();
-            }
-        }
     }
 
     @Override
@@ -95,9 +62,8 @@ public class AmethystConstructFindItemGoal extends Goal {
 
     @Override
     public void stop() {
-        this.mob.goalSelector.removeGoal(this);
-        super.stop();
         this.target = null;
+        super.stop();
     }
 
     @Override

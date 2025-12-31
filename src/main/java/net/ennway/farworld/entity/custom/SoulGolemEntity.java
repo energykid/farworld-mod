@@ -171,43 +171,34 @@ public class SoulGolemEntity extends AbstractGolem {
         int activityScale = this.getEntityData().get(ACTIVITY_SCALE);
 
         if (activityScale == 0)
+            this.setDeltaMovement(0,Math.min(this.getDeltaMovement().y, 0),0);
+
+        boolean hasTargetInRange = this.getTarget() != null;
+        if (hasTargetInRange)
         {
-            Vec3 delt = getDeltaMovement();
-            if (delt.y > 0) delt = new Vec3(delt.x, 0, delt.z);
-            setDeltaMovement(delt);
+            List<LivingEntity> list = this.level().getNearbyEntities(LivingEntity.class, targeting, this,
+                    new AABB(this.getX() - 4, this.getY() - 4, this.getZ() - 4,
+                            this.getX() + 4, this.getY() + 4, this.getZ() + 4));
+            if (list.isEmpty()) hasTargetInRange = false;
         }
+        if (activityScale == 0) hasTargetInRange = false;
+
+        if (this.getTarget() != null && !hasTargetInRange)
         {
-            boolean hasTargetInRange = this.getTarget() != null;
-            if (hasTargetInRange)
-            {
-                List<LivingEntity> list = this.level().getNearbyEntities(LivingEntity.class, targeting, this,
-                        new AABB(this.getX() - 4, this.getY() - 4, this.getZ() - 4,
-                                this.getX() + 4, this.getY() + 4, this.getZ() + 4));
+            Vec3 vec3 = this.getTarget().position();
+            this.getNavigation().moveTo(vec3.x, vec3.y, vec3.z, 1.2f);
+        }
 
-                if (list.isEmpty()) hasTargetInRange = false;
-            }
-            if (activityScale == 0) hasTargetInRange = false;
+        if (hasTargetInRange || this.entityData.get(ENTITY_STATE_TIMER) > 1)
+            this.entityData.set(ENTITY_STATE_TIMER, this.entityData.get(ENTITY_STATE_TIMER) + 1);
 
-            if (this.getTarget() != null && !hasTargetInRange)
-            {
-                Vec3 vec3 = this.getTarget().position();
-                this.getNavigation().moveTo(vec3.x, vec3.y, vec3.z, 1.2f);
-            }
 
-            if (hasTargetInRange || this.entityData.get(ENTITY_STATE_TIMER) > 1)
-            {
-                this.entityData.set(ENTITY_STATE_TIMER, this.entityData.get(ENTITY_STATE_TIMER) + 1);
-            }
-
-            if (this.entityData.get(ENTITY_STATE_TIMER) == 30)
-            {
+        if (this.entityData.get(ENTITY_STATE_TIMER) == 30)
                 this.slamAttack(false);
-            }
-            if (this.entityData.get(ENTITY_STATE_TIMER) >= 62)
-            {
-                this.entityData.set(ENTITY_STATE_TIMER, 0);
-            }
-        }
+
+        if (this.entityData.get(ENTITY_STATE_TIMER) >= 62)
+            this.entityData.set(ENTITY_STATE_TIMER, 0);
+
 
         super.customServerAiStep();
     }

@@ -11,6 +11,7 @@ public abstract class DelayedMeleeHurtGoal extends MeleeAttackGoal {
     public int attackLength;
     public boolean attacking = false;
     public double attackRange = 8;
+    public double speed = 1.5;
 
     public DelayedMeleeHurtGoal(PathfinderMob entity, double speedModifier, boolean followingTargetEvenIfNotSeen) {
         super(entity, speedModifier, followingTargetEvenIfNotSeen);
@@ -46,45 +47,6 @@ public abstract class DelayedMeleeHurtGoal extends MeleeAttackGoal {
 
     @Override
     public void tick() {
-
-        LivingEntity target = this.mob.getTarget();
-        if (canAttack(this.mob) && target != null)
-        {
-            if (this.mob.distanceToSqr(target) < this.attackRange) this.attacking = true;
-            if (this.attacking)
-            {
-                this.mob.getEntityData().set(DelayedAttackingMonster.ATTACK_TICKS, this.mob.getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) + 1);
-
-                if (this.mob.getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) == 2)
-                {
-                    onBeginAttack(target);
-                }
-
-                if (this.mob.getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) == this.attackDelay)
-                {
-                    onImpactAttack(target);
-                    if (this.mob.distanceToSqr(target) < this.attackRange)
-                    {
-                        this.mob.doHurtTarget(target);
-                    }
-                }
-                if (this.mob.getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) > this.attackLength)
-                {
-                    this.mob.getEntityData().set(DelayedAttackingMonster.ATTACK_TICKS, 0);
-                    this.attacking = false;
-                }
-            }
-        }
-    }
-
-    public void onBeginAttack(LivingEntity target)
-    {
-
-    }
-
-    public void onImpactAttack(LivingEntity target)
-    {
-
     }
 
     @Override

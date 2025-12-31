@@ -4,7 +4,6 @@ import net.ennway.farworld.Farworld;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
 
 public class ModTags {
@@ -21,6 +20,10 @@ public class ModTags {
     public static final TagKey<Item> BOOTS_ACCESSORIES = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "boot_accessories"));
+
+    public static final TagKey<Item> GEAR = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "gear"));
 
     public static final TagKey<Item> GLOOMSTONE_ITEMS = TagKey.create(
             BuiltInRegistries.ITEM.key(),
