@@ -154,6 +154,9 @@ public class BloomedEntity extends BystoneTamableMonsterEntity implements Ownabl
         {
             tame(player);
 
+            player.swing(hand);
+            player.getItemInHand(hand).consume(1, player);
+
             this.tamedAnimationState.start(this.tickCount);
             this.tamedAnimationScale = 1f;
 
@@ -170,6 +173,8 @@ public class BloomedEntity extends BystoneTamableMonsterEntity implements Ownabl
 
             if (!Objects.equals(this.getEntityData().get(FLOWER_TO_DISPLAY), "air")) {
                 if (stack.is(Items.SHEARS)) {
+
+                    player.swing(hand);
 
                     // If there is a flower on tail, only perform shear actions
                     stack.hurtAndBreak(1, player, player.getEquipmentSlotForItem(stack));
@@ -196,6 +201,7 @@ public class BloomedEntity extends BystoneTamableMonsterEntity implements Ownabl
                     this.level().playSound(this, this.blockPosition(), SoundEvents.BONE_MEAL_USE,
                                 SoundSource.NEUTRAL, 1f, 1f);
 
+                    player.swing(hand);
                     player.getItemInHand(hand).consume(1, player);
 
                     this.getEntityData().set(FLOWER_TO_DISPLAY, this.getEntityData().get(FLOWER_TO_GROW));
@@ -209,6 +215,7 @@ public class BloomedEntity extends BystoneTamableMonsterEntity implements Ownabl
                     this.level().playSound(this, this.blockPosition(), SoundEvents.BONE_MEAL_USE,
                             SoundSource.NEUTRAL, 1f, 1f);
 
+                    player.swing(hand);
                     player.getItemInHand(hand).consume(1, player);
 
                     String string = stack.getItem().toString();

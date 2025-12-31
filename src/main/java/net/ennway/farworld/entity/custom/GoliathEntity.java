@@ -1,7 +1,6 @@
 package net.ennway.farworld.entity.custom;
 
 import net.ennway.farworld.entity.control.GoliathMoveControl;
-import net.ennway.farworld.entity.control.SlowRotMoveControl;
 import net.ennway.farworld.entity.goal.GoliathMeleeHurtGoal;
 import net.ennway.farworld.registries.ModItems;
 import net.ennway.farworld.registries.ModSounds;
@@ -12,7 +11,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -23,13 +21,9 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.behavior.Mount;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.*;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -41,7 +35,6 @@ import net.neoforged.neoforge.common.damagesource.DamageContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3d;
-import org.joml.Vector3f;
 
 public class GoliathEntity extends BystoneTamableMonsterEntity implements OwnableEntity, PlayerRideable, Saddleable {
 
@@ -116,11 +109,11 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(2, new GoliathMeleeHurtGoal(this, 3.25f, true));
-        this.goalSelector.addGoal(3, new GoliathTargetGoal<>(this, Player.class));
         this.goalSelector.addGoal(4, new FloatGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomStrollGoal(this, 1.8f));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new GoliathTargetGoal<>(this, Player.class));
     }
 
     @Override
@@ -133,15 +126,20 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
         if (!isTame() && isFood(player.getItemInHand(hand)))
         {
             setTame(true, true);
+            spawnTamingParticles(true);
+            player.swing(hand);
+            player.getItemInHand(hand).consume(1, player);
             return InteractionResult.CONSUME;
         }
         if (isTame() && player.getItemInHand(hand).isEmpty() && player.isCrouching() && getEntityData().get(PET_TICKS) < -10)
         {
+            player.swing(hand);
             petTheBuddyYippee();
             return InteractionResult.SUCCESS;
         }
         if (isTame() && isSaddled())
         {
+            player.swing(hand);
             doPlayerRide(player);
             return InteractionResult.PASS;
         }

@@ -56,6 +56,7 @@ import java.util.List;
 public class AmethystConstructEntity extends DelayedAttackingMonster {
     public static final EntityDataAccessor<ItemStack> ITEM_GRINDING = SynchedEntityData.defineId(AmethystConstructEntity.class, EntityDataSerializers.ITEM_STACK);
     public static final EntityDataAccessor<Integer> ITEM_GRIND_TICKS = SynchedEntityData.defineId(AmethystConstructEntity.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Integer> ITEM_GRIND_COOLDOWN_TICKS = SynchedEntityData.defineId(AmethystConstructEntity.class, EntityDataSerializers.INT);
 
     public ItemEntity itemTarget;
 
@@ -277,10 +278,25 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
 
             if (items.isEmpty())
             {
-                performAttacking();
+                getEntityData().set(ITEM_GRIND_COOLDOWN_TICKS, getEntityData().get(ITEM_GRIND_COOLDOWN_TICKS) - 1);
+                if (getEntityData().get(ITEM_GRIND_COOLDOWN_TICKS) <= 0)
+                {
+                    performAttacking();
+                }
             }
             else
             {
+                getEntityData().set(ITEM_GRIND_COOLDOWN_TICKS, 75);
+                getEntityData().set(ATTACK_TICKS, 0);
+
+                List<AmethystConstructEntity> others = this.level().getEntitiesOfClass(AmethystConstructEntity.class,
+                        new AABB(
+                                this.getX() - 5, this.getY() - 5, this.getZ() - 5,
+                                this.getX() + 5, this.getY() + 3, this.getZ() + 3
+                        ));
+                others.forEach(d -> d.getEntityData().set(ITEM_GRIND_COOLDOWN_TICKS, 75));
+                others.forEach(d -> d.getEntityData().set(ATTACK_TICKS, 0));
+
                 handleItemPickups();
             }
         }
@@ -291,7 +307,8 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
         super.defineSynchedData(builder
                 .define(DelayedAttackingMonster.ATTACK_TICKS, 0)
                 .define(ITEM_GRINDING, ItemStack.EMPTY)
-                .define(ITEM_GRIND_TICKS, 0));
+                .define(ITEM_GRIND_TICKS, 0)
+                .define(ITEM_GRIND_COOLDOWN_TICKS, 0));
     }
 
     private void setupAnimationStates()
