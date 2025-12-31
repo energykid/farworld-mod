@@ -44,7 +44,10 @@ public class AmethystConstructFindItemGoal extends Goal {
         return ent().getEntityData().get(AmethystConstructEntity.ITEM_GRINDING) == ItemStack.EMPTY;
     }
 
+    @Override
     public boolean canUse() {
+
+        if (this.mob.isAggressive()) return false;
 
         List<ItemEntity> items = this.mob.level().getEntitiesOfClass(ItemEntity.class,
                 new AABB(
@@ -60,9 +63,8 @@ public class AmethystConstructFindItemGoal extends Goal {
 
             this.target = items.getFirst();
 
-            if (this.target == null) {
-                return false;
-            } else {
+            if (this.target != null)
+            {
                 this.wantedX = this.target.getX();
                 this.wantedY = this.target.getY();
                 this.wantedZ = this.target.getZ();
@@ -88,16 +90,20 @@ public class AmethystConstructFindItemGoal extends Goal {
                 this.stop();
             }
         }
+        super.tick();
     }
 
+    @Override
     public boolean canContinueToUse() {
-        return this.target != null;
+        return true;
     }
 
+    @Override
     public void stop() {
         this.target = null;
     }
 
+    @Override
     public void start() {
         this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, 1f);
     }

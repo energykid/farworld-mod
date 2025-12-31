@@ -34,10 +34,27 @@ public abstract class DelayedMeleeHurtGoal extends MeleeAttackGoal {
         return true;
     }
 
+    @Override
+    public boolean canContinueToUse() {
+        return true;
+    }
+
+    public boolean canAttack(PathfinderMob monster)
+    {
+        return true;
+    }
+
+    @Override
     public void tick() {
+        if (!this.mob.isAggressive())
+        {
+            this.mob.setTarget(null);
+            return;
+        }
+
         super.tick();
         LivingEntity target = this.mob.getTarget();
-        if (target != null)
+        if (canAttack(this.mob) && target != null)
         {
             if (this.mob.distanceToSqr(target) < this.attackRange) this.attacking = true;
             if (this.attacking)

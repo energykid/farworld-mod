@@ -11,6 +11,7 @@ import net.ennway.farworld.entity.custom.AmethystConstructEntity;
 import net.ennway.farworld.entity.custom.AmethystConstructEntity;
 import net.ennway.farworld.registries.ModDataComponents;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -20,6 +21,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 import java.util.Objects;
 
@@ -35,6 +39,21 @@ public class AmethystConstructRenderer extends MobRenderer<AmethystConstructEnti
     @Override
     public ResourceLocation getTextureLocation(AmethystConstructEntity entity) {
         return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/amethyst_construct.png");
+    }
+
+    public float getJawYRot(float origYaw)
+    {
+        return origYaw - this.model.jaw.yRot - this.model.head.yRot - this.model.extra_head_bone.yRot - this.model.upper.yRot - this.model.root().yRot;
+    }
+
+    public float getJawXRot()
+    {
+        return this.model.jaw.xRot + this.model.head.xRot + this.model.extra_head_bone.xRot + this.model.upper.xRot + this.model.root().xRot;
+    }
+
+    public Quaternionf getJawRotQuat(float origYaw)
+    {
+        return Axis.YP.rotation(getJawYRot((float)Math.toRadians(-origYaw))).mul(Axis.XP.rotation(getJawXRot()));
     }
 
     @Override
@@ -53,17 +72,5 @@ public class AmethystConstructRenderer extends MobRenderer<AmethystConstructEnti
         }
 
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
-        ItemStack stack = entity.getEntityData().get(AmethystConstructEntity.ITEM_GRINDING);
-
-        if (stack != ItemStack.EMPTY)
-        {
-            ItemRenderer rend = Minecraft.getInstance().getItemRenderer();
-
-            poseStack.pushPose();
-            poseStack.mulPose(Axis.YP.rotationDegrees(entityYaw));
-            poseStack.translate(0, 0.5, 1);
-            rend.renderStatic(stack, ItemDisplayContext.GROUND, packedLight, packedLight, poseStack, buffer, Minecraft.getInstance().level, 1);
-            poseStack.popPose();
-        }
     }
 }
