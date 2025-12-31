@@ -87,9 +87,7 @@ public class PortalEvents {
                     if (event.getPlayer() != null)
                     {
                         event.getLevel().playSound(event.getPlayer(), event.getPos(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS);
-                        event.getPlayer().swinging = true;
-                        event.getPlayer().swingTime = 0;
-                        event.getPlayer().swingingArm = InteractionHand.MAIN_HAND;
+                        event.getPlayer().swing(InteractionHand.MAIN_HAND);
                         event.cancelWithResult(ItemInteractionResult.SUCCESS);
                     }
                 }
