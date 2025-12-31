@@ -47,8 +47,6 @@ public class AmethystConstructFindItemGoal extends Goal {
     @Override
     public boolean canUse() {
 
-        if (this.mob.isAggressive()) return false;
-
         List<ItemEntity> items = this.mob.level().getEntitiesOfClass(ItemEntity.class,
                 new AABB(
                         this.mob.getX() - 12, this.mob.getY() - 12, this.mob.getZ() - 12,
@@ -59,8 +57,6 @@ public class AmethystConstructFindItemGoal extends Goal {
 
         if (!items.isEmpty() && itemSlotFree())
         {
-            this.mob.setAggressive(false);
-
             this.target = items.getFirst();
 
             if (this.target != null)
@@ -90,7 +86,6 @@ public class AmethystConstructFindItemGoal extends Goal {
                 this.stop();
             }
         }
-        super.tick();
     }
 
     @Override
@@ -100,6 +95,8 @@ public class AmethystConstructFindItemGoal extends Goal {
 
     @Override
     public void stop() {
+        this.mob.goalSelector.removeGoal(this);
+        super.stop();
         this.target = null;
     }
 

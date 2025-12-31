@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 
 public class DelayedAttackingMonster extends Monster {
     public static final EntityDataAccessor<Integer> ATTACK_TICKS = SynchedEntityData.defineId(DelayedAttackingMonster.class, EntityDataSerializers.INT);
-
+    
     protected DelayedAttackingMonster(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
     }

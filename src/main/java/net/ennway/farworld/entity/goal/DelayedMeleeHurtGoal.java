@@ -46,13 +46,7 @@ public abstract class DelayedMeleeHurtGoal extends MeleeAttackGoal {
 
     @Override
     public void tick() {
-        if (!this.mob.isAggressive())
-        {
-            this.mob.setTarget(null);
-            return;
-        }
 
-        super.tick();
         LivingEntity target = this.mob.getTarget();
         if (canAttack(this.mob) && target != null)
         {

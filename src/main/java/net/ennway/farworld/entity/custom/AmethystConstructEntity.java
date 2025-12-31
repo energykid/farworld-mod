@@ -26,10 +26,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
@@ -99,6 +96,7 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
             super(entity, 1.5, false);
             this.attackDelay = 16;
             this.attackLength = 30;
+            this.attackRange = 15;
         }
 
         @Override
@@ -110,18 +108,12 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
         public void onImpactAttack(LivingEntity target) {
             this.mob.playSound(ModSounds.AMETHYST_CONSTRUCT_SMASH.get());
         }
-
-        @Override
-        public boolean canAttack(PathfinderMob monster) {
-            return monster.getEntityData().get(AmethystConstructEntity.ITEM_GRINDING) == ItemStack.EMPTY;
-        }
     }
 
     @Override
     protected void registerGoals() {
         super.registerGoals();
 
-        this.goalSelector.addGoal(1, new AmethystConstructFindItemGoal(this));
         this.goalSelector.addGoal(2, new AmethystConstructDelayedHurtGoal(this));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -172,7 +164,10 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
                         this.getX() + 12, this.getY() + 12, this.getZ() + 12
                 ));
 
-        setAggressive(items.isEmpty());
+        if (!items.isEmpty())
+        {
+            this.goalSelector.addGoal(1, new AmethystConstructFindItemGoal(this));
+        }
 
         if (this.level().isClientSide) {
             setupAnimationStates();
@@ -191,26 +186,29 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
             }
         }
 
-        if (this.getEntityData().get(ITEM_GRINDING) != ItemStack.EMPTY)
-        {
+        if (this.getEntityData().get(ITEM_GRINDING) != ItemStack.EMPTY) {
+
             this.getEntityData().set(DelayedAttackingMonster.ATTACK_TICKS, 0);
 
-            if (this.getEntityData().get(ITEM_GRIND_TICKS) % 12 == 2 && this.getEntityData().get(ITEM_GRIND_TICKS) < 30)
-            {
+            if (this.getEntityData().get(ITEM_GRIND_TICKS) % 12 == 2 && this.getEntityData().get(ITEM_GRIND_TICKS) < 30) {
                 playSound(ModSounds.AMETHYST_CONSTRUCT_CRUNCH.get());
             }
 
             this.getEntityData().set(ITEM_GRIND_TICKS, this.getEntityData().get(ITEM_GRIND_TICKS) + 1);
 
-            if (this.getEntityData().get(ITEM_GRIND_TICKS) == 36)
-            {
+            if (this.getEntityData().get(ITEM_GRIND_TICKS) == 36) {
                 playSound(ModSounds.AMETHYST_CONSTRUCT_SPIT.get());
             }
-            if (this.getEntityData().get(ITEM_GRIND_TICKS) > 40)
-            {
+            if (this.getEntityData().get(ITEM_GRIND_TICKS) > 40) {
                 spawnExperienceForItem();
                 this.getEntityData().set(ITEM_GRIND_TICKS, 0);
             }
+            this.getNavigation().stop();
+        }
+        else
+        {
+            if (this.getTarget() != null)
+                this.getNavigation().moveTo(this.getTarget(), 1.5);
         }
     }
 
