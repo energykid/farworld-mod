@@ -55,7 +55,7 @@ public abstract class DelayedMeleeHurtGoal extends MeleeAttackGoal {
             {
                 this.mob.getEntityData().set(DelayedAttackingMonster.ATTACK_TICKS, this.mob.getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) + 1);
 
-                if (this.mob.getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) == 1)
+                if (this.mob.getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) == 2)
                 {
                     onBeginAttack(target);
                 }

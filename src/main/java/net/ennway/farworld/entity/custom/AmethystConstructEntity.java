@@ -169,10 +169,15 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
             this.goalSelector.addGoal(1, new AmethystConstructFindItemGoal(this));
         }
 
+        if (this.getEntityData().get(ITEM_GRINDING) != ItemStack.EMPTY) {
+
+            this.getEntityData().set(DelayedAttackingMonster.ATTACK_TICKS, 0);
+        }
+
         if (this.level().isClientSide) {
             setupAnimationStates();
 
-            if (getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) == 1)
+            if (getEntityData().get(DelayedAttackingMonster.ATTACK_TICKS) == 2)
             {
                 this.attackAnimationState.start(this.tickCount);
             }
@@ -187,8 +192,6 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
         }
 
         if (this.getEntityData().get(ITEM_GRINDING) != ItemStack.EMPTY) {
-
-            this.getEntityData().set(DelayedAttackingMonster.ATTACK_TICKS, 0);
 
             if (this.getEntityData().get(ITEM_GRIND_TICKS) % 12 == 2 && this.getEntityData().get(ITEM_GRIND_TICKS) < 30) {
                 playSound(ModSounds.AMETHYST_CONSTRUCT_CRUNCH.get());
