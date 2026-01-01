@@ -56,6 +56,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
     public static final int ATTACK_STATE_BUILDUP = 0;
     public static final int ATTACK_STATE_THREE_ZIPS = 1;
+    public static final int ATTACK_STATE_REST = 2;
 
     @Override
     public void startSeenByPlayer(ServerPlayer player) {
@@ -134,6 +135,16 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
             this.setTarget(plr);
         }
 
+        if (!isDeadOrDying())
+        {
+            doAI();
+        }
+
+        super.tick();
+    }
+
+    public void doAI()
+    {
         this.getEntityData().set(ATTACK_TIME_1, this.getEntityData().get(ATTACK_TIME_1) + 1);
 
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_BUILDUP)
@@ -157,11 +168,25 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
             }
             if (this.getEntityData().get(ATTACK_TIME_1) > 28)
             {
+                changeState(ATTACK_STATE_REST);
+            }
+        }
+        if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_REST)
+        {
+            if (getTarget() != null)
+            {
+                this.setDeltaMovement(getTarget().position().subtract(position()).normalize().multiply(0.1, 0.1, 0.1));
+            }
+            else
+            {
+                this.setDeltaMovement(Vec3.ZERO);
+            }
+
+            if (this.getEntityData().get(ATTACK_TIME_1) > 35)
+            {
                 changeState(ATTACK_STATE_THREE_ZIPS);
             }
         }
-
-        super.tick();
     }
 
     public Vec3 getNearTargetPosition(double dist)
@@ -172,10 +197,10 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
             Vec3 playerPos = origPos;
 
             for (int i = 0; i < 20; i++) {
-                playerPos = origPos.offsetRandom(random, 16);
+                playerPos = origPos.offsetRandom(random, 10);
                 double yy = Mth.lerp(0.5, playerPos.y, origPos.y);
                 playerPos = new Vec3(playerPos.x, yy, playerPos.z);
-                if (level().getBlockState(BlockPos.containing(playerPos.x, playerPos.y, playerPos.z)).isAir())
+                if (level().getBlockState(BlockPos.containing(playerPos.x, playerPos.y, playerPos.z)).isAir() && this.getTarget().distanceToSqr(playerPos) > 4)
                 {
                     return playerPos;
                 }
@@ -220,7 +245,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     public static AttributeSupplier.Builder createAttributes()
     {
         return Mob.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 200D)
+                .add(Attributes.MAX_HEALTH, 500D)
                 .add(Attributes.FOLLOW_RANGE, 10D)
                 .add(Attributes.ATTACK_DAMAGE, 10)
                 .add(Attributes.MOVEMENT_SPEED, 0.15D);
