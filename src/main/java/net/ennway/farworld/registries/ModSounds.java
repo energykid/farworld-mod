@@ -53,6 +53,11 @@ public class ModSounds {
     public static final Supplier<SoundEvent> AMETHYST_CONSTRUCT_CRUNCH = createSoundEvent("amethyst_construct_crunch");
     public static final Supplier<SoundEvent> AMETHYST_CONSTRUCT_SPIT = createSoundEvent("amethyst_construct_spit");
 
+    public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_ZIP = createSoundEvent("redstone_curiosity_zip");
+    public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_SPAWN = createSoundEvent("redstone_curiosity_spawn");
+    public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_HURT = createSoundEvent("redstone_curiosity_hurt");
+    public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_KILL = createSoundEvent("redstone_curiosity_kill");
+
     public static final Supplier<SoundEvent> GLOOMSTONE_PICKUP = createSoundEvent("gloomstone_pickup");
 
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");

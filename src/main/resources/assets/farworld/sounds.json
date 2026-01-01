@@ -59,6 +59,26 @@
     "stream": true
   },
 
+  "redstone_curiosity_zip": {
+    "sounds": ["farworld:redstone_curiosity_zip_1",
+      "farworld:redstone_curiosity_zip_2",
+      "farworld:redstone_curiosity_zip_3"]
+  },
+
+  "redstone_curiosity_hurt": {
+    "sounds": ["farworld:redstone_curiosity_hurt_1",
+      "farworld:redstone_curiosity_hurt_2",
+      "farworld:redstone_curiosity_hurt_3"]
+  },
+
+  "redstone_curiosity_spawn": {
+    "sounds": ["farworld:redstone_curiosity_spawn"]
+  },
+
+  "redstone_curiosity_kill": {
+    "sounds": ["farworld:redstone_curiosity_kill"]
+  },
+
   "amethyst_construct_windup": {
     "sounds": ["farworld:amethyst_construct_windup"]
   },

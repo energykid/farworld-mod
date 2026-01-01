@@ -25,6 +25,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Farworld.MOD_ID)

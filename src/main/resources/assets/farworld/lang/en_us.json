@@ -237,6 +237,8 @@
   "lore.farworld.goliath" : "A hulking spider found in the Bystone. It can be befriended using Gloomspores, but if you have none, it's highly protective of its territory.",
   "entity.farworld.amethyst_construct" : "Amethyst Construct",
   "lore.farworld.amethyst_construct" : "A clunky construct created by someone, or something, in the Bystone. It can grind some items down into glittering dust that can be used for repairs.",
+  "entity.farworld.redstone_curiosity" : "Redstone Curiosity",
+  "lore.farworld.redstone_curiosity" : "Digi!tal m?aster!!mi?nd.",
   "entity.farworld.black_ice_aoe" : "Black Ice Wormhole",
 
   "enchantment.farworld.scything" : "Scything",

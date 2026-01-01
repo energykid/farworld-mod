@@ -31,7 +31,7 @@ public class RedstoneCuriosityModel<T extends RedstoneCuriosityEntity> extends G
 	 */
 	@Override
 	public ResourceLocation getModelResource(T animatable) {
-		return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "entity/redstone_curiosity");
+		return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "geo/redstone_curiosity");
 	}
 
 	/**
@@ -51,6 +51,6 @@ public class RedstoneCuriosityModel<T extends RedstoneCuriosityEntity> extends G
 	 */
 	@Override
 	public ResourceLocation getAnimationResource(T animatable) {
-		return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "entity/redstone_curiosity");
+		return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "animations/redstone_curiosity");
 	}
 }
