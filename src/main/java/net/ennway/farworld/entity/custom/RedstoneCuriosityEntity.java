@@ -172,7 +172,9 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
             Vec3 playerPos = origPos;
 
             for (int i = 0; i < 20; i++) {
-                playerPos = origPos.offsetRandom(random, 8);
+                playerPos = origPos.offsetRandom(random, 16);
+                double yy = Mth.lerp(0.5, playerPos.y, origPos.y);
+                playerPos = new Vec3(playerPos.x, yy, playerPos.z);
                 if (level().getBlockState(BlockPos.containing(playerPos.x, playerPos.y, playerPos.z)).isAir())
                 {
                     return playerPos;
