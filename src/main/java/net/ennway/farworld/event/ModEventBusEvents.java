@@ -4,7 +4,6 @@ import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.custom.*;
 import net.ennway.farworld.registries.ModBlocks;
 import net.ennway.farworld.registries.ModEntities;
-import net.ennway.farworld.registries.entity_definitions.EntityLayerDefinition;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -22,6 +21,7 @@ public class ModEventBusEvents {
         event.put(ModEntities.DUSTBUG.get(), DustbugEntity.createAttributes().build());
         event.put(ModEntities.GOLIATH.get(), GoliathEntity.createAttributes().build());
         event.put(ModEntities.AMETHYST_CONSTRUCT.get(), AmethystConstructEntity.createAttributes().build());
+        event.put(ModEntities.REDSTONE_CURIOSITY.get(), RedstoneCuriosityEntity.createAttributes().build());
     }
     @SubscribeEvent
     public static void registerBlockEntities(BlockEntityTypeAddBlocksEvent event)

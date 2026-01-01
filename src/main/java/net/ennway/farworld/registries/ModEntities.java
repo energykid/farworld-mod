@@ -11,21 +11,20 @@ import net.ennway.farworld.entity.client.dustbug.DustbugModel;
 import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
 import net.ennway.farworld.entity.client.goliath.GoliathModel;
 import net.ennway.farworld.entity.client.goliath.GoliathRenderer;
+import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.entity.custom.*;
 import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
 import net.ennway.farworld.entity.projectile.GloomstonePickup;
 import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
-import net.ennway.farworld.registries.entity_definitions.EntityLayerDefinition;
+import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
+import net.ennway.farworld.registries.entity_definitions.NonGeoEntityLayerDefinition;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
@@ -71,6 +70,12 @@ public class ModEntities {
                     .sized(2.25f, 2f)
                     .build("amethyst_construct"));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<RedstoneCuriosityEntity>> REDSTONE_CURIOSITY = ENTITY_TYPES.register(
+            "redstone_curiosity", () -> EntityType.Builder.of(RedstoneCuriosityEntity::new, MobCategory.MONSTER)
+                    .eyeHeight(2f)
+                    .sized(1f, 2.25f)
+                    .build("redstone_curiosity"));
+
     //region Projectiles
 
     public static final DeferredHolder<EntityType<?>, EntityType<BlackIceImplosionProjectile>> BLACK_ICE_AOE_ENTITY = ENTITY_TYPES.register(
@@ -81,54 +86,64 @@ public class ModEntities {
 
     //endregion
 
-    public static final List<EntityLayerDefinition> mobDefinitions = List.of(
-            new EntityLayerDefinition<BloomedEntity>(
+    //region Non-Geo Entity Layers
+    public static final List<NonGeoEntityLayerDefinition> mobDefinitions = List.of(
+            new NonGeoEntityLayerDefinition<BloomedEntity>(
                     BLOOMED,
                     BloomedModel.LAYER_LOCATION,
                     BloomedModel::createBodyLayer,
                     BloomedRenderer::new
             ),
-            new EntityLayerDefinition<SoulGolemEntity>(
+            new NonGeoEntityLayerDefinition<SoulGolemEntity>(
                     SOUL_GOLEM,
                     SoulGolemModel.LAYER_LOCATION,
                     SoulGolemModel::createBodyLayer,
                     SoulGolemRenderer::new
             ),
-            new EntityLayerDefinition<BrittleEntity>(
+            new NonGeoEntityLayerDefinition<BrittleEntity>(
                     BRITTLE,
                     BrittleModel.LAYER_LOCATION,
                     BrittleModel::createBodyLayer,
                     BrittleRenderer::new
             ),
-            new EntityLayerDefinition<DustbugEntity>(
+            new NonGeoEntityLayerDefinition<DustbugEntity>(
                     DUSTBUG,
                     DustbugModel.LAYER_LOCATION,
                     DustbugModel::createBodyLayer,
                     DustbugRenderer::new
             ),
-            new EntityLayerDefinition<GoliathEntity>(
+            new NonGeoEntityLayerDefinition<GoliathEntity>(
                     GOLIATH,
                     GoliathModel.LAYER_LOCATION,
                     GoliathModel::createBodyLayer,
                     GoliathRenderer::new
             ),
-            new EntityLayerDefinition<AmethystConstructEntity>(
+            new NonGeoEntityLayerDefinition<AmethystConstructEntity>(
                     AMETHYST_CONSTRUCT,
                     AmethystConstructModel.LAYER_LOCATION,
                     AmethystConstructModel::createBodyLayer,
                     AmethystConstructRenderer::new
             ),
-            new EntityLayerDefinition<BlackIceImplosionProjectile>(
+            new NonGeoEntityLayerDefinition<BlackIceImplosionProjectile>(
                     BLACK_ICE_AOE_ENTITY,
                     null,
                     null,
                     NoopRenderer::new
             ),
-            new EntityLayerDefinition<GloomstonePickup>(
+            new NonGeoEntityLayerDefinition<GloomstonePickup>(
                     GLOOMSTONE_PICKUP,
                     null,
                     null,
                     GloomstonePickupRenderer::new
             )
     );
+    //endregion
+    //region Geo Entity Renderers
+    public static final List<GeoEntityRendererDefinition> geoMobDefinitions = List.of(
+            new GeoEntityRendererDefinition<RedstoneCuriosityEntity>(
+                    REDSTONE_CURIOSITY,
+                    RedstoneCuriosityRenderer::new
+            )
+    );
+    //endregion
 }

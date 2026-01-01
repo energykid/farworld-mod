@@ -57,7 +57,7 @@ public class DustbugEntity extends Monster {
     }
 
     public double getEyeY() {
-        return this.getPosition(0).y + 2D;
+        return this.getPosition(0).y + 0.25D;
     }
 
     public final TargetingConditions targeting = TargetingConditions.forCombat().range(4.0).ignoreLineOfSight();

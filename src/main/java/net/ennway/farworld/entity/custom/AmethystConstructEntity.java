@@ -80,7 +80,7 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
     }
 
     public double getEyeY() {
-        return this.getPosition(0).y + 2D;
+        return this.getPosition(0).y + 1D;
     }
 
     public void slamAt(BlockPos pos, int maxDist)

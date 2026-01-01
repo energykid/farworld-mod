@@ -73,7 +73,7 @@ public class BrittleEntity extends Monster {
     }
 
     public double getEyeY() {
-        return this.getPosition(0).y + 2D;
+        return this.getPosition(0).y + 1.5D;
     }
 
     public final TargetingConditions targeting = TargetingConditions.forCombat().range(4.0).ignoreLineOfSight();

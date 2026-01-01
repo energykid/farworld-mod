@@ -1,32 +1,13 @@
 package net.ennway.farworld;
 
-import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
-import net.ennway.farworld.entity.client.brittle.BrittleRenderer;
-import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
-import net.ennway.farworld.entity.client.goliath.GoliathRenderer;
-import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
-import net.ennway.farworld.entity.custom.BrittleEntity;
-import net.ennway.farworld.entity.custom.DustbugEntity;
-import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
 import net.ennway.farworld.feature.ModFeatureTypes;
 import net.ennway.farworld.registries.*;
-import net.ennway.farworld.registries.entity_definitions.EntityLayerDefinition;
+import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
+import net.ennway.farworld.registries.entity_definitions.NonGeoEntityLayerDefinition;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.NoopRenderer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -44,9 +25,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-
-import java.util.function.Predicate;
-import java.util.logging.Level;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Farworld.MOD_ID)
@@ -287,13 +265,17 @@ public class Farworld
         LOGGER.info("HELLO from server starting");
     }
 
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            for (EntityLayerDefinition<Entity> def : ModEntities.mobDefinitions) {
+            for (NonGeoEntityLayerDefinition<Entity> def : ModEntities.mobDefinitions) {
+                EntityRenderers.register(def.type.get(), def.renderer);
+            }
+
+            for (GeoEntityRendererDefinition<Entity> def : ModEntities.geoMobDefinitions) {
                 EntityRenderers.register(def.type.get(), def.renderer);
             }
 

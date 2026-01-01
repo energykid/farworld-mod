@@ -202,29 +202,31 @@ public class BloomedEntity extends BystoneTamableMonsterEntity implements Ownabl
                                 SoundSource.NEUTRAL, 1f, 1f);
 
                     player.swing(hand);
-                    player.getItemInHand(hand).consume(1, player);
 
                     this.getEntityData().set(FLOWER_TO_DISPLAY, this.getEntityData().get(FLOWER_TO_GROW));
 
                     this.tamedAnimationState.start(this.tickCount);
                     this.tamedAnimationScale = 1f;
+
+                    player.getItemInHand(hand).consume(1, player);
                 }
 
                 if (stack.is(BLOOMED_COMPATIBLE))
                 {
-                    this.level().playSound(this, this.blockPosition(), SoundEvents.BONE_MEAL_USE,
-                            SoundSource.NEUTRAL, 1f, 1f);
-
-                    player.swing(hand);
-                    player.getItemInHand(hand).consume(1, player);
-
                     String string = stack.getItem().toString();
                     int indexTo = string.indexOf(":") + 1;
                     this.getEntityData().set(FLOWER_TO_DISPLAY, string.substring(indexTo));
                     this.getEntityData().set(FLOWER_TO_GROW, string.substring(indexTo));
 
+                    this.level().playSound(this, this.blockPosition(), SoundEvents.BONE_MEAL_USE,
+                            SoundSource.NEUTRAL, 1f, 1f);
+
+                    player.swing(hand);
+
                     this.tamedAnimationState.start(this.tickCount);
                     this.tamedAnimationScale = 1f;
+
+                    player.getItemInHand(hand).consume(1, player);
                 }
             }
 

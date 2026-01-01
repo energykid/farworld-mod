@@ -85,7 +85,7 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
     }
 
     public double getEyeY() {
-        return this.getPosition(0).y + 0.5D;
+        return this.getPosition(0).y + 0.35D;
     }
 
     public final TargetingConditions targeting = TargetingConditions.forCombat().range(4.0).ignoreLineOfSight();
@@ -108,6 +108,7 @@ public class GoliathEntity extends BystoneTamableMonsterEntity implements Ownabl
     @Override
     protected void registerGoals() {
         super.registerGoals();
+        this.goalSelector.addGoal(1, new TemptGoal(this, 1.5f, i -> i.is(ModItems.GEODE_FRUIT.get()), false));
         this.goalSelector.addGoal(2, new GoliathMeleeHurtGoal(this, 3.25f, true));
         this.goalSelector.addGoal(4, new FloatGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0F));
