@@ -383,7 +383,8 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
                 .add(Attributes.MAX_HEALTH, 500D)
                 .add(Attributes.FOLLOW_RANGE, 10D)
                 .add(Attributes.ATTACK_DAMAGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.15D);
+                .add(Attributes.MOVEMENT_SPEED, 0.15D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1f);
     }
 
     public static final EntityDataAccessor<Integer> ATTACK_STATE = SynchedEntityData.defineId(RedstoneCuriosityEntity.class, EntityDataSerializers.INT);
