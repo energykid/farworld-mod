@@ -373,6 +373,11 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     }
 
     @Override
+    public boolean shouldRender(double x, double y, double z) {
+        return true;
+    }
+
+    @Override
     protected @Nullable SoundEvent getDeathSound() {
         return ModSounds.REDSTONE_CURIOSITY_KILL.get();
     }
