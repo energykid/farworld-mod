@@ -13,13 +13,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Farworld.MOD_ID, value = Dist.CLIENT)
 public class ModParticleProviders {
 
     public SpriteSet setFrom(TextureAtlasSprite sprite)
     {
-
-
         return new SpriteSet() {
             @Override
             public TextureAtlasSprite get(int i, int i1) {
@@ -36,6 +34,7 @@ public class ModParticleProviders {
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ModParticles.REDSTONE_CHARGE_PARTICLE.get(), RedstoneChargeParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.REDSTONE_CURIOSITY_PARTICLE.get(), RedstoneCuriosityParticle.Provider::new);
 
         event.registerSpriteSet(ModParticles.PARALYSIS.get(), ParalysisParticleProvider::new);
 

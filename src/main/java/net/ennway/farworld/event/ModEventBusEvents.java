@@ -10,19 +10,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Farworld.MOD_ID)
 public class ModEventBusEvents {
-    @SubscribeEvent
-    public static void registerAttributes(EntityAttributeCreationEvent event)
-    {
-        event.put(ModEntities.BLOOMED.get(), BloomedEntity.createAttributes().build());
-        event.put(ModEntities.SOUL_GOLEM.get(), SoulGolemEntity.createAttributes().build());
-        event.put(ModEntities.BRITTLE.get(), BrittleEntity.createAttributes().build());
-        event.put(ModEntities.DUSTBUG.get(), DustbugEntity.createAttributes().build());
-        event.put(ModEntities.GOLIATH.get(), GoliathEntity.createAttributes().build());
-        event.put(ModEntities.AMETHYST_CONSTRUCT.get(), AmethystConstructEntity.createAttributes().build());
-        event.put(ModEntities.REDSTONE_CURIOSITY.get(), RedstoneCuriosityEntity.createAttributes().build());
-    }
     @SubscribeEvent
     public static void registerBlockEntities(BlockEntityTypeAddBlocksEvent event)
     {

@@ -28,7 +28,7 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 import java.util.function.Supplier;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Farworld.MOD_ID)
 public class GearEffects {
 
     public static void spawnFireEffect(Entity entityAt, Supplier<SimpleParticleType> particleType, Supplier<SimpleParticleType> tendrilType)

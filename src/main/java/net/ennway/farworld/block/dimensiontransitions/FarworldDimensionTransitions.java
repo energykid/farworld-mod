@@ -76,7 +76,7 @@ import java.util.*;
 import java.util.List;
 import java.util.stream.Stream;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Farworld.MOD_ID)
 public class FarworldDimensionTransitions {
 
     public static BlockPos findNearestPortalTo(ServerLevel level, BlockPos posFrom, Holder<PoiType> poitype)

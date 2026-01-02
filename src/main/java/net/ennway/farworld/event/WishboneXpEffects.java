@@ -23,7 +23,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 
 import java.util.function.Supplier;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Farworld.MOD_ID)
 public class WishboneXpEffects {
 
     @SubscribeEvent

@@ -14,7 +14,7 @@ import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 
 import java.util.function.Predicate;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Farworld.MOD_ID)
 public class ModRecipeEvents {
 
     @SubscribeEvent

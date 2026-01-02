@@ -34,7 +34,7 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 import java.util.Objects;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Farworld.MOD_ID)
 public class ModEvents {
 
     public static BlockPattern soulGolemBase = null;

@@ -40,7 +40,7 @@ import org.checkerframework.checker.units.qual.Current;
 
 import java.awt.*;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Farworld.MOD_ID)
 public class PortalLayerEvents {
 
     public static float transitionOpacity = 0f;

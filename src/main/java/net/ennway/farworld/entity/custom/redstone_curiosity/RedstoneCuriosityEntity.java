@@ -1,9 +1,10 @@
-package net.ennway.farworld.entity.custom;
+package net.ennway.farworld.entity.custom.redstone_curiosity;
 
+import net.ennway.farworld.entity.base.BaseSubattackEntity;
+import net.ennway.farworld.registries.ModEntities;
+import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.registries.ModSounds;
-import net.ennway.farworld.utils.BehaviorUtils;
 import net.ennway.farworld.utils.MathUtils;
-import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -11,9 +12,9 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,20 +22,12 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.damagesource.DamageContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector2f;
@@ -42,6 +35,7 @@ import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
@@ -56,7 +50,11 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
     public static final int ATTACK_STATE_BUILDUP = 0;
     public static final int ATTACK_STATE_THREE_ZIPS = 1;
-    public static final int ATTACK_STATE_REST = 2;
+    public static final int ATTACK_STATE_SLOWFLY = 2;
+    public static final int ATTACK_STATE_GATLING = 3;
+    public static final int ATTACK_STATE_BLAST = 4;
+    public static final int ATTACK_STATE_ENERGY_RAIN = 5;
+    public static final int ATTACK_STATE_DEATH = 6;
 
     @Override
     public void startSeenByPlayer(ServerPlayer player) {
@@ -91,7 +89,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         compound.putBoolean("JustSpawned", this.getEntityData().get(JUST_SPAWNED));
         compound.putInt("AttackState", this.getEntityData().get(ATTACK_STATE));
         compound.putInt("AttackTime1", this.getEntityData().get(ATTACK_TIME_1));
-        compound.putInt("AttackTime2", this.getEntityData().get(ATTACK_TIME_2));
+        compound.putFloat("AttackTime2", this.getEntityData().get(ATTACK_VALUE_1));
         super.addAdditionalSaveData(compound);
     }
 
@@ -100,7 +98,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         this.getEntityData().set(JUST_SPAWNED, compound.getBoolean("JustSpawned"));
         this.getEntityData().set(ATTACK_STATE, compound.getInt("AttackState"));
         this.getEntityData().set(ATTACK_TIME_1, compound.getInt("AttackTime1"));
-        this.getEntityData().set(ATTACK_TIME_2, compound.getInt("AttackTime2"));
+        this.getEntityData().set(ATTACK_VALUE_1, compound.getFloat("AttackTime2"));
         super.readAdditionalSaveData(compound);
     }
 
@@ -120,6 +118,16 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         return true;
     }
 
+    public void rotateToNearestPlayer()
+    {
+        Player plr = this.getCommandSenderWorld().getNearestPlayer(this, 20);
+        if (plr != null)
+        {
+            this.rot = Mth.rotLerp(this.getEntityData().get(ROTATION_LERP), this.rot, -look(plr.position()));
+            this.setTarget(plr);
+        }
+    }
+
     @Override
     public void tick() {
         this.setNoGravity(false);
@@ -127,13 +135,6 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
 
         this.setYRot(0f);
-
-        Player plr = this.getCommandSenderWorld().getNearestPlayer(this, 20);
-        if (plr != null)
-        {
-            rot = Mth.rotLerp(0.2, rot, -look(plr.position()));
-            this.setTarget(plr);
-        }
 
         if (!isDeadOrDying())
         {
@@ -149,6 +150,8 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_BUILDUP)
         {
+            this.entityData.set(ROTATION_LERP, 0.1f);
+
             if (getEntityData().get(ATTACK_TIME_1) == 2)
             {
                 playSound(ModSounds.REDSTONE_CURIOSITY_SPAWN.get());
@@ -159,20 +162,24 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         }
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_THREE_ZIPS)
         {
+            this.entityData.set(ROTATION_LERP, 0.5f);
+
+            rotateToNearestPlayer();
             if (this.getEntityData().get(ATTACK_TIME_1) % 6 == 1 && this.getEntityData().get(ATTACK_TIME_1) < 15)
             {
                 Vec3 pos = this.getNearTargetPosition(9);
-                if (!level().isClientSide)
-                    this.setPos(pos);
-                this.playSound(ModSounds.REDSTONE_CURIOSITY_ZIP.get());
+
+                zipTo(pos);
             }
             if (this.getEntityData().get(ATTACK_TIME_1) > 28)
             {
-                changeState(ATTACK_STATE_REST);
+                changeState(getRandomState());
             }
         }
-        if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_REST)
+        if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_SLOWFLY)
         {
+            this.entityData.set(ROTATION_LERP, 0.2f);
+            rotateToNearestPlayer();
             if (getTarget() != null)
             {
                 this.setDeltaMovement(getTarget().position().subtract(position()).normalize().multiply(0.1, 0.1, 0.1));
@@ -187,6 +194,81 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
                 changeState(ATTACK_STATE_THREE_ZIPS);
             }
         }
+        if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_BLAST)
+        {
+            rotateToNearestPlayer();
+            this.entityData.set(ROTATION_LERP, 0f);
+            if (getTarget() != null)
+            {
+                if (this.getEntityData().get(ATTACK_TIME_1) <= 16)
+                {
+                    setDeltaMovement(0,0,0);
+                    if (this.getEntityData().get(ATTACK_TIME_1) == 6)
+                    {
+                        Vec3 pos = getTarget().position().add(getTarget().getLookAngle().multiply(2.5,0,2.5));
+
+                        zipTo(pos);
+                    }
+                    if (this.getEntityData().get(ATTACK_TIME_1) < 13)
+                    {
+                        this.entityData.set(ROTATION_LERP, 0.8f);
+                    }
+                    if (this.getEntityData().get(ATTACK_TIME_1) == 13)
+                    {
+                        playSound(ModSounds.REDSTONE_CURIOSITY_CHARGE.get());
+                    }
+                    if (this.getEntityData().get(ATTACK_TIME_1) == 11)
+                    {
+                        if (level() instanceof ServerLevel)
+                            triggerAnim("attack_controller", "blast");
+                    }
+                }
+
+                if (this.getEntityData().get(ATTACK_TIME_1) == 25)
+                {
+                    playSound(ModSounds.REDSTONE_CURIOSITY_SHOOT_LARGE.get());
+
+                    Vec3 position = position().add(0, 1.5, 0);
+
+                    for (int i = 0; i < 15; i++) {
+                        level().addParticle(ModParticles.REDSTONE_CURIOSITY_PARTICLE.get(), position.x + random.nextDouble(), position.y + random.nextDouble(), position.z + random.nextDouble(), MathUtils.randomDouble(getRandom(), -3, 3), MathUtils.randomDouble(getRandom(), -3, 3), MathUtils.randomDouble(getRandom(), -3, 3));
+                    }
+
+                    RedstoneCuriosityBlastEntity ent = new RedstoneCuriosityBlastEntity(ModEntities.REDSTONE_CURIOSITY_BLAST.get(),
+                            level());
+                    ent.setPos(position);
+                    ent.owner = this;
+                    ent.getEntityData().set(BaseSubattackEntity.ROTATION, (float)this.rot);
+                    level().addFreshEntity(ent);
+                }
+
+                if (this.getEntityData().get(ATTACK_TIME_1) > 31)
+                {
+                    changeState(ATTACK_STATE_SLOWFLY);
+                }
+            }
+            else
+            {
+                changeState(ATTACK_STATE_SLOWFLY);
+            }
+        }
+        if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_GATLING)
+        {
+
+        }
+    }
+
+    public int getRandomState()
+    {
+        return ATTACK_STATE_BLAST;
+        //return Mth.randomBetweenInclusive(random, ATTACK_STATE_GATLING, ATTACK_STATE_ENERGY_RAIN);
+    }
+
+    public void zipTo(Vec3 pos)
+    {
+        if (!level().isClientSide)
+            this.setPos(pos);
+        this.playSound(ModSounds.REDSTONE_CURIOSITY_ZIP.get());
     }
 
     public Vec3 getNearTargetPosition(double dist)
@@ -194,7 +276,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         if (this.getTarget() != null)
         {
             Vec3 origPos = this.getTarget().position();
-            Vec3 playerPos = origPos;
+            Vec3 playerPos;
 
             for (int i = 0; i < 20; i++) {
                 playerPos = origPos.offsetRandom(random, 10);
@@ -213,7 +295,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     {
         this.getEntityData().set(ATTACK_STATE, stateTo);
         this.getEntityData().set(ATTACK_TIME_1, 0);
-        this.getEntityData().set(ATTACK_TIME_2, 0);
+        this.getEntityData().set(ATTACK_VALUE_1, 0f);
     }
 
     public double look(Vec3 target) {
@@ -229,7 +311,8 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
                 .define(JUST_SPAWNED, true)
                 .define(ATTACK_STATE, ATTACK_STATE_BUILDUP)
                 .define(ATTACK_TIME_1, 0)
-                .define(ATTACK_TIME_2, 0));
+                .define(ATTACK_VALUE_1, 0f)
+                .define(ROTATION_LERP, 0f));
     }
 
     @Override
@@ -252,8 +335,9 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     }
 
     public static final EntityDataAccessor<Integer> ATTACK_STATE = SynchedEntityData.defineId(RedstoneCuriosityEntity.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Integer> ATTACK_TIME_1 = SynchedEntityData.defineId(RedstoneCuriosityEntity.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Integer> ATTACK_TIME_2 = SynchedEntityData.defineId(RedstoneCuriosityEntity.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Integer> ATTACK_TIME_1 = SynchedEntityData.defineId(RedstoneCuriosityEntity.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Float> ATTACK_VALUE_1 = SynchedEntityData.defineId(RedstoneCuriosityEntity.class, EntityDataSerializers.FLOAT);
+    public static final EntityDataAccessor<Float> ROTATION_LERP = SynchedEntityData.defineId(RedstoneCuriosityEntity.class, EntityDataSerializers.FLOAT);
     public static final EntityDataAccessor<Boolean> JUST_SPAWNED = SynchedEntityData.defineId(RedstoneCuriosityEntity.class, EntityDataSerializers.BOOLEAN);
 
     @Override
@@ -264,17 +348,25 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "", this::idleAnimController));
         controllers.add(new AnimationController<>(this, "", this::spawnAnimController));
+
+        controllers.add(new AnimationController<>(this, "attack_controller", animTest -> PlayState.STOP)
+                .triggerableAnim("blast", BLAST_ANIM)
+                .triggerableAnim("cast", CAST_ANIM)
+                .triggerableAnim("punch", PUNCH_ANIM));
     }
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
     protected static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     protected static final RawAnimation SPAWN_ANIM = RawAnimation.begin().thenPlayAndHold("spawn");
+    protected static final RawAnimation BLAST_ANIM = RawAnimation.begin().thenPlay("blast");
+    protected static final RawAnimation CAST_ANIM = RawAnimation.begin().thenPlay("cast");
+    protected static final RawAnimation PUNCH_ANIM = RawAnimation.begin().thenPlay("punch");
 
-    protected <E extends RedstoneCuriosityEntity> PlayState idleAnimController(final software.bernie.geckolib.animation.AnimationState<E> event) {
+    protected <E extends RedstoneCuriosityEntity> PlayState idleAnimController(final AnimationState<E> event) {
         return event.setAndContinue(IDLE_ANIM);
     }
-    protected <E extends RedstoneCuriosityEntity> PlayState spawnAnimController(final software.bernie.geckolib.animation.AnimationState<E> event) {
+    protected <E extends RedstoneCuriosityEntity> PlayState spawnAnimController(final AnimationState<E> event) {
         return event.setAndContinue(SPAWN_ANIM);
     }
 
