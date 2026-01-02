@@ -53,11 +53,12 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
     public static final int ATTACK_STATE_BUILDUP = 0;
     public static final int ATTACK_STATE_THREE_ZIPS = 1;
-    public static final int ATTACK_STATE_SLOWFLY = 2;
+    public static final int ATTACK_STATE_SLOW_FLY = 2;
     public static final int ATTACK_STATE_GATLING = 3;
     public static final int ATTACK_STATE_BLAST = 4;
     public static final int ATTACK_STATE_ENERGY_RAIN = 5;
-    public static final int ATTACK_STATE_DEATH = 6;
+    public static final int ATTACK_STATE_PUNCH = 6;
+    public static final int ATTACK_STATE_DEATH = 7;
 
     @Override
     public void startSeenByPlayer(ServerPlayer player) {
@@ -179,7 +180,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
                 changeState(getRandomState());
             }
         }
-        if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_SLOWFLY)
+        if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_SLOW_FLY)
         {
             this.entityData.set(ROTATION_LERP, 0.2f);
             rotateToNearestPlayer();
@@ -247,12 +248,12 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
                 if (this.getEntityData().get(ATTACK_TIME_1) > 31)
                 {
-                    changeState(ATTACK_STATE_SLOWFLY);
+                    changeState(ATTACK_STATE_SLOW_FLY);
                 }
             }
             else
             {
-                changeState(ATTACK_STATE_SLOWFLY);
+                changeState(ATTACK_STATE_SLOW_FLY);
             }
         }
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_GATLING)
@@ -277,7 +278,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
             if (this.getEntityData().get(ATTACK_TIME_1) > 61)
             {
                 getEntityData().set(SHOULD_TILT_HEAD, false);
-                changeState(ATTACK_STATE_SLOWFLY);
+                changeState(ATTACK_STATE_SLOW_FLY);
             }
         }
     }
