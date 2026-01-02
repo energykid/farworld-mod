@@ -88,6 +88,10 @@
       "farworld:redstone_curiosity_chargeup_2"]
   },
 
+  "redstone_curiosity_chargeup_gatling": {
+    "sounds": ["farworld:redstone_curiosity_chargeup_gatling"]
+  },
+
   "redstone_curiosity_kill": {
     "sounds": ["farworld:redstone_curiosity_kill"]
   },
