@@ -34,7 +34,9 @@ public class ModParticleProviders {
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ModParticles.REDSTONE_CHARGE_PARTICLE.get(), RedstoneChargeParticle.Provider::new);
+
         event.registerSpriteSet(ModParticles.REDSTONE_CURIOSITY_PARTICLE.get(), RedstoneCuriosityParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.REDSTONE_CURIOSITY_BURST.get(), RedstoneCuriosityBurstProvider::new);
 
         event.registerSpriteSet(ModParticles.PARALYSIS.get(), ParalysisParticleProvider::new);
 

@@ -83,5 +83,9 @@ public class ModParticles {
             "redstone_curiosity_particle",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> REDSTONE_CURIOSITY_BURST = PARTICLE_TYPES.register(
+            "redstone_curiosity_burst",
+            () -> new SimpleParticleType(false)
+    );
 
 }

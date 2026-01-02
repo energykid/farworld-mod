@@ -6,6 +6,7 @@ import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -24,6 +25,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec2;
@@ -31,6 +33,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
@@ -254,13 +257,57 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         }
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_GATLING)
         {
+            rotateToNearestPlayer();
+            if (getEntityData().get(ATTACK_TIME_1) == 2)
+            {
+                getEntityData().set(ATTACK_VALUE_1, 0.65f);
 
+                if (level() instanceof ServerLevel)
+                    triggerAnim("attack_controller", "gatling");
+
+                playSound(ModSounds.REDSTONE_CURIOSITY_CHARGE.get(), 1f, 0.7f);
+            }
+            getEntityData().set(ROTATION_LERP, 0.5f);
+            if (getEntityData().get(ATTACK_TIME_1) > 28 && getEntityData().get(ATTACK_TIME_1) % 2 == 1)
+            {
+                getEntityData().set(ATTACK_VALUE_1, getEntityData().get(ATTACK_VALUE_1) + 0.05f);
+                shoot(getEntityData().get(ATTACK_VALUE_1));
+            }
+            if (this.getEntityData().get(ATTACK_TIME_1) > 61)
+            {
+                changeState(ATTACK_STATE_SLOWFLY);
+            }
         }
+    }
+
+    public void shoot(float soundPitch)
+    {
+        if (getTarget() == null) return;
+
+        Vector3f pos = getEyePosition().toVector3f().add(0, 1, 0);
+        pos = pos.add(new Vector3f((float)MathUtils.randomDouble(getRandom(), -0.5, 0.5), (float)MathUtils.randomDouble(getRandom(), -0.5, 0.5), (float)MathUtils.randomDouble(getRandom(), -0.5, 0.5)));
+
+        Vector3f plrPos = getTarget().getEyePosition().toVector3f();
+
+        Vector3f shootVel = plrPos.sub(pos).normalize(2f);
+
+        pos.add(shootVel.mul(0.2f));
+
+        RedstoneCuriosityLaserEntity ent = new RedstoneCuriosityLaserEntity(ModEntities.REDSTONE_CURIOSITY_LASER.get(), level());
+        ent.setPos(new Vec3(pos.x, pos.y, pos.z));
+        ent.setOwner(this);
+        ent.setDeltaMovement(new Vec3(shootVel.x, shootVel.y, shootVel.z));
+        ProjectileUtil.rotateTowardsMovement(ent, 1F);
+        level().addFreshEntity(ent);
+
+        level().addParticle(ModParticles.REDSTONE_CURIOSITY_BURST.get(), pos.x, pos.y, pos.z, 0, 0, 0);
+
+        playSound(ModSounds.REDSTONE_CURIOSITY_SHOOT_SMALL.get(), 1f, soundPitch);
     }
 
     public int getRandomState()
     {
-        return ATTACK_STATE_BLAST;
+        return random.nextBoolean() ? ATTACK_STATE_GATLING : ATTACK_STATE_BLAST;
         //return Mth.randomBetweenInclusive(random, ATTACK_STATE_GATLING, ATTACK_STATE_ENERGY_RAIN);
     }
 
@@ -352,7 +399,8 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         controllers.add(new AnimationController<>(this, "attack_controller", animTest -> PlayState.STOP)
                 .triggerableAnim("blast", BLAST_ANIM)
                 .triggerableAnim("cast", CAST_ANIM)
-                .triggerableAnim("punch", PUNCH_ANIM));
+                .triggerableAnim("punch", PUNCH_ANIM)
+                .triggerableAnim("gatling", GATLING_ANIM));
     }
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
@@ -362,6 +410,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     protected static final RawAnimation BLAST_ANIM = RawAnimation.begin().thenPlay("blast");
     protected static final RawAnimation CAST_ANIM = RawAnimation.begin().thenPlay("cast");
     protected static final RawAnimation PUNCH_ANIM = RawAnimation.begin().thenPlay("punch");
+    protected static final RawAnimation GATLING_ANIM = RawAnimation.begin().thenPlay("gatling");
 
     protected <E extends RedstoneCuriosityEntity> PlayState idleAnimController(final AnimationState<E> event) {
         return event.setAndContinue(IDLE_ANIM);

@@ -26,13 +26,13 @@ public class RedstoneCuriosityBlastRenderer extends GeoEntityRenderer<RedstoneCu
     }
 
     private static final List<RenderType> RENDER_TYPES = List.of(
-            RenderType.entityCutout(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/1.png")),
-            RenderType.entityCutout(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/2.png")),
-            RenderType.entityCutout(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/3.png")),
-            RenderType.entityCutout(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/4.png")),
-            RenderType.entityCutout(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/5.png")),
-            RenderType.entityCutout(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/6.png")),
-            RenderType.entityCutout(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/7.png"))
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/1.png")),
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/2.png")),
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/3.png")),
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/4.png")),
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/5.png")),
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/6.png")),
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_blast/7.png"))
     );
 
     @Override

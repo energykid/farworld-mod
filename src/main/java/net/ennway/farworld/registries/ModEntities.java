@@ -12,12 +12,14 @@ import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
 import net.ennway.farworld.entity.client.goliath.GoliathModel;
 import net.ennway.farworld.entity.client.goliath.GoliathRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityBlastRenderer;
+import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityLaserRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.entity.custom.*;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityBlastEntity;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityEntity;
+import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityLaserEntity;
 import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
 import net.ennway.farworld.entity.projectile.GloomstonePickup;
 import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
@@ -87,6 +89,9 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<RedstoneCuriosityBlastEntity>> REDSTONE_CURIOSITY_BLAST = ENTITY_TYPES.register(
             "redstone_curiosity_blast", () -> EntityType.Builder.of(RedstoneCuriosityBlastEntity::new, MobCategory.MISC).build("redstone_curiosity_blast"));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<RedstoneCuriosityLaserEntity>> REDSTONE_CURIOSITY_LASER = ENTITY_TYPES.register(
+            "redstone_curiosity_laser", () -> EntityType.Builder.of(RedstoneCuriosityLaserEntity::new, MobCategory.MISC).build("redstone_curiosity_laser"));
+
     public static final DeferredHolder<EntityType<?>, EntityType<GloomstonePickup>> GLOOMSTONE_PICKUP = ENTITY_TYPES.register(
             "gloomstone_pickup", () -> EntityType.Builder.of(GloomstonePickup::new, MobCategory.MISC).build("gloomstone_pickup"));
 
@@ -153,6 +158,10 @@ public class ModEntities {
             new GeoEntityRendererDefinition<RedstoneCuriosityBlastEntity>(
                     REDSTONE_CURIOSITY_BLAST,
                     RedstoneCuriosityBlastRenderer::new
+            ),
+            new GeoEntityRendererDefinition<RedstoneCuriosityLaserEntity>(
+                    REDSTONE_CURIOSITY_LASER,
+                    RedstoneCuriosityLaserRenderer::new
             )
     );
     //endregion

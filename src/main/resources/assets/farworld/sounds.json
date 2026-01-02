@@ -79,6 +79,10 @@
     "sounds": ["farworld:redstone_curiosity_shoot_large"]
   },
 
+  "redstone_curiosity_shoot_small": {
+    "sounds": ["farworld:redstone_curiosity_shoot_small"]
+  },
+
   "redstone_curiosity_chargeup": {
     "sounds": ["farworld:redstone_curiosity_chargeup_1",
       "farworld:redstone_curiosity_chargeup_2"]

@@ -6,7 +6,7 @@
 				"identifier": "geometry.unknown",
 				"texture_width": 128,
 				"texture_height": 128,
-				"visible_bounds_width": 3,
+				"visible_bounds_width": 4,
 				"visible_bounds_height": 4.5,
 				"visible_bounds_offset": [0, 1.75, 0]
 			},
@@ -72,19 +72,24 @@
 					]
 				},
 				{
-					"name": "arm_left",
+					"name": "arm_group",
 					"parent": "main",
-					"pivot": [10, 34, 0],
-					"cubes": [
-						{"origin": [10, 23, -2.5], "size": [5, 13, 5], "uv": [0, 29]}
-					]
+					"pivot": [0, 43, 0]
 				},
 				{
 					"name": "arm_right",
-					"parent": "main",
+					"parent": "arm_group",
 					"pivot": [-10, 34, 0],
 					"cubes": [
 						{"origin": [-15, 23, -2.5], "size": [5, 13, 5], "uv": [0, 29], "mirror": true}
+					]
+				},
+				{
+					"name": "arm_left",
+					"parent": "arm_group",
+					"pivot": [10, 34, 0],
+					"cubes": [
+						{"origin": [10, 23, -2.5], "size": [5, 13, 5], "uv": [0, 29]}
 					]
 				},
 				{
