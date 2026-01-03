@@ -6,6 +6,7 @@ import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector2f;
@@ -51,7 +52,12 @@ public class RedstoneCuriosityBlastEntity extends BaseSubattackEntity implements
             Vector2f rotVec = MathUtils.flatVec2FromRotation(rotate + Math.toRadians(90));
             pos = pos.add(new Vec3(rotVec.x() * 0.5, 0, rotVec.y() * 0.5));
 
-            if (potentialTarget.distanceToSqr(pos) < 1) return true;
+            double dist = 0.6;
+
+            AABB bb = potentialTarget.getBoundingBox();
+            AABB thisone = new AABB(pos.x - dist, pos.y - dist, pos.z - dist, pos.x + dist, pos.y + dist, pos.z + dist);
+
+            if (bb.intersects(thisone)) return true;
         }
         return false;
     }
