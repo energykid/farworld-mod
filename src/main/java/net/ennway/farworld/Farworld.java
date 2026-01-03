@@ -143,6 +143,8 @@ public class Farworld
             event.insertAfter(ModItems.COBBLED_FLOWSTONE.toStack(), ModItems.LUSH_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.LUSH_FLOWSTONE.toStack(), ModItems.LUSH_FOLIAGE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.LUSH_FOLIAGE.toStack(), ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), ModItems.SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SLEEKSTONE.toStack(), ModItems.CHARGED_SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.AMETHYST_CLUSTER.getDefaultInstance(), ModItems.POINTED_AMETHYST.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.AMETHYST_BLOCK.getDefaultInstance(), ModItems.ENCRUSTED_BASALT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

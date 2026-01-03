@@ -155,6 +155,20 @@ public class ModBlocks {
                     .strength(1.1F, 6.0F)
                     .sound(SoundType.NETHERRACK)));
 
+    public static final DeferredBlock<Block> SLEEKSTONE = BLOCKS_ALL.register(
+            "sleekstone",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_WHITE).requiresCorrectToolForDrops()
+                    .strength(1.1F, 6.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> CHARGED_SLEEKSTONE = BLOCKS_ALL.register(
+            "charged_sleekstone",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
+                    .strength(1.1F, 6.0F)
+                    .sound(SoundType.STONE)));
+
     public static final DeferredBlock<Block> POINTED_AMETHYST = BLOCKS_ALL.register(
             "pointed_amethyst",
             registryName -> new PointedAmethystBlock(BlockBehaviour.Properties.of()

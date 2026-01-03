@@ -322,6 +322,65 @@
             }
           ]
         }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:biome",
+          "biome_is": [
+            "farworld:hypercharged_caves"
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "noise": "minecraft:aquifer_barrier",
+                "min_threshold": 0.2,
+                "max_threshold": 2
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "farworld:sleekstone"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "noise": "minecraft:aquifer_barrier",
+                "min_threshold": 0,
+                "max_threshold": 0.2
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "farworld:charged_sleekstone"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "noise": "minecraft:aquifer_barrier",
+                "min_threshold": -2,
+                "max_threshold": 0
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "farworld:sleekstone"
+                }
+              }
+            }
+          ]
+        }
       }
     ]
   }

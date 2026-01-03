@@ -394,6 +394,10 @@ public class ModItems
             () -> new BlockItem(ModBlocks.COBALT_BLOCK.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE = ITEMS_ALL.register("flowstone",
             () -> new BlockItem(ModBlocks.FLOWSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> SLEEKSTONE = ITEMS_ALL.register("sleekstone",
+            () -> new BlockItem(ModBlocks.SLEEKSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CHARGED_SLEEKSTONE = ITEMS_ALL.register("charged_sleekstone",
+            () -> new BlockItem(ModBlocks.CHARGED_SLEEKSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DIMLIGHT = ITEMS_ALL.register("dimlight",
             () -> new BlockItem(ModBlocks.DIMLIGHT.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DIMLIGHT_STEM = ITEMS_ALL.register("dimlight_stem",
