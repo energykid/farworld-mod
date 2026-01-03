@@ -4,6 +4,7 @@ import net.ennway.farworld.entity.base.BaseSubattackEntity;
 import net.ennway.farworld.registries.ModEntities;
 import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.registries.ModSounds;
+import net.ennway.farworld.utils.BehaviorUtils;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
@@ -42,6 +43,8 @@ import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
+
+import java.util.List;
 
 public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
@@ -148,6 +151,11 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         super.tick();
     }
 
+    @Override
+    public boolean canDisableShield() {
+        return true;
+    }
+
     public void doAI()
     {
         this.getEntityData().set(ATTACK_TIME_1, this.getEntityData().get(ATTACK_TIME_1) + 1);
@@ -193,9 +201,9 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
                 this.setDeltaMovement(Vec3.ZERO);
             }
 
-            if (this.getEntityData().get(ATTACK_TIME_1) > 35)
+            if (this.getEntityData().get(ATTACK_TIME_1) > 25)
             {
-                changeState(ATTACK_STATE_THREE_ZIPS);
+                changeState(getRandomState());
             }
         }
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_BLAST)
@@ -209,9 +217,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
                     setDeltaMovement(0,0,0);
                     if (this.getEntityData().get(ATTACK_TIME_1) == 6)
                     {
-                        Vec3 pos = getTarget().position().add(getTarget().getLookAngle().multiply(2.5,0,2.5));
-
-                        zipTo(pos);
+                        zipToPlayer(2, 0);
                     }
                     if (this.getEntityData().get(ATTACK_TIME_1) < 13)
                     {
@@ -278,8 +284,51 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
             if (this.getEntityData().get(ATTACK_TIME_1) > 61)
             {
                 getEntityData().set(SHOULD_TILT_HEAD, false);
-                changeState(ATTACK_STATE_SLOW_FLY);
+                changeState(ATTACK_STATE_THREE_ZIPS);
             }
+        }
+        if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_ENERGY_RAIN)
+        {
+            getEntityData().set(ROTATION_LERP, 0.5f);
+            rotateToNearestPlayer();
+            if (getEntityData().get(ATTACK_TIME_1) == 2)
+            {
+                zipToPlayer(8, 4);
+
+                if (level() instanceof ServerLevel)
+                    triggerAnim("attack_controller", "cast");
+            }
+            if (getEntityData().get(ATTACK_TIME_1) > 2 && getEntityData().get(ATTACK_TIME_1) % 3 == 0) {
+                if (getTarget() != null) {
+                    for (int i = 0; i < 2; i++) {
+                        Vector3f pos = getTarget().position().toVector3f().add((float) MathUtils.randomDouble(getRandom(), 0, 20), -4, (float) MathUtils.randomDouble(getRandom(), 0, 20));
+
+                        pos = pos.sub(10, 0, 10);
+
+                        RedstoneCuriosityVerticalBlastEntity ent = new RedstoneCuriosityVerticalBlastEntity(ModEntities.REDSTONE_CURIOSITY_VERTICAL_BLAST.get(),
+                                level());
+                        ent.setPos(new Vec3(pos));
+                        ent.owner = this;
+                        level().addFreshEntity(ent);
+                    }
+                }
+            }
+            if (getEntityData().get(ATTACK_TIME_1) > 40)
+            {
+                changeState(ATTACK_STATE_THREE_ZIPS);
+            }
+        }
+    }
+
+    public void zipToPlayer(int horizontalDistance, int verticalDistance)
+    {
+        if (getTarget() != null)
+        {
+            Vec3 p = getTarget().getLookAngle().multiply(horizontalDistance, 0, horizontalDistance);
+
+            Vec3 pos = getTarget().position().add(p).add(0, verticalDistance, 0);
+
+            zipTo(pos);
         }
     }
 
@@ -309,11 +358,15 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
         playSound(ModSounds.REDSTONE_CURIOSITY_SHOOT_SMALL.get(), 1f, soundPitch);
     }
+    public static List<Integer> VALID_STATES_TO_SWITCH_TO = List.of(
+            ATTACK_STATE_BLAST,
+            ATTACK_STATE_GATLING,
+            ATTACK_STATE_ENERGY_RAIN
+    );
 
     public int getRandomState()
     {
-        return random.nextBoolean() ? ATTACK_STATE_GATLING : ATTACK_STATE_BLAST;
-        //return Mth.randomBetweenInclusive(random, ATTACK_STATE_GATLING, ATTACK_STATE_ENERGY_RAIN);
+        return VALID_STATES_TO_SWITCH_TO.get(random.nextInt(VALID_STATES_TO_SWITCH_TO.size()));
     }
 
     public void zipTo(Vec3 pos)

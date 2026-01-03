@@ -7,6 +7,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
@@ -36,7 +37,7 @@ public class RedstoneCuriosityLaserEntity extends AbstractHurtingProjectile impl
     protected void onHitEntity(EntityHitResult result) {
         if (result.getEntity() instanceof Player plr)
         {
-            plr.hurt(getOwner().damageSources().generic(), 5);
+            plr.hurt(getOwner().damageSources().mobProjectile(this, (LivingEntity)getOwner()), 5);
         }
     }
 

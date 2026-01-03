@@ -7,10 +7,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TraceableEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -28,7 +25,7 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity
     public int duration;
     public int animationTime = 100;
     public double distance;
-    public Entity owner;
+    public Mob owner;
     public float damage = 1f;
     public BaseSubattackEntity(EntityType<?> entityType, Level level, float dam, int del, int dur, double dist) {
         super(entityType, level);
@@ -57,13 +54,15 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity
                         if (canHit(entity))
                         {
                             if (!plr.isInvulnerable() && !plr.isCreative())
-                                plr.hurt(owner.damageSources().generic(), damage);
+                            {
+                                plr.hurt(owner.damageSources().mobProjectile(this, owner), damage);
+                            }
                         }
                     }
                     else if (canHit(entity))
                     {
                         if (!entity.isInvulnerable())
-                            entity.hurt(owner.damageSources().generic(), damage);
+                            entity.hurt(owner.damageSources().mobProjectile(this, owner), damage);
                     }
                 }
             }
@@ -99,7 +98,7 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity
     }
 
     @Override
-    public @Nullable Entity getOwner() {
+    public @Nullable Mob getOwner() {
         return owner;
     }
 }

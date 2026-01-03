@@ -60,6 +60,8 @@ public class ModSounds {
     public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_CHARGE = createSoundEvent("redstone_curiosity_chargeup");
     public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_CHARGE_GATLING = createSoundEvent("redstone_curiosity_chargeup_gatling");
     public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_SHOOT_LARGE = createSoundEvent("redstone_curiosity_shoot_large");
+    public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_TELEGRAPH = createSoundEvent("redstone_curiosity_telegraph");
+    public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_RAIN_LAND = createSoundEvent("redstone_curiosity_rain_land");
     public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_KILL = createSoundEvent("redstone_curiosity_kill");
 
     public static final Supplier<SoundEvent> GLOOMSTONE_PICKUP = createSoundEvent("gloomstone_pickup");

@@ -9,6 +9,7 @@ import net.ennway.farworld.entity.client.bloomed.BloomedModel;
 import net.ennway.farworld.entity.custom.BloomedEntity;
 import net.ennway.farworld.entity.custom.GoliathEntity;
 import net.ennway.farworld.registries.ModParticles;
+import net.ennway.farworld.utils.BehaviorUtils;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -57,7 +58,7 @@ public class GoliathRenderer extends MobRenderer<GoliathEntity, GoliathModel<Gol
         Vec3[] vec3s = new Vec3[4];
 
         for (int i = 0; i < vec3s.length; i++) {
-            vec3s[i] = nearestSolidVerticalSpot(entity.level(), getHorizontalOffsetPos(entity, (float)Math.toRadians((i * 90f)), 2f, partialTicks)).add(0, 1, 0);
+            vec3s[i] = BehaviorUtils.groundedVec3(entity.level(), getHorizontalOffsetPos(entity, (float)Math.toRadians((i * 90f)), 2f, partialTicks)).add(0, 1, 0);
         }
 
         Vector3f front = vec3s[0].toVector3f();
@@ -86,23 +87,5 @@ public class GoliathRenderer extends MobRenderer<GoliathEntity, GoliathModel<Gol
         float rx = (float)((vec2f.x * Math.cos(n)) - (vec2f.y * Math.sin(n)));
         float ry = (float)((vec2f.x * Math.sin(n)) + (vec2f.y * Math.cos(n)));
         return new Vector2f(rx, ry);
-    }
-
-    public Vec3 nearestSolidVerticalSpot(Level lvl, Vector3f pos)
-    {
-        double yy = pos.y;
-
-        AABB box = new AABB(pos.x - 0.2, pos.y - 0.2, pos.z - 0.2, pos.x + 0.2, pos.y, pos.z + 0.2);
-        for (int i = 0; i < 20; i++)
-        {
-            if (lvl.noCollision(box))
-            {
-                box.move(0, -0.25, 0);
-                yy -= 0.25;
-            }
-            else break;
-        }
-
-        return new Vec3(pos.x, yy, pos.z);
     }
 }

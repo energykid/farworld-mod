@@ -83,6 +83,14 @@
     "sounds": ["farworld:redstone_curiosity_shoot_small"]
   },
 
+  "redstone_curiosity_rain_land": {
+    "sounds": ["farworld:redstone_curiosity_rain_land"]
+  },
+
+  "redstone_curiosity_telegraph": {
+    "sounds": ["farworld:redstone_curiosity_telegraph"]
+  },
+
   "redstone_curiosity_chargeup": {
     "sounds": ["farworld:redstone_curiosity_chargeup_1",
       "farworld:redstone_curiosity_chargeup_2"]

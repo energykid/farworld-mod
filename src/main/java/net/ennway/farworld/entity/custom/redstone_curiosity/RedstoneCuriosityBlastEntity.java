@@ -51,7 +51,7 @@ public class RedstoneCuriosityBlastEntity extends BaseSubattackEntity implements
             Vector2f rotVec = MathUtils.flatVec2FromRotation(rotate + Math.toRadians(90));
             pos = pos.add(new Vec3(rotVec.x() * 0.5, 0, rotVec.y() * 0.5));
 
-            if (potentialTarget.getBoundingBox().contains(pos)) return true;
+            if (potentialTarget.distanceToSqr(pos) < 1) return true;
         }
         return false;
     }
