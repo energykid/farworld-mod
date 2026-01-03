@@ -128,6 +128,9 @@
 
   "block.farworld.milk_berries" : "Milk Berries",
   "lore.farworld.milk_berries" : "A food that can be scavenged in Dusty Shelves and can restore a small amount of saturation quickly.",
+  "block.farworld.redstone_curiosity_block" : "Redstone Curiosity §7(Dormant)",
+  "lore.farworld.redstone_curiosity_block" : "A dormant construct made by an unknown mastermind.",
+  "nonlore_tooltip.farworld.redstone_curiosity_block" : "Perhaps, if you power this, §4something will happen...",
   "block.farworld.gloomcap" : "Gloomcap",
   "lore.farworld.gloomcap" : "A symbiotic mushroom found in Dark Forests. Drops Gloomspores unless sheared. Toxic if eaten directly.",
   "block.farworld.dimlight" : "Dimlight",
@@ -238,7 +241,7 @@
   "entity.farworld.amethyst_construct" : "Amethyst Construct",
   "lore.farworld.amethyst_construct" : "A clunky construct created by someone, or something, in the Bystone. It can grind some items down into glittering dust that can be used for repairs.",
   "entity.farworld.redstone_curiosity" : "Redstone Curiosity",
-  "lore.farworld.redstone_curiosity" : "Digi!tal m?aster!!mi?nd.",
+  "lore.farworld.redstone_curiosity" : "Digi!tal m?aster!!mi?nd m?a!de co??nsc!ious.",
   "entity.farworld.black_ice_aoe" : "Black Ice Wormhole",
 
   "enchantment.farworld.scything" : "Scything",

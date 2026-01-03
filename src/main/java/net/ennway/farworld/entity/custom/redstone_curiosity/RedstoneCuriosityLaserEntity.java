@@ -37,7 +37,7 @@ public class RedstoneCuriosityLaserEntity extends AbstractHurtingProjectile impl
     protected void onHitEntity(EntityHitResult result) {
         if (result.getEntity() instanceof Player plr)
         {
-            plr.hurt(getOwner().damageSources().mobProjectile(this, (LivingEntity)getOwner()), 5);
+            plr.hurt(getOwner().damageSources().mobProjectile(this, (LivingEntity)getOwner()), 10);
         }
     }
 

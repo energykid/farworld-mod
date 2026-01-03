@@ -82,6 +82,7 @@ public class ModSounds {
     public static final Supplier<SoundEvent> MUSIC_LUSH_SHALLOWS = createSoundEvent("music.lush_shallows");
     public static final Supplier<SoundEvent> MUSIC_ARMAGEDDON_SIMPLE_THINGS = createSoundEvent("music.armageddon_simple_things");
     public static final Supplier<SoundEvent> MUSIC_DUSTY_SHELVES = createSoundEvent("music.dusty_shelves");
+    public static final Supplier<SoundEvent> MUSIC_REDSTONE_CURIOSITY_BATTLE = createSoundEvent("music.redstone_curiosity_battle");
 
     private static ResourceKey<JukeboxSong> createSong(String name)
     {

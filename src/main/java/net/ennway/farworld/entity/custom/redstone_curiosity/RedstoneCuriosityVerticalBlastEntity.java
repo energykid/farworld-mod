@@ -22,7 +22,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class RedstoneCuriosityVerticalBlastEntity extends BaseSubattackEntity implements GeoEntity {
     public RedstoneCuriosityVerticalBlastEntity(EntityType<?> entityType, Level level) {
-        super(entityType, level, 8, 15, 2, 7);
+        super(entityType, level, 17, 15, 2, 7);
         this.canRender = false;
     }
 
@@ -59,7 +59,7 @@ public class RedstoneCuriosityVerticalBlastEntity extends BaseSubattackEntity im
 
         if (this.getEntityData().get(BaseSubattackEntity.ATTACK_TICKS) == delay + 1)
         {
-            playSound(ModSounds.REDSTONE_CURIOSITY_RAIN_LAND.get());
+            playSound(ModSounds.REDSTONE_CURIOSITY_RAIN_LAND.get(), 1f, (float)MathUtils.randomDouble(getRandom(), 0.8, 1.2));
         }
     }
 

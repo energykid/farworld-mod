@@ -41,7 +41,7 @@
           }
         },
         {
-          "biome": "farworld:charged_caves",
+          "biome": "farworld:hypercharged_caves",
           "parameters": {
             "temperature": 0.25,
             "humidity": 0,

@@ -6,7 +6,9 @@ import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.utils.BehaviorUtils;
 import net.ennway.farworld.utils.MathUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -16,6 +18,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
@@ -63,16 +66,30 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     public static final int ATTACK_STATE_PUNCH = 6;
     public static final int ATTACK_STATE_DEATH = 7;
 
+    public static final Music BATTLE_THEME = new Music(
+            Holder.direct(ModSounds.MUSIC_REDSTONE_CURIOSITY_BATTLE.get()), 0, 0, true
+    );
+
     @Override
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
         this.bossEvent.addPlayer(player);
+
+        Minecraft.getInstance().getMusicManager().stopPlaying();
+        Minecraft.getInstance().getMusicManager().startPlaying(BATTLE_THEME);
     }
 
     @Override
     public void stopSeenByPlayer(ServerPlayer player) {
         super.stopSeenByPlayer(player);
         this.bossEvent.removePlayer(player);
+        Minecraft.getInstance().getMusicManager().stopPlaying(BATTLE_THEME);
+    }
+
+    @Override
+    protected void tickDeath() {
+        super.tickDeath();
+        Minecraft.getInstance().getMusicManager().stopPlaying(BATTLE_THEME);
     }
 
     @Override
@@ -89,6 +106,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         this.moveControl = new FlyingMoveControl(this, 10, false);
         this.setHealth(this.getMaxHealth());
         this.xpReward = 35;
+        this.progress = 0f;
     }
 
     @Override
@@ -135,11 +153,21 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         }
     }
 
+    float progress = 0f;
+
     @Override
     public void tick() {
         this.setNoGravity(false);
 
-        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+        progress += 0.05f;
+
+        float hp = this.getHealth() / this.getMaxHealth();
+        if (progress > hp)
+        {
+            progress = hp;
+        }
+
+        this.bossEvent.setProgress(progress);
 
         this.setYRot(0f);
 
@@ -268,6 +296,8 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
             rotateToNearestPlayer();
             if (getEntityData().get(ATTACK_TIME_1) == 2)
             {
+                zipToPlayer(8, 1);
+
                 getEntityData().set(ATTACK_VALUE_1, 0.65f);
 
                 if (level() instanceof ServerLevel)
@@ -293,7 +323,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
             rotateToNearestPlayer();
             if (getEntityData().get(ATTACK_TIME_1) == 2)
             {
-                zipToPlayer(8, 4);
+                zipToPlayer(10, 4);
 
                 if (level() instanceof ServerLevel)
                     triggerAnim("attack_controller", "cast");
@@ -439,7 +469,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     public static AttributeSupplier.Builder createAttributes()
     {
         return Mob.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 500D)
+                .add(Attributes.MAX_HEALTH, 375D)
                 .add(Attributes.FOLLOW_RANGE, 10D)
                 .add(Attributes.ATTACK_DAMAGE, 10)
                 .add(Attributes.MOVEMENT_SPEED, 0.15D)

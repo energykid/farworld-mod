@@ -103,6 +103,7 @@ public class Farworld
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
         {
             event.insertAfter(Items.REDSTONE_BLOCK.getDefaultInstance(), ModItems.REDSTONE_PILLAR_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.REDSTONE_PILLAR_BLOCK.toStack(), ModItems.REDSTONE_CURIOSITY_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS)
         {

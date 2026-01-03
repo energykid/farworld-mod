@@ -470,4 +470,11 @@ public class ModBlocks {
                         return 11;
                     })
                     .pushReaction(PushReaction.BLOCK)));
+
+    public static final DeferredBlock<Block> REDSTONE_CURIOSITY_BLOCK = BLOCKS_ALL.register(
+            "redstone_curiosity_block",
+            registryName -> new RedstoneCuriosityBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(2F, 100.0F)
+                    .sound(SoundType.STONE)));
 }

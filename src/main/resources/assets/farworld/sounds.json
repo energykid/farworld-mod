@@ -50,6 +50,10 @@
     "sounds": ["farworld:music/armageddon_simple_things"],
     "stream": true
   },
+  "music.redstone_curiosity_battle": {
+    "sounds": ["farworld:music/redstone_curiosity_battle"],
+    "stream": true
+  },
   "music.dusty_shelves": {
     "sounds": ["farworld:music/igneous", "farworld:music/deeplost"],
     "stream": true

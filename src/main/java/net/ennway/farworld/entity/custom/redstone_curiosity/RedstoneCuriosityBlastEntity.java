@@ -20,7 +20,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class RedstoneCuriosityBlastEntity extends BaseSubattackEntity implements GeoEntity {
     public RedstoneCuriosityBlastEntity(EntityType<?> entityType, Level level) {
-        super(entityType, level, 10, 0, 2, 7);
+        super(entityType, level, 25, 0, 2, 7);
     }
 
     public float rot = 0f;
