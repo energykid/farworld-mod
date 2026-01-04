@@ -82,6 +82,14 @@ public class Farworld
             event.insertAfter(ModItems.FLOWSTONE_BRICKS.toStack(), ModItems.FLOWSTONE_BRICK_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.FLOWSTONE_BRICK_SLAB.toStack(), ModItems.FLOWSTONE_BRICK_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.FLOWSTONE_BRICK_STAIRS.toStack(), ModItems.FLOWSTONE_BRICK_WALL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE_BRICK_WALL.toStack(), ModItems.SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SLEEKSTONE.toStack(), ModItems.COBBLED_SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBBLED_SLEEKSTONE.toStack(), ModItems.COBBLED_SLEEKSTONE_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBBLED_SLEEKSTONE_SLAB.toStack(), ModItems.COBBLED_SLEEKSTONE_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBBLED_SLEEKSTONE_STAIRS.toStack(), ModItems.SLEEKSTONE_BRICKS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SLEEKSTONE_BRICKS.toStack(), ModItems.SLEEKSTONE_BRICK_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SLEEKSTONE_BRICK_SLAB.toStack(), ModItems.SLEEKSTONE_BRICK_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SLEEKSTONE_BRICK_STAIRS.toStack(), ModItems.SLEEKSTONE_BRICK_WALL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.IRON_BLOCK.getDefaultInstance(), ModItems.COBALT_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.NETHERITE_BLOCK.getDefaultInstance(), ModItems.SOUL_STEEL_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -145,6 +153,7 @@ public class Farworld
             event.insertAfter(ModItems.LUSH_FOLIAGE.toStack(), ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), ModItems.SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SLEEKSTONE.toStack(), ModItems.CHARGED_SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CHARGED_SLEEKSTONE.toStack(), ModItems.COBBLED_SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.AMETHYST_CLUSTER.getDefaultInstance(), ModItems.POINTED_AMETHYST.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.AMETHYST_BLOCK.getDefaultInstance(), ModItems.ENCRUSTED_BASALT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

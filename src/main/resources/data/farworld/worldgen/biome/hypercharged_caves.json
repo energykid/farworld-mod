@@ -23,9 +23,7 @@
   "carvers": {},
   "features": [
     [
-      "farworld:ore_dense_iron_placed",
-      "farworld:flowstone_caches_placed",
-      "farworld:ore_dense_redstone_placed"
+
     ]
   ]
 }

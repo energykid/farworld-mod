@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farworld:cobbled_sleekstone_stairs"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "farworld:blocks/cobbled_sleekstone_stairs"
+}

@@ -1,0 +1,22 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spread_type": "linear",
+    "salt": 14357921,
+    "separation": 4,
+    "spacing": 8,
+    "frequency_reduction_method": "default",
+    "frequency": 0.1,
+    "locate_offset": [
+      0,
+      1,
+      0
+    ]
+  },
+  "structures": [
+    {
+      "structure": "farworld:redstone_curiosity_altar",
+      "weight": 1
+    }
+  ]
+}

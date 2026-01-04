@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "farworld:sleekstone_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "farworld:sleekstone_brick_stairs"
+  }
+}

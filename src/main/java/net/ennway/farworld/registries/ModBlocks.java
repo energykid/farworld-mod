@@ -158,7 +158,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SLEEKSTONE = BLOCKS_ALL.register(
             "sleekstone",
             registryName -> new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.TERRACOTTA_WHITE).requiresCorrectToolForDrops()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
                     .strength(1.1F, 6.0F)
                     .sound(SoundType.STONE)));
 
@@ -167,6 +167,55 @@ public class ModBlocks {
             registryName -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
                     .strength(1.1F, 6.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> COBBLED_SLEEKSTONE = BLOCKS_ALL.register(
+            "cobbled_sleekstone",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> COBBLED_SLEEKSTONE_SLAB = BLOCKS_ALL.register(
+            "cobbled_sleekstone_slab",
+            registryName -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> COBBLED_SLEEKSTONE_STAIRS = BLOCKS_ALL.register(
+            "cobbled_sleekstone_stairs",
+            registryName -> new StairBlock(COBBLED_SLEEKSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> SLEEKSTONE_BRICKS = BLOCKS_ALL.register(
+            "sleekstone_bricks",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> SLEEKSTONE_BRICK_SLAB = BLOCKS_ALL.register(
+            "sleekstone_brick_slab",
+            registryName -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> SLEEKSTONE_BRICK_STAIRS = BLOCKS_ALL.register(
+            "sleekstone_brick_stairs",
+            registryName -> new StairBlock(COBBLED_SLEEKSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> SLEEKSTONE_BRICK_WALL = BLOCKS_ALL.register(
+            "sleekstone_brick_wall",
+            registryName -> new WallBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
                     .sound(SoundType.STONE)));
 
     public static final DeferredBlock<Block> POINTED_AMETHYST = BLOCKS_ALL.register(

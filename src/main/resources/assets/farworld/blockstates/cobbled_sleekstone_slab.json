@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "farworld:block/cobbled_sleekstone_slab"
+    },
+    "type=double": {
+      "model": "farworld:block/cobbled_sleekstone"
+    },
+    "type=top": {
+      "model": "farworld:block/cobbled_sleekstone_slab_top"
+    }
+  }
+}

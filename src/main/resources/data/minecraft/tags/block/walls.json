@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:flowstone_brick_wall"
+    "farworld:flowstone_brick_wall",
+    "farworld:sleekstone_brick_wall"
   ]
 }

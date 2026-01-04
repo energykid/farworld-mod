@@ -39,6 +39,13 @@
     "farworld:geode_nut",
     "farworld:redstone_curiosity_block",
     "farworld:sleekstone",
+    "farworld:cobbled_sleekstone",
+    "farworld:cobbled_sleekstone_slab",
+    "farworld:cobbled_sleekstone_stairs",
+    "farworld:sleekstone_bricks",
+    "farworld:sleekstone_brick_slab",
+    "farworld:sleekstone_brick_stairs",
+    "farworld:sleekstone_brick_wall",
     "farworld:charged_sleekstone"
   ]
 }

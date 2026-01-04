@@ -153,7 +153,7 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
                 if (item.getTier() == SetTiers.SOUL_STEEL_TIER)
                     i = 18;
                 if (item.getTier() == SetTiers.BLACK_ICE_TIER)
-                    i = 50;
+                    i = 40;
             }
             return i;
         }

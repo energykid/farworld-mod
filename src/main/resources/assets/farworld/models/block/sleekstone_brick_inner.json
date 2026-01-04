@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "farworld:block/sleekstone_bricks",
+    "side": "farworld:block/sleekstone_bricks",
+    "top": "farworld:block/sleekstone_bricks"
+  }
+}

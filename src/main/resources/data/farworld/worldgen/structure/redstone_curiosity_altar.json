@@ -1,0 +1,14 @@
+{
+  "type": "farworld:bystone_structure",
+  "biomes": "farworld:hypercharged_caves",
+  "spawn_overrides": {},
+  "start_pool": "farworld:redstone_curiosity_altar",
+  "size": 1,
+  "start_height": {
+    "absolute": 0
+  },
+  "max_distance_from_center": 10,
+  "use_expansion_hack": false,
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin"
+}

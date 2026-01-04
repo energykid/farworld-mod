@@ -444,6 +444,12 @@ public class ModItems
             () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE_SLAB.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> COBBLED_FLOWSTONE_STAIRS = ITEMS_ALL.register("cobbled_flowstone_stairs",
             () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE_STAIRS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> COBBLED_SLEEKSTONE = ITEMS_ALL.register("cobbled_sleekstone",
+            () -> new BlockItem(ModBlocks.COBBLED_SLEEKSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> COBBLED_SLEEKSTONE_SLAB = ITEMS_ALL.register("cobbled_sleekstone_slab",
+            () -> new BlockItem(ModBlocks.COBBLED_SLEEKSTONE_SLAB.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> COBBLED_SLEEKSTONE_STAIRS = ITEMS_ALL.register("cobbled_sleekstone_stairs",
+            () -> new BlockItem(ModBlocks.COBBLED_SLEEKSTONE_STAIRS.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE_BRICKS = ITEMS_ALL.register("flowstone_bricks",
             () -> new BlockItem(ModBlocks.FLOWSTONE_BRICKS.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE_BRICK_SLAB = ITEMS_ALL.register("flowstone_brick_slab",
@@ -452,6 +458,14 @@ public class ModItems
             () -> new BlockItem(ModBlocks.FLOWSTONE_BRICK_STAIRS.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWSTONE_BRICK_WALL = ITEMS_ALL.register("flowstone_brick_wall",
             () -> new BlockItem(ModBlocks.FLOWSTONE_BRICK_WALL.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> SLEEKSTONE_BRICKS = ITEMS_ALL.register("sleekstone_bricks",
+            () -> new BlockItem(ModBlocks.SLEEKSTONE_BRICKS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> SLEEKSTONE_BRICK_SLAB = ITEMS_ALL.register("sleekstone_brick_slab",
+            () -> new BlockItem(ModBlocks.SLEEKSTONE_BRICK_SLAB.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> SLEEKSTONE_BRICK_STAIRS = ITEMS_ALL.register("sleekstone_brick_stairs",
+            () -> new BlockItem(ModBlocks.SLEEKSTONE_BRICK_STAIRS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> SLEEKSTONE_BRICK_WALL = ITEMS_ALL.register("sleekstone_brick_wall",
+            () -> new BlockItem(ModBlocks.SLEEKSTONE_BRICK_WALL.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES = ITEMS_ALL.register("stonewood_leaves",
             () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES_FLOWERED = ITEMS_ALL.register("stonewood_leaves_flowered",

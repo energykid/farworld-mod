@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cobbled_sleekstone_slab",
+  "key": {
+    "#": {
+      "item": "farworld:cobbled_sleekstone"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "farworld:cobbled_sleekstone_stairs"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "sleekstone_brick_slab",
+  "key": {
+    "#": {
+      "item": "farworld:sleekstone_bricks"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "farworld:sleekstone_brick_slab"
+  }
+}

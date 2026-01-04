@@ -9,7 +9,8 @@
         "projection": "rigid",
         "location": "farworld:farm_house",
         "processors": {
-          "processors": []
+          "processors": [
+          ]
         },
         "override_liquid_settings": "ignore_waterlogging"
       }

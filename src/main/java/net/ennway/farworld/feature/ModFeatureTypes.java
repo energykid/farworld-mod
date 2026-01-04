@@ -1,6 +1,7 @@
 package net.ennway.farworld.feature;
 
 import net.ennway.farworld.Farworld;
+import net.ennway.farworld.feature.configuration.TemplateFeatureConfiguration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -59,6 +60,13 @@ public class ModFeatureTypes {
         @Override
         public Feature<NoneFeatureConfiguration> get() {
             return new PointedAmethystFeature(NoneFeatureConfiguration.CODEC);
+        }
+    });
+
+    public static final DeferredHolder<Feature<?>, Feature<TemplateFeatureConfiguration>> SIMPLE_TEMPLATE_FEATURE = FEATURES_ALL.register("simple_template", new Supplier<Feature<TemplateFeatureConfiguration>>() {
+        @Override
+        public Feature<TemplateFeatureConfiguration> get() {
+            return new SimpleTemplateFeature(TemplateFeatureConfiguration.CODEC);
         }
     });
 }
