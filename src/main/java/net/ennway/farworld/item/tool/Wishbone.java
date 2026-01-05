@@ -233,7 +233,7 @@ public class Wishbone extends Item {
             if (level.isClientSide) {
                 level.playSound(player, player.blockPosition(), ModSounds.WISHBONE_CRACK.get(), SoundSource.PLAYERS, 1f, 1f);
             }
-            return InteractionResultHolder.success(player.getUseItem());
+            return InteractionResultHolder.pass(player.getUseItem());
         }
         return super.use(level, player, usedHand);
     }

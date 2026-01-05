@@ -7,6 +7,8 @@
   "mixins": [
     "WishboneAnimationMixin",
     "ItemAnimationMixin",
+    "SwordStanceMixin",
+    "SwordStancePlayerMixin",
     "ArmoryMixin",
     "ArmoryModelMixin"
   ],
@@ -14,5 +16,4 @@
   "injectors": {
     "defaultRequire": 1
   }
-
 }

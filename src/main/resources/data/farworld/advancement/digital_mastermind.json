@@ -1,0 +1,31 @@
+{
+  "parent": "farworld:black_light",
+  "criteria": {
+    "kill_curiosity": {
+      "conditions": {
+        "entity": {
+          "type": "farworld:redstone_curiosity"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.farworld.digital_mastermind.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "farworld:redstone_curiosity_block"
+    },
+    "title": {
+      "translate": "advancement.farworld.digital_mastermind"
+    }
+  },
+  "requirements": [
+    [
+      "kill_curiosity"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

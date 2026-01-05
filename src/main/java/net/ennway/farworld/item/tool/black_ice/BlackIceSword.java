@@ -1,17 +1,27 @@
 package net.ennway.farworld.item.tool.black_ice;
 
 import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
+import net.ennway.farworld.registries.ModAttachments;
+import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModEntities;
+import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.registries.sets.SetTiers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.Objects;
 
 public class BlackIceSword extends SwordItem {
     public BlackIceSword(Properties properties) {

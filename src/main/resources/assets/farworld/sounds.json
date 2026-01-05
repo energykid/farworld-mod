@@ -1,4 +1,7 @@
 {
+  "battle_stance": {
+    "sounds": ["farworld:battle_stance"]
+  },
   "allsawswitchfromprecision": {
     "sounds": ["farworld:allsawswitchfromprecision"]
   },

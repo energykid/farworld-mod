@@ -25,6 +25,14 @@ public class ModTags {
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "gear"));
 
+    public static final TagKey<Item> STANCEABLE_WEAPONS = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "stanceable_weapons"));
+
+    public static final TagKey<Item> SWORDS = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.withDefaultNamespace("swords"));
+
     public static final TagKey<Item> GLOOMSTONE_ITEMS = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "gloomstone_items"));

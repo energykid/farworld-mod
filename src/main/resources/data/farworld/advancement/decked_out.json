@@ -6,62 +6,26 @@
         "items": [
           {
             "items": "#minecraft:enchantable/head_armor",
-            "components": {},
-            "predicates": {
-              "minecraft:bundle_contents": {
-                "items": {
-                  "contains": [
-                    {
-                      "items": "#farworld:accessories"
-                    }
-                  ]
-                }
-              }
+            "components": {
+              "farworld:has_accessory": true
             }
           },
           {
             "items": "#minecraft:enchantable/chest_armor",
-            "components": {},
-            "predicates": {
-              "minecraft:bundle_contents": {
-                "items": {
-                  "contains": [
-                    {
-                      "items": "#farworld:accessories"
-                    }
-                  ]
-                }
-              }
+            "components": {
+              "farworld:has_accessory": true
             }
           },
           {
             "items": "#minecraft:enchantable/leg_armor",
-            "components": {},
-            "predicates": {
-              "minecraft:bundle_contents": {
-                "items": {
-                  "contains": [
-                    {
-                      "items": "#farworld:accessories"
-                    }
-                  ]
-                }
-              }
+            "components": {
+              "farworld:has_accessory": true
             }
           },
           {
             "items": "#minecraft:enchantable/foot_armor",
-            "components": {},
-            "predicates": {
-              "minecraft:bundle_contents": {
-                "items": {
-                  "contains": [
-                    {
-                      "items": "#farworld:accessories"
-                    }
-                  ]
-                }
-              }
+            "components": {
+              "farworld:has_accessory": true
             }
           }
         ]

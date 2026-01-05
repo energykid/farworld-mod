@@ -21,8 +21,11 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
+import net.neoforged.neoforge.event.entity.item.ItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
@@ -63,6 +66,22 @@ public class AccessoryEvents {
             }
         }
     }
+    @SubscribeEvent
+    public static void onEntityHurt(LivingDamageEvent.Post event) {
+        if (event.getEntity() instanceof Mob mob)
+        {
+            if (event.getSource().getEntity() instanceof Player player)
+            {
+                List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+                List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+                for (int i = 0; i < items.size(); i++)
+                {
+                    items.get(i).postDamageEnemy(player, mob, itemStacks.get(i), event);
+                }
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void runOnAllClients(PlayerTickEvent.Post event)
@@ -93,6 +112,61 @@ public class AccessoryEvents {
         }
     }
 
+    public static void runRightClickEffects(PlayerInteractEvent event)
+    {
+        if (event.getEntity() instanceof Player player)
+        {
+            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+            for (int i = 0; i < items.size(); i++)
+            {
+                items.get(i).onRightClickUseItem(player, itemStacks.get(i), event);
+            }
+        }
+    }
+
+    public static void runLeftClickEffects(PlayerInteractEvent event)
+    {
+        if (event.getEntity() instanceof Player player)
+        {
+            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+            for (int i = 0; i < items.size(); i++)
+            {
+                items.get(i).onLeftClickUseItem(player, itemStacks.get(i), event);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void rightClick(PlayerInteractEvent.RightClickEmpty event)
+    {
+        runRightClickEffects(event);
+    }
+    @SubscribeEvent
+    public static void rightClick(PlayerInteractEvent.RightClickBlock event)
+    {
+        runRightClickEffects(event);
+    }
+    @SubscribeEvent
+    public static void rightClick(PlayerInteractEvent.RightClickItem event)
+    {
+        runRightClickEffects(event);
+    }
+
+    @SubscribeEvent
+    public static void leftClick(PlayerInteractEvent.LeftClickEmpty event)
+    {
+        runLeftClickEffects(event);
+    }
+    @SubscribeEvent
+    public static void leftClick(PlayerInteractEvent.LeftClickBlock event)
+    {
+        runLeftClickEffects(event);
+    }
+
     @SubscribeEvent
     public static void modifyAttributes(ItemAttributeModifierEvent event)
     {
@@ -102,6 +176,15 @@ public class AccessoryEvents {
             ArmorAccessories contents = stack.get(ModDataComponents.ARMOR_ACCESSORIES);
             if (contents != null)
             {
+                if (contents.isEmpty())
+                {
+                    stack.set(ModDataComponents.HAS_ACCESSORY, false);
+                }
+                else
+                {
+                    stack.set(ModDataComponents.HAS_ACCESSORY, true);
+                }
+
                 for (ItemStack accStack : contents.items())
                 {
                     for (ItemAttributeModifiers.Entry entry : accStack.getAttributeModifiers().modifiers()) {

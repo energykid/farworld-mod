@@ -64,6 +64,8 @@ public class ModSounds {
     public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_RAIN_LAND = createSoundEvent("redstone_curiosity_rain_land");
     public static final Supplier<SoundEvent> REDSTONE_CURIOSITY_KILL = createSoundEvent("redstone_curiosity_kill");
 
+    public static final Supplier<SoundEvent> BATTLE_STANCE = createSoundEvent("battle_stance");
+
     public static final Supplier<SoundEvent> GLOOMSTONE_PICKUP = createSoundEvent("gloomstone_pickup");
 
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");

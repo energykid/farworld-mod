@@ -6,17 +6,8 @@
         "items": [
           {
             "items": "#minecraft:enchantable/equippable",
-            "components": {},
-            "predicates": {
-              "minecraft:bundle_contents": {
-                "items": {
-                  "contains": [
-                    {
-                      "items": "#farworld:accessories"
-                    }
-                  ]
-                }
-              }
+            "components": {
+              "farworld:has_accessory": true
             }
           }
         ]
