@@ -38,9 +38,9 @@ public class SwordStancePlayerMixin<T extends LivingEntity> {
         if (livingEntity instanceof Player player)
         {
             ItemStack stack = player.getItemInHand(player.getUsedItemHand());
-            if (stack.is(ModTags.SWORDS) || stack.is(ModTags.STANCEABLE_WEAPONS))
+            if (stack.is(ModTags.BREEZE_STANCEABLE_WEAPONS) || stack.is(ModTags.BLAZE_STANCEABLE_WEAPONS))
             {
-                if (player.getData(ModAttachments.BREEZE_STANCE.get()))
+                if (player.getData(ModAttachments.BATTLE_STANCE.get()))
                 {
                     farworld$stanceAnimationScale = Mth.lerp(0.12f, farworld$stanceAnimationScale, 1f);
                 }
@@ -51,7 +51,7 @@ public class SwordStancePlayerMixin<T extends LivingEntity> {
 
                 float animScale = new InOutBack().invoke(farworld$stanceAnimationScale);
 
-                if (!player.getData(ModAttachments.BREEZE_STANCE.get()))
+                if (!player.getData(ModAttachments.BATTLE_STANCE.get()))
                     animScale = farworld$stanceAnimationScale * 0.65f;
 
                 this.rightArm.xRot = Mth.lerp(animScale, this.rightArm.xRot, -5.5f);

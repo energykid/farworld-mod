@@ -33,41 +33,42 @@ public class BreezeRing extends AccessoryItem {
 
     @Override
     public void postDamageEnemy(Player player, Entity enemy, ItemStack stack, LivingDamageEvent.Post event) {
-        player.setData(ModAttachments.BREEZE_STANCE.get(), false);
+        player.setData(ModAttachments.BATTLE_STANCE.get(), false);
         player.fallDistance = 0;
     }
 
     @Override
     public void onDamagedByEnemy(Entity enemy, Player player, ItemStack stack, LivingDamageEvent.Pre event) {
-        player.setData(ModAttachments.BREEZE_STANCE.get(), false);
+        player.setData(ModAttachments.BATTLE_STANCE.get(), false);
     }
 
     @Override
     public void preTick(Player player, ItemStack stack, PlayerTickEvent.Pre event) {
-        if (player.onGround())
-        {
-            lunging = false;
-            player.setData(ModAttachments.BREEZE_STANCE.get(), false);
-        }
-        if (!player.getWeaponItem().is(ModTags.STANCEABLE_WEAPONS))
-        {
-            player.setData(ModAttachments.BREEZE_STANCE.get(), false);
-        }
 
-        player.setData(ModAttachments.BREEZE_STANCE.get(), lunging);
+        if (player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS))
+        {
+            if (player.onGround() || player.isSwimming())
+            {
+                lunging = false;
+            }
+            player.setData(ModAttachments.BATTLE_STANCE.get(), lunging);
+        }
+        else if (!player.getWeaponItem().is(ModTags.BLAZE_STANCEABLE_WEAPONS))
+        {
+            player.setData(ModAttachments.BATTLE_STANCE.get(), false);
+        }
     }
 
     @Override
     public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
-        if (player.getWeaponItem().is(ModTags.STANCEABLE_WEAPONS) && !lunging) {
-            if (!player.getData(ModAttachments.BREEZE_STANCE.get())) {
+        if (player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS) && !lunging) {
+            if (!player.getData(ModAttachments.BATTLE_STANCE.get())) {
                 player.setOnGround(false);
                 if (player.getServer() != null)
                     if (player.getServer().getPlayerList().getPlayer(player.getUUID()) != null)
-                        player.getServer().getPlayerList().getPlayer(player.getUUID()).setData(ModAttachments.BREEZE_STANCE, true);
-                player.setData(ModAttachments.BREEZE_STANCE.get(), true);
+                        player.getServer().getPlayerList().getPlayer(player.getUUID()).setData(ModAttachments.BATTLE_STANCE, true);
+                lunging = true;
                 player.playSound(ModSounds.BATTLE_STANCE.get());
-                player.playSound(SoundEvents.BREEZE_SHOOT);
                 player.setDeltaMovement(player.getDeltaMovement().multiply(2, 0, 2));
                 player.setDeltaMovement(player.getDeltaMovement().x, 0.5, player.getDeltaMovement().z);
                 player.fallDistance = 1;
@@ -78,6 +79,6 @@ public class BreezeRing extends AccessoryItem {
 
     @Override
     public void onLeftClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
-        player.setData(ModAttachments.BREEZE_STANCE, false);
+        player.setData(ModAttachments.BATTLE_STANCE, false);
     }
 }

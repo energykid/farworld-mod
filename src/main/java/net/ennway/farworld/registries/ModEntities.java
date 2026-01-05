@@ -23,6 +23,7 @@ import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityEnt
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityLaserEntity;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityVerticalBlastEntity;
 import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
+import net.ennway.farworld.entity.projectile.BlazeStanceProjectile;
 import net.ennway.farworld.entity.projectile.GloomstonePickup;
 import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
@@ -84,6 +85,9 @@ public class ModEntities {
                     .build("redstone_curiosity"));
 
     //region Projectiles
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BlazeStanceProjectile>> BLAZE_STANCE_SLASH = ENTITY_TYPES.register(
+            "blaze_stance_slash", () -> EntityType.Builder.of(BlazeStanceProjectile::new, MobCategory.MISC).build("blaze_stance_slash"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<BlackIceImplosionProjectile>> BLACK_ICE_AOE_ENTITY = ENTITY_TYPES.register(
             "black_ice_aoe", () -> EntityType.Builder.of(BlackIceImplosionProjectile::new, MobCategory.MISC).build("black_ice_aoe"));
@@ -151,6 +155,12 @@ public class ModEntities {
                     null,
                     null,
                     GloomstonePickupRenderer::new
+            ),
+            new NonGeoEntityLayerDefinition<BlazeStanceProjectile>(
+                    BLAZE_STANCE_SLASH,
+                    null,
+                    null,
+                    NoopRenderer::new
             )
     );
     //endregion

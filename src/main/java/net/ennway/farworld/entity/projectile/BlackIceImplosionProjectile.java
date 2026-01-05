@@ -25,10 +25,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSources;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
@@ -60,6 +58,7 @@ public class BlackIceImplosionProjectile extends Projectile {
         {
             this.playSound(ModSounds.BLACK_ICE_OUTWARDS.get());
 
+
             this.level().addParticle(ModParticles.BLACK_ICE_WORMHOLE.get(), this.position().x, this.position().y, this.position().z, 0,0,0);
 
             AABB mobs = new AABB(
@@ -69,7 +68,17 @@ public class BlackIceImplosionProjectile extends Projectile {
 
             for (Entity mob : level().getEntitiesOfClass(Mob.class, mobs))
             {
-                mob.hurt(mob.damageSources().magic(), 6);
+                if (mob instanceof OwnableEntity ownable)
+                {
+                    if (ownable.getOwner() == null)
+                    {
+                        mob.hurt(mob.damageSources().magic(), 6);
+                    }
+                }
+                else
+                {
+                    mob.hurt(mob.damageSources().magic(), 6);
+                }
             }
         }
         if (timer < 4)

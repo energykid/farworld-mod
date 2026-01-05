@@ -35,9 +35,9 @@ public class SwordStanceMixin {
 
     @Inject(method = "renderArmWithItem", at = @At("HEAD"))
     public void applyTransform(AbstractClientPlayer player, float partialTicks, float pitch, InteractionHand hand, float swingProgress, ItemStack stack, float equippedProgress, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, CallbackInfo ci) {
-        if (stack.is(ModTags.SWORDS) || stack.is(ModTags.STANCEABLE_WEAPONS))
+        if (stack.is(ModTags.BREEZE_STANCEABLE_WEAPONS) || stack.is(ModTags.BLAZE_STANCEABLE_WEAPONS))
         {
-            if (player.getData(ModAttachments.BREEZE_STANCE))
+            if (player.getData(ModAttachments.BATTLE_STANCE))
             {
                 farworld$stanceAnimationScale = Mth.lerp(0.12f, farworld$stanceAnimationScale, 1f);
             }

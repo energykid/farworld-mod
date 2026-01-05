@@ -91,5 +91,9 @@ public class ModParticles {
             "redstone_curiosity_telegraph",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> BLAZE_STANCE_SLASH = PARTICLE_TYPES.register(
+            "blaze_stance_slash",
+            () -> new SimpleParticleType(false)
+    );
 
 }

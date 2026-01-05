@@ -21,19 +21,10 @@ public class ModTags {
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "boot_accessories"));
 
-    public static final TagKey<Item> GEAR = TagKey.create(
+    public static final TagKey<Item> BREEZE_STANCEABLE_WEAPONS = TagKey.create(
             BuiltInRegistries.ITEM.key(),
-            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "gear"));
-
-    public static final TagKey<Item> STANCEABLE_WEAPONS = TagKey.create(
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "breeze_stanceable_weapons"));
+    public static final TagKey<Item> BLAZE_STANCEABLE_WEAPONS = TagKey.create(
             BuiltInRegistries.ITEM.key(),
-            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "stanceable_weapons"));
-
-    public static final TagKey<Item> SWORDS = TagKey.create(
-            BuiltInRegistries.ITEM.key(),
-            ResourceLocation.withDefaultNamespace("swords"));
-
-    public static final TagKey<Item> GLOOMSTONE_ITEMS = TagKey.create(
-            BuiltInRegistries.ITEM.key(),
-            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "gloomstone_items"));
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "blaze_stanceable_weapons"));
 }

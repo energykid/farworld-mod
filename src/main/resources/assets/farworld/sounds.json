@@ -2,6 +2,9 @@
   "battle_stance": {
     "sounds": ["farworld:battle_stance"]
   },
+  "blaze_stance_slash": {
+    "sounds": ["farworld:blaze_stance_slash"]
+  },
   "allsawswitchfromprecision": {
     "sounds": ["farworld:allsawswitchfromprecision"]
   },
