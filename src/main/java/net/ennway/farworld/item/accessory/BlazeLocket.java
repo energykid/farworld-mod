@@ -58,18 +58,16 @@ public class BlazeLocket extends AccessoryItem {
 
     @Override
     public void preTick(Player player, ItemStack stack, PlayerTickEvent.Pre event) {
-        if (!player.getWeaponItem().is(ModTags.BLAZE_STANCEABLE_WEAPONS))
+        if (player.getWeaponItem().is(ModTags.BLAZE_STANCEABLE_WEAPONS))
         {
-            charging = false;
-        }
-        else
-        {
-            if (charging)
-            {
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 2, 3, true, false));
-            }
+            if (charging) player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 2, 3, true, false));
+
             player.setData(ModAttachments.BATTLE_STANCE.get(), charging);
         }
-        player.setData(ModAttachments.BATTLE_STANCE.get(), charging);
+
+        if (!player.getWeaponItem().is(ModTags.BLAZE_STANCEABLE_WEAPONS) && !player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS))
+        {
+            player.setData(ModAttachments.BATTLE_STANCE.get(), false);
+        }
     }
 }

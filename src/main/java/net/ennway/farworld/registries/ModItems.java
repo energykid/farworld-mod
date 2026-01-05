@@ -285,20 +285,12 @@ public class ModItems
 
     public static final DeferredItem<Item> BLAZE_LOCKET = ITEMS_ALL.register(
             "blaze_locket",
-            () -> new BlazeLocket(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
-                    Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(Attributes.ATTACK_DAMAGE.getKey().location(), 1, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.ANY
-            ).build()))
+            () -> new BlazeLocket(new Item.Properties().attributes(ItemAttributeModifiers.builder().build()))
     );
 
     public static final DeferredItem<Item> BREEZE_RING = ITEMS_ALL.register(
             "breeze_ring",
-            () -> new BreezeRing(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
-                    Attributes.ATTACK_SPEED,
-                    new AttributeModifier(Attributes.ATTACK_SPEED.getKey().location(), 0.7, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.ANY
-            ).build()))
+            () -> new BreezeRing(new Item.Properties().attributes(ItemAttributeModifiers.builder().build()))
     );
 
     public static final DeferredItem<Item> SKELETON_ARM = ITEMS_ALL.register(

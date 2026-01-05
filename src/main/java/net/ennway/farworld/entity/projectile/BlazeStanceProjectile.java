@@ -46,18 +46,18 @@ public class BlazeStanceProjectile extends Projectile {
                     if (ownable.getOwner() == null)
                     {
                         mob.invulnerableTime = 0;
-                        mob.hurt(mob.damageSources().magic(), 3);
+                        mob.hurt(mob.damageSources().magic(), 1.5f);
                     }
                 }
                 else
                 {
                     mob.invulnerableTime = 0;
-                    mob.hurt(mob.damageSources().magic(), 3);
+                    mob.hurt(mob.damageSources().magic(), 1.5f);
                 }
             }
 
             this.playSound(ModSounds.BLAZE_STANCE_SLASH.get(), 1, 1f + (timer * 0.15f));
-            this.level().addParticle(ModParticles.BLAZE_STANCE_SLASH.get(), this.position().x, this.position().y, this.position().z, 0,0,0);
+            this.level().addParticle(ModParticles.BLAZE_STANCE_SLASH.get(), this.position().x, this.position().y - 0.5, this.position().z, 0,0,0);
         }
 
         if (timer == 10)
