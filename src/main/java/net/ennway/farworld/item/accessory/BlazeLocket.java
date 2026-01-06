@@ -31,6 +31,15 @@ public class BlazeLocket extends AccessoryItem {
 
     @Override
     public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
+        if (event instanceof PlayerInteractEvent.RightClickBlock bl)
+        {
+            if (bl.getUseItem().isTrue()) runStuff(player);
+        }
+        else runStuff(player);
+    }
+
+    public void runStuff(Player player)
+    {
         if (!charging && player.getWeaponItem().is(ModTags.BLAZE_STANCEABLE_WEAPONS))
         {
             charging = true;
@@ -68,6 +77,13 @@ public class BlazeLocket extends AccessoryItem {
         if (!player.getWeaponItem().is(ModTags.BLAZE_STANCEABLE_WEAPONS) && !player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS))
         {
             player.setData(ModAttachments.BATTLE_STANCE.get(), false);
+            charging = false;
+        }
+
+        if (!player.getWeaponItem().is(ModTags.BLAZE_STANCEABLE_WEAPONS) && charging)
+        {
+            player.setData(ModAttachments.BATTLE_STANCE.get(), false);
+            charging = false;
         }
     }
 }

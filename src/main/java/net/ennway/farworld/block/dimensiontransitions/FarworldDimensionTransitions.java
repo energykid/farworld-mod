@@ -137,15 +137,23 @@ public class FarworldDimensionTransitions {
                                 if (pos2 != null) {
                                     entity.setData(ModAttachments.DIMENSION_TRANSITION_COOLDOWN, 0f);
 
-                                    if (mob.getPassengers().getFirst() != null)
+                                    if (!mob.getPassengers().isEmpty())
                                     {
-                                        if (mob.getPassengers().getFirst() instanceof ServerPlayer plr)
+                                        for (int j = 0; j < mob.getPassengers().size(); j++)
                                         {
-                                            plr.teleportTo(levelTo, pos2.getX(), pos2.getY(), pos2.getZ(), Set.of(), mob.getXRot(), mob.getYRot());
+                                            if (mob.getPassengers().get(j) instanceof ServerPlayer plr)
+                                            {
+                                                plr.teleportTo(levelTo, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, Set.of(), mob.getXRot(), mob.getYRot());
+                                            }
+                                            else if (mob.getPassengers().get(j) instanceof LivingEntity mob1)
+                                            {
+                                                mob1.teleportTo(levelTo, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, Set.of(), mob1.getXRot(), mob1.getYRot());
+                                            }
                                         }
                                     }
 
-                                    mob.teleportTo(levelTo, pos2.getX(), pos2.getY(), pos2.getZ(), Set.of(), mob.getXRot(), mob.getYRot());
+                                    mob.teleportTo(levelTo, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, Set.of(), mob.getXRot(), mob.getYRot());
+
                                 } else {
                                     int dir = 1;
                                     int bedrocks = 0;
@@ -160,11 +168,18 @@ public class FarworldDimensionTransitions {
                                     }
                                     entity.setData(ModAttachments.DIMENSION_TRANSITION_COOLDOWN, 0f);
 
-                                    if (mob.getPassengers().getFirst() != null)
+                                    if (!mob.getPassengers().isEmpty())
                                     {
-                                        if (mob.getPassengers().getFirst() instanceof ServerPlayer plr)
+                                        for (int j = 0; j < mob.getPassengers().size(); j++)
                                         {
-                                            plr.teleportTo(levelTo, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, Set.of(), mob.getXRot(), mob.getYRot());
+                                            if (mob.getPassengers().get(j) instanceof ServerPlayer plr)
+                                            {
+                                                plr.teleportTo(levelTo, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, Set.of(), mob.getXRot(), mob.getYRot());
+                                            }
+                                            else if (mob.getPassengers().get(j) instanceof LivingEntity mob1)
+                                            {
+                                                mob1.teleportTo(levelTo, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, Set.of(), mob1.getXRot(), mob1.getYRot());
+                                            }
                                         }
                                     }
 

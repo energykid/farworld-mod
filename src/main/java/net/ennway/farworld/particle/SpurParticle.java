@@ -10,6 +10,11 @@ import net.neoforged.neoforge.common.CommonHooks;
 
 public class SpurParticle extends FlatParticle {
 
+    @Override
+    protected int getLightColor(float pPartialTick) {
+        return 15728880;
+    }
+
     public SpurParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z, spriteSet);
 

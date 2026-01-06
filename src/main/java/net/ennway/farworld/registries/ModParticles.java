@@ -95,5 +95,13 @@ public class ModParticles {
             "blaze_stance_slash",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> BREEZE_STANCE_BURST = PARTICLE_TYPES.register(
+            "breeze_stance_burst",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> BREEZE_STANCE_PUFF = PARTICLE_TYPES.register(
+            "breeze_stance_puff",
+            () -> new SimpleParticleType(false)
+    );
 
 }

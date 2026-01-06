@@ -12,40 +12,19 @@ import net.minecraft.core.particles.SimpleParticleType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BlazeStanceSlashParticle extends FlatParticle {
+public class BreezeStanceBurstParticle extends FlatParticle {
 
-    float rollSpeed = 0f;
-
-    public BlazeStanceSlashParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
+    public BreezeStanceBurstParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z, spriteSet);
-
-        this.rollSpeed = 0.25f;
 
         this.quadSize = 1.5f;
 
-        this.lifetime = level.getRandom().nextInt(5, 7);
+        this.lifetime = level.getRandom().nextInt(6, 8);
 
         this.roll = level.getRandom().nextFloat() * 4f;
         this.oRoll = roll;
 
         this.setSpriteFromAge(this.sprites);
-    }
-
-    @Override
-    protected int getLightColor(float pPartialTick) {
-        return 15728880;
-    }
-
-    @Override
-    public void render(VertexConsumer buffer, Camera camera, float ticks) {
-        super.render(buffer, camera, ticks);
-        if (!Minecraft.getInstance().isPaused())
-        {
-            this.roll += this.rollSpeed;
-            this.oRoll += this.rollSpeed;
-            this.rollSpeed *= 0.75f;
-            this.quadSize += 0.1f;
-        }
     }
 
     @Override
@@ -64,7 +43,7 @@ public class BlazeStanceSlashParticle extends FlatParticle {
 
         @Override
         public @Nullable Particle createParticle(@NotNull SimpleParticleType particleType, @NotNull ClientLevel level, double x, double y, double z, double xsp, double ysp, double zsp) {
-            return new BlazeStanceSlashParticle(level, x, y, z, spriteSet);
+            return new BreezeStanceBurstParticle(level, x, y, z, spriteSet);
         }
     }
 }

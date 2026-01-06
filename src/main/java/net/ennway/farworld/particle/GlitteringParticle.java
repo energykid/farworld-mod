@@ -18,6 +18,11 @@ import org.joml.Vector3f;
 
 public class GlitteringParticle extends FlatParticle {
 
+    @Override
+    protected int getLightColor(float pPartialTick) {
+        return 15728880;
+    }
+
     public GlitteringParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z, spriteSet);
 

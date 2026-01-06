@@ -6,6 +6,7 @@ import net.ennway.farworld.item.data.ArmorAccessories;
 import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.utils.AccessoryUtils;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
@@ -114,29 +115,23 @@ public class AccessoryEvents {
 
     public static void runRightClickEffects(PlayerInteractEvent event)
     {
-        if (event.getEntity() instanceof Player player)
-        {
-            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
-            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+        List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(event.getEntity());
+        List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(event.getEntity());
 
-            for (int i = 0; i < items.size(); i++)
-            {
-                items.get(i).onRightClickUseItem(player, itemStacks.get(i), event);
-            }
+        for (int i = 0; i < items.size(); i++)
+        {
+            items.get(i).onRightClickUseItem(event.getEntity(), itemStacks.get(i), event);
         }
     }
 
     public static void runLeftClickEffects(PlayerInteractEvent event)
     {
-        if (event.getEntity() instanceof Player player)
-        {
-            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
-            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+        List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(event.getEntity());
+        List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(event.getEntity());
 
-            for (int i = 0; i < items.size(); i++)
-            {
-                items.get(i).onLeftClickUseItem(player, itemStacks.get(i), event);
-            }
+        for (int i = 0; i < items.size(); i++)
+        {
+            items.get(i).onLeftClickUseItem(event.getEntity(), itemStacks.get(i), event);
         }
     }
 

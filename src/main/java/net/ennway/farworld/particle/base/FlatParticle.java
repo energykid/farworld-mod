@@ -16,7 +16,6 @@ import org.joml.Vector3f;
 
 public class FlatParticle extends TextureSheetParticle {
 	protected SpriteSet sprites;
-	private static final int FULL_BRIGHT = 15728880;
 	public Quaternionf QUATERNION = new Quaternionf(0F, -0.7F, 0.7F, 0F);
 
 	public float rot = 0;
@@ -81,11 +80,6 @@ public class FlatParticle extends TextureSheetParticle {
 		buffer.addVertex(vector3fs[2].x(), vector3fs[2].y(), vector3fs[2].z()).setUv(f7, f5).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(light);
 		buffer.addVertex(vector3fs[1].x(), vector3fs[1].y(), vector3fs[1].z()).setUv(f8, f5).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(light);
 		buffer.addVertex(vector3fs[0].x(), vector3fs[0].y(), vector3fs[0].z()).setUv(f8, f6).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(light);
-	}
-
-	@Override
-	protected int getLightColor(float pPartialTick) {
-		return FULL_BRIGHT;
 	}
 
 	@Override

@@ -1,10 +1,8 @@
 package net.ennway.farworld.item.accessory;
 
 import net.ennway.farworld.item.AccessoryItem;
-import net.ennway.farworld.registries.ModAttachments;
-import net.ennway.farworld.registries.ModDataComponents;
-import net.ennway.farworld.registries.ModSounds;
-import net.ennway.farworld.registries.ModTags;
+import net.ennway.farworld.registries.*;
+import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
@@ -47,7 +45,10 @@ public class BreezeRing extends AccessoryItem {
     public void preTick(Player player, ItemStack stack, PlayerTickEvent.Pre event) {
         if (player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS))
         {
-            if (player.onGround() || player.isSwimming()) lunging = false;
+            if (player.onGround() || player.isSwimming())
+            {
+                lunging = false;
+            }
 
             player.setData(ModAttachments.BATTLE_STANCE.get(), lunging);
         }
@@ -55,11 +56,18 @@ public class BreezeRing extends AccessoryItem {
         if (!player.getWeaponItem().is(ModTags.BLAZE_STANCEABLE_WEAPONS) && !player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS))
         {
             player.setData(ModAttachments.BATTLE_STANCE.get(), false);
+            lunging = false;
+        }
+
+        if (!player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS) && lunging)
+        {
+            player.setData(ModAttachments.BATTLE_STANCE.get(), false);
+            lunging = false;
         }
     }
 
-    @Override
-    public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
+    public void runStuff(Player player)
+    {
         if (player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS) && !lunging) {
             if (!player.getData(ModAttachments.BATTLE_STANCE.get())) {
                 player.setOnGround(false);
@@ -67,12 +75,27 @@ public class BreezeRing extends AccessoryItem {
                     if (player.getServer().getPlayerList().getPlayer(player.getUUID()) != null)
                         player.getServer().getPlayerList().getPlayer(player.getUUID()).setData(ModAttachments.BATTLE_STANCE, true);
                 player.playSound(ModSounds.BATTLE_STANCE.get());
+                player.playSound(SoundEvents.WIND_CHARGE_BURST.value(), 0.4f, 1);
                 player.setDeltaMovement(player.getDeltaMovement().multiply(2, 0, 2));
                 player.setDeltaMovement(player.getDeltaMovement().x, 0.5, player.getDeltaMovement().z);
+                player.level().addParticle(ModParticles.BREEZE_STANCE_BURST.get(), player.getX(), player.getY() + 0.05, player.getZ(), 0, 0, 0);
+                for (int i = 0; i < 7; i++) {
+                    double spd = MathUtils.randomDouble(player.getRandom(), 0.5f, 1f);
+                    player.level().addParticle(ModParticles.BREEZE_STANCE_PUFF.get(), player.getX() + MathUtils.randomDouble(player.getRandom(), 0, 2) - 1, player.getY(), player.getZ() + MathUtils.randomDouble(player.getRandom(), 0, 2) - 1, player.getDeltaMovement().x * spd, player.getDeltaMovement().y * spd, player.getDeltaMovement().z * spd);
+                }
                 player.fallDistance = 1;
                 lunging = true;
             }
         }
+    }
+
+    @Override
+    public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
+        if (event instanceof PlayerInteractEvent.RightClickBlock bl)
+        {
+            if (bl.getUseItem().isTrue()) runStuff(player);
+        }
+        else runStuff(player);
     }
 
     @Override
