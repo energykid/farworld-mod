@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "farworld:block/charged_sleekstone",
+    "side": "farworld:block/charged_sleekstone",
+    "top": "farworld:block/charged_sleekstone"
+  }
+}

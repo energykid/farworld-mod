@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "farworld:block/charged_sleekstone_slab"
+    },
+    "type=double": {
+      "model": "farworld:block/charged_sleekstone"
+    },
+    "type=top": {
+      "model": "farworld:block/charged_sleekstone_slab_top"
+    }
+  }
+}

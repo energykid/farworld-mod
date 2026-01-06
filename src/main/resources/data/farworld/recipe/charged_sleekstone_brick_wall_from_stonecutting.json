@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "farworld:charged_sleekstone_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "farworld:charged_sleekstone_brick_wall"
+  }
+}

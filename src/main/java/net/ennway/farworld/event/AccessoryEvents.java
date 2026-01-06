@@ -138,17 +138,35 @@ public class AccessoryEvents {
     @SubscribeEvent
     public static void rightClick(PlayerInteractEvent.RightClickEmpty event)
     {
-        runRightClickEffects(event);
+        List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(event.getEntity());
+        List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(event.getEntity());
+
+        for (int i = 0; i < items.size(); i++)
+        {
+            items.get(i).onRightClickUseItem(event.getEntity(), itemStacks.get(i), event);
+        }
     }
     @SubscribeEvent
     public static void rightClick(PlayerInteractEvent.RightClickBlock event)
     {
-        runRightClickEffects(event);
+        List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(event.getEntity());
+        List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(event.getEntity());
+
+        for (int i = 0; i < items.size(); i++)
+        {
+            items.get(i).onRightClickUseItem(event.getEntity(), itemStacks.get(i), event);
+        }
     }
     @SubscribeEvent
     public static void rightClick(PlayerInteractEvent.RightClickItem event)
     {
-        runRightClickEffects(event);
+        List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(event.getEntity());
+        List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(event.getEntity());
+
+        for (int i = 0; i < items.size(); i++)
+        {
+            items.get(i).onRightClickUseItem(event.getEntity(), itemStacks.get(i), event);
+        }
     }
 
     @SubscribeEvent

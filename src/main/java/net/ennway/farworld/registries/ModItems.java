@@ -390,6 +390,10 @@ public class ModItems
             () -> new BlockItem(ModBlocks.SLEEKSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> CHARGED_SLEEKSTONE = ITEMS_ALL.register("charged_sleekstone",
             () -> new BlockItem(ModBlocks.CHARGED_SLEEKSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CHARGED_SLEEKSTONE_SLAB = ITEMS_ALL.register("charged_sleekstone_slab",
+            () -> new BlockItem(ModBlocks.CHARGED_SLEEKSTONE_SLAB.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CHARGED_SLEEKSTONE_STAIRS = ITEMS_ALL.register("charged_sleekstone_stairs",
+            () -> new BlockItem(ModBlocks.CHARGED_SLEEKSTONE_STAIRS.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DIMLIGHT = ITEMS_ALL.register("dimlight",
             () -> new BlockItem(ModBlocks.DIMLIGHT.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DIMLIGHT_STEM = ITEMS_ALL.register("dimlight_stem",
@@ -458,6 +462,14 @@ public class ModItems
             () -> new BlockItem(ModBlocks.SLEEKSTONE_BRICK_STAIRS.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> SLEEKSTONE_BRICK_WALL = ITEMS_ALL.register("sleekstone_brick_wall",
             () -> new BlockItem(ModBlocks.SLEEKSTONE_BRICK_WALL.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CHARGED_SLEEKSTONE_BRICKS = ITEMS_ALL.register("charged_sleekstone_bricks",
+            () -> new BlockItem(ModBlocks.CHARGED_SLEEKSTONE_BRICKS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CHARGED_SLEEKSTONE_BRICK_SLAB = ITEMS_ALL.register("charged_sleekstone_brick_slab",
+            () -> new BlockItem(ModBlocks.CHARGED_SLEEKSTONE_BRICK_SLAB.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CHARGED_SLEEKSTONE_BRICK_STAIRS = ITEMS_ALL.register("charged_sleekstone_brick_stairs",
+            () -> new BlockItem(ModBlocks.CHARGED_SLEEKSTONE_BRICK_STAIRS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CHARGED_SLEEKSTONE_BRICK_WALL = ITEMS_ALL.register("charged_sleekstone_brick_wall",
+            () -> new BlockItem(ModBlocks.CHARGED_SLEEKSTONE_BRICK_WALL.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES = ITEMS_ALL.register("stonewood_leaves",
             () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES_FLOWERED = ITEMS_ALL.register("stonewood_leaves_flowered",

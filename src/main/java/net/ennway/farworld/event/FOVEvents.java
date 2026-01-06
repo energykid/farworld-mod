@@ -1,24 +1,14 @@
 package net.ennway.farworld.event;
 
 import net.ennway.farworld.Farworld;
-import net.ennway.farworld.block.dimensiontransitions.FarworldDimensionTransitions;
 import net.ennway.farworld.item.tool.AbstractBowItem;
 import net.ennway.farworld.registries.ModAttachments;
 import net.ennway.farworld.registries.ModBlocks;
 import net.ennway.farworld.registries.ModDataComponents;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.portal.DimensionTransition;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

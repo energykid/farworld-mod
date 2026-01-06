@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "farworld:block/charged_sleekstone_bricks"
+  }
+}

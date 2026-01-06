@@ -169,6 +169,34 @@ public class ModBlocks {
                     .strength(1.1F, 6.0F)
                     .sound(SoundType.STONE)));
 
+    public static final DeferredBlock<Block> CHARGED_SLEEKSTONE_BRICKS = BLOCKS_ALL.register(
+            "charged_sleekstone_bricks",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
+                    .strength(1.1F, 6.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> CHARGED_SLEEKSTONE_BRICK_SLAB = BLOCKS_ALL.register(
+            "charged_sleekstone_brick_slab",
+            registryName -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> CHARGED_SLEEKSTONE_BRICK_STAIRS = BLOCKS_ALL.register(
+            "charged_sleekstone_brick_stairs",
+            registryName -> new StairBlock(CHARGED_SLEEKSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> CHARGED_SLEEKSTONE_BRICK_WALL = BLOCKS_ALL.register(
+            "charged_sleekstone_brick_wall",
+            registryName -> new WallBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
     public static final DeferredBlock<Block> COBBLED_SLEEKSTONE = BLOCKS_ALL.register(
             "cobbled_sleekstone",
             registryName -> new Block(BlockBehaviour.Properties.of()
@@ -187,6 +215,20 @@ public class ModBlocks {
             "cobbled_sleekstone_stairs",
             registryName -> new StairBlock(COBBLED_SLEEKSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> CHARGED_SLEEKSTONE_SLAB = BLOCKS_ALL.register(
+            "charged_sleekstone_slab",
+            registryName -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
+                    .strength(1.2F, 5.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> CHARGED_SLEEKSTONE_STAIRS = BLOCKS_ALL.register(
+            "charged_sleekstone_stairs",
+            registryName -> new StairBlock(COBBLED_SLEEKSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
                     .strength(1.2F, 5.0F)
                     .sound(SoundType.STONE)));
 

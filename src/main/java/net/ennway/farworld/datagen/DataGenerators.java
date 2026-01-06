@@ -21,6 +21,7 @@ public class DataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
+        generator.addProvider(event.includeServer(), new BlockGenerator(packOutput, Farworld.MOD_ID, existingFileHelper));
         generator.addProvider(event.includeServer(), new ItemGenerator(packOutput, existingFileHelper));
     }
 }

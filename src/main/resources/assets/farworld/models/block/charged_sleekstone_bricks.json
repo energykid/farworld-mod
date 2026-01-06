@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "farworld:block/charged_sleekstone"
+    "all": "farworld:block/charged_sleekstone_bricks"
   }
 }

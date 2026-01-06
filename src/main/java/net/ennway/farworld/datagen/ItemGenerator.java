@@ -7,6 +7,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
@@ -35,6 +37,12 @@ public class ItemGenerator extends ItemModelProvider {
         trimMaterials.put(TrimMaterials.AMETHYST, 1.0F);
     }
 
+    private void blockItem(DeferredItem<BlockItem> item, DeferredBlock<Block> block)
+    {
+        this.withExistingParent(item.getId().getPath(),
+                mcLoc(block.getId().getPath()));
+    }
+
     private void gearItem(DeferredItem<Item> itemDeferredItem) {
 
         this.withExistingParent(itemDeferredItem.getId().getPath(),
@@ -48,6 +56,7 @@ public class ItemGenerator extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+
     }
 
     // Shoutout to El_Redstoniano for making this

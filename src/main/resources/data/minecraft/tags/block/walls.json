@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "farworld:flowstone_brick_wall",
-    "farworld:sleekstone_brick_wall"
+    "farworld:sleekstone_brick_wall",
+    "farworld:charged_sleekstone_brick_wall"
   ]
 }

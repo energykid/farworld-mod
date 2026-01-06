@@ -1,11 +1,10 @@
-package net.ennway.farworld.block.dimensiontransitions;
+package net.ennway.farworld.event.dimensiontransitions;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.registries.ModBlocks;
 import net.ennway.farworld.registries.ModDimensions;
 import net.ennway.farworld.registries.ModPois;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.level.Level;
 
 public class AllDimensionLinks {
