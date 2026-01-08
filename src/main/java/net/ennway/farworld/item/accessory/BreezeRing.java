@@ -13,7 +13,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -30,15 +33,23 @@ public class BreezeRing extends AccessoryItem {
     public boolean lunging = false;
 
     @Override
-    public void postDamageEnemy(Player player, Entity enemy, ItemStack stack, LivingDamageEvent.Post event) {
-        player.setData(ModAttachments.BATTLE_STANCE.get(), false);
-        player.fallDistance = 0;
-        lunging = false;
+    public void onDamageEnemy(Player player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event) {
+        if (lunging)
+        {
+            if (!stack.is(Items.MACE))
+            {
+                float fD = player.fallDistance;
+                player.playSound(SoundEvents.BREEZE_CHARGE);
+                event.setNewDamage(event.getOriginalDamage() + fD);
+                player.fallDistance = 0;
+            }
+            lunging = false;
+        }
     }
 
     @Override
     public void onDamagedByEnemy(Entity enemy, Player player, ItemStack stack, LivingDamageEvent.Pre event) {
-        player.setData(ModAttachments.BATTLE_STANCE.get(), false);
+        lunging = false;
     }
 
     @Override
@@ -100,6 +111,7 @@ public class BreezeRing extends AccessoryItem {
 
     @Override
     public void onLeftClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
-        player.setData(ModAttachments.BATTLE_STANCE, false);
+        if (event instanceof PlayerInteractEvent.LeftClickEmpty)
+            lunging = false;
     }
 }

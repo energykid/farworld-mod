@@ -35,7 +35,7 @@ public class SwordStanceMixin {
 
     @Inject(method = "renderArmWithItem", at = @At("HEAD"))
     public void applyTransform(AbstractClientPlayer player, float partialTicks, float pitch, InteractionHand hand, float swingProgress, ItemStack stack, float equippedProgress, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, CallbackInfo ci) {
-        if (stack.is(ModTags.BREEZE_STANCEABLE_WEAPONS) || stack.is(ModTags.BLAZE_STANCEABLE_WEAPONS))
+        if (stack.is(ModTags.BREEZE_STANCEABLE_WEAPONS) || stack.is(ModTags.BLAZE_STANCEABLE_WEAPONS) && hand == InteractionHand.MAIN_HAND)
         {
             if (player.getData(ModAttachments.BATTLE_STANCE))
             {
@@ -51,6 +51,27 @@ public class SwordStanceMixin {
             poseStack.mulPose(Axis.XP.rotationDegrees(animScale * 15f));
             poseStack.translate(0, animScale * 0.1f, 0);
             poseStack.translate(0, 0, animScale * 0.2f);
+        }
+    }
+
+    @Inject(method = "renderArmWithItem", at = @At("TAIL"))
+    public void unApplyTransform(AbstractClientPlayer player, float partialTicks, float pitch, InteractionHand hand, float swingProgress, ItemStack stack, float equippedProgress, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, CallbackInfo ci) {
+        if (stack.is(ModTags.BREEZE_STANCEABLE_WEAPONS) || stack.is(ModTags.BLAZE_STANCEABLE_WEAPONS) && hand == InteractionHand.MAIN_HAND)
+        {
+            if (player.getData(ModAttachments.BATTLE_STANCE))
+            {
+                farworld$stanceAnimationScale = Mth.lerp(0.12f, farworld$stanceAnimationScale, 1f);
+            }
+            else
+            {
+                farworld$stanceAnimationScale = Mth.lerp(0.1f, farworld$stanceAnimationScale, 0f);
+            }
+
+            float animScale = new InOutBack().invoke(farworld$stanceAnimationScale);
+
+            poseStack.mulPose(Axis.XP.rotationDegrees(animScale * -15f));
+            poseStack.translate(0, animScale * -0.1f, 0);
+            poseStack.translate(0, 0, animScale * -0.2f);
         }
     }
 }
