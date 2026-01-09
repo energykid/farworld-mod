@@ -1,52 +1,36 @@
 package net.ennway.farworld.structure;
 
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.ennway.farworld.registries.ModStructures;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.Position;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.*;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.Climate;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-import net.minecraft.world.level.levelgen.structure.*;
-import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pools.DimensionPadding;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
-public class BystoneStructures extends Structure {
+public class RedstoneRuin extends Structure {
 
     // A custom codec that changes the size limit for our code_structure_sky_fan.json's config to not be capped at 7.
     // With this, we can have a structure with a size limit up to 30 if we want to have extremely long branches of pieces in the structure.
-    public static final MapCodec<BystoneStructures> CODEC = RecordCodecBuilder.mapCodec(instance ->
-            instance.group(BystoneStructures.settingsCodec(instance),
+    public static final MapCodec<RedstoneRuin> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(RedstoneRuin.settingsCodec(instance),
                     StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
                     ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
                     Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
@@ -54,7 +38,7 @@ public class BystoneStructures extends Structure {
                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter),
                     DimensionPadding.CODEC.optionalFieldOf("dimension_padding", JigsawStructure.DEFAULT_DIMENSION_PADDING).forGetter(structure -> structure.dimensionPadding),
                     LiquidSettings.CODEC.optionalFieldOf("liquid_settings", JigsawStructure.DEFAULT_LIQUID_SETTINGS).forGetter(structure -> structure.liquidSettings)
-            ).apply(instance, BystoneStructures::new));
+            ).apply(instance, RedstoneRuin::new));
 
     private final Holder<StructureTemplatePool> startPool;
     private final Optional<ResourceLocation> startJigsawName;
@@ -64,14 +48,14 @@ public class BystoneStructures extends Structure {
     private final DimensionPadding dimensionPadding;
     private final LiquidSettings liquidSettings;
 
-    public BystoneStructures(StructureSettings config,
-                             Holder<StructureTemplatePool> startPool,
-                             Optional<ResourceLocation> startJigsawName,
-                             int size,
-                             HeightProvider startHeight,
-                             int maxDistanceFromCenter,
-                             DimensionPadding dimensionPadding,
-                             LiquidSettings liquidSettings)
+    public RedstoneRuin(StructureSettings config,
+                        Holder<StructureTemplatePool> startPool,
+                        Optional<ResourceLocation> startJigsawName,
+                        int size,
+                        HeightProvider startHeight,
+                        int maxDistanceFromCenter,
+                        DimensionPadding dimensionPadding,
+                        LiquidSettings liquidSettings)
     {
         super(config);
         this.startPool = startPool;
@@ -121,14 +105,14 @@ public class BystoneStructures extends Structure {
 
         // Check if the spot is valid for our structure. This is just as another method for cleanness.
         // Returning an empty optional tells the game to skip this spot as it will not generate the structure.
-        if (!BystoneStructures.extraSpawningChecks(context)) {
+        if (!RedstoneRuin.extraSpawningChecks(context)) {
             return Optional.empty();
         }
 
         // Set's our spawning blockpos's y offset to be 60 blocks up.
         // Since we are going to have heightmap/terrain height spawning set to true further down, this will make it so we spawn 60 blocks above terrain.
         // If we wanted to spawn on ocean floor, we would set heightmap/terrain height spawning to false and the grab the y value of the terrain with OCEAN_FLOOR_WG heightmap.
-        int y = -20;
+        int y = -15;
 
         // Turns the chunk coordinates into actual coordinates we can use. (Gets corner of that chunk)
         ChunkPos chunkPos = context.chunkPos();
@@ -144,13 +128,16 @@ public class BystoneStructures extends Structure {
 
         for (int i = 0; i < 100; i++) {
             y--;
-            if (c.getBlock(y).isAir() && !(c.getBlock(y - 1).isAir()))
+            if (c.getBlock(y - 1).isAir() && !(c.getBlock(y - 2).isAir()))
                 break;
         }
 
+        if (y >= -16)
+            return Optional.empty();
+
         BlockPos blockPos = new BlockPos(x, y, z);
 
-        Optional<Structure.GenerationStub> structurePiecesGenerator =
+        Optional<GenerationStub> structurePiecesGenerator =
                 JigsawPlacement.addPieces(
                         context, // Used for JigsawPlacement to get all the proper behaviors done.
                         this.startPool, // The starting pool to use to create the structure layout from
@@ -179,6 +166,6 @@ public class BystoneStructures extends Structure {
 
     @Override
     public StructureType<?> type() {
-        return ModStructures.BYSTONE_STRUCTURES.get(); // Helps the game know how to turn this structure back to json to save to chunks
+        return ModStructures.REDSTONE_RUIN.get(); // Helps the game know how to turn this structure back to json to save to chunks
     }
 }

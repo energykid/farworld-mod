@@ -1,0 +1,66 @@
+{
+  "name": "redstone_curiosity_altar",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "farworld:redstone_ruin/1",
+        "processors": {
+          "processors": []
+        },
+        "override_liquid_settings": "ignore_waterlogging"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "farworld:redstone_ruin/2",
+        "processors": {
+          "processors": []
+        },
+        "override_liquid_settings": "ignore_waterlogging"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "farworld:redstone_ruin/3",
+        "processors": {
+          "processors": []
+        },
+        "override_liquid_settings": "ignore_waterlogging"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "farworld:redstone_ruin/4",
+        "processors": {
+          "processors": []
+        },
+        "override_liquid_settings": "ignore_waterlogging"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "farworld:redstone_ruin/5",
+        "processors": {
+          "processors": []
+        },
+        "override_liquid_settings": "ignore_waterlogging"
+      }
+    }
+  ]
+}

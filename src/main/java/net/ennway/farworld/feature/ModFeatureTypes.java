@@ -42,13 +42,6 @@ public class ModFeatureTypes {
         }
     });
 
-    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> REDSTONE_PILLAR_FEATURE = FEATURES_ALL.register("redstone_pillar", new Supplier<Feature<NoneFeatureConfiguration>>() {
-        @Override
-        public Feature<NoneFeatureConfiguration> get() {
-            return new RedstonePillarFeature(NoneFeatureConfiguration.CODEC);
-        }
-    });
-
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> EMBEDDED_AMETHYST_GEODE = FEATURES_ALL.register("embedded_geode", new Supplier<Feature<NoneFeatureConfiguration>>() {
         @Override
         public Feature<NoneFeatureConfiguration> get() {

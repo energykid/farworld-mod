@@ -61,17 +61,10 @@ public class SimpleTemplateFeature extends Feature<TemplateFeatureConfiguration>
             if (checkLoaded(serverlevel, new ChunkPos(pos), new ChunkPos(pos.offset(structuretemplate.getSize())))) {
                 StructurePlaceSettings structureplacesettings = (new StructurePlaceSettings()).setMirror(mirror).setRotation(rotation);
 
-                boolean flag = structuretemplate.placeInWorld(serverlevel, pos, pos, structureplacesettings, StructureBlockEntity.createRandom(seed), 2);
-                if (!flag) {
-                    sendMessage(level.getLevel(), "Placement out of whack!");
-                    return false;
-                } else {
-                    return true;
-                }
+                return structuretemplate.placeInWorld(serverlevel, pos, pos, structureplacesettings, StructureBlockEntity.createRandom(seed), 2);
+
             }
         }
-
-        sendMessage(level.getLevel(), "Template not found!");
 
         return false;
     }
@@ -83,12 +76,5 @@ public class SimpleTemplateFeature extends Feature<TemplateFeatureConfiguration>
         Mirror mirror = Mirror.NONE;
 
         return placeTemplate(featurePlaceContext.level(), ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, featurePlaceContext.config().toPlace()), featurePlaceContext.origin(), rot, mirror, featurePlaceContext.level().getSeed());
-    }
-
-    public static void sendMessage(ServerLevel level, String str)
-    {
-        ServerPlayer plr = level.getRandomPlayer();
-        plr.sendChatMessage(OutgoingChatMessage.create(PlayerChatMessage.system(str)), false, ChatType.bind(ChatType.SAY_COMMAND, plr));
-
     }
 }

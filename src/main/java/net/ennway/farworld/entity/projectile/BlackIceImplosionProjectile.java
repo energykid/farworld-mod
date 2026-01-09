@@ -72,12 +72,14 @@ public class BlackIceImplosionProjectile extends Projectile {
                 {
                     if (ownable.getOwner() == null)
                     {
-                        mob.hurt(mob.damageSources().magic(), 6);
+                        mob.invulnerableTime = 0;
+                        mob.hurt(mob.damageSources().magic(), 1);
                     }
                 }
                 else
                 {
-                    mob.hurt(mob.damageSources().magic(), 6);
+                    mob.invulnerableTime = 0;
+                    mob.hurt(mob.damageSources().magic(), 1);
                 }
             }
         }

@@ -1,6 +1,10 @@
 package net.ennway.farworld.utils;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.ChatType;
+import net.minecraft.network.chat.OutgoingChatMessage;
+import net.minecraft.network.chat.PlayerChatMessage;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +19,14 @@ import java.util.Comparator;
 import java.util.List;
 
 public class BehaviorUtils {
+
+    public static void sendDebugMessage(ServerLevel level, String str)
+    {
+        ServerPlayer plr = level.getRandomPlayer();
+        if (plr != null)
+            plr.sendChatMessage(OutgoingChatMessage.create(PlayerChatMessage.system(str)), false, ChatType.bind(ChatType.SAY_COMMAND, plr));
+    }
+
     public static Player getNearestPlayer(LivingEntity ent, double range)
     {
         List<Player> items = ent.level().getEntitiesOfClass(Player.class,
