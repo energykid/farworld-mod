@@ -67,7 +67,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     public static final int ATTACK_STATE_DEATH = 7;
 
     public static final Music BATTLE_THEME = new Music(
-            Holder.direct(ModSounds.MUSIC_REDSTONE_CURIOSITY_BATTLE.get()), 0, 0, true
+            Holder.direct(ModSounds.MUSIC_AWAKE_AWARE.get()), 0, 0, true
     );
 
     @Override

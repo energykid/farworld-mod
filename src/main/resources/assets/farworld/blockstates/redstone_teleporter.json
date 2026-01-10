@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=true": {
+      "model": "farworld:block/redstone_teleporter_filled"
+    },
+    "lit=false": {
+      "model": "farworld:block/redstone_teleporter"
+    }
+  }
+}

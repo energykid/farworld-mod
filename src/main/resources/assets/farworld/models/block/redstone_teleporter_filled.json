@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "farworld:block/redstone_teleporter_bottom",
+    "side": "farworld:block/redstone_teleporter_side_filled",
+    "top": "farworld:block/redstone_teleporter_top"
+  }
+}

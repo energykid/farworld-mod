@@ -502,6 +502,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.REDSTONE_PILLAR_BLOCK.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> REDSTONE_CURIOSITY_BLOCK = ITEMS_ALL.register("redstone_curiosity_block",
             () -> new RedstoneCuriosityItem(ModBlocks.REDSTONE_CURIOSITY_BLOCK.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> REDSTONE_TELEPORTER = ITEMS_ALL.register("redstone_teleporter",
+            () -> new BlockItem(ModBlocks.REDSTONE_TELEPORTER_BLOCK.get(), new Item.Properties()).asItem());
 
     public static final DeferredItem<Item> BLOOMED_SPAWN_EGG = ITEMS_ALL.register("bloomed_spawn_egg",
             () -> new SpawnEggItem(ModEntities.BLOOMED.get(), 0x9B691F, 0x9BFC1F, new Item.Properties()));

@@ -16,6 +16,7 @@ import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
@@ -35,10 +36,8 @@ public class RedstoneCuriosityLaserEntity extends AbstractHurtingProjectile impl
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        if (result.getEntity() instanceof Player plr)
-        {
-            plr.hurt(getOwner().damageSources().mobProjectile(this, (LivingEntity)getOwner()), 10);
-        }
+        if (getOwner() != null)
+            result.getEntity().hurt(getOwner().damageSources().mobProjectile(this, (LivingEntity)getOwner()), 10);
     }
 
     @Override

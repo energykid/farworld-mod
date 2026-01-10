@@ -57,6 +57,7 @@ public class Farworld
         ModPotions.POTIONS.register(modEventBus);
         ModStructures.STRUCTURES_ALL.register(modEventBus);
         ModFeatureTypes.FEATURES_ALL.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
 
         // Register items to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -119,6 +120,7 @@ public class Farworld
         {
             event.insertAfter(Items.REDSTONE_BLOCK.getDefaultInstance(), ModItems.REDSTONE_PILLAR_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.REDSTONE_PILLAR_BLOCK.toStack(), ModItems.REDSTONE_CURIOSITY_BLOCK.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.REDSTONE_CURIOSITY_BLOCK.toStack(), ModItems.REDSTONE_TELEPORTER.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS)
         {

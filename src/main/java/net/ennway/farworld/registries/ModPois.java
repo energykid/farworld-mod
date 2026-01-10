@@ -2,6 +2,7 @@ package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.block.BystonePortalBlock;
+import net.ennway.farworld.block.RedstoneTeleporterBlock;
 import net.ennway.farworld.item.tool.Wishbone;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -32,6 +34,11 @@ public class ModPois {
                     ModBlocks.BYSTONE_PORTAL.get().defaultBlockState().setValue(BystonePortalBlock.AXIS, Direction.Axis.Z),
                     ModBlocks.BYSTONE_PORTAL.get().defaultBlockState().setValue(BystonePortalBlock.AXIS, Direction.Axis.Z).setValue(BystonePortalBlock.SHORT, true),
                     ModBlocks.BYSTONE_PORTAL.get().defaultBlockState().setValue(BystonePortalBlock.SHORT, true)),
+                    1,
+                    1000));
+
+    public static final Holder<PoiType> REDSTONE_TELEPORTER = POIS.register("redstone_teleporter",
+            () -> new PoiType(Set.of(ModBlocks.REDSTONE_TELEPORTER_BLOCK.get().defaultBlockState()),
                     1,
                     1000));
 }

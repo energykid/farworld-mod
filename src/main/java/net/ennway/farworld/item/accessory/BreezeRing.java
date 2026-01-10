@@ -102,11 +102,14 @@ public class BreezeRing extends AccessoryItem {
 
     @Override
     public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
-        if (event instanceof PlayerInteractEvent.RightClickBlock bl)
+        if (!player.isSwimming())
         {
-            if (bl.getUseItem().isTrue()) runStuff(player);
+            if (event instanceof PlayerInteractEvent.RightClickBlock bl)
+            {
+                if (bl.getUseItem().isTrue()) runStuff(player);
+            }
+            else runStuff(player);
         }
-        else runStuff(player);
     }
 
     @Override

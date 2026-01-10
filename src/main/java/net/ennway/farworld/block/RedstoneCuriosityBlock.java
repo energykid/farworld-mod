@@ -19,9 +19,8 @@ public class RedstoneCuriosityBlock extends Block {
         return Block.box(2, 2, 2, 14, 14, 14);
     }
 
-    @Override
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-
+    void runStuff(Level level, BlockPos pos)
+    {
         if (level.hasNeighborSignal(pos)) {
             if (!level.isClientSide) {
                 level.destroyBlock(pos, false);
@@ -30,5 +29,17 @@ public class RedstoneCuriosityBlock extends Block {
                 level.addFreshEntity(entity);
             }
         }
+    }
+
+    @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        super.onPlace(state, level, pos, oldState, movedByPiston);
+        runStuff(level, pos);
+    }
+
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        super.neighborChanged(state, level, pos, block, fromPos, isMoving);
+        runStuff(level, pos);
     }
 }

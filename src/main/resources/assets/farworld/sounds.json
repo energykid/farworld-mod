@@ -56,8 +56,8 @@
     "sounds": ["farworld:music/armageddon_simple_things"],
     "stream": true
   },
-  "music.redstone_curiosity_battle": {
-    "sounds": ["farworld:music/redstone_curiosity_battle"],
+  "music.awake_aware": {
+    "sounds": ["farworld:music/awake_aware"],
     "stream": true
   },
   "music.dusty_shelves": {
@@ -91,6 +91,16 @@
 
   "redstone_curiosity_shoot_small": {
     "sounds": ["farworld:redstone_curiosity_shoot_small"]
+  },
+
+  "redstone_teleporter_arm": {
+    "sounds": ["farworld:redstone_teleporter_arm"]
+  },
+  "redstone_teleporter_disarm": {
+    "sounds": ["farworld:redstone_teleporter_disarm"]
+  },
+  "redstone_teleporter_woosh": {
+    "sounds": ["farworld:redstone_teleporter_woosh"]
   },
 
   "redstone_curiosity_rain_land": {

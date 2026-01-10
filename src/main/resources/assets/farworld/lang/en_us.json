@@ -136,6 +136,8 @@
   "block.farworld.redstone_curiosity_block" : "Redstone Curiosity §7(Dormant)",
   "lore.farworld.redstone_curiosity_block" : "A dormant construct made by an unknown mastermind.",
   "nonlore_tooltip.farworld.redstone_curiosity_block" : "Perhaps, if you power this, §4something will happen...",
+  "block.farworld.redstone_teleporter" : "Redstone Teleporter",
+  "lore.farworld.redstone_teleporter" : "A block that, when powered with another nearby, will teleport you to the nearest one of itself.",
   "block.farworld.gloomcap" : "Gloomcap",
   "lore.farworld.gloomcap" : "A symbiotic mushroom found in Dark Forests. Drops Gloomspores unless sheared. Toxic if eaten directly.",
   "block.farworld.dimlight" : "Dimlight",

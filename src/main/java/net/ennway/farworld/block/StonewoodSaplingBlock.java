@@ -25,7 +25,6 @@ public class StonewoodSaplingBlock extends SaplingBlock {
     public static final ResourceKey<ConfiguredFeature<?, ?>> STONEWOOD_TREE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "stonewood_tree"));
 
     public StonewoodSaplingBlock(Properties properties) {
-
         super(new TreeGrower("stonewood", Optional.empty(), Optional.of(STONEWOOD_TREE), Optional.empty()), properties);
     }
 

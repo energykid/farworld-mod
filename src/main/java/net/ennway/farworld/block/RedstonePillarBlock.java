@@ -21,8 +21,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class RedstonePillarBlock extends DirectionalBlock {
 
-    public static final MapCodec<RedstonePillarBlock> CODEC = simpleCodec(RedstonePillarBlock::new);
-
     public static StatePredicate predicate = new StatePredicate() {
         @Override
         public boolean test(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
@@ -68,6 +66,8 @@ public class RedstonePillarBlock extends DirectionalBlock {
         }
         return super.getStateForPlacement(context).setValue(FACING, face).setValue(BlockStateProperties.CRACKED, false);
     }
+
+    public static final MapCodec<RedstonePillarBlock> CODEC = simpleCodec(RedstonePillarBlock::new);
 
     @Override
     protected MapCodec<? extends RedstonePillarBlock> codec() {

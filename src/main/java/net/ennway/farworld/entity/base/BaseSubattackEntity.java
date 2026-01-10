@@ -18,8 +18,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 
-public class BaseSubattackEntity extends Entity implements TraceableEntity
+public class BaseSubattackEntity extends Entity implements TraceableEntity, OwnableEntity
 {
     public int delay;
     public int duration;
@@ -75,7 +76,7 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity
 
     public boolean canHit(Entity potentialTarget)
     {
-        return potentialTarget instanceof Player;
+        return true;
     }
 
     public static final EntityDataAccessor<Integer> ATTACK_TICKS = SynchedEntityData.defineId(BaseSubattackEntity.class, EntityDataSerializers.INT);
@@ -89,12 +90,19 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        //this.owner = getServer().getLevel(level().dimension()).getEntity(compoundTag.getUUID("OwnerUUID"));
+        //this.owner = null;
     }
 
     @Override
     protected void addAdditionalSaveData(CompoundTag compoundTag) {
         //compoundTag.putUUID("OwnerUUID", owner.getUUID());
+    }
+
+    @Override
+    public @Nullable UUID getOwnerUUID() {
+        if (owner != null)
+            return owner.getUUID();
+        return null;
     }
 
     @Override
