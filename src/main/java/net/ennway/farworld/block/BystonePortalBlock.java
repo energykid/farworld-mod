@@ -67,7 +67,7 @@ public class BystonePortalBlock extends Block {
 
     public BystonePortalBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(AXIS, Direction.Axis.X).setValue(SHORT, false));
+        this.registerDefaultState((this.stateDefinition.any()).setValue(AXIS, Direction.Axis.X).setValue(SHORT, false));
     }
 
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {

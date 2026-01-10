@@ -1,13 +1,19 @@
 package net.ennway.farworld;
 
+import net.ennway.farworld.block.entity.RedstoneTeleporterBE;
+import net.ennway.farworld.block.entity.RedstoneTeleporterBERenderer;
 import net.ennway.farworld.feature.ModFeatureTypes;
 import net.ennway.farworld.registries.*;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
 import net.ennway.farworld.registries.entity_definitions.NonGeoEntityLayerDefinition;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -302,6 +308,12 @@ public class Farworld
             }
 
             ModItemProperties.addCustomItemProperties();
+        }
+
+        @SubscribeEvent
+        public static void setupBlockRenderer(EntityRenderersEvent.RegisterRenderers evt)
+        {
+            evt.registerBlockEntityRenderer(ModBlockEntities.REDSTONE_TELEPORTER_BE.get(), context -> new RedstoneTeleporterBERenderer());
         }
     }
 }

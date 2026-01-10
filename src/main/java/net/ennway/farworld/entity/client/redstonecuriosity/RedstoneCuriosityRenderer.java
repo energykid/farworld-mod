@@ -7,6 +7,7 @@ import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -19,6 +20,11 @@ import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 import software.bernie.geckolib.util.Color;
 
 public class RedstoneCuriosityRenderer extends GeoEntityRenderer<RedstoneCuriosityEntity> {
+
+    @Override
+    public boolean shouldRender(RedstoneCuriosityEntity livingEntity, Frustum camera, double camX, double camY, double camZ) {
+        return true;
+    }
 
     @Override
     public @Nullable RenderType getRenderType(RedstoneCuriosityEntity animatable, ResourceLocation texture, @Nullable MultiBufferSource bufferSource, float partialTick) {

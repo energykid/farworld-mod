@@ -2,6 +2,7 @@ package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.block.RedstoneTeleporterBlock;
+import net.ennway.farworld.block.entity.RedstoneTeleporterBE;
 import net.ennway.farworld.entity.custom.BloomedEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -18,8 +19,8 @@ public class ModBlockEntities {
             BuiltInRegistries.BLOCK_ENTITY_TYPE,
             Farworld.MOD_ID);
 
-    public static final Supplier<BlockEntityType<RedstoneTeleporterBlock.MyBlockEntity>> REDSTONE_TELEPORTER_BE = BLOCK_ENTITY_TYPES.register(
+    public static final Supplier<BlockEntityType<RedstoneTeleporterBE>> REDSTONE_TELEPORTER_BE = BLOCK_ENTITY_TYPES.register(
             "redstone_teleporter_be", () -> BlockEntityType.Builder.of(
-                    RedstoneTeleporterBlock.MyBlockEntity::new, ModBlocks.REDSTONE_TELEPORTER_BLOCK.get()).build(null)
+                    RedstoneTeleporterBE::new, ModBlocks.REDSTONE_TELEPORTER_BLOCK.get()).build(null)
     );
 }

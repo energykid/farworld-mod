@@ -38,7 +38,8 @@ public class ModPois {
                     1000));
 
     public static final Holder<PoiType> REDSTONE_TELEPORTER = POIS.register("redstone_teleporter",
-            () -> new PoiType(Set.of(ModBlocks.REDSTONE_TELEPORTER_BLOCK.get().defaultBlockState()),
+            () -> new PoiType(Set.of(ModBlocks.REDSTONE_TELEPORTER_BLOCK.get().defaultBlockState(),
+                    ModBlocks.REDSTONE_TELEPORTER_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.LIT, true)),
                     1,
                     1000));
 }
