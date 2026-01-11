@@ -83,13 +83,15 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     public void stopSeenByPlayer(ServerPlayer player) {
         super.stopSeenByPlayer(player);
         this.bossEvent.removePlayer(player);
-        Minecraft.getInstance().getMusicManager().stopPlaying(BATTLE_THEME);
+        if (Minecraft.getInstance().getMusicManager().isPlayingMusic(BATTLE_THEME))
+            Minecraft.getInstance().getMusicManager().stopPlaying(BATTLE_THEME);
     }
 
     @Override
     protected void tickDeath() {
         super.tickDeath();
-        Minecraft.getInstance().getMusicManager().stopPlaying(BATTLE_THEME);
+        if (Minecraft.getInstance().getMusicManager().isPlayingMusic(BATTLE_THEME))
+            Minecraft.getInstance().getMusicManager().stopPlaying(BATTLE_THEME);
     }
 
     @Override
@@ -145,11 +147,10 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
     public void rotateToNearestPlayer()
     {
-        Player plr = this.getCommandSenderWorld().getNearestPlayer(this, 20);
+        Entity plr = this.getTarget();
         if (plr != null)
         {
             this.rot = Mth.rotLerp(this.getEntityData().get(ROTATION_LERP), this.rot, -look(plr.position()));
-            this.setTarget(plr);
         }
     }
 
@@ -157,6 +158,11 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
     @Override
     public void tick() {
+        if (getTarget() == null)
+        {
+            setTarget(level().getNearestPlayer(this, 20));
+        }
+
         this.setNoGravity(false);
 
         progress += 0.05f;

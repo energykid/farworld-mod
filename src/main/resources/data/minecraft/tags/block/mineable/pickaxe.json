@@ -46,6 +46,8 @@
     "farworld:sleekstone_brick_slab",
     "farworld:sleekstone_brick_stairs",
     "farworld:sleekstone_brick_wall",
-    "farworld:charged_sleekstone"
+    "farworld:charged_sleekstone",
+    "farworld:echo_lantern",
+    "farworld:redstone_teleporter"
   ]
 }

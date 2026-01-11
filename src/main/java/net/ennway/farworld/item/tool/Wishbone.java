@@ -76,10 +76,10 @@ public class Wishbone extends Item {
                 if (stack.get(ModDataComponents.FRAME.get()) > 0)
                 {
                     for (int i = 0; i < 12; i++) {
-                        level.addParticle(ModParticles.WISHBONE_SPARKLE.get(), entity.position().x, entity.position().y + (level.getRandom().nextDouble() * 2), entity.position().z, 0f, 0f, 0f);
+                        level.addParticle(ModParticles.WISHBONE_SPARKLE.get(), true, entity.position().x, entity.position().y + (level.getRandom().nextDouble() * 2), entity.position().z, 0f, 0f, 0f);
                     }
 
-                    level.addParticle(ModParticles.WISHBONE_PORTAL.get(), entity.position().x, entity.position().y + 1, entity.position().z, 0f, 0f, 0f);
+                    level.addParticle(ModParticles.WISHBONE_PORTAL.get(), true, entity.position().x, entity.position().y + 1, entity.position().z, 0f, 0f, 0f);
 
                     stack.set(ModDataComponents.FRAME, 0);
                 }
@@ -155,9 +155,9 @@ public class Wishbone extends Item {
             Vec3 pos1 = livingEntity.getPosition(0f);
 
             for (int i = 0; i < 12; i++) {
-                level.addParticle(ModParticles.WISHBONE_SPARKLE.get(), pos1.x, pos1.y + (level.getRandom().nextDouble() * 2), pos1.z, 0f, 0f, 0f);
+                level.addParticle(ModParticles.WISHBONE_SPARKLE.get(), true, pos1.x, pos1.y + (level.getRandom().nextDouble() * 2), pos1.z, 0f, 0f, 0f);
             }
-            level.addParticle(ModParticles.WISHBONE_PORTAL.get(), pos1.x, pos1.y + 1, pos1.z, 0f, 0f, 0f);
+            level.addParticle(ModParticles.WISHBONE_PORTAL.get(), true, pos1.x, pos1.y + 1, pos1.z, 0f, 0f, 0f);
 
             if (livingEntity instanceof Player player) {
                 if (player instanceof ServerPlayer servPlayer) {
