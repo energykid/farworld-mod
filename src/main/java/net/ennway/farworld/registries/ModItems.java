@@ -46,6 +46,8 @@ public class ModItems
 
     public static final DeferredItem<Item> GLOOMSPORES = ITEMS_ALL.register("gloomspores",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CURIOUS_COMPONENT = ITEMS_ALL.register("curious_component",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL = ITEMS_ALL.register("soul_steel",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_COBALT = ITEMS_ALL.register("raw_cobalt",

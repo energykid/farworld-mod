@@ -32,7 +32,7 @@ public class RedstoneCuriosityRenderer extends GeoEntityRenderer<RedstoneCuriosi
     }
 
     public RedstoneCuriosityRenderer(EntityRendererProvider.Context context) {
-        super(context, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "redstone_curiosity")));
+        super(context, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "redstone_curiosity.json")));
         addRenderLayer(new AutoGlowingGeoLayer<>(this));
         addRenderLayer(new RedstoneCuriosityTrailLayer(this));
     }

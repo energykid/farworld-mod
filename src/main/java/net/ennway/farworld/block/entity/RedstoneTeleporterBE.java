@@ -1,13 +1,13 @@
 package net.ennway.farworld.block.entity;
 
-import net.ennway.farworld.registries.ModBlockEntities;
-import net.ennway.farworld.registries.ModBlocks;
-import net.ennway.farworld.registries.ModPois;
-import net.ennway.farworld.registries.ModSounds;
+import net.ennway.farworld.Farworld;
+import net.ennway.farworld.registries.*;
 import net.ennway.farworld.utils.BehaviorUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -40,11 +40,14 @@ public class RedstoneTeleporterBE extends BlockEntity {
 
         if (entities.isEmpty()) cooldown--;
 
-        if (cooldown <= 0)
+        if (!inventory.getStackInSlot(0).isEmpty())
         {
-            if (getLevel().hasNeighborSignal(getBlockPos()))
+            if (cooldown <= 0)
             {
-                teleport(getLevel());
+                if (getLevel().hasNeighborSignal(getBlockPos()))
+                {
+                    teleport(getLevel());
+                }
             }
         }
     }
@@ -65,43 +68,62 @@ public class RedstoneTeleporterBE extends BlockEntity {
             BlockPos nearestTo = findNearestTo(lvl, getBlockPos());
 
             if (nearestTo != null) {
-                entity.teleportTo(nearestTo.getCenter().x, nearestTo.getY() + 1, nearestTo.getCenter().z);
+                entity.moveTo(nearestTo.getCenter().x, nearestTo.getY() + 1, nearestTo.getCenter().z);
                 getLevel().playLocalSound(getBlockPos(), ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.BLOCKS, 1, 1, false);
                 entity.playSound(ModSounds.REDSTONE_TELEPORTER_WOOSH.get());
                 if (getLevel() != null && getLevel().getBlockEntity(nearestTo) instanceof RedstoneTeleporterBE otherTP)
                 {
                     otherTP.cooldown = 1;
                     cooldown = 1;
-                    getLevel().playLocalSound(getBlockPos(), ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.BLOCKS, 1, 1, false);
-                    getLevel().playLocalSound(otherTP.getBlockPos(), ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.BLOCKS, 1, 1, false);
+                    level.playLocalSound(getBlockPos(), ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.BLOCKS, 1, 1, false);
+                    level.playLocalSound(nearestTo, ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.BLOCKS, 1, 1, false);
+
+                    level.addParticle(ModParticles.REDSTONE_TELEPORT_SHOCKWAVE.get(), true, nearestTo.getCenter().x, nearestTo.getY() + 1.1, nearestTo.getCenter().z, 0, 0, 0);
+                    level.addParticle(ModParticles.REDSTONE_TELEPORT_UP.get(), true, nearestTo.getCenter().x, nearestTo.getY() + 1, nearestTo.getCenter().z, 0, 0, 0);
+
+                    level.addParticle(ModParticles.REDSTONE_TELEPORT_SHOCKWAVE.get(), true, getBlockPos().getCenter().x, getBlockPos().getY() + 1.1, getBlockPos().getCenter().z, 0, 0, 0);
+                    level.addParticle(ModParticles.REDSTONE_TELEPORT_UP.get(), true, getBlockPos().getCenter().x, getBlockPos().getY() + 1, getBlockPos().getCenter().z, 0, 0, 0);
                 }
             }
         }
     }
 
+    MinecraftServer getServerFrom(Level lvl)
+    {
+        if (lvl.getServer() == null)
+        {
+            return Minecraft.getInstance().getSingleplayerServer();
+        }
+        return lvl.getServer();
+    }
+
     @Nullable
     public BlockPos findNearestTo(Level lvl, BlockPos posFrom) {
-        ServerLevel level = (ServerLevel)lvl;
-        PoiManager manager = level.getPoiManager();
-        manager.ensureLoadedAndValid(level, posFrom, 0);
-
-        List<BlockPos> positions = manager.findAll(p -> p.is(ModPois.REDSTONE_TELEPORTER), p -> true, posFrom, 1500, PoiManager.Occupancy.ANY).toList();
-
-        double dist = 150000;
         BlockPos targetPosition = null;
 
-        for (BlockPos p : positions) {
-            if (!p.equals(posFrom)) {
-                double d = p.distToCenterSqr(posFrom.getCenter().x, posFrom.getCenter().y, posFrom.getCenter().z);
-                if (d < dist) {
-                    if (level.getBlockEntity(p) instanceof RedstoneTeleporterBE teleporter) {
-                        if (level.getBlockEntity(posFrom) instanceof RedstoneTeleporterBE thisTeleporter) {
-                            if (!teleporter.equals(thisTeleporter))
-                            {
-                                if (teleporter.inventory.getStackInSlot(0).getDisplayName().equals(thisTeleporter.inventory.getStackInSlot(0).getDisplayName()))
+        {
+            ServerLevel lev = getServerFrom(lvl).getLevel(lvl.dimension());
+
+            PoiManager manager = lev.getPoiManager();
+            manager.ensureLoadedAndValid(lev, posFrom, 0);
+
+            List<BlockPos> positions = manager.findAll(p -> p.is(ModPois.REDSTONE_TELEPORTER), p -> level.getBlockEntity(p) instanceof RedstoneTeleporterBE, posFrom, 500, PoiManager.Occupancy.ANY).toList();
+
+            double dist = 1500000;
+
+            for (BlockPos p : positions) {
+                if (!p.equals(posFrom)) {
+                    double d = p.distToCenterSqr(posFrom.getCenter().x, posFrom.getCenter().y, posFrom.getCenter().z);
+                    if (d < dist) {
+                        if (level.getBlockEntity(p) instanceof RedstoneTeleporterBE teleporter) {
+                            if (level.getBlockEntity(posFrom) instanceof RedstoneTeleporterBE thisTeleporter) {
+                                if (!teleporter.equals(thisTeleporter))
                                 {
-                                    dist = d;
-                                    targetPosition = p;
+                                    if (teleporter.inventory.getStackInSlot(0).getDisplayName().equals(thisTeleporter.inventory.getStackInSlot(0).getDisplayName()))
+                                    {
+                                        dist = d;
+                                        targetPosition = p;
+                                    }
                                 }
                             }
                         }
@@ -145,12 +167,23 @@ public class RedstoneTeleporterBE extends BlockEntity {
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         tag.put("inventory", this.inventory.serializeNBT(registries));
-        super.saveAdditional(tag, registries);
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider lookupProvider) {
+        loadAdditional(tag, lookupProvider);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag t = new CompoundTag();
+        saveAdditional(t, registries);
+
+        return t;
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         this.inventory.deserializeNBT(registries, tag.getCompound("inventory"));
-        super.loadAdditional(tag, registries);
     }
 }

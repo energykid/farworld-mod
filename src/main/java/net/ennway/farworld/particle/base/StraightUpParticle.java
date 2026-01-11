@@ -4,23 +4,21 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.ennway.farworld.utils.QuaternionUtils;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.*;
-import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-import org.checkerframework.checker.units.qual.Angle;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
-public class FlatParticle extends TextureSheetParticle {
+public class StraightUpParticle extends TextureSheetParticle {
 	protected SpriteSet sprites;
 	public Quaternionf QUATERNION = new Quaternionf(0F, -0.7F, 0.7F, 0F);
 
 	public float rot = 0;
 
-	protected FlatParticle(ClientLevel world, double x, double y, double z, SpriteSet sprites) {
+	protected StraightUpParticle(ClientLevel world, double x, double y, double z, SpriteSet sprites) {
 		super(world, x, y, z, 0.0, 0.0, 0.0);
 		this.quadSize = 1;
 		this.setParticleSpeed(0D, 0D, 0D);
@@ -35,17 +33,15 @@ public class FlatParticle extends TextureSheetParticle {
 		float x = (float) (Mth.lerp(ticks, this.xo, this.x) - vec3.x());
 		float y = (float) (Mth.lerp(ticks, this.yo, this.y) - vec3.y());
 		float z = (float) (Mth.lerp(ticks, this.zo, this.z) - vec3.z());
-		Vector3f[] vector3fs = new Vector3f[]{new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)};
-		Vector3f[] vector3fsBottom = new Vector3f[]{new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, -1.0F, 0.0F)};
+		Vector3f[] vector3fs = new Vector3f[]{new Vector3f(-1.0F, 0.0F, 0.0F), new Vector3f(-1.0F, 2.0F, 0.0F), new Vector3f(1.0F, 2.0F, 0.0F), new Vector3f(1.0F, 0.0F, 0.0F)};
+		Vector3f[] vector3fsBottom = new Vector3f[]{new Vector3f(-1.0F, 0.0F, 0.0F), new Vector3f(1.0F, 0.0F, 0.0F), new Vector3f(1.0F, 0.0F, 0.0F), new Vector3f(-1.0F, 0.0F, 0.0F)};
 		float f4 = this.getQuadSize(ticks);
 		for (int i = 0; i < 4; ++i) {
 
 			float rotation_angle = this.roll;
 			Vector3f rotation_axis = new Vector3f(0.0f, 0.0f, 1.0f);
 
-			QUATERNION.rotateY(Mth.lerp(ticks, this.oRoll, this.roll));
-
-			Quaternionf quaternionf = QuaternionUtils.flatQuaternion();
+			Quaternionf quaternionf = QuaternionUtils.upQuaternion(camera);
 
 			double half_angle_rad = Math.toRadians(rotation_angle / 2.0);
 			double rot_w = Math.cos(half_angle_rad);

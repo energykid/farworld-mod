@@ -103,5 +103,12 @@ public class ModParticles {
             "breeze_stance_puff",
             () -> new SimpleParticleType(false)
     );
-
+    public static final Supplier<SimpleParticleType> REDSTONE_TELEPORT_SHOCKWAVE = PARTICLE_TYPES.register(
+            "redstone_teleport_shockwave",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> REDSTONE_TELEPORT_UP = PARTICLE_TYPES.register(
+            "redstone_teleport_up",
+            () -> new SimpleParticleType(false)
+    );
 }

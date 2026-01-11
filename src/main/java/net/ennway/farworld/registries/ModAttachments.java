@@ -2,7 +2,9 @@ package net.ennway.farworld.registries;
 
 import com.mojang.serialization.Codec;
 import net.ennway.farworld.Farworld;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;

@@ -69,5 +69,8 @@ public class ModParticleProviders {
         event.registerSpriteSet(ModParticles.BLAZE_STANCE_SLASH.get(), BlazeStanceSlashParticle.Provider::new);
         event.registerSpriteSet(ModParticles.BREEZE_STANCE_BURST.get(), BreezeStanceBurstParticle.Provider::new);
         event.registerSpriteSet(ModParticles.BREEZE_STANCE_PUFF.get(), BreezeStancePuffParticle.Provider::new);
+
+        event.registerSpriteSet(ModParticles.REDSTONE_TELEPORT_SHOCKWAVE.get(), RedstoneTeleportShockwaveParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.REDSTONE_TELEPORT_UP.get(), RedstoneTeleportUpParticle.Provider::new);
     }
 }

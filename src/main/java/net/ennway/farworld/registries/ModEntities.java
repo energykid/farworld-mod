@@ -79,10 +79,10 @@ public class ModEntities {
                     .build("amethyst_construct"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<RedstoneCuriosityEntity>> REDSTONE_CURIOSITY = ENTITY_TYPES.register(
-            "redstone_curiosity", () -> EntityType.Builder.of(RedstoneCuriosityEntity::new, MobCategory.MONSTER)
+            "redstone_curiosity.json", () -> EntityType.Builder.of(RedstoneCuriosityEntity::new, MobCategory.MONSTER)
                     .eyeHeight(2f)
                     .sized(1f, 2.25f)
-                    .build("redstone_curiosity"));
+                    .build("redstone_curiosity.json"));
 
     //region Projectiles
 

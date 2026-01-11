@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:entity",
+    "pools": [
+        {
+            "bonus_rolls": 0,
+            "conditions": [],
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "farworld:curious_component",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": 12
+                        }
+                    ]
+                }
+            ],
+            "rolls": 1
+        }
+    ],
+    "random_sequence": "minecraft:entities/blaze"
+}

@@ -37,13 +37,6 @@ public class RedstoneTeleporterBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? null : (_1, _2, _3, tickingEntity) -> {
-            ((RedstoneTeleporterBE)tickingEntity).tick();
-        };
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(BlockStateProperties.LIT);
     }
@@ -56,6 +49,18 @@ public class RedstoneTeleporterBlock extends Block implements EntityBlock {
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new RedstoneTeleporterBE(blockPos, blockState);
+    }
+
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        super.tick(state, level, pos, random);
+        ((RedstoneTeleporterBE)level.getBlockEntity(pos)).tick();
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        super.animateTick(state, level, pos, random);
+        ((RedstoneTeleporterBE)level.getBlockEntity(pos)).tick();
     }
 
     @Override

@@ -4,6 +4,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.ennway.farworld.utils.BehaviorUtils;
 import net.ennway.farworld.utils.MathUtils;
+import net.ennway.farworld.utils.curve.EasingCurve;
+import net.ennway.farworld.utils.curve.InOutBack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -25,6 +27,7 @@ public class RedstoneTeleporterBERenderer implements BlockEntityRenderer<Redston
 
     public RedstoneTeleporterBERenderer() {}
 
+
     @Override
     public void render(RedstoneTeleporterBE entity, float v, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int i1) {
 
@@ -43,7 +46,9 @@ public class RedstoneTeleporterBERenderer implements BlockEntityRenderer<Redston
                     poseStack.mulPose(Axis.YP.rotationDegrees(j * 90));
                     poseStack.translate(0.5, 0.5, 0);
                     poseStack.mulPose(Axis.YP.rotationDegrees(90));
-                    poseStack.scale(entity.sc, entity.sc, entity.sc);
+                    InOutBack c = new InOutBack();
+                    float sc = 0.65f - (c.invoke(entity.sc) * 0.15f);
+                    poseStack.scale(sc, sc, sc);
 
                     Vector2f pos = new Vector2f(1, 0);
                     MathUtils.rotateVector2f(pos, Math.toDegrees(j * 90f));
@@ -54,8 +59,8 @@ public class RedstoneTeleporterBERenderer implements BlockEntityRenderer<Redston
                 }
             }
         }
-        entity.sc = Mth.lerp(0.6f, entity.sc, 0.5f);
-        if (stack.isEmpty()) entity.sc = 0.7f;
+        entity.sc = Mth.lerp(0.3f, entity.sc, 1f);
+        if (stack.isEmpty()) entity.sc = 0f;
     }
 
     private int getLightLevel(Level level, BlockPos pos)
