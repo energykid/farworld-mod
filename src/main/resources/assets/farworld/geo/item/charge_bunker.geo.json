@@ -1,0 +1,48 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "weapon",
+					"pivot": [0, 6, 7],
+					"rotation": [0, 177.5, 0],
+					"cubes": [
+						{"origin": [-2.19466, 4, 9.99334], "size": [5, 4, 6], "uv": [0, 42]},
+						{"origin": [-1.19466, 4.5, 15.99334], "size": [3, 3, 1], "uv": [36, 42]},
+						{"origin": [-2.19466, 4, 5.99334], "size": [5, 4, 2], "uv": [22, 42]}
+					]
+				},
+				{
+					"name": "outer",
+					"parent": "weapon",
+					"pivot": [0.30534, 6, 12.99334]
+				},
+				{
+					"name": "lower",
+					"parent": "outer",
+					"pivot": [0.30534, 4, 11.99334],
+					"cubes": [
+						{"origin": [-3.69466, 1, 4.99334], "size": [8, 3, 18], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "upper",
+					"parent": "outer",
+					"pivot": [0.30534, 8, 11.99334],
+					"cubes": [
+						{"origin": [-3.69466, 8, 4.99334], "size": [8, 3, 18], "uv": [0, 21]}
+					]
+				}
+			]
+		}
+	]
+}

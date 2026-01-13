@@ -11,18 +11,27 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -71,26 +80,15 @@ public class RedstoneTeleporterBE extends BlockEntity {
             BlockPos nearestTo = findNearestTo(lvl, getBlockPos());
 
             if (nearestTo != null) {
-                if (entity instanceof Player ent)
-                {
-                    tp(nearestTo, ent);
-                    if (ent instanceof ServerPlayer plr)
-                    {
-                        plr.teleportTo(nearestTo.getCenter().x, nearestTo.getY() + 1, nearestTo.getCenter().z);
-                    }
-                }
-                else
-                {
-                    tp(nearestTo, entity);
-                    entity.teleportTo(nearestTo.getCenter().x, nearestTo.getY() + 1, nearestTo.getCenter().z);
-                }
+                tpFX(nearestTo, entity);
+                entity.moveTo(nearestTo.getCenter().x, nearestTo.above().getBottomCenter().y, nearestTo.getCenter().z);
             }
         }
     }
 
-    public void tp(BlockPos nearestTo, Entity ent)
-    {
-        if (getLevel() != null && getLevel().getBlockEntity(nearestTo) instanceof RedstoneTeleporterBE otherTP)
+    public void tpFX(BlockPos nearestTo, Entity ent) {
+
+        if (getLevel().getBlockEntity(nearestTo) instanceof RedstoneTeleporterBE otherTP)
         {
             getLevel().playLocalSound(getBlockPos(), ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.BLOCKS, 1, 1, false);
             ent.playSound(ModSounds.REDSTONE_TELEPORTER_WOOSH.get());
@@ -127,7 +125,7 @@ public class RedstoneTeleporterBE extends BlockEntity {
             PoiManager manager = lev.getPoiManager();
             manager.ensureLoadedAndValid(lev, posFrom, 0);
 
-            List<BlockPos> positions = manager.findAll(p -> p.is(ModPois.REDSTONE_TELEPORTER), p -> level.getBlockEntity(p) instanceof RedstoneTeleporterBE, posFrom, 500, PoiManager.Occupancy.ANY).toList();
+            List<BlockPos> positions = manager.findAll(p -> p.is(ModPois.REDSTONE_TELEPORTER), x -> true, posFrom, 500, PoiManager.Occupancy.ANY).toList();
 
             double dist = 1500000;
 

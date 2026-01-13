@@ -83,13 +83,16 @@ public class ModSounds {
     public static final Supplier<SoundEvent> BYSTONE_PORTAL_EXIT = createSoundEvent("bystone_portal_exit");
 
     public static final Supplier<SoundEvent> MUSIC_LUSH_SHALLOWS = createSoundEvent("music.lush_shallows");
-    public static final Supplier<SoundEvent> MUSIC_ARMAGEDDON_SIMPLE_THINGS = createSoundEvent("music.armageddon_simple_things");
+    public static final Supplier<SoundEvent> MUSIC_GEODIC_COLUMNS = createSoundEvent("music.geodic_columns");
     public static final Supplier<SoundEvent> MUSIC_DUSTY_SHELVES = createSoundEvent("music.dusty_shelves");
     public static final Supplier<SoundEvent> MUSIC_AWAKE_AWARE = createSoundEvent("music.awake_aware");
+    public static final Supplier<SoundEvent> MUSIC_ARMAGEDDON_SIMPLE_THINGS = createSoundEvent("music.armageddon_simple_things");
 
     public static final Supplier<SoundEvent> REDSTONE_TELEPORTER_ARM = createSoundEvent("redstone_teleporter_arm");
     public static final Supplier<SoundEvent> REDSTONE_TELEPORTER_DISARM = createSoundEvent("redstone_teleporter_disarm");
     public static final Supplier<SoundEvent> REDSTONE_TELEPORTER_WOOSH = createSoundEvent("redstone_teleporter_woosh");
+
+    public static final Supplier<SoundEvent> CHARGE_BUNKER_FIRE = createSoundEvent("charge_bunker_fire");
 
     private static ResourceKey<JukeboxSong> createSong(String name)
     {

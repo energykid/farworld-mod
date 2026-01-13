@@ -26,7 +26,7 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity, Owna
     public int duration;
     public int animationTime = 100;
     public double distance;
-    public Mob owner;
+    public LivingEntity owner;
     public float damage = 1f;
     public BaseSubattackEntity(EntityType<?> entityType, Level level, float dam, int del, int dur, double dist) {
         super(entityType, level);
@@ -81,11 +81,13 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity, Owna
 
     public static final EntityDataAccessor<Integer> ATTACK_TICKS = SynchedEntityData.defineId(BaseSubattackEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(BaseSubattackEntity.class, EntityDataSerializers.FLOAT);
+    public static final EntityDataAccessor<Float> PITCH = SynchedEntityData.defineId(BaseSubattackEntity.class, EntityDataSerializers.FLOAT);
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         builder.define(ATTACK_TICKS, 0);
         builder.define(ROTATION, 0f);
+        builder.define(PITCH, 0f);
     }
 
     @Override
@@ -106,7 +108,7 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity, Owna
     }
 
     @Override
-    public @Nullable Mob getOwner() {
+    public @Nullable LivingEntity getOwner() {
         return owner;
     }
 }

@@ -18,8 +18,7 @@ public class NetheriteCrossbow extends AbstractCrossbowItem {
 
     public NetheriteCrossbow() {
         super(1800, Rarity.COMMON, 1.2f);
-        this.kickback = 0.5f;
-        this.kickbackYMod = 1.15f;
+        this.velocityMultiplier = 1.2f;
     }
 
     @Override

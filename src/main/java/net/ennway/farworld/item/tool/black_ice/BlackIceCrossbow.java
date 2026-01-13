@@ -24,8 +24,7 @@ public class BlackIceCrossbow extends AbstractCrossbowItem {
 
     public BlackIceCrossbow(Item.Properties properties) {
         super(1800, Rarity.UNCOMMON, 1.35f);
-        this.kickback = 0.5f;
-        this.kickbackYMod = 1.25f;
+        this.velocityMultiplier = 1.35f;
     }
 
     @Override

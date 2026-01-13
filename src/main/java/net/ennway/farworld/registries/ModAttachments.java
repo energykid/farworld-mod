@@ -29,4 +29,7 @@ public class ModAttachments {
     public static final Supplier<AttachmentType<String>> DIMENSION_TRANSITION_RESOURCE = ATTACHMENT_TYPES.register(
             "dimension_transition_resource", () -> AttachmentType.builder(() -> "overlay/bystone").serialize(Codec.STRING).build()
     );
+    public static final Supplier<AttachmentType<BlockPos>> TP_LOCATION = ATTACHMENT_TYPES.register(
+            "tp_location", () -> AttachmentType.builder(() -> new BlockPos(0, 500, 0)).serialize(BlockPos.CODEC).build()
+    );
 }

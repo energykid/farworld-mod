@@ -27,9 +27,6 @@ public class AbstractCrossbowItem extends CrossbowItem {
 
     public float velocityMultiplier = 1.0f;
 
-    public float kickback = 0.5f;
-    public float kickbackYMod = 1.5f;
-
     public AbstractCrossbowItem(int durability, Rarity rarity, float velMult) {
         super(new Properties()
                 .durability(durability)
@@ -69,21 +66,7 @@ public class AbstractCrossbowItem extends CrossbowItem {
 
     @Override
     public void performShooting(Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float velocity, float inaccuracy, @Nullable LivingEntity target) {
-        super.performShooting(level, shooter, hand, weapon, velocity, inaccuracy, target);
-        if (kickback > 0f) {
-
-                if (shooter instanceof Player player) {
-                    if (!player.isCreative()) {
-                        if (kickback > 0f) {
-                            shooter.fallDistance = 0;
-                            shooter.addDeltaMovement(shooter.getLookAngle().multiply(-kickback, -kickback * kickbackYMod, -kickback));
-                        }
-                    }
-                } else {
-                    shooter.fallDistance = 0;
-                    shooter.addDeltaMovement(shooter.getLookAngle().multiply(-kickback, -kickback * kickbackYMod, -kickback));
-                }
-        }
+        super.performShooting(level, shooter, hand, weapon, velocity * velocityMultiplier, inaccuracy, target);
     }
 
     private static float getRandomShotPitch(boolean isHighPitched, RandomSource random) {

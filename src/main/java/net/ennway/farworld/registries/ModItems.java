@@ -10,6 +10,7 @@ import net.ennway.farworld.item.tool.cobalt.*;
 import net.ennway.farworld.item.tool.gloomstone.*;
 import net.ennway.farworld.item.tool.soul_steel.*;
 import net.ennway.farworld.utils.SmithingUtils;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -19,8 +20,7 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class ModItems
-{
+public class ModItems {
     public static final DeferredRegister.Items ITEMS_ALL = DeferredRegister.createItems(Farworld.MOD_ID);
 
     public static final DeferredItem<Item> CHERRIES = ITEMS_ALL.register("cherries",
@@ -253,6 +253,13 @@ public class ModItems
     );
     //endregion
 
+    //region Unique Weapons
+    public static final DeferredItem<Item> CHARGE_BUNKER = ITEMS_ALL.register(
+            "charge_bunker",
+            () -> new ChargeBunker(new Item.Properties().durability(500))
+    );
+    //endregion
+
     public static final DeferredItem<Item> NETHERITE_CROSSBOW = ITEMS_ALL.register(
             "netherite_crossbow",
             () -> new NetheriteCrossbow()
@@ -351,6 +358,7 @@ public class ModItems
                 SmithingUtils.equipmentIconList(),
                 SmithingUtils.singleIngotIcon());
     }
+
     public static SmithingTemplateItem createGloomstoneUpgradeTemplate() {
         return new SmithingTemplateItem(
                 Component.translatable("item.farworld.gloomstone_upgrade_smithing_template.applies_to"),
@@ -361,6 +369,7 @@ public class ModItems
                 SmithingUtils.equipmentIconListNoArmor(),
                 SmithingUtils.gloomsporeIcon());
     }
+
     public static SmithingTemplateItem createBlackIceUpgradeTemplate() {
         return new SmithingTemplateItem(
                 Component.translatable("item.farworld.black_ice_upgrade_smithing_template.applies_to"),

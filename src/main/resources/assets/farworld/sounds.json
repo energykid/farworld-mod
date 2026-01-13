@@ -68,6 +68,14 @@
     "sounds": ["farworld:music/unfettered", "farworld:music/forestry"],
     "stream": true
   },
+  "music.geodic_columns": {
+    "sounds": ["farworld:music/jewels"],
+    "stream": true
+  },
+
+  "charge_bunker_fire": {
+    "sounds": ["farworld:charge_bunker_fire"]
+  },
 
   "redstone_curiosity_zip": {
     "sounds": ["farworld:redstone_curiosity_zip_1",

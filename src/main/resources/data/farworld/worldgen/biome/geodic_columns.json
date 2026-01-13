@@ -11,6 +11,12 @@
     "grass_color": 3748670,
     "foliage_color": 3424581,
     "ambient_sound": "farworld:geodic_columns_ambiance",
+    "music": {
+      "sound": "farworld:music.geodic_columns",
+      "min_delay": 8000,
+      "max_delay": 14000,
+      "replace_current_music": false
+    },
     "particle": {
       "options": {
         "type": "minecraft:end_rod"

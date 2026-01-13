@@ -20,12 +20,6 @@ import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 import software.bernie.geckolib.util.Color;
 
 public class RedstoneCuriosityRenderer extends GeoEntityRenderer<RedstoneCuriosityEntity> {
-
-    @Override
-    public boolean shouldRender(RedstoneCuriosityEntity livingEntity, Frustum camera, double camX, double camY, double camZ) {
-        return true;
-    }
-
     @Override
     public @Nullable RenderType getRenderType(RedstoneCuriosityEntity animatable, ResourceLocation texture, @Nullable MultiBufferSource bufferSource, float partialTick) {
         return super.getRenderType(animatable, texture, bufferSource, partialTick);

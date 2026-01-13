@@ -6,7 +6,7 @@
       "loot_table_id": "minecraft:entities/skeleton"
     }
   ],
-  "chance": 0.07,
+  "chance": 0.0035,
   "amount": 1,
   "item_type": "farworld:skeleton_arm"
 }

@@ -39,6 +39,7 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
@@ -109,6 +110,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         this.setHealth(this.getMaxHealth());
         this.xpReward = 35;
         this.progress = 0f;
+        SingletonGeoAnimatable.registerSyncedAnimatable(this);
     }
 
     @Override

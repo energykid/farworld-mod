@@ -44,6 +44,7 @@ public class RedstoneCuriosityBlastRenderer extends GeoEntityRenderer<RedstoneCu
     @Override
     public void actuallyRender(PoseStack poseStack, RedstoneCuriosityBlastEntity animatable, BakedGeoModel model, @Nullable RenderType renderType, MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
         poseStack.mulPose(Axis.YP.rotationDegrees(animatable.getEntityData().get(BaseSubattackEntity.ROTATION)));
+        poseStack.mulPose(Axis.XP.rotationDegrees(animatable.getEntityData().get(BaseSubattackEntity.PITCH) * -90));
         super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 

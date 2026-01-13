@@ -10,7 +10,8 @@
     "SwordStanceMixin",
     "SwordStancePlayerMixin",
     "ArmoryMixin",
-    "ArmoryModelMixin"
+    "ArmoryModelMixin",
+    "ChargeBunkerPlayerMixin"
   ],
 
   "injectors": {

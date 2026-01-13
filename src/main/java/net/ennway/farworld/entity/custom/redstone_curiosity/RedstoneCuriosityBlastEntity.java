@@ -23,7 +23,8 @@ public class RedstoneCuriosityBlastEntity extends BaseSubattackEntity implements
         super(entityType, level, 25, 0, 2, 7);
     }
 
-    public float rot = 0f;
+    public Vec3 customFinderVector = null;
+
     public int blastFrame = 1;
 
     @Override
@@ -43,14 +44,19 @@ public class RedstoneCuriosityBlastEntity extends BaseSubattackEntity implements
 
     @Override
     public boolean canHit(Entity potentialTarget) {
-        if (potentialTarget instanceof RedstoneCuriosityEntity) return false;
+        if (potentialTarget == getOwner()) return false;
 
         Vec3 pos = position();
 
         double rotate = Math.toRadians(-getEntityData().get(BaseSubattackEntity.ROTATION));
         for (int i = 0; i < 12; i++) {
             Vector2f rotVec = MathUtils.flatVec2FromRotation(rotate + Math.toRadians(90));
-            pos = pos.add(new Vec3(rotVec.x() * 0.5, 0, rotVec.y() * 0.5));
+
+            Vec3 finderVec = customFinderVector;
+            if (customFinderVector == null)
+                finderVec = new Vec3(rotVec.x() * 0.5, 0, rotVec.y() * 0.5);
+
+            pos = pos.add(finderVec);
 
             double dist = 0.6;
 
