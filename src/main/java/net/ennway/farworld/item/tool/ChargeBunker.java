@@ -8,6 +8,9 @@ import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModEntities;
 import net.ennway.farworld.registries.ModItems;
 import net.ennway.farworld.registries.ModSounds;
+import net.minecraft.client.Camera;
+import net.minecraft.client.CameraType;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponentMap;
@@ -33,12 +36,12 @@ import software.bernie.geckolib.animatable.client.GeoRenderProvider;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.util.ClientUtil;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
 
 public class ChargeBunker extends Item implements GeoItem {
-    private static final RawAnimation FIRE_ANIM = RawAnimation.begin().thenPlay("fire");
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public ChargeBunker(Properties properties) {
@@ -56,31 +59,26 @@ public class ChargeBunker extends Item implements GeoItem {
         return stack.is(ModItems.CURIOUS_COMPONENT) || stack.is(Items.REDSTONE_BLOCK);
     }
 
-    public final AnimationController.AnimationStateHandler STATE = new AnimationController.AnimationStateHandler() {
-        @Override
-        public PlayState handle(AnimationState state) {
-            if (state.getData(DataTickets.ITEM_RENDER_PERSPECTIVE) == ItemDisplayContext.GUI)
-                state.getController().stop();
-            return PlayState.STOP;
-        }
-    };
-
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        AnimationController cont = new AnimationController<ChargeBunker>(this, "FireAnim", 0, STATE)
-                .triggerableAnim("shoot", FIRE_ANIM);
+        controllers.add(new AnimationController(this, "FireAnim", 0, state -> {
+            final ItemDisplayContext context = (ItemDisplayContext) state.getData(DataTickets.ITEM_RENDER_PERSPECTIVE);
 
-        controllers.add(cont);
-    }
+            if (context.firstPerson())
+                return PlayState.CONTINUE;
 
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.cache;
+            return PlayState.STOP;
+        }).receiveTriggeredAnimations().triggerableAnim("shoot", RawAnimation.begin().thenPlay("fire")));
     }
 
     @Override
     public boolean isPerspectiveAware() {
         return true;
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
     }
 
     @Override
@@ -93,9 +91,8 @@ public class ChargeBunker extends Item implements GeoItem {
 
             player.playSound(ModSounds.CHARGE_BUNKER_FIRE.get());
 
-            if (level instanceof ServerLevel serverLevel) {
-                stopTriggeredAnim(player, GeoItem.getOrAssignId(player.getItemInHand(hand), serverLevel), "FireAnim", "shoot");
-
+            if (level instanceof ServerLevel serverLevel)
+            {
                 triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(hand), serverLevel), "FireAnim", "shoot");
             }
 
