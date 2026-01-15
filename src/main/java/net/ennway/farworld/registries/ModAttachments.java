@@ -32,4 +32,7 @@ public class ModAttachments {
     public static final Supplier<AttachmentType<BlockPos>> TP_LOCATION = ATTACHMENT_TYPES.register(
             "tp_location", () -> AttachmentType.builder(() -> new BlockPos(0, 500, 0)).serialize(BlockPos.CODEC).build()
     );
+    public static final Supplier<AttachmentType<Float>> APOCALYPSE_ABILITY = ATTACHMENT_TYPES.register(
+            "apocalypse_ability", () -> AttachmentType.builder(() -> 0f).serialize(Codec.FLOAT).build()
+    );
 }

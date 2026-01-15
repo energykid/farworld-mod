@@ -19,6 +19,7 @@ import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
@@ -85,21 +86,21 @@ public class AccessoryEvents {
     }
 
     @SubscribeEvent
-    public static void runOnAllClients(PlayerTickEvent.Post event)
+    public static void postTick(EntityTickEvent.Post event)
     {
-        Player player = event.getEntity();
-
-        List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
-        List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
-
-        for (int i = 0; i < items.size(); i++)
+        if (event.getEntity() instanceof Player player)
         {
-            items.get(i).postTick(player, itemStacks.get(i), event);
+            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+            for (int i = 0; i < items.size(); i++) {
+                items.get(i).postTick(player, itemStacks.get(i), event);
+            }
         }
     }
 
     @SubscribeEvent
-    public static void preTick(PlayerTickEvent.Pre event)
+    public static void preTick(EntityTickEvent.Pre event)
     {
         if (event.getEntity() instanceof Player player)
         {

@@ -7,6 +7,7 @@ import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.base.BaseSubattackEntity;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityLaserEntity;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityLaserEntity;
+import net.ennway.farworld.utils.RenderingUtils;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -36,19 +37,7 @@ public class RedstoneCuriosityLaserRenderer extends GeoEntityRenderer<RedstoneCu
 
     @Override
     public void actuallyRender(PoseStack poseStack, RedstoneCuriosityLaserEntity animatable, BakedGeoModel model, @Nullable RenderType renderType, MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
-
-        float xrot = 0f;
-        float yrot = 0f;
-
-        Vec3 vec3 = animatable.getDeltaMovement();
-        if (vec3.lengthSqr() != 0.0) {
-            double d0 = vec3.horizontalDistance();
-            yrot = ((float)(Mth.atan2(vec3.z, vec3.x) * 180.0 / 3.1415927410125732) + 90.0F);
-            xrot = ((float)(Mth.atan2(d0, vec3.y) * 180.0 / 3.1415927410125732) - 90.0F);
-        }
-
-        poseStack.mulPose(Axis.YP.rotationDegrees(-yrot));
-        poseStack.mulPose(Axis.XP.rotationDegrees(-xrot));
+        RenderingUtils.autoRotateRender(poseStack, animatable);
 
         super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }

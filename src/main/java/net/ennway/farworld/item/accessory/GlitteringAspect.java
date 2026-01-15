@@ -29,7 +29,7 @@ public class GlitteringAspect extends AccessoryItem {
     }
 
     @Override
-    public void preTick(Player player, ItemStack stack, PlayerTickEvent.Pre event) {
+    public void preTick(Player player, ItemStack stack, EntityTickEvent.Pre event) {
 
         if (player.getFoodData().getFoodLevel() >= 20)
         {

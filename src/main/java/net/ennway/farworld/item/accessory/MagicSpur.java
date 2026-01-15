@@ -36,7 +36,7 @@ public class MagicSpur extends AccessoryItem {
     int distance = 3;
 
     @Override
-    public void postTick(Player player, ItemStack stack, PlayerTickEvent.Post event) {
+    public void postTick(Player player, ItemStack stack, EntityTickEvent.Post event) {
 
         {
             Level level = event.getEntity().level();

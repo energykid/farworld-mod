@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 public class BlazeLocket extends AccessoryItem {
@@ -66,7 +67,7 @@ public class BlazeLocket extends AccessoryItem {
     }
 
     @Override
-    public void preTick(Player player, ItemStack stack, PlayerTickEvent.Pre event) {
+    public void preTick(Player player, ItemStack stack, EntityTickEvent.Pre event) {
         if (player.getWeaponItem().is(ModTags.BLAZE_STANCEABLE_WEAPONS))
         {
             if (charging) player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 2, 3, true, false));
