@@ -11,7 +11,10 @@ import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ApocalypseBreathProjectile extends AbstractHurtingProjectile {
@@ -28,13 +31,7 @@ public class ApocalypseBreathProjectile extends AbstractHurtingProjectile {
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult result) {
-        if (getOwner() != null)
-            result.getEntity().hurt(getOwner().damageSources().mobProjectile(this, (LivingEntity)getOwner()), 20);
-    }
-
-    @Override
-    protected boolean canHitEntity(Entity target) {
+    protected boolean canHitEntity(@NotNull Entity target) {
         if (target instanceof OwnableEntity ownable)
         {
             if (ownable.getOwner() instanceof Player) return false;
@@ -47,14 +44,28 @@ public class ApocalypseBreathProjectile extends AbstractHurtingProjectile {
         return null;
     }
 
+    int timer = 0;
+
     @Override
     public void tick() {
+        Entity entity = this.getOwner();
         super.tick();
-        setDeltaMovement(getDeltaMovement().multiply(0.9f, 0.9f, 0.9f));
-        this.frame++;
-        if (this.frame >= 14)
+        if (this.level().isClientSide || (entity == null || !entity.isRemoved()) && this.level().hasChunkAt(this.blockPosition())) {
+            setDeltaMovement(getDeltaMovement().multiply(0.9f, 0.85f, 0.9f));
+            this.frame++;
+            if (this.frame >= 14) {
+                this.discard();
+            }
+        }
+        timer++;
+        if (timer % 2 == 0)
         {
-            this.remove(RemovalReason.DISCARDED);
+            AABB entityAABB = new AABB(position().x - 0.75, position().y - 0.75, position().z - 0.75, position().x + 0.75, position().y + 0.75, position().z + 0.75);
+            for (LivingEntity i : level().getEntitiesOfClass(LivingEntity.class, entityAABB))
+            {
+                i.invulnerableTime = 0;
+                i.hurt(damageSources().magic(), 1f);
+            }
         }
     }
 }

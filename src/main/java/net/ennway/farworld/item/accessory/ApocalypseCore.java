@@ -11,6 +11,7 @@ import net.ennway.farworld.registries.ModEntities;
 import net.ennway.farworld.registries.ModItems;
 import net.ennway.farworld.utils.AccessoryUtils;
 import net.ennway.farworld.utils.MathUtils;
+import net.ennway.farworld.utils.ServerUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
@@ -34,6 +35,7 @@ import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.entity.projectile.WitherSkull;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.enchantment.effects.SummonEntityEffect;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.Event;
@@ -48,44 +50,48 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID)
 public class ApocalypseCore extends AccessoryItem {
-
-    @SubscribeEvent
-    public static void shoot(PlayerInteractEvent.RightClickEmpty evt)
-    {
-        Player plr = evt.getEntity();
-
-        if (plr.getMainHandItem().isEmpty() && plr.getData(ModAttachments.APOCALYPSE_ABILITY) <= 0 && AccessoryUtils.playerHasAccessory(plr, ModItems.APOCALYPSE_CORE.get()))
-        {
-            plr.setData(ModAttachments.APOCALYPSE_ABILITY, 200f);
-        }
-    }
-
-    @SubscribeEvent
-    public static void breathe(PlayerTickEvent.Post evt)
-    {
-        Player player = evt.getEntity();
-
-        if (AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get()))
-        {
-            if (player.getData(ModAttachments.APOCALYPSE_ABILITY) > 170 && player.getData(ModAttachments.APOCALYPSE_ABILITY) % 2 == 1) {
-                player.level().playSound(player, player.blockPosition(), SoundEvents.ENDER_DRAGON_SHOOT, SoundSource.PLAYERS, 0.3f, (float) MathUtils.randomDouble(player.getRandom(), 0.7, 1));
-
-                Vec3 shootVel = player.getLookAngle();
-
-                ApocalypseBreathProjectile ent = new ApocalypseBreathProjectile(ModEntities.APOCALYPSE_BREATH.get(), player.level());
-                ent.setPos(player.getEyePosition().add(0, -0.4, 0));
-                ent.setOwner(player);
-                ent.setDeltaMovement(shootVel);
-                player.level().addFreshEntity(ent);
-            }
-        }
-
-        player.setData(ModAttachments.APOCALYPSE_ABILITY, player.getData(ModAttachments.APOCALYPSE_ABILITY) - 1f);
-    }
 
     public ApocalypseCore(Properties properties) {
         super(properties.rarity(Rarity.RARE));
+    }
+
+    @Override
+    public void postTick(Player player, ItemStack stack, EntityTickEvent.Post event) {
+        if (AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get())) {
+            if (player.getData(ModAttachments.APOCALYPSE_ABILITY) > 170) {// && player.getData(ModAttachments.APOCALYPSE_ABILITY) % 2 == 1) {
+                Vec3 shootVel = player.getLookAngle();
+
+                ApocalypseBreathProjectile ent = new ApocalypseBreathProjectile(ModEntities.APOCALYPSE_BREATH.get(), ServerUtils.getServerLevelFromPlayer(player));
+                ent.setPos(player.getEyePosition().add(0, -0.4, 0));
+                ent.setOwner(player);
+                ent.setDeltaMovement(shootVel);
+                ServerUtils.getServerLevelFromPlayer(player).addFreshEntity(ent);
+            }
+        }
+    }
+
+    @Override
+    public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent evt) {
+        if (evt instanceof PlayerInteractEvent.RightClickEmpty)
+        {
+            if (evt.getItemStack().isEmpty() && player.getData(ModAttachments.APOCALYPSE_ABILITY) <= 0 && AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get()))
+            {
+                player.setData(ModAttachments.APOCALYPSE_ABILITY, 200f);
+                player.playSound(SoundEvents.ENDER_DRAGON_SHOOT, 0.5f, 1);
+                player.playSound(SoundEvents.ENDER_DRAGON_AMBIENT, 0.3f, 2);
+            }
+        }
+        else if (evt instanceof PlayerInteractEvent.RightClickBlock block)
+        {
+            if (block.getUseItem().isDefault())
+            {
+                if (evt.getItemStack().isEmpty() && player.getData(ModAttachments.APOCALYPSE_ABILITY) <= 0 && AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get())) {
+                    player.setData(ModAttachments.APOCALYPSE_ABILITY, 200f);
+                    player.playSound(SoundEvents.ENDER_DRAGON_SHOOT, 0.5f, 1);
+                    player.playSound(SoundEvents.ENDER_DRAGON_AMBIENT, 0.3f, 2);
+                }
+            }
+        }
     }
 }

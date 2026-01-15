@@ -11,6 +11,7 @@ import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.projectile.ApocalypseBreathProjectile;
 import net.ennway.farworld.entity.projectile.ApocalypseBreathProjectile;
 import net.ennway.farworld.utils.RenderingUtils;
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -21,10 +22,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.NeoForgeConfig;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
+import software.bernie.geckolib.util.ClientUtil;
 
 import java.util.List;
 
@@ -42,7 +46,8 @@ public class ApocalypseBreathRenderer extends EntityRenderer<ApocalypseBreathPro
     }
 
     public void render(ApocalypseBreathProjectile entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        RenderingUtils.renderEntitySprite(poseStack, this.entityRenderDispatcher.cameraOrientation(), RenderType.eyes(getTextureLocation(entity)), buffer, 16777215, new Vector3f(0f, 0.0f, 0f), entity.scale * 3.5f);
+        Vector3f v3 = new Vector3f(0f, -0.25f + (entity.scale / 8f), 0f);
+        RenderingUtils.renderEntitySprite(poseStack, this.entityRenderDispatcher.cameraOrientation(), RenderType.eyes(getTextureLocation(entity)), buffer, 16777215, v3, entity.scale * 3.5f);
         if (!Minecraft.getInstance().isPaused())
             entity.scale = Mth.lerp(0.05f, entity.scale, 2f);
     }
