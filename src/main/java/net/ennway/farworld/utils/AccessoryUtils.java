@@ -15,7 +15,7 @@ import java.util.List;
 public class AccessoryUtils {
     public static boolean playerHasAccessory(Player player, Item accessoryType)
     {
-        for (ItemStack stack : player.getArmorSlots())
+        for (ItemStack stack : player.getInventory().armor)
         {
             if (stack.get(ModDataComponents.ARMOR_ACCESSORIES) != null)
             {

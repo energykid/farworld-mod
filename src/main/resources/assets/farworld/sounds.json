@@ -52,6 +52,10 @@
     "sounds": ["farworld:charged_caves_ambiance"]
   },
 
+  "apocalypse_fire_breath": {
+    "sounds": ["farworld:apocalypse_fire_breath"]
+  },
+
   "music.armageddon_simple_things": {
     "sounds": ["farworld:music/armageddon_simple_things"],
     "stream": true
