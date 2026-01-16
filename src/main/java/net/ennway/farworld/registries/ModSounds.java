@@ -94,6 +94,8 @@ public class ModSounds {
 
     public static final Supplier<SoundEvent> CHARGE_BUNKER_FIRE = createSoundEvent("charge_bunker_fire");
 
+    public static final Supplier<SoundEvent> APOCALYPSE_FIRE_BREATH = createSoundEvent("apocalypse_fire_breath");
+
     private static ResourceKey<JukeboxSong> createSong(String name)
     {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name));

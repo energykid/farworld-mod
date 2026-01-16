@@ -20,6 +20,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.Objects;
@@ -53,7 +54,7 @@ public class BreezeRing extends AccessoryItem {
     }
 
     @Override
-    public void preTick(Player player, ItemStack stack, PlayerTickEvent.Pre event) {
+    public void preTick(Player player, ItemStack stack, EntityTickEvent.Pre event) {
         if (player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS))
         {
             if (player.onGround() || player.isSwimming())

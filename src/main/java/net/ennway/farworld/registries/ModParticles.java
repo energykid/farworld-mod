@@ -111,4 +111,8 @@ public class ModParticles {
             "redstone_teleport_up",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> APOCALYPSE_ROAR = PARTICLE_TYPES.register(
+            "apocalypse_roar",
+            () -> new SimpleParticleType(false)
+    );
 }

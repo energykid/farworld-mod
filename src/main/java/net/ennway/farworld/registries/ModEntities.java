@@ -22,9 +22,11 @@ import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityBla
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityEntity;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityLaserEntity;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityVerticalBlastEntity;
+import net.ennway.farworld.entity.projectile.ApocalypseBreathProjectile;
 import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
 import net.ennway.farworld.entity.projectile.BlazeStanceProjectile;
 import net.ennway.farworld.entity.projectile.GloomstonePickup;
+import net.ennway.farworld.entity.projectile.client.ApocalypseBreathRenderer;
 import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
 import net.ennway.farworld.registries.entity_definitions.NonGeoEntityLayerDefinition;
@@ -104,6 +106,9 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<GloomstonePickup>> GLOOMSTONE_PICKUP = ENTITY_TYPES.register(
             "gloomstone_pickup", () -> EntityType.Builder.of(GloomstonePickup::new, MobCategory.MISC).build("gloomstone_pickup"));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<ApocalypseBreathProjectile>> APOCALYPSE_BREATH = ENTITY_TYPES.register(
+            "apocalypse_breath", () -> EntityType.Builder.of(ApocalypseBreathProjectile::new, MobCategory.MISC).build("apocalypse_breath"));
+
     //endregion
 
     //region Non-Geo Entity Layers
@@ -161,9 +166,16 @@ public class ModEntities {
                     null,
                     null,
                     NoopRenderer::new
+            ),
+            new NonGeoEntityLayerDefinition<ApocalypseBreathProjectile>(
+                    APOCALYPSE_BREATH,
+                    null,
+                    null,
+                    ApocalypseBreathRenderer::new
             )
     );
     //endregion
+
     //region Geo Entity Renderers
     public static final List<GeoEntityRendererDefinition> geoMobDefinitions = List.of(
             new GeoEntityRendererDefinition<RedstoneCuriosityEntity>(

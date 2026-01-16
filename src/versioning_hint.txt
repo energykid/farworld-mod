@@ -1,8 +1,8 @@
 the current bystone beta is 1.3.0-b5
 
 version history below:
-1.0.0 - the initial mcreator version
+1.0.0 - the initial version, made in mcreator
 1.1.0 - the forestry update (final mcreator version & modrinth upload)
-1.1.5 - forestry part 2 (the neoforge port)
+1.1.5 - forestry part 2 (the neoforge port & sunsetting of mcreator)
 1.2.0 - the wayward update (soul steel and wishbones)
 1.3.0 - the bystone update (working name, too much stuff to call it just "bystone")

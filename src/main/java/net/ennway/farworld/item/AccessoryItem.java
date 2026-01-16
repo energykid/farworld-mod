@@ -1,5 +1,8 @@
 package net.ennway.farworld.item;
 
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -11,6 +14,7 @@ import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 public class AccessoryItem extends Item {
 
@@ -30,16 +34,23 @@ public class AccessoryItem extends Item {
     {
     }
 
-    public void preTick(Player player, ItemStack stack, PlayerTickEvent.Pre event)
+    public void preTick(Player player, ItemStack stack, EntityTickEvent.Pre event)
     {
     }
 
-    public void postTick(Player player, ItemStack stack, PlayerTickEvent.Post event)
+    public void postTick(Player player, ItemStack stack, EntityTickEvent.Post event)
     {
     }
 
-    public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event)
+    public void preTickServer(Player player, ItemStack stack, ServerLevel level)
     {
+    }
+
+    public void postTickServer(Player player, ItemStack stack, ServerLevel level)
+    {
+    }
+
+    public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
     }
 
     public void onLeftClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event)

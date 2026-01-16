@@ -5,7 +5,10 @@ import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.item.data.ArmorAccessories;
 import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.utils.AccessoryUtils;
+import net.ennway.farworld.utils.ServerUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
@@ -19,6 +22,7 @@ import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
@@ -85,21 +89,41 @@ public class AccessoryEvents {
     }
 
     @SubscribeEvent
-    public static void runOnAllClients(PlayerTickEvent.Post event)
+    public static void postTick(EntityTickEvent.Post event)
     {
-        Player player = event.getEntity();
-
-        List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
-        List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
-
-        for (int i = 0; i < items.size(); i++)
+        if (event.getEntity() instanceof Player player)
         {
-            items.get(i).postTick(player, itemStacks.get(i), event);
+            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+            for (int i = 0; i < items.size(); i++) {
+                items.get(i).postTick(player, itemStacks.get(i), event);
+
+
+                if (Minecraft.getInstance().getSingleplayerServer() != null)
+                {
+                    items.get(i).postTickServer(player, itemStacks.get(i), Minecraft.getInstance().getSingleplayerServer().getLevel(player.level().dimension()));
+                }
+            }
         }
     }
 
     @SubscribeEvent
-    public static void preTick(PlayerTickEvent.Pre event)
+    public static void postTick(ServerTickEvent.Post event)
+    {
+        for (ServerPlayer player : event.getServer().getPlayerList().getPlayers()) {
+
+            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+            for (int i = 0; i < items.size(); i++) {
+                items.get(i).postTickServer(player, itemStacks.get(i), event.getServer().getLevel(player.level().dimension()));
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void preTick(EntityTickEvent.Pre event)
     {
         if (event.getEntity() instanceof Player player)
         {
@@ -109,6 +133,25 @@ public class AccessoryEvents {
             for (int i = 0; i < items.size(); i++)
             {
                 items.get(i).preTick(player, itemStacks.get(i), event);
+
+                if (Minecraft.getInstance().getSingleplayerServer() != null)
+                {
+                    items.get(i).preTickServer(player, itemStacks.get(i), Minecraft.getInstance().getSingleplayerServer().getLevel(player.level().dimension()));
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void preTick(ServerTickEvent.Pre event)
+    {
+        for (ServerPlayer player : event.getServer().getPlayerList().getPlayers()) {
+
+            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
+            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
+
+            for (int i = 0; i < items.size(); i++) {
+                items.get(i).preTickServer(player, itemStacks.get(i), event.getServer().getLevel(player.level().dimension()));
             }
         }
     }

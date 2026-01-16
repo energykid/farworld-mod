@@ -64,6 +64,7 @@ public class GearEffects {
         }
     }
 
+    /*
     @SubscribeEvent
     public static void dontDealEnderPearlDamage(EntityTeleportEvent.EnderPearl event)
     {
@@ -83,6 +84,7 @@ public class GearEffects {
             event.setCanceled(true);
         }
     }
+    */
 
     @SubscribeEvent
     public static void onHitWithSword(AttackEntityEvent event)
@@ -107,12 +109,6 @@ public class GearEffects {
                     enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1f, 0.6f);
 
                     spawnFireEffect(enemy, ModParticles.INFERNAL_SMOKE, ModParticles.INFERNAL_TENDRIL);
-                }
-                if (stack.is(Items.DIAMOND_SWORD) || stack.is(Items.DIAMOND_AXE))
-                {
-                    enemy.level().playSound(enemy, enemy.blockPosition(), ModSounds.DIAMOND_HIT.get(), SoundSource.PLAYERS, 1f, (float)MathUtils.randomDouble(enemy.getRandom(), 0.5, 1.0));
-
-                    spawnFireEffect(enemy, ModParticles.DIAMOND_SPARKLE, ModParticles.DIAMOND_DUST);
                 }
             }
         }

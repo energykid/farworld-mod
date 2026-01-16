@@ -113,6 +113,11 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
     }
 
+    public void moveMeTo(Vec3 pos)
+    {
+        move(MoverType.SELF, pos.subtract(position()));
+    }
+
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         compound.putBoolean("JustSpawned", this.getEntityData().get(JUST_SPAWNED));
@@ -410,7 +415,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     public void zipTo(Vec3 pos)
     {
         if (!level().isClientSide)
-            this.setPos(pos);
+            moveMeTo(pos);
         this.playSound(ModSounds.REDSTONE_CURIOSITY_ZIP.get());
     }
 

@@ -72,5 +72,7 @@ public class ModParticleProviders {
 
         event.registerSpriteSet(ModParticles.REDSTONE_TELEPORT_SHOCKWAVE.get(), RedstoneTeleportShockwaveParticle.Provider::new);
         event.registerSpriteSet(ModParticles.REDSTONE_TELEPORT_UP.get(), RedstoneTeleportUpParticle.Provider::new);
+
+        event.registerSpriteSet(ModParticles.APOCALYPSE_ROAR.get(), ApocalypseRoarParticle.Provider::new);
     }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public class AccessoryUtils {
     public static boolean playerHasAccessory(Player player, Item accessoryType)
     {
-        for (ItemStack stack : player.getArmorSlots())
+        for (ItemStack stack : player.getInventory().armor)
         {
             if (stack.get(ModDataComponents.ARMOR_ACCESSORIES) != null)
             {
@@ -55,11 +55,11 @@ public class AccessoryUtils {
         {
             if (stack.get(ModDataComponents.ARMOR_ACCESSORIES) != null)
             {
-                for (ItemStack stack2 : stack.get(ModDataComponents.ARMOR_ACCESSORIES).items())
+                for (int i = 0; i < stack.get(ModDataComponents.ARMOR_ACCESSORIES).size(); i++)
                 {
-                    if (stack2.getItem() instanceof AccessoryItem accItem)
+                    if (stack.get(ModDataComponents.ARMOR_ACCESSORIES).getItemUnsafe(i).getItem() instanceof AccessoryItem)
                     {
-                        items.add(stack2);
+                        items.add(stack.get(ModDataComponents.ARMOR_ACCESSORIES).getItemUnsafe(i));
                     }
                 }
             }
