@@ -82,7 +82,7 @@ public class ApocalypseCore extends AccessoryItem {
 
             ApocalypseBreathProjectile ent = new ApocalypseBreathProjectile(ModEntities.APOCALYPSE_BREATH.get(), level);
             ent.setPos(player.getEyePosition().add(0, -0.4, 0));
-            ent.setOwner(player);
+            ent.setOwner(level.getPlayerByUUID(player.getUUID()));
             ent.setDeltaMovement(shootVel);
             level.addFreshEntity(ent);
         }

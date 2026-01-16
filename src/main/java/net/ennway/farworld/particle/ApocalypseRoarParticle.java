@@ -35,7 +35,7 @@ public class ApocalypseRoarParticle extends OrientedParticle {
         this.roll = level.getRandom().nextFloat() * 4f;
         this.oRoll = roll;
 
-        if (level.getNearestPlayer(x, y, z, 3, true) instanceof Player player)
+        if (level.getNearestPlayer(x, y, z, 3, false) instanceof Player player)
         {
             this.qu = QuaternionUtils.orientedQuaternion(player).mul(Axis.ZP.rotationDegrees((float)MathUtils.randomDouble(player.getRandom(), 0, 360)));
         }

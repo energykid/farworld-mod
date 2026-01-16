@@ -51,7 +51,7 @@ public class ApocalypseBreathProjectile extends AbstractHurtingProjectile {
         super.tick();
         setDeltaMovement(getDeltaMovement().multiply(0.9f, 0.85f, 0.9f));
         this.frame++;
-        if (this.frame >= 14) {
+        if (this.frame >= 14 && this.level().isClientSide()) {
             this.discard();
         }
         timer++;
@@ -60,10 +60,10 @@ public class ApocalypseBreathProjectile extends AbstractHurtingProjectile {
             AABB entityAABB = new AABB(position().x - 0.75, position().y - 0.75, position().z - 0.75, position().x + 0.75, position().y + 0.75, position().z + 0.75);
             for (LivingEntity i : level().getEntitiesOfClass(LivingEntity.class, entityAABB))
             {
-                if (this.canHitEntity(i))
+                if (this.canHitEntity(i) && this.getOwner() != null)
                 {
                     i.invulnerableTime = 0;
-                    i.hurt(damageSources().magic(), 2.5f);
+                    i.hurt(getOwner().damageSources().magic(), 2.5f);
                 }
             }
         }
