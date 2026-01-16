@@ -43,9 +43,7 @@ public class FlatParticle extends TextureSheetParticle {
 			float rotation_angle = this.roll;
 			Vector3f rotation_axis = new Vector3f(0.0f, 0.0f, 1.0f);
 
-			QUATERNION.rotateY(Mth.lerp(ticks, this.oRoll, this.roll));
-
-			Quaternionf quaternionf = QuaternionUtils.flatQuaternion();
+			Quaternionf quaternionf = QuaternionUtils.flatQuaternion().rotateLocalY(this.roll);
 
 			double half_angle_rad = Math.toRadians(rotation_angle / 2.0);
 			double rot_w = Math.cos(half_angle_rad);

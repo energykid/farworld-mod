@@ -30,7 +30,11 @@ public class ApocalypseRoarParticle extends OrientedParticle {
 
         this.quadSize = 1f;
 
-        this.lifetime = level.getRandom().nextInt(2, 4);
+        this.lifetime = 3;
+
+        this.xo = 0;
+        this.yo = 0;
+        this.zo = 0;
 
         this.roll = level.getRandom().nextFloat() * 4f;
         this.oRoll = roll;
