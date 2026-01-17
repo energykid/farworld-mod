@@ -4,6 +4,7 @@ import net.ennway.farworld.entity.projectile.ApocalypseBreathProjectile;
 import net.ennway.farworld.registries.ModAttachments;
 import net.ennway.farworld.registries.ModEntities;
 import net.ennway.farworld.registries.ModItems;
+import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.utils.AccessoryUtils;
 import net.ennway.farworld.utils.ServerUtils;
 import net.minecraft.commands.Commands;
@@ -25,5 +26,9 @@ public class ApocalypseEvents {
     @SubscribeEvent
     public static void breathe(PlayerTickEvent.Post evt) {
         evt.getEntity().setData(ModAttachments.APOCALYPSE_ABILITY, evt.getEntity().getData(ModAttachments.APOCALYPSE_ABILITY) - 1f);
+        if (evt.getEntity().getData(ModAttachments.APOCALYPSE_ABILITY) == 5)
+        {
+            evt.getEntity().playSound(ModSounds.APOCALYPSE_COOLDOWN_OVER.get());
+        }
     }
 }

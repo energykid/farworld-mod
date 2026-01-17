@@ -294,12 +294,12 @@ public class ModItems {
 
     public static final DeferredItem<Item> BLAZE_LOCKET = ITEMS_ALL.register(
             "blaze_locket",
-            () -> new BlazeLocket(new Item.Properties().attributes(ItemAttributeModifiers.builder().build()))
+            () -> new BlazeLocket(new Item.Properties())
     );
 
     public static final DeferredItem<Item> BREEZE_RING = ITEMS_ALL.register(
             "breeze_ring",
-            () -> new BreezeRing(new Item.Properties().attributes(ItemAttributeModifiers.builder().build()))
+            () -> new BreezeRing(new Item.Properties())
     );
 
     public static final DeferredItem<Item> SKELETON_ARM = ITEMS_ALL.register(
@@ -318,19 +318,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> APOCALYPSE_CORE = ITEMS_ALL.register(
             "apocalypse_core",
-            () -> new ApocalypseCore(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
-                    Attributes.ATTACK_SPEED,
-                    new AttributeModifier(Attributes.ATTACK_SPEED.getKey().location(), 0.5, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.ANY
-            ).add(
-                    Attributes.ARMOR,
-                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 3, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.ANY
-            ).add(
-                    Attributes.ARMOR_TOUGHNESS,
-                    new AttributeModifier(Attributes.ARMOR_TOUGHNESS.getKey().location(), 3, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.ANY
-            ).build()))
+            () -> new ApocalypseCore(new Item.Properties())
     );
 
     public static final DeferredItem<Item> GOLEM_HEART = ITEMS_ALL.register(

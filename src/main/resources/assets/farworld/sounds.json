@@ -55,6 +55,9 @@
   "apocalypse_fire_breath": {
     "sounds": ["farworld:apocalypse_fire_breath"]
   },
+  "apocalypse_cooldown_over": {
+    "sounds": ["farworld:apocalypse_cooldown_over"]
+  },
 
   "music.armageddon_simple_things": {
     "sounds": ["farworld:music/armageddon_simple_things"],

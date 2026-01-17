@@ -4,10 +4,7 @@ import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityBla
 import net.ennway.farworld.registries.ModEntities;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.OwnableEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.level.Level;
@@ -20,6 +17,7 @@ import org.jetbrains.annotations.Nullable;
 public class ApocalypseBreathProjectile extends AbstractHurtingProjectile {
     public ApocalypseBreathProjectile(EntityType<? extends AbstractHurtingProjectile> entityType, Level level) {
         super(entityType, level);
+        this.noPhysics = false;
     }
 
     public int frame = 0;
@@ -48,10 +46,10 @@ public class ApocalypseBreathProjectile extends AbstractHurtingProjectile {
 
     @Override
     public void tick() {
-        super.tick();
         setDeltaMovement(getDeltaMovement().multiply(0.9f, 0.85f, 0.9f));
+        move(MoverType.SELF, getDeltaMovement());
         this.frame++;
-        if (this.frame >= 14 && this.level().isClientSide()) {
+        if (this.frame >= 14) {
             this.discard();
         }
         timer++;

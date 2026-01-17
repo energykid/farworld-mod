@@ -95,6 +95,7 @@ public class ModSounds {
     public static final Supplier<SoundEvent> CHARGE_BUNKER_FIRE = createSoundEvent("charge_bunker_fire");
 
     public static final Supplier<SoundEvent> APOCALYPSE_FIRE_BREATH = createSoundEvent("apocalypse_fire_breath");
+    public static final Supplier<SoundEvent> APOCALYPSE_COOLDOWN_OVER = createSoundEvent("apocalypse_cooldown_over");
 
     private static ResourceKey<JukeboxSong> createSong(String name)
     {

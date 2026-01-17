@@ -95,7 +95,7 @@
   "item.farworld.glittering_aspect" : "Glittering Aspect",
   "accessory.item.farworld.glittering_aspect.desc" : "Move substantially faster at full hunger",
   "item.farworld.apocalypse_core" : "Apocalypse Core",
-  "accessory.item.farworld.apocalypse_core.desc" : "+10% damage dealt, extra armor, attack faster, Ender Pearls don't harm you, and Endermen are passive",
+  "accessory.item.farworld.apocalypse_core.desc" : "Right-click with an empty hand to breathe dragon fire",
 
   "item.farworld.bloomed_spawn_egg" : "Bloomed Spawn Egg",
   "item.farworld.soul_golem_spawn_egg" : "Soul Steel Golem Spawn Egg",
