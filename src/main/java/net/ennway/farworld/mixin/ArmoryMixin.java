@@ -1,15 +1,20 @@
 package net.ennway.farworld.mixin;
 
 import net.ennway.farworld.Farworld;
+import net.ennway.farworld.event.ExtraModelEvent;
 import net.ennway.farworld.item.data.ArmorAccessories;
 import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModTags;
+import net.ennway.farworld.utils.BehaviorUtils;
+import net.ennway.farworld.utils.ServerUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -31,6 +36,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
+import java.util.Map;
 
 @Mixin(value = Item.class)
 public abstract class ArmoryMixin {
@@ -218,6 +224,7 @@ public abstract class ArmoryMixin {
                     } else {
                         if (!slot.getItem().isEmpty())
                         {
+
                             int i = bundlecontents$mutable.tryInsert(stack, other);
                             if (i > 0) {
                                 this.farworld_mod$playInsertSound(player);

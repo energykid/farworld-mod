@@ -1,6 +1,8 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "render_type": "minecraft:translucent",
+  "parent": "farworld:block/cube_all_emissive",
   "textures": {
-    "all": "farworld:block/charged_sleekstone"
+    "all": "farworld:block/charged_sleekstone",
+    "layer": "farworld:block/charged_sleekstone_overlay"
   }
 }

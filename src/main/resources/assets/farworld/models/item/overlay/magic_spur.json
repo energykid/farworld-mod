@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "farworld:item/overlay/magic_spur"
+  },
+  "render_type": "translucent"
+}

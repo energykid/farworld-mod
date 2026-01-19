@@ -20,7 +20,23 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
+
 public class ModItems {
+
+
+    public static final List<String> ALL_ACCESSORY_NAMES =
+            List.of(
+                    "goggles",
+                    "apocalypse_core",
+                    "obsidian_keepsake",
+                    "iron_cuff",
+                    "cobalt_cuff",
+                    "glittering_aspect",
+                    "magic_spur",
+                    "blaze_locket"
+            );
+
     public static final DeferredRegister.Items ITEMS_ALL = DeferredRegister.createItems(Farworld.MOD_ID);
 
     public static final DeferredItem<Item> CHERRIES = ITEMS_ALL.register("cherries",
@@ -288,13 +304,18 @@ public class ModItems {
                     new AttributeModifier(Attributes.ARMOR_TOUGHNESS.getKey().location(), 2, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY).add(
                     Attributes.ARMOR,
-                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 3, AttributeModifier.Operation.ADD_VALUE),
+                    new AttributeModifier(Attributes.ARMOR.getKey().location(), 4, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY).build()))
     );
 
     public static final DeferredItem<Item> BLAZE_LOCKET = ITEMS_ALL.register(
             "blaze_locket",
             () -> new BlazeLocket(new Item.Properties())
+    );
+
+    public static final DeferredItem<Item> GOGGLES = ITEMS_ALL.register(
+            "goggles",
+            () -> new Goggles(new Item.Properties())
     );
 
     public static final DeferredItem<Item> BREEZE_RING = ITEMS_ALL.register(

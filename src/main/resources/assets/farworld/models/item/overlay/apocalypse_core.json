@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "farworld:item/overlay/apocalypse_core"
+  },
+  "render_type": "translucent"
+}
