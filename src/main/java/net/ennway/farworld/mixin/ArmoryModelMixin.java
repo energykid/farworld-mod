@@ -23,6 +23,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.BundleContents;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
@@ -50,33 +51,31 @@ public abstract class ArmoryModelMixin {
         return (stack.is(ItemTags.HEAD_ARMOR) || stack.is(ItemTags.CHEST_ARMOR) || stack.is(ItemTags.LEG_ARMOR) || stack.is(ItemTags.FOOT_ARMOR));
     }
 
-    @Inject(method = "render", at = @At("TAIL"))
-    void postrender(ItemStack stack, ItemDisplayContext displayContext, boolean leftHand, PoseStack poseStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay, BakedModel p_model, CallbackInfo ci) {
-        if (stack.get(ModDataComponents.ARMOR_ACCESSORIES) != null) {
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;popPose()V", args = "ldc="))
+    void A(ItemStack stack, ItemDisplayContext displayContext, boolean leftHand, PoseStack poseStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay, BakedModel p_model, CallbackInfo ci)
+    {
+        if (stack.get(ModDataComponents.ARMOR_ACCESSORIES) != null)
+        {
             if (!Objects.requireNonNull(stack.get(ModDataComponents.ARMOR_ACCESSORIES)).isEmpty()) {
-                if (displayContext == ItemDisplayContext.GUI) {
-                    poseStack.pushPose();
+                poseStack.pushPose();
 
-                    poseStack.translate(-0.5f, -0.5f, -0.5f);
+                poseStack.scale(1.00015f, 1.00015f, 1.01f);
+                poseStack.translate(0, 0, -0.005f);
 
-                    poseStack.scale(1.0001f, 1.0001f, 1.0001f);
+                for (int stackNum = 0; stackNum < stack.get(ModDataComponents.ARMOR_ACCESSORIES).size(); stackNum++) {
 
-                    for (int stackNum = 0; stackNum < stack.get(ModDataComponents.ARMOR_ACCESSORIES).size(); stackNum++) {
+                    String name = ExtraModelEvent.getExtraModelName(stack.get(ModDataComponents.ARMOR_ACCESSORIES).getItemUnsafe(stackNum).getItem());
 
-                        String name = ExtraModelEvent.getExtraModelName(stack.get(ModDataComponents.ARMOR_ACCESSORIES).getItemUnsafe(stackNum).getItem());
+                    if (ModItems.ALL_ACCESSORY_NAMES.contains(name)) {
+                        BakedModel mdl = Minecraft.getInstance().getModelManager().getModel(
+                                ModelResourceLocation.standalone(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "item/overlay/" + name))
+                        );
 
-                        if (ModItems.ALL_ACCESSORY_NAMES.contains(name))
-                        {
-                            BakedModel model = Minecraft.getInstance().getModelManager().getModel(
-                                    ModelResourceLocation.standalone(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "item/overlay/" + name))
-                            );
-
-                            renderModelLists(model, stack, combinedLight, combinedOverlay, poseStack, bufferSource.getBuffer(model.getRenderTypes(stack, false).getFirst()));
-                        }
+                        renderModelLists(mdl, stack, combinedLight, combinedOverlay, poseStack, bufferSource.getBuffer(RenderType.CUTOUT));
                     }
-
-                    poseStack.popPose();
                 }
+
+                poseStack.popPose();
             }
         }
     }
