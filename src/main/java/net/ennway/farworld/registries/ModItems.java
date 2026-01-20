@@ -34,7 +34,8 @@ public class ModItems {
                     "cobalt_cuff",
                     "glittering_aspect",
                     "magic_spur",
-                    "blaze_locket"
+                    "blaze_locket",
+                    "skeleton_arm"
             );
 
     public static final DeferredRegister.Items ITEMS_ALL = DeferredRegister.createItems(Farworld.MOD_ID);
@@ -315,7 +316,13 @@ public class ModItems {
 
     public static final DeferredItem<Item> GOGGLES = ITEMS_ALL.register(
             "goggles",
-            () -> new Goggles(new Item.Properties())
+            () -> new Goggles(new Item.Properties().attributes(
+                    ItemAttributeModifiers.builder().add(
+                            Attributes.MINING_EFFICIENCY,
+                            new AttributeModifier(Attributes.MINING_EFFICIENCY.getKey().location(), 1, AttributeModifier.Operation.ADD_VALUE),
+                            EquipmentSlotGroup.ANY)
+                            .build())
+            )
     );
 
     public static final DeferredItem<Item> BREEZE_RING = ITEMS_ALL.register(

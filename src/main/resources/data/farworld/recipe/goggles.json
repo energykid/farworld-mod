@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "cuff",
+  "key": {
+    "B": {
+      "item": "minecraft:glass"
+    },
+    "R": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    "   ",
+    "BRB",
+    "R R"
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:goggles"
+  }
+}

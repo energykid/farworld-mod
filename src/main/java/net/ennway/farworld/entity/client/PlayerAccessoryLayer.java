@@ -29,17 +29,17 @@ import java.util.List;
 import java.util.Map;
 
 @OnlyIn(Dist.CLIENT)
-public class PlayerAccessoryLayer<T extends Player, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends HumanoidArmorLayer<T, M, A> {
+public class PlayerAccessoryLayer<T extends Player, M extends PlayerModel<T>, A extends PlayerModel<T>> extends HumanoidArmorLayer<T, M, A> {
     private static final ResourceLocation OUTER_LAYER_LOC = ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/models/armor/goggles.png");
     private static final ResourceLocation DROWNED_OUTER_LAYER_LOCATION = ResourceLocation.withDefaultNamespace("textures/entity/zombie/drowned_outer_layer.png");
 
-    private final HumanoidModel<T> model;
+    private final PlayerModel<T> model;
 
-    public PlayerAccessoryLayer(RenderLayerParent<T, M> renderer, A innerModel, A outerModel, ModelManager modelManager) {
+    public PlayerAccessoryLayer(RenderLayerParent<T, M> renderer, A innerModel, A outerModel, ModelManager modelManager, boolean slim) {
         super(renderer, innerModel, outerModel, modelManager);
-        MeshDefinition def = HumanoidModel.createMesh(new CubeDeformation(1.05f, 1.05f, 1.05f), 0f);
+        MeshDefinition def = PlayerModel.createMesh(new CubeDeformation(1.05f, 1.05f, 1.05f), slim);
         PartDefinition root = def.getRoot();
-        model = new HumanoidModel<>(root.bake(64, 64));
+        model = new PlayerModel<>(root.bake(64, 64), slim);
         innerModel.copyPropertiesTo(model);
     }
 

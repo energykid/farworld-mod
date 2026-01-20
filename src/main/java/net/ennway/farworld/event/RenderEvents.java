@@ -27,7 +27,7 @@ public class RenderEvents {
 
             if (renderer instanceof PlayerRenderer livingRenderer) {
                 livingRenderer.addLayer(
-                        new PlayerAccessoryLayer(livingRenderer, livingRenderer.getModel(), livingRenderer.getModel(), Minecraft.getInstance().getModelManager())
+                        new PlayerAccessoryLayer(livingRenderer, livingRenderer.getModel(), livingRenderer.getModel(), Minecraft.getInstance().getModelManager(), skin == PlayerSkin.Model.SLIM)
                 );
             }
         }
