@@ -23,6 +23,6 @@ public class Goggles extends AccessoryItem {
 
     @Override
     public void preTick(Player player, ItemStack stack, EntityTickEvent.Pre event) {
-        player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 2, 0, true, false));
+        //player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 2, 0, true, false));
     }
 }

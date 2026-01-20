@@ -1,6 +1,7 @@
 package net.ennway.farworld.mixin;
 
 import net.ennway.farworld.registries.ModItems;
+import net.minecraft.client.model.HumanoidArmorModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.core.component.DataComponents;
