@@ -152,20 +152,30 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         return true;
     }
 
-    public void rotateToNearestPlayer()
+    public void rotateToTarget()
     {
-        Entity plr = this.getTarget();
-        if (plr != null)
+        LivingEntity trg = this.getTarget();
+        if (trg != null && trg.isAlive())
         {
-            this.rot = Mth.rotLerp(this.getEntityData().get(ROTATION_LERP), this.rot, -look(plr.position()));
+            this.rot = Mth.rotLerp(this.getEntityData().get(ROTATION_LERP), this.rot, -look(trg.position()));
         }
     }
 
     float progress = 0f;
 
     @Override
-    public void tick() {
-        if (getTarget() == null)
+    protected void customServerAiStep() {
+
+        if (getTarget() == null || getTarget().isDeadOrDying())
+        {
+            setTarget(level().getNearestPlayer(this, 20));
+        }
+    }
+
+    @Override
+    public void aiStep() {
+
+        if (getTarget() == null || getTarget().isDeadOrDying())
         {
             setTarget(level().getNearestPlayer(this, 20));
         }
@@ -189,7 +199,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
             doAI();
         }
 
-        super.tick();
+        super.aiStep();
     }
 
     @Override
@@ -217,7 +227,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         {
             this.entityData.set(ROTATION_LERP, 0.5f);
 
-            rotateToNearestPlayer();
+            rotateToTarget();
             if (this.getEntityData().get(ATTACK_TIME_1) % 6 == 1 && this.getEntityData().get(ATTACK_TIME_1) < 15)
             {
                 Vec3 pos = this.getNearTargetPosition(9);
@@ -232,7 +242,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_SLOW_FLY)
         {
             this.entityData.set(ROTATION_LERP, 0.2f);
-            rotateToNearestPlayer();
+            rotateToTarget();
             if (getTarget() != null)
             {
                 this.setDeltaMovement(getTarget().position().subtract(position()).normalize().multiply(0.1, 0.1, 0.1));
@@ -249,7 +259,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         }
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_BLAST)
         {
-            rotateToNearestPlayer();
+            rotateToTarget();
             this.entityData.set(ROTATION_LERP, 0f);
             if (getTarget() != null)
             {
@@ -306,7 +316,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_GATLING)
         {
             getEntityData().set(SHOULD_TILT_HEAD, true);
-            rotateToNearestPlayer();
+            rotateToTarget();
             if (getEntityData().get(ATTACK_TIME_1) == 2)
             {
                 zipToPlayer(8, 1);
@@ -333,7 +343,7 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         if (getEntityData().get(ATTACK_STATE) == ATTACK_STATE_ENERGY_RAIN)
         {
             getEntityData().set(ROTATION_LERP, 0.5f);
-            rotateToNearestPlayer();
+            rotateToTarget();
             if (getEntityData().get(ATTACK_TIME_1) == 2)
             {
                 zipToPlayer(10, 4);
