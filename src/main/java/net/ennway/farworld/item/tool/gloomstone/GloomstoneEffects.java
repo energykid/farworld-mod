@@ -16,9 +16,6 @@ public class GloomstoneEffects {
     {
         if (attacker instanceof Player plr)
         {
-            target.addEffect(
-                    new MobEffectInstance(ModEffects.PARALYSIS, 12)
-            );
             int chance = 20;
             if (attacker.getRandom().nextInt(100) < chance)
             {
