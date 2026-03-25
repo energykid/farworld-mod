@@ -2,6 +2,7 @@ package net.ennway.farworld.particle;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.ennway.farworld.particle.base.FlatParticle;
+import net.ennway.farworld.registries.ModSounds;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -9,6 +10,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.sounds.SoundSource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,6 +20,8 @@ public class RedstoneTeleportShockwaveParticle extends FlatParticle {
 
     public RedstoneTeleportShockwaveParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z, spriteSet);
+
+        level.playLocalSound(x, y, z, ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.NEUTRAL, 1, 1, false);
 
         this.rollSpeed = 0.25f;
 

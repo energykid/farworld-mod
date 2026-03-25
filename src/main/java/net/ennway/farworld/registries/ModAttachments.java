@@ -17,6 +17,9 @@ public class ModAttachments {
     public static final Supplier<AttachmentType<Float>> DIMENSION_TRANSITION_COOLDOWN = ATTACHMENT_TYPES.register(
             "dimension_transition_cooldown", () -> AttachmentType.builder(() -> 0f).serialize(Codec.FLOAT).build()
     );
+    public static final Supplier<AttachmentType<Integer>> TP_COOLDOWN = ATTACHMENT_TYPES.register(
+            "tp_cooldown", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+    );
     public static final Supplier<AttachmentType<Boolean>> BATTLE_STANCE = ATTACHMENT_TYPES.register(
             "battle_stance", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
     );

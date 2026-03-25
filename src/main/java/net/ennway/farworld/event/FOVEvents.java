@@ -53,6 +53,6 @@ public class FOVEvents {
             bystoneFOVMod = Mth.lerp(0.2f, bystoneFOVMod, 0f);
         }
 
-        event.setNewFovModifier(event.getNewFovModifier() * bowMod(event.getPlayer()) * (1f - bystoneFOVMod));
+        event.setNewFovModifier((event.getNewFovModifier() * bowMod(event.getPlayer())) * (1f - bystoneFOVMod));
     }
 }

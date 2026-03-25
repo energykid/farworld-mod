@@ -51,17 +51,6 @@ public class RedstoneTeleporterBE extends BlockEntity {
                         getBlockPos().getX() + 1, getBlockPos().getY(), getBlockPos().getZ() + 1));
 
         if (entities.isEmpty()) cooldown--;
-
-        if (!inventory.getStackInSlot(0).isEmpty())
-        {
-            if (cooldown <= 0)
-            {
-                if (getLevel().hasNeighborSignal(getBlockPos()))
-                {
-                    teleport(getLevel());
-                }
-            }
-        }
     }
 
     public final ItemStackHandler inventory = new ItemStackHandler(1);
@@ -70,57 +59,13 @@ public class RedstoneTeleporterBE extends BlockEntity {
         super(ModBlockEntities.REDSTONE_TELEPORTER_BE.get(), pos, state);
     }
 
-    public void teleport(Level lvl) {
-        List<LivingEntity> entities = lvl.getEntitiesOfClass(LivingEntity.class,
-                new AABB(
-                        getBlockPos().getX(), getBlockPos().getY() + 3, getBlockPos().getZ(),
-                        getBlockPos().getX() + 1, getBlockPos().getY(), getBlockPos().getZ() + 1));
-
-        for (LivingEntity entity : entities) {
-            BlockPos nearestTo = findNearestTo(lvl, getBlockPos());
-
-            if (nearestTo != null) {
-                tpFX(nearestTo, entity);
-                entity.moveTo(nearestTo.getCenter().x, nearestTo.above().getBottomCenter().y, nearestTo.getCenter().z);
-            }
-        }
-    }
-
-    public void tpFX(BlockPos nearestTo, Entity ent) {
-
-        if (getLevel().getBlockEntity(nearestTo) instanceof RedstoneTeleporterBE otherTP)
-        {
-            getLevel().playLocalSound(getBlockPos(), ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.BLOCKS, 1, 1, false);
-            ent.playSound(ModSounds.REDSTONE_TELEPORTER_WOOSH.get());
-
-            otherTP.cooldown = 1;
-            cooldown = 1;
-            level.playLocalSound(getBlockPos(), ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.BLOCKS, 1, 1, false);
-            level.playLocalSound(nearestTo, ModSounds.REDSTONE_TELEPORTER_WOOSH.get(), SoundSource.BLOCKS, 1, 1, false);
-
-            level.addParticle(ModParticles.REDSTONE_TELEPORT_SHOCKWAVE.get(), true, nearestTo.getCenter().x, nearestTo.getY() + 1.1, nearestTo.getCenter().z, 0, 0, 0);
-            level.addParticle(ModParticles.REDSTONE_TELEPORT_UP.get(), true, nearestTo.getCenter().x, nearestTo.getY() + 1, nearestTo.getCenter().z, 0, 0, 0);
-
-            level.addParticle(ModParticles.REDSTONE_TELEPORT_SHOCKWAVE.get(), true, getBlockPos().getCenter().x, getBlockPos().getY() + 1.1, getBlockPos().getCenter().z, 0, 0, 0);
-            level.addParticle(ModParticles.REDSTONE_TELEPORT_UP.get(), true, getBlockPos().getCenter().x, getBlockPos().getY() + 1, getBlockPos().getCenter().z, 0, 0, 0);
-        }
-    }
-
-    MinecraftServer getServerFrom(Level lvl)
-    {
-        if (lvl.getServer() == null)
-        {
-            return Minecraft.getInstance().getSingleplayerServer();
-        }
-        return lvl.getServer();
-    }
-
     @Nullable
-    public BlockPos findNearestTo(Level lvl, BlockPos posFrom) {
+    public BlockPos findNearestTo(Entity stoodOnEntity, BlockPos posFrom) {
         BlockPos targetPosition = null;
 
+        if (stoodOnEntity instanceof ServerPlayer servPlr)
         {
-            ServerLevel lev = getServerFrom(lvl).getLevel(lvl.dimension());
+            ServerLevel lev = servPlr.serverLevel();
 
             PoiManager manager = lev.getPoiManager();
             manager.ensureLoadedAndValid(lev, posFrom, 0);
