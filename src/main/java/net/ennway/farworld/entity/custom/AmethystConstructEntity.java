@@ -213,7 +213,7 @@ public class AmethystConstructEntity extends DelayedAttackingMonster {
             }
         }
 
-        if (itemTarget != null && itemSlotFree())
+        if (itemTarget != null && itemSlotFree() && !this.isDeadOrDying())
         {
             if (this.distanceToSqr(itemTarget) < 1f)
             {
