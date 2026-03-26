@@ -125,12 +125,6 @@ public class ModEntities {
                     SoulGolemModel::createBodyLayer,
                     SoulGolemRenderer::new
             ),
-            new NonGeoEntityLayerDefinition<BrittleEntity>(
-                    BRITTLE,
-                    BrittleModel.LAYER_LOCATION,
-                    BrittleModel::createBodyLayer,
-                    BrittleRenderer::new
-            ),
             new NonGeoEntityLayerDefinition<DustbugEntity>(
                     DUSTBUG,
                     DustbugModel.LAYER_LOCATION,
@@ -178,6 +172,10 @@ public class ModEntities {
 
     //region Geo Entity Renderers
     public static final List<GeoEntityRendererDefinition> geoMobDefinitions = List.of(
+            new GeoEntityRendererDefinition<BrittleEntity>(
+                    BRITTLE,
+                    BrittleRenderer::new
+            ),
             new GeoEntityRendererDefinition<RedstoneCuriosityEntity>(
                     REDSTONE_CURIOSITY,
                     RedstoneCuriosityRenderer::new

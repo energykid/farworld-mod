@@ -204,6 +204,8 @@ public class Farworld
         {
             event.insertAfter(Items.RECOVERY_COMPASS.getDefaultInstance(), ModItems.WISHBONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
+            event.insertAfter(ModItems.WISHBONE.toStack(), ModItems.DURATHYST_CLUSTER.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.NETHERITE_HOE.getDefaultInstance(), ModItems.ALLSAW.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.MUSIC_DISC_WAIT.getDefaultInstance(), ModItems.WHIRLING_WORLD_DISC.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

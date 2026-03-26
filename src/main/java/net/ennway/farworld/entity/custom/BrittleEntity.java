@@ -1,6 +1,7 @@
 package net.ennway.farworld.entity.custom;
 
 import net.ennway.farworld.Farworld;
+import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityEntity;
 import net.ennway.farworld.entity.goal.FindFuelGoal;
 import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.registries.ModSounds;
@@ -14,6 +15,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -52,12 +54,21 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoAnimatable;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.constant.DefaultAnimations;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
 
-public class BrittleEntity extends Monster {
+public class BrittleEntity extends Monster implements GeoEntity {
 
     public float walkAnimationScale = 0F;
 
@@ -78,13 +89,32 @@ public class BrittleEntity extends Monster {
 
     public final TargetingConditions targeting = TargetingConditions.forCombat().range(4.0).ignoreLineOfSight();
 
+    public class BrittleAttackGoal extends MeleeAttackGoal
+    {
+        public BrittleAttackGoal(PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
+            super(mob, speedModifier, followingTargetEvenIfNotSeen);
+        }
+
+        @Override
+        protected void checkAndPerformAttack(LivingEntity target) {
+            if (this.canPerformAttack(target)) {
+                this.resetAttackCooldown();
+                if (this.mob instanceof BrittleEntity entity)
+                {
+                    entity.triggerAnim("attack_controller", "attack");
+                }
+                this.mob.doHurtTarget(target);
+            }
+        }
+    }
+
     @Override
     protected void registerGoals() {
         super.registerGoals();
 
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0, false));
+        this.goalSelector.addGoal(2, new BrittleAttackGoal(this, 1.0, false));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
     }
@@ -149,6 +179,27 @@ public class BrittleEntity extends Monster {
             ((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 140 * (int)f), this);
         }
 
+        if (level() instanceof ServerLevel)
+            triggerAnim("attack_controller", "attack");
+
         return flag;
+    }
+
+    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
+
+    protected static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
+        controllers.add(DefaultAnimations.genericWalkIdleController(this));
+
+        controllers.add(new AnimationController<>(this, "attack_controller", animTest -> PlayState.STOP)
+                .triggerableAnim("attack", ATTACK_ANIM));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return geoCache;
     }
 }

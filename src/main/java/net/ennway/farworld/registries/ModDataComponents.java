@@ -25,6 +25,11 @@ public class ModDataComponents {
             builder -> builder.persistent(Codec.INT)
     );
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> EXP_SATURATION = register(
+            "exp_saturation",
+            builder -> builder.persistent(Codec.INT)
+    );
+
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> COOLDOWN = register(
             "cooldown",
             builder -> builder.persistent(Codec.INT)
@@ -48,6 +53,11 @@ public class ModDataComponents {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> HAS_ACCESSORY = register(
             "has_accessory",
             builder -> builder.persistent(Codec.BOOL)
+    );
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Float>> EFFECT_INTENSITY = register(
+            "effect_intensity",
+            builder -> builder.persistent(Codec.FLOAT)
     );
 
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator)

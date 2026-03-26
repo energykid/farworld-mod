@@ -1,0 +1,13 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "farworld:item/durathyst_cluster"
+  },
+  "overrides": [
+    { "predicate": { "custom_model_data": 0 }, "model": "farworld:item/durathyst_models/durathyst1" },
+
+    { "predicate": { "custom_model_data": 1 }, "model": "farworld:item/durathyst_models/durathyst2" },
+
+    { "predicate": { "custom_model_data": 2 }, "model": "farworld:item/durathyst_models/durathyst3" }
+  ]
+}

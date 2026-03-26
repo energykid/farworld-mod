@@ -1,0 +1,6 @@
+{
+  "music.end": {
+    "sounds": ["farworld:music/armageddon_simple_things"],
+    "stream": true
+  }
+}

@@ -18,6 +18,8 @@
   "lore.farworld.gloomspores" : "This item can be used to brew Potions of Paralysis, or combined with stone tools at a Smithing Table to craft Gloomstone tools.",
   "item.farworld.geode_fruit" : "Geode Fruit",
   "lore.farworld.geode_fruit" : "A tasty fruit grown inside the Geode Nuts that can be found on Stonewood trees.",
+  "item.farworld.durathyst_cluster" : "Durathyst Cluster",
+  "lore.farworld.durathyst_cluster" : "A mystical geode taken from an Amethyst Construct. Can restore durability using stored experience if applied to a tool.",
   "item.farworld.wishbone" : "Wishbone",
   "lore.farworld.wishbone" : "A small, brittle trinket that can teleport you back home once. Can be repaired using Bottles o' Enchanting.",
   "item.farworld.consumed_wishbone" : "§7Wishbone (Consumed)",

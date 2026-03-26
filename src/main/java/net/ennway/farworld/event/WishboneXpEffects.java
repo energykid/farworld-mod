@@ -1,6 +1,7 @@
 package net.ennway.farworld.event;
 
 import net.ennway.farworld.Farworld;
+import net.ennway.farworld.item.tool.DurathystCluster;
 import net.ennway.farworld.item.tool.Wishbone;
 import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModItems;
@@ -9,6 +10,7 @@ import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -39,6 +41,20 @@ public class WishboneXpEffects {
                     if (EnchantmentHelper.hasTag(stack, Wishbone.MENDING))
                     {
                         stack.setDamageValue(stack.getDamageValue() - event.getOrb().getValue());
+                    }
+                }
+            }
+
+            for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+                if (player.getInventory().getItem(i).is(ModItems.DURATHYST_CLUSTER.get()))
+                {
+                    ItemStack stack = player.getInventory().getItem(i);
+
+                    if (stack.get(ModDataComponents.EXP_SATURATION) < DurathystCluster.MAX_SATURATION)
+                    {
+                        stack.set(ModDataComponents.EXP_SATURATION, stack.get(ModDataComponents.EXP_SATURATION) + event.getOrb().getValue());
+                        stack.set(ModDataComponents.EXP_SATURATION, Mth.clamp(stack.get(ModDataComponents.EXP_SATURATION), 0, DurathystCluster.MAX_SATURATION));
+                        break;
                     }
                 }
             }

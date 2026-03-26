@@ -58,6 +58,9 @@ public class ModItems {
     public static final DeferredItem<Item> WISHBONE = ITEMS_ALL.register("wishbone",
             Wishbone::new);
 
+    public static final DeferredItem<Item> DURATHYST_CLUSTER = ITEMS_ALL.register("durathyst_cluster",
+            DurathystCluster::new);
+
     public static final DeferredItem<BrittlePowder> BRITTLE_POWDER = ITEMS_ALL.register("brittle_powder",
             () -> new BrittlePowder(new BrittlePowder.Properties()));
 

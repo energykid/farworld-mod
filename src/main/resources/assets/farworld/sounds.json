@@ -76,7 +76,7 @@
     "stream": true
   },
   "music.geodic_columns": {
-    "sounds": ["farworld:music/jewels"],
+    "sounds": ["farworld:music/jewels", "farworld:music/reinvent"],
     "stream": true
   },
 
