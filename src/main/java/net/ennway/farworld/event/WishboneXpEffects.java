@@ -52,7 +52,7 @@ public class WishboneXpEffects {
 
                     if (stack.get(ModDataComponents.EXP_SATURATION) < DurathystCluster.MAX_SATURATION)
                     {
-                        stack.set(ModDataComponents.EXP_SATURATION, stack.get(ModDataComponents.EXP_SATURATION) + event.getOrb().getValue());
+                        stack.set(ModDataComponents.EXP_SATURATION, stack.get(ModDataComponents.EXP_SATURATION) + (event.getOrb().getValue() * 3));
                         stack.set(ModDataComponents.EXP_SATURATION, Mth.clamp(stack.get(ModDataComponents.EXP_SATURATION), 0, DurathystCluster.MAX_SATURATION));
                         break;
                     }

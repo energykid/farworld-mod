@@ -17,7 +17,7 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 
 public class DurathystCluster extends Item {
-    public static final int MAX_SATURATION = 300;
+    public static final int MAX_SATURATION = 1000;
 
     public DurathystCluster() {
         super(new Properties().stacksTo(1)

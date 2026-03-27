@@ -2,27 +2,42 @@
   "feature": "farworld:gloomcap_patch",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 7
-    },
-    {
       "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING"
+      "heightmap": "MOTION_BLOCKING_NO_LEAVES"
     },
     {
       "type": "minecraft:count",
       "count": {
-        "type": "minecraft:clamped",
-        "max_inclusive": 1,
-        "min_inclusive": 0,
-        "source": {
-          "type": "minecraft:uniform",
-          "max_inclusive": 1,
-          "min_inclusive": -3
-        }
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "weight": 1,
+            "data": 2
+          },
+          {
+            "weight": 1,
+            "data": 4
+          },
+          {
+            "weight": 1,
+            "data": 0
+          },
+          {
+            "weight": 1,
+            "data": 8
+          },
+          {
+            "weight": 1,
+            "data": 12
+          },
+          {
+            "weight": 1,
+            "data": 16
+          }
+        ]
       }
     },
     {

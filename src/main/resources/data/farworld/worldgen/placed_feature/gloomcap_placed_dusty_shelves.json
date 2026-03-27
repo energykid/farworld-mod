@@ -1,0 +1,26 @@
+{
+  "feature": "farworld:gloomcap_patch_bystone",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:not",
+        "predicate": {
+          "type": "minecraft:matching_block_tag",
+          "tag": "minecraft:leaves"
+        }
+      }
+    },
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 1
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 2
+    }
+  ]
+}

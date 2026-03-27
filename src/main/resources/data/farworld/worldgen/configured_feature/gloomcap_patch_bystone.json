@@ -6,10 +6,24 @@
         "type": "minecraft:simple_block",
         "config": {
           "to_place": {
-            "type": "minecraft:simple_state_provider",
+            "type": "minecraft:weighted_state_provider",
             "state": {
               "Name": "farworld:gloomcap"
-            }
+            },
+            "entries": [
+              {
+                "weight": 2,
+                "data": {
+                  "Name": "farworld:gloomcap"
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "farworld:gloomcap"
+                }
+              }
+            ]
           }
         }
       },
@@ -23,7 +37,7 @@
         }
       ]
     },
-    "tries": 20,
+    "tries": 10,
     "xz_spread": 7,
     "y_spread": 3
   }
