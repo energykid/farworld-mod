@@ -1,11 +1,13 @@
 package net.ennway.farworld.effect;
 
+import com.mojang.blaze3d.shaders.Shader;
 import net.ennway.farworld.particle.ParalysisParticle;
 import net.ennway.farworld.particle.ParalysisParticleProvider;
 import net.ennway.farworld.registries.ModParticles;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleDescription;
 import net.minecraft.client.particle.ParticleEngine;
+import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;

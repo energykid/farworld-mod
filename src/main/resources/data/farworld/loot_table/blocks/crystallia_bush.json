@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farworld:crystallia_bush"
+        }
+      ]
+    }
+  ],
+  "functions": [],
+  "random_sequence": "minecraft:blocks/dead_bush"
+}

@@ -1,6 +1,8 @@
-package net.ennway.farworld.feature;
+package net.ennway.farworld.registries;
+
 
 import net.ennway.farworld.Farworld;
+import net.ennway.farworld.feature.*;
 import net.ennway.farworld.feature.configuration.TemplateFeatureConfiguration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -53,6 +55,20 @@ public class ModFeatureTypes {
         @Override
         public Feature<NoneFeatureConfiguration> get() {
             return new PointedAmethystFeature(NoneFeatureConfiguration.CODEC);
+        }
+    });
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> TUFF_SPIKE = FEATURES_ALL.register("tuff_spike", new Supplier<Feature<NoneFeatureConfiguration>>() {
+        @Override
+        public Feature<NoneFeatureConfiguration> get() {
+            return new TuffSpikeFeature(NoneFeatureConfiguration.CODEC);
+        }
+    });
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> REDSTONE_SPIKE = FEATURES_ALL.register("redstone_spike", new Supplier<Feature<NoneFeatureConfiguration>>() {
+        @Override
+        public Feature<NoneFeatureConfiguration> get() {
+            return new RedstoneSpikeFeature(NoneFeatureConfiguration.CODEC);
         }
     });
 

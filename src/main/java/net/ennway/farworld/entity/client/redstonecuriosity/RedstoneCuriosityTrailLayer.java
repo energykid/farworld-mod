@@ -31,7 +31,8 @@ public class RedstoneCuriosityTrailLayer extends AutoGlowingGeoLayer {
     }
 
     @Override
-    public void render(PoseStack poseStack, GeoAnimatable animatable, BakedGeoModel bakedModel, @Nullable RenderType renderType, MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
+    public void render(PoseStack poseStack, GeoAnimatable animatable, BakedGeoModel bakedModel, @Nullable RenderType renderType, MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay)
+    {
 
         RedstoneCuriosityEntity entity = (RedstoneCuriosityEntity) animatable;
 

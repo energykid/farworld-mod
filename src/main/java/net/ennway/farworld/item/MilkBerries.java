@@ -10,8 +10,7 @@ public class MilkBerries extends BlockItem {
                 new FoodProperties.Builder()
                 .nutrition(2)
                 .fast()
-                .alwaysEdible()
-                .saturationModifier(1.5f)
+                .saturationModifier(0.5f)
                 .build()));
     }
 }

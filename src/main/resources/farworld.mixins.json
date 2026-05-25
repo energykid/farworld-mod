@@ -12,7 +12,8 @@
     "ArmoryMixin",
     "ArmoryModelMixin",
     "DurathystClusterRenderMixin",
-    "ChargeBunkerPlayerMixin"
+    "ChargeBunkerPlayerMixin",
+    "SparklingEffectMixin"
   ],
 
   "injectors": {

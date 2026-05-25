@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "inverted=false": {
+      "model": "farworld:block/dusty_flowstone"
+    },
+    "inverted=true": {
+      "model": "farworld:block/inverse_dusty_flowstone"
+    }
+  }
+}

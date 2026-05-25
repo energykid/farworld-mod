@@ -288,6 +288,14 @@ public class ModBlocks {
                     .strength(1.2F, 3.0F)
                     .sound(SoundType.NETHER_WOOD)));
 
+    public static final DeferredBlock<Block> CRYSTALLIA_BUSH = BLOCKS_ALL.register(
+            "crystallia_bush",
+            () -> new CrystalliaBushBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .strength(0.6F, 0.5F)
+                    .noCollission()
+                    .sound(SoundType.NETHER_WOOD)));
+
     public static final DeferredBlock<Block> STRIPPED_STONEWOOD = BLOCKS_ALL.register(
             "stripped_stonewood",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
@@ -424,6 +432,25 @@ public class ModBlocks {
                     .sound(SoundType.AZALEA_LEAVES)
                     .isViewBlocking((a,b,c) -> false)));
 
+
+    public static final DeferredBlock<Block> CRYSTALLIA_LEAVES = BLOCKS_ALL.register(
+            "crystallia_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .strength(0.4F, 0F)
+                    .sound(SoundType.AZALEA_LEAVES)
+                    .noOcclusion()
+                    .isViewBlocking((a,b,c) -> false)));
+
+    public static final DeferredBlock<Block> FRUITLESS_CRYSTALLIA_LEAVES = BLOCKS_ALL.register(
+            "fruitless_crystallia_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .strength(0.4F, 0F)
+                    .noOcclusion()
+                    .sound(SoundType.AZALEA_LEAVES)
+                    .isViewBlocking((a,b,c) -> false)));
+
     public static final DeferredBlock<Block> HANGING_VINES = BLOCKS_ALL.register(
             "hanging_vines",
             () -> new HangingVinesBodyBlock(BlockBehaviour.Properties.of()
@@ -509,6 +536,13 @@ public class ModBlocks {
     public static final DeferredBlock<Block> LUSH_FLOWSTONE = BLOCKS_ALL.register(
             "lush_flowstone",
             () -> new LushFlowstoneBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(1.1F, 6.0F)
+                    .sound(SoundType.NYLIUM)));
+
+    public static final DeferredBlock<Block> DUSTY_FLOWSTONE = BLOCKS_ALL.register(
+            "dusty_flowstone",
+            () -> new DustyFlowstoneBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(1.1F, 6.0F)
                     .sound(SoundType.NYLIUM)));

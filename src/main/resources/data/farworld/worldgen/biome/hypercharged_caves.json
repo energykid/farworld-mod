@@ -23,6 +23,9 @@
   "carvers": {},
   "features": [
     [
+      "farworld:redstone_deltas_placed",
+      "farworld:redstone_spike_placed",
+      "farworld:long_brick_pillar_placed"
     ]
   ]
 }

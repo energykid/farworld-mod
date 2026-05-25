@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Mixin(value = ItemRenderer.class)
-public abstract class DurathystClusterRenderMixin {
+public class DurathystClusterRenderMixin {
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/neoforged/neoforge/client/ClientHooks;handleCameraTransforms(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemDisplayContext;Z)Lnet/minecraft/client/resources/model/BakedModel;", args = "ldc="))
     void renderstuff(ItemStack stack, ItemDisplayContext displayContext, boolean leftHand, PoseStack poseStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay, BakedModel p_model, CallbackInfo ci)

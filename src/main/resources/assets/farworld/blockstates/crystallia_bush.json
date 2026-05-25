@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "farworld:block/fruitless_crystallia_bush"
+    },
+    "berries=true": {
+      "model": "farworld:block/crystallia_bush"
+    }
+  }
+}

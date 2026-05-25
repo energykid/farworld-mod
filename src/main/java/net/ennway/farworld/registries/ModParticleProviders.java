@@ -46,6 +46,8 @@ public class ModParticleProviders {
 
         event.registerSpriteSet(ModParticles.PHOSPHEN_PARTICLE.get(), PhosphenParticleProvider::new);
 
+        event.registerSpriteSet(ModParticles.FALLING_DUST.get(), FallingDustParticle.Provider::new);
+
         event.registerSpriteSet(ModParticles.BYSTONE_PORTAL.get(), BystonePortalParticleProvider::new);
 
         event.registerSpriteSet(ModParticles.WISHBONE_SPARKLE.get(), WishboneSparkleParticleProvider::new);

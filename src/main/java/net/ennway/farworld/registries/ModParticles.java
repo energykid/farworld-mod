@@ -43,6 +43,10 @@ public class ModParticles {
             "phosphen_particle",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> FALLING_DUST = PARTICLE_TYPES.register(
+            "falling_dust",
+            () -> new SimpleParticleType(false)
+    );
     public static final Supplier<SimpleParticleType> DIAMOND_DUST = PARTICLE_TYPES.register(
             "diamond_dust",
             () -> new SimpleParticleType(false)

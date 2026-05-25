@@ -1,18 +1,13 @@
 package net.ennway.farworld;
 
-import net.ennway.farworld.block.entity.RedstoneTeleporterBE;
 import net.ennway.farworld.block.entity.RedstoneTeleporterBERenderer;
-import net.ennway.farworld.feature.ModFeatureTypes;
 import net.ennway.farworld.registries.*;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
 import net.ennway.farworld.registries.entity_definitions.NonGeoEntityLayerDefinition;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
-import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import org.slf4j.Logger;
 
@@ -31,7 +26,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Farworld.MOD_ID)
@@ -50,9 +44,9 @@ public class Farworld
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        ModAttachments.ATTACHMENT_TYPES.register(modEventBus);
         ModPois.POIS.register(modEventBus);
         ModItems.ITEMS_ALL.register(modEventBus);
+        ModAttachments.ATTACHMENT_TYPES.register(modEventBus);
         ModDataComponents.DATA_COMPONENT_TYPES.register(modEventBus);
         ModBlocks.BLOCKS_ALL.register(modEventBus);
         ModLootModifiers.GLOBAL_LOOT_MODIFIERS_ALL.register(modEventBus);
@@ -142,6 +136,7 @@ public class Farworld
             event.insertAfter(ModItems.CHERRIES.toStack(), ModItems.GEODE_NUT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GEODE_NUT.toStack(), ModItems.GEODE_FRUIT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GEODE_FRUIT.toStack(), ModItems.MILK_BERRIES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.MILK_BERRIES.toStack(), ModItems.CRYSTALLIAS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS)
         {
@@ -163,7 +158,8 @@ public class Farworld
             event.insertAfter(Items.PRISMARINE.getDefaultInstance(), ModItems.FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.FLOWSTONE.toStack(), ModItems.FLOWSTONE_CACHE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.FLOWSTONE_CACHE.toStack(), ModItems.COBBLED_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.COBBLED_FLOWSTONE.toStack(), ModItems.LUSH_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBBLED_FLOWSTONE.toStack(), ModItems.DUSTY_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DUSTY_FLOWSTONE.toStack(), ModItems.LUSH_FLOWSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.LUSH_FLOWSTONE.toStack(), ModItems.LUSH_FOLIAGE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.LUSH_FOLIAGE.toStack(), ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.FLOWERING_LUSH_FOLIAGE.toStack(), ModItems.SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -175,10 +171,13 @@ public class Farworld
 
             event.insertAfter(Items.FLOWERING_AZALEA.getDefaultInstance(), ModItems.STONEWOOD_LEAVES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.STONEWOOD_LEAVES.toStack(), ModItems.STONEWOOD_LEAVES_FLOWERED.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.STONEWOOD_LEAVES_FLOWERED.toStack(), ModItems.HANGING_VINES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STONEWOOD_LEAVES_FLOWERED.toStack(), ModItems.FRUITLESS_CRYSTALLIA_LEAVES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FRUITLESS_CRYSTALLIA_LEAVES.toStack(), ModItems.CRYSTALLIA_LEAVES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_LEAVES.toStack(), ModItems.HANGING_VINES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.HANGING_VINES.toStack(), ModItems.HANGING_FLORA.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.CHERRY_SAPLING.getDefaultInstance(), ModItems.STONEWOOD_SAPLING.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.STONEWOOD_SAPLING.toStack(), ModItems.GEODE_NUT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GEODE_NUT.toStack(), ModItems.CRYSTALLIA_BUSH.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
         {

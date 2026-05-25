@@ -55,6 +55,8 @@
       "farworld:ore_cobalt_placed",
       "farworld:flowstone_caches_placed",
       "farworld:tuff_piles_placed",
+      "farworld:dust_piles_placed",
+      "farworld:tuff_spike_placed",
       "farworld:milk_berries_placed",
       "farworld:gloomcap_placed_dusty_shelves"
     ]

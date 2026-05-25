@@ -24,7 +24,6 @@ import java.util.List;
 
 public class ModItems {
 
-
     public static final List<String> ALL_ACCESSORY_NAMES =
             List.of(
                     "goggles",
@@ -42,6 +41,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> CHERRIES = ITEMS_ALL.register("cherries",
             Cherries::new);
+    public static final DeferredItem<Item> CRYSTALLIAS = ITEMS_ALL.register("crystallias",
+            Crystallias::new);
     public static final DeferredItem<Item> PEAR = ITEMS_ALL.register("pear",
             Pear::new);
     public static final DeferredItem<Item> MILK_BERRIES = ITEMS_ALL.register("milk_berries",
@@ -504,6 +505,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_LEAVES_FLOWERED = ITEMS_ALL.register("stonewood_leaves_flowered",
             () -> new BlockItem(ModBlocks.STONEWOOD_LEAVES_FLOWERED.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> FRUITLESS_CRYSTALLIA_LEAVES = ITEMS_ALL.register("fruitless_crystallia_leaves",
+            () -> new BlockItem(ModBlocks.FRUITLESS_CRYSTALLIA_LEAVES.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_LEAVES = ITEMS_ALL.register("crystallia_leaves",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_LEAVES.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> POINTED_AMETHYST = ITEMS_ALL.register("pointed_amethyst",
             () -> new BlockItem(ModBlocks.POINTED_AMETHYST.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> HANGING_FLORA = ITEMS_ALL.register("hanging_flora",
@@ -512,8 +517,12 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.HANGING_VINES_END.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> STONEWOOD_SAPLING = ITEMS_ALL.register("stonewood_sapling",
             () -> new BlockItem(ModBlocks.STONEWOOD_SAPLING.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_BUSH = ITEMS_ALL.register("crystallia_bush",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_BUSH.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> LUSH_FLOWSTONE = ITEMS_ALL.register("lush_flowstone",
             () -> new BlockItem(ModBlocks.LUSH_FLOWSTONE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> DUSTY_FLOWSTONE = ITEMS_ALL.register("dusty_flowstone",
+            () -> new BlockItem(ModBlocks.DUSTY_FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DENSE_COAL_ORE = ITEMS_ALL.register("dense_coal_ore",
             () -> new BlockItem(ModBlocks.DENSE_COAL_ORE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> DENSE_IRON_ORE = ITEMS_ALL.register("dense_iron_ore",

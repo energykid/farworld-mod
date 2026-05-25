@@ -9,6 +9,7 @@ import net.ennway.farworld.particle.on_hit.SoulSmokeParticleProvider;
 import net.ennway.farworld.registries.ModBlocks;
 import net.ennway.farworld.registries.ModEntities;
 import net.ennway.farworld.registries.ModParticles;
+import net.ennway.farworld.registries.ModTags;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -98,7 +99,7 @@ public class PortalEvents {
     public static boolean cascadingLanternConversion(UseItemOnBlockEvent event, BlockPos pos, int num, Direction.Axis axis)
     {
         if (num > 0) {
-            if (event.getItemStack().is(Items.ECHO_SHARD)) {
+            if (event.getItemStack().is(ModTags.BYSTONE_PORTAL_ITEMS)) {
                 if (event.getLevel().getBlockState(pos).getBlock() == Blocks.LANTERN) {
                     Direction.Axis ax = null;
 

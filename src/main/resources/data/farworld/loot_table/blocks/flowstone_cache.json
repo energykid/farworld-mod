@@ -34,24 +34,68 @@
       "rolls": 2
     },
     {
-      "rolls": 5,
-      "bonus_rolls": 0,
+      "rolls": 2,
+      "bonus_rolls": {
+        "type": "minecraft:uniform",
+        "min": 0,
+        "max": 2
+      },
       "entries": [
         {
           "type": "minecraft:item",
           "name": "minecraft:emerald",
-          "weight": 4,
+          "weight": 1,
           "functions": []
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:diamond",
+          "name": "minecraft:amethyst_shard",
           "weight": 3
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:amethyst_shard",
-          "weight": 6
+          "name": "minecraft:raw_iron",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_nugget",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "farworld:raw_cobalt",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_nugget",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:lapis_lazuli",
+          "weight": 2
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "predicates": {
+                "minecraft:enchantments": [
+                  {
+                    "enchantments": "minecraft:silk_touch",
+                    "levels": {
+                      "min": 1
+                    }
+                  }
+                ]
+              }
+            }
+          }
         }
       ]
     },
@@ -60,15 +104,35 @@
       "entries": [
         {
           "type": "minecraft:empty",
-          "weight": 9
+          "weight": 20
         },
         {
           "type": "minecraft:item",
           "name": "farworld:glittering_aspect",
           "weight": 1
         }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "predicates": {
+                "minecraft:enchantments": [
+                  {
+                    "enchantments": "minecraft:silk_touch",
+                    "levels": {
+                      "min": 1
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
       ]
     }
   ],
-  "random_sequence": "farworld:blocks/dense_iron_ore"
+  "random_sequence": "farworld:blocks/flowstone_cache"
 }

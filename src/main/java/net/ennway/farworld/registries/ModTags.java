@@ -31,4 +31,8 @@ public class ModTags {
     public static final TagKey<Item> SWORDS = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.withDefaultNamespace("swords"));
+
+    public static final TagKey<Item> BYSTONE_PORTAL_ITEMS = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "can_light_bystone_portal"));
 }

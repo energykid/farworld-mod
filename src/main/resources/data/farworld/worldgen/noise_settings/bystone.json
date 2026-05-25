@@ -217,31 +217,6 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:stone_depth",
-          "offset": -6,
-          "surface_type": "floor",
-          "add_surface_depth": false,
-          "secondary_depth_range": 10
-        },
-        "then_run": {
-          "type": "minecraft:condition",
-          "if_true": {
-            "type": "minecraft:biome",
-            "biome_is": [
-              "farworld:dusty_shelves"
-            ]
-          },
-          "then_run": {
-            "type": "minecraft:block",
-            "result_state": {
-              "Name": "farworld:dust_block"
-            }
-          }
-        }
-      },
-      {
-        "type": "minecraft:condition",
-        "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
             "farworld:dusty_shelves"
@@ -250,16 +225,28 @@
         "then_run": {
           "type": "minecraft:condition",
           "if_true": {
-            "type": "minecraft:stone_depth",
-            "offset": -3,
-            "surface_type": "ceiling",
-            "add_surface_depth": false,
-            "secondary_depth_range": 7
+            "type": "minecraft:noise_threshold",
+            "noise": "minecraft:aquifer_barrier",
+            "min_threshold": -0.2,
+            "max_threshold": 2
           },
           "then_run": {
-            "type": "minecraft:block",
-            "result_state": {
-              "Name": "minecraft:tuff"
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:stone_depth",
+              "offset": 0,
+              "surface_type": "floor",
+              "add_surface_depth": false,
+              "secondary_depth_range": 0
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "farworld:dusty_flowstone",
+                "Properties": {
+                  "inverted": "false"
+                }
+              }
             }
           }
         }
@@ -410,6 +397,62 @@
               }
             }
           ]
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:noise_threshold",
+          "noise": "minecraft:aquifer_barrier",
+          "min_threshold": 0.2,
+          "max_threshold": 2
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:stone_depth",
+            "offset": 0,
+            "surface_type": "floor",
+            "add_surface_depth": false,
+            "secondary_depth_range": 0
+          },
+          "then_run": {
+            "type": "minecraft:block",
+            "result_state": {
+              "Name": "farworld:dusty_flowstone",
+              "Properties": {
+                "inverted": "false"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:noise_threshold",
+          "noise": "minecraft:aquifer_barrier",
+          "min_threshold": 0.2,
+          "max_threshold": 2
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:stone_depth",
+            "offset": 0,
+            "surface_type": "ceiling",
+            "add_surface_depth": false,
+            "secondary_depth_range": 0
+          },
+          "then_run": {
+            "type": "minecraft:block",
+            "result_state": {
+              "Name": "farworld:dusty_flowstone",
+              "Properties": {
+                "inverted": "true"
+              }
+            }
+          }
         }
       }
     ]
