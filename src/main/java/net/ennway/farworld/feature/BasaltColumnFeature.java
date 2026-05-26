@@ -69,18 +69,17 @@ public class BasaltColumnFeature extends Feature<NoneFeatureConfiguration> {
 
         return true;
     }
-    public boolean placeBranch(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext, int yy) {
+    public boolean placeBranch(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext, int yy)
+    {
         BlockPos origin = featurePlaceContext.origin();
         WorldGenLevel level = featurePlaceContext.level();
-
-        int rand = Mth.randomBetweenInclusive(featurePlaceContext.random(), 2, 3);
 
         if (level.getBlockState(origin).is(Blocks.AIR) || level.getBlockState(origin).canBeReplaced())
         {
             return false;
         }
 
-        BlockPos.MutableBlockPos posMid = new BlockPos(origin.getX() + Mth.floor(MathUtils.randomDouble(featurePlaceContext.random(), -5, 5)), yy, origin.getZ() + Mth.floor(MathUtils.randomDouble(featurePlaceContext.random(), -5, 5))).mutable();
+        BlockPos.MutableBlockPos posMid = new BlockPos(origin.getX() + Mth.floor(MathUtils.randomDouble(featurePlaceContext.random(), -2, 2)), yy, origin.getZ() + Mth.floor(MathUtils.randomDouble(featurePlaceContext.random(), -2, 2))).mutable();
 
         Direction dir = Direction.getRandom(featurePlaceContext.random());
         while (dir == Direction.UP || dir == Direction.DOWN)
