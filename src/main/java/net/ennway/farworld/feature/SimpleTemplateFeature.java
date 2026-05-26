@@ -40,7 +40,7 @@ public class SimpleTemplateFeature extends Feature<TemplateFeatureConfiguration>
         super(codec);
     }
 
-    private static boolean checkLoaded(ServerLevel level, ChunkPos start, ChunkPos end) {
+    public static boolean checkLoaded(ServerLevel level, ChunkPos start, ChunkPos end) {
         if (ChunkPos.rangeClosed(start, end).filter((p_313494_) -> {
             return !level.isLoaded(p_313494_.getWorldPosition());
         }).findAny().isPresent()) {

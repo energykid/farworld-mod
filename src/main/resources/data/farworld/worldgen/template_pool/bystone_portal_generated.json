@@ -1,0 +1,18 @@
+{
+  "name": "bystone_portal_generated",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "farworld:bystone_portal_generated",
+        "processors": {
+          "processors": []
+        },
+        "override_liquid_settings": "apply_waterlogging"
+      }
+    }
+  ]
+}

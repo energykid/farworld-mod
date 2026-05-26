@@ -52,7 +52,7 @@ public class DurathystCluster extends Item {
     public boolean overrideStackedOnOther(ItemStack stack, Slot slot, ClickAction action, Player player) {
         if (action == ClickAction.SECONDARY)
         {
-            if (slot.hasItem() && slot.getItem().isDamaged())
+            if (slot.hasItem() && slot.getItem().isDamaged() && isBarVisible(stack))
             {
                 int amt = stack.get(ModDataComponents.EXP_SATURATION);
                 amt = Math.min(amt, slot.getItem().getDamageValue());
