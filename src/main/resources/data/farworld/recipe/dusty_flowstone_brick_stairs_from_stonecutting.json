@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "farworld:dusty_flowstone_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "farworld:dusty_flowstone_brick_stairs"
+  }
+}

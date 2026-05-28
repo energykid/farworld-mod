@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "flowstone_brick_slab",
+  "key": {
+    "#": {
+      "item": "farworld:dusty_flowstone_bricks"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "farworld:dusty_flowstone_brick_stairs"
+  }
+}

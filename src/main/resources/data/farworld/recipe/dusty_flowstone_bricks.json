@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "dusty_flowstone",
+  "ingredients": [
+    {
+      "item": "farworld:flowstone_bricks"
+    },
+    {
+      "item": "farworld:dust_clump"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:dusty_flowstone_bricks"
+  }
+}

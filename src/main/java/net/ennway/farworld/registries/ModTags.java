@@ -5,6 +5,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 public class ModTags {
 
@@ -35,4 +36,8 @@ public class ModTags {
     public static final TagKey<Item> BYSTONE_PORTAL_ITEMS = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "can_light_bystone_portal"));
+
+    public static final TagKey<Block> MILK_BERRY_SURVIVABLE = TagKey.create(
+            BuiltInRegistries.BLOCK.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "milk_berry_survivable"));
 }

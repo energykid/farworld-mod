@@ -1,6 +1,8 @@
 package net.ennway.farworld.datagen;
 
+import net.ennway.farworld.Farworld;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -43,8 +45,29 @@ public class BlockGenerator extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
-        dye_colors.forEach((a, name) -> {
-            dyeChargedSleekstone("block/charged_sleekstone", name);
-        });
+        cubeAll("lush_flowstone_bricks",
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
+        slab("lush_flowstone_brick_slab",
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
+        stairs("lush_flowstone_brick_stairs",
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
+        stairsInner("lush_flowstone_brick_stairs_inner",
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
+        stairsOuter("lush_flowstone_brick_stairs_outer",
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
+        wallPost("lush_flowstone_brick_wall_post",
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
+        wallSide("lush_flowstone_brick_wall_side",
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
+        wallSideTall("lush_flowstone_brick_wall_side_tall",
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
     }
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "farworld:block/lush_flowstone_bricks",
+    "side": "farworld:block/lush_flowstone_bricks",
+    "top": "farworld:block/lush_flowstone_bricks"
+  }
+}

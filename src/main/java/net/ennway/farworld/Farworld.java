@@ -70,7 +70,6 @@ public class Farworld
     {
     }
 
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
@@ -83,7 +82,15 @@ public class Farworld
             event.insertAfter(ModItems.FLOWSTONE_BRICKS.toStack(), ModItems.FLOWSTONE_BRICK_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.FLOWSTONE_BRICK_SLAB.toStack(), ModItems.FLOWSTONE_BRICK_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.FLOWSTONE_BRICK_STAIRS.toStack(), ModItems.FLOWSTONE_BRICK_WALL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.FLOWSTONE_BRICK_WALL.toStack(), ModItems.SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.FLOWSTONE_BRICK_WALL.toStack(), ModItems.DUSTY_FLOWSTONE_BRICKS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DUSTY_FLOWSTONE_BRICKS.toStack(), ModItems.DUSTY_FLOWSTONE_BRICK_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DUSTY_FLOWSTONE_BRICK_SLAB.toStack(), ModItems.DUSTY_FLOWSTONE_BRICK_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DUSTY_FLOWSTONE_BRICK_STAIRS.toStack(), ModItems.DUSTY_FLOWSTONE_BRICK_WALL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DUSTY_FLOWSTONE_BRICK_WALL.toStack(), ModItems.LUSH_FLOWSTONE_BRICKS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.LUSH_FLOWSTONE_BRICKS.toStack(), ModItems.LUSH_FLOWSTONE_BRICK_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.LUSH_FLOWSTONE_BRICK_SLAB.toStack(), ModItems.LUSH_FLOWSTONE_BRICK_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.LUSH_FLOWSTONE_BRICK_STAIRS.toStack(), ModItems.LUSH_FLOWSTONE_BRICK_WALL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.LUSH_FLOWSTONE_BRICK_WALL.toStack(), ModItems.SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SLEEKSTONE.toStack(), ModItems.COBBLED_SLEEKSTONE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBBLED_SLEEKSTONE.toStack(), ModItems.COBBLED_SLEEKSTONE_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBBLED_SLEEKSTONE_SLAB.toStack(), ModItems.COBBLED_SLEEKSTONE_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -115,6 +122,8 @@ public class Farworld
             event.insertAfter(ModItems.STONEWOOD_DOOR.toStack(), ModItems.STONEWOOD_TRAPDOOR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.STONEWOOD_TRAPDOOR.toStack(), ModItems.STONEWOOD_PRESSURE_PLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.STONEWOOD_PRESSURE_PLATE.toStack(), ModItems.STONEWOOD_BUTTON.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(ModItems.STONEWOOD_BUTTON.toStack(), ModItems.CRYSTAL_LAMP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
         {

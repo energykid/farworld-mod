@@ -3,6 +3,7 @@ package net.ennway.farworld.block;
 import com.mojang.serialization.MapCodec;
 import net.ennway.farworld.registries.ModBlocks;
 import net.ennway.farworld.registries.ModItems;
+import net.ennway.farworld.registries.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -31,7 +32,7 @@ public class MilkBerryCropBlock extends CropBlock {
 
     public static boolean canGrowOn(BlockState state)
     {
-        return state.is(ModBlocks.DUST_BLOCK) || (state.is(ModBlocks.DUST_SHEET) && state.getValue(SnowLayerBlock.LAYERS) == 8);
+        return state.is(ModTags.MILK_BERRY_SURVIVABLE);
     }
 
     @Override

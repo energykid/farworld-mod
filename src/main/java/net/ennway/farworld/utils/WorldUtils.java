@@ -1,5 +1,6 @@
 package net.ennway.farworld.utils;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -34,6 +35,7 @@ public class WorldUtils {
 
         return false;
     }
+
     public static boolean placeTemplateFloorCenteredXZ(ServerLevel level, ResourceLocation template, BlockPos pos, Rotation rotation, Mirror mirror, long seed) {
         StructureTemplateManager structuretemplatemanager = level.getStructureManager();
 
@@ -42,6 +44,7 @@ public class WorldUtils {
         if (optional.isPresent())
         {
             StructureTemplate structuretemplate = (StructureTemplate) optional.get();
+
             if (checkLoaded(level, new ChunkPos(pos), new ChunkPos(pos.offset(structuretemplate.getSize())))) {
                 BlockPos.MutableBlockPos p = pos.mutable();
                 p.move(-structuretemplate.getSize().getX() / 2, -1, -structuretemplate.getSize().getZ() / 2);

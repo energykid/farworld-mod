@@ -6,16 +6,22 @@ import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.utils.WorldUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DimensionLink {
 
@@ -47,6 +53,20 @@ public class DimensionLink {
 
     public void setPortal(BlockPos pos, ServerLevel levelTo)
     {
-        WorldUtils.placeTemplateFloorCenteredXZ(levelTo, portalTemplate, pos, Rotation.NONE, Mirror.NONE, levelTo.getSeed());
+        levelTo.setChunkForced(levelTo.getChunk(pos).getPos().x, levelTo.getChunk(pos).getPos().z, true);
+        // delay visual effects so the player can see it when switching dimensions
+        Timer timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (WorldUtils.placeTemplateFloorCenteredXZ(levelTo, portalTemplate, pos, Rotation.NONE, Mirror.NONE, levelTo.getSeed()))
+                        {
+                            cancel();
+                        }
+                    }
+                }, 10, // start after 10 frames
+                10 // run again again again after each consecutive 10 frames
+        );
     }
 }

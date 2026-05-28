@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "lush_flowstone",
+  "ingredients": [
+    {
+      "item": "farworld:flowstone_bricks"
+    },
+    {
+      "tag": "farworld:lush_materials"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:lush_flowstone_bricks"
+  }
+}
