@@ -2,7 +2,6 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -38,6 +37,17 @@
                 },
                 {
                   "function": "minecraft:explosion_decay"
+                },
+                {
+                  "function": "minecraft:set_count",
+                  "count": 1,
+                  "add": true,
+                  "conditions": [
+                    {
+                      "condition": "minecraft:random_chance",
+                      "chance": 0.2
+                    }
+                  ]
                 }
               ],
               "name": "minecraft:coal"
@@ -45,7 +55,7 @@
           ]
         }
       ],
-      "rolls": 2
+      "rolls": 1
     }
   ]
 }

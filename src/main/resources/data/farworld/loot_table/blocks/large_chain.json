@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "farworld:dust_block"
+          "name": "farworld:large_chain"
         }
       ],
       "rolls": 1
     }
   ],
-  "random_sequence": "minecraft:blocks/sand"
+  "random_sequence": "farworld:blocks/large_chain"
 }

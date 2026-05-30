@@ -38,6 +38,17 @@
                 },
                 {
                   "function": "minecraft:explosion_decay"
+                },
+                {
+                  "function": "minecraft:set_count",
+                  "count": 1,
+                  "add": true,
+                  "conditions": [
+                    {
+                      "condition": "minecraft:random_chance",
+                      "chance": 0.25
+                    }
+                  ]
                 }
               ],
               "name": "minecraft:raw_gold"
@@ -45,7 +56,7 @@
           ]
         }
       ],
-      "rolls": 2
+      "rolls": 1
     }
   ]
 }

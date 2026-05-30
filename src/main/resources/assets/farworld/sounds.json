@@ -2,6 +2,17 @@
   "battle_stance": {
     "sounds": ["farworld:battle_stance"]
   },
+
+  "crystal_lamp_hit": {
+    "sounds": ["farworld:crystal_lamp_hit1",
+      "farworld:crystal_lamp_hit2",
+      "farworld:crystal_lamp_hit3"]
+  },
+  "crystal_lamp_break": {
+    "sounds": ["farworld:crystal_lamp_break1",
+      "farworld:crystal_lamp_break2"]
+  },
+
   "blaze_stance_slash": {
     "sounds": ["farworld:blaze_stance_slash"]
   },

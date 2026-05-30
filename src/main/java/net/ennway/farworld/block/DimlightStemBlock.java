@@ -30,13 +30,13 @@ public class DimlightStemBlock extends Block {
         return Block.box(3.0, 0.0, 3.0, 14.0, 16.0, 14.0);
     }
 
-    public DimlightStemBlock(Properties properties) {
-        super(properties);
-    }
-
     @Override
     protected BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos)
     {
         return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+    }
+
+    public DimlightStemBlock(Properties properties) {
+        super(properties);
     }
 }

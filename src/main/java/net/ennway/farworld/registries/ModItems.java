@@ -34,7 +34,8 @@ public class ModItems {
                     "glittering_aspect",
                     "magic_spur",
                     "blaze_locket",
-                    "skeleton_arm"
+                    "skeleton_arm",
+                    "toolbelt"
             );
 
     public static final DeferredRegister.Items ITEMS_ALL = DeferredRegister.createItems(Farworld.MOD_ID);
@@ -337,8 +338,17 @@ public class ModItems {
     public static final DeferredItem<Item> SKELETON_ARM = ITEMS_ALL.register(
             "skeleton_arm",
             () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
+                    Attributes.ATTACK_SPEED,
+                    new AttributeModifier(Attributes.ATTACK_SPEED.getKey().location(), 0.15, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.ANY
+            ).build()))
+    );
+
+    public static final DeferredItem<Item> TOOLBELT = ITEMS_ALL.register(
+            "toolbelt",
+            () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
                     Attributes.BLOCK_INTERACTION_RANGE,
-                    new AttributeModifier(Attributes.BLOCK_INTERACTION_RANGE.getKey().location(), 1.5, AttributeModifier.Operation.ADD_VALUE),
+                    new AttributeModifier(Attributes.BLOCK_INTERACTION_RANGE.getKey().location(), 1, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.ANY
             ).build()))
     );
@@ -553,6 +563,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.FLOWSTONE_CACHE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> CRYSTAL_LAMP = ITEMS_ALL.register("crystal_lamp",
             () -> new BlockItem(ModBlocks.CRYSTAL_LAMP.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> LARGE_CHAIN = ITEMS_ALL.register("large_chain",
+            () -> new BlockItem(ModBlocks.LARGE_CHAIN.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> BLACK_ICE = ITEMS_ALL.register("black_ice",
             () -> new BlockItem(ModBlocks.BLACK_ICE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> REDSTONE_PILLAR_BLOCK = ITEMS_ALL.register("redstone_pillar_block",

@@ -8,7 +8,9 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.JukeboxSong;
+import net.minecraft.world.level.block.SoundType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -97,6 +99,9 @@ public class ModSounds {
     public static final Supplier<SoundEvent> APOCALYPSE_FIRE_BREATH = createSoundEvent("apocalypse_fire_breath");
     public static final Supplier<SoundEvent> APOCALYPSE_COOLDOWN_OVER = createSoundEvent("apocalypse_cooldown_over");
 
+    public static final Supplier<SoundEvent> CRYSTAL_LAMP_HIT = createSoundEvent("crystal_lamp_hit");
+    public static final Supplier<SoundEvent> CRYSTAL_LAMP_BREAK = createSoundEvent("crystal_lamp_break");
+
     private static ResourceKey<JukeboxSong> createSong(String name)
     {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name));
@@ -109,4 +114,16 @@ public class ModSounds {
             () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name))
         );
     }
+
+    /*public SoundType flowstone()
+    {
+        return new SoundType(
+                1.0F,
+                1.0F,
+                ModSounds.FLOWSTONE_BREAK.get(),
+                SoundEvents.FLOWSTONE_STEP,
+                ModSounds.FLOWSTONE_HIT.get(),
+                ModSounds.FLOWSTONE_HIT.get(),
+                ModSounds.FLOWSTONE_HIT.get());
+    }*/
 }

@@ -1,4 +1,4 @@
-the current beta is 1.3.0-b6
+the current WIP version is 1.3.2
 
 version history below:
 1.0.0 - the initial version, made in mcreator
@@ -6,3 +6,15 @@ version history below:
 1.1.5 - forestry part 2 (the neoforge port & sunsetting of mcreator & final curseforge upload)
 1.2.0 - the wayward update (soul steel and wishbones)
 1.3.0 - the bystone
+1.3.1 - bystone worldgen update
+... roadmap below ...
+1.3.2 - bystone building update
+1.3.3 - bystone mob update
+1.3.4 - hypercharged cave update
+1.4.0 - overworld centric update
+1.4.1 - nether centric update
+1.4.2 - end centric update?
+... tentative post-1.4 roadmap below ...
+1.5.0 - shiver update
+1.6.0 - veil update
+... undetermined past here ...

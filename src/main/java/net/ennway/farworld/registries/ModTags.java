@@ -29,9 +29,12 @@ public class ModTags {
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "blaze_stanceable_weapons"));
 
-    public static final TagKey<Item> SWORDS = TagKey.create(
+    public static final TagKey<Item> TWO_ACCESSORY_ARMOR = TagKey.create(
             BuiltInRegistries.ITEM.key(),
-            ResourceLocation.withDefaultNamespace("swords"));
+            ResourceLocation.withDefaultNamespace("two_accessory_armor"));
+    public static final TagKey<Item> THREE_ACCESSORY_ARMOR = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.withDefaultNamespace("three_accessory_armor"));
 
     public static final TagKey<Item> BYSTONE_PORTAL_ITEMS = TagKey.create(
             BuiltInRegistries.ITEM.key(),

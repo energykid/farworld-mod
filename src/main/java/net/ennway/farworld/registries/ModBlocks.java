@@ -11,6 +11,7 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
@@ -29,15 +30,27 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.awt.*;
 import java.util.Optional;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS_ALL = DeferredRegister.createBlocks(Farworld.MOD_ID);
 
+    public static final DeferredBlock<Block> LARGE_CHAIN = BLOCKS_ALL.register(
+            "large_chain",
+            () -> new LargeChainBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.CHAIN)
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .isViewBlocking((a,b,c) -> false)
+                    .strength(1.8F, 6.0F)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()));
+
     public static final DeferredBlock<Block> GLOOMCAP = BLOCKS_ALL.register(
             "gloomcap",
             () -> new Gloomcap(BlockBehaviour.Properties.of()
                     .sound(SoundType.GRASS)
+                    .mapColor(MapColor.COLOR_BLUE)
                     .ignitedByLava()
                     .isViewBlocking((a,b,c) -> false)
                     .noCollission()
@@ -47,6 +60,7 @@ public class ModBlocks {
             "milk_berries",
             () -> new MilkBerryCropBlock(BlockBehaviour.Properties.of()
                     .sound(SoundType.GRASS)
+                    .mapColor(MapColor.COLOR_LIGHT_BLUE)
                     .ignitedByLava()
                     .isViewBlocking((a,b,c) -> false)
                     .noCollission()
@@ -55,6 +69,7 @@ public class ModBlocks {
     public static final DeferredBlock<HalfTransparentBlock> BLACK_ICE = BLOCKS_ALL.register(
             "black_ice",
             () -> new HalfTransparentBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
                     .sound(SoundType.GLASS)
                     .strength(1.25F, 4.2F)
                     .forceSolidOn()
@@ -64,6 +79,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> NETHER_IRON_ORE = BLOCKS_ALL.register(
             "nether_iron_ore",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.QUARTZ)
                     .sound(SoundType.BASALT)
                     .strength(1.25F, 4.2F)
                     .forceSolidOn()
@@ -72,7 +88,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SOUL_STEEL_BLOCK = BLOCKS_ALL.register(
             "soul_steel_block",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .mapColor(MapColor.TERRACOTTA_BLUE).requiresCorrectToolForDrops()
                     .strength(2.0F, 10.0F)
                     .sound(SoundType.NETHERITE_BLOCK)));
 
@@ -118,8 +134,17 @@ public class ModBlocks {
             "crystal_lamp",
             () -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_PURPLE)
+                    .sound(
+                            new SoundType(
+                                    1.0F,
+                                    1.0F,
+                                    ModSounds.CRYSTAL_LAMP_BREAK.get(),
+                                    SoundEvents.BASALT_STEP,
+                                    ModSounds.CRYSTAL_LAMP_HIT.get(),
+                                    ModSounds.CRYSTAL_LAMP_HIT.get(),
+                                    ModSounds.CRYSTAL_LAMP_HIT.get())
+                    )
                     .strength(1.8F, 6.0F)
-                    .sound(SoundType.BASALT)
                     .requiresCorrectToolForDrops()
                     .lightLevel(lamb -> 14)));
 
