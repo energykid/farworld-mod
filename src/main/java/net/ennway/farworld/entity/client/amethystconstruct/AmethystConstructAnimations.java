@@ -4,12 +4,15 @@ import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 /**
  * Made with Blockbench 5.0.6
  * Exported for Minecraft version 1.19 or later with Mojang mappings
  * @author Author
  */
+@OnlyIn(Dist.CLIENT)
 public class AmethystConstructAnimations {
 	public static final AnimationDefinition idle = AnimationDefinition.Builder.withLength(3.64F).looping()
 		.addAnimation("arm_left", new AnimationChannel(AnimationChannel.Targets.ROTATION,

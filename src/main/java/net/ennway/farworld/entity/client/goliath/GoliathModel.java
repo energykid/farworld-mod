@@ -18,8 +18,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.joml.Vector3f;
 
+@OnlyIn(Dist.CLIENT)
 public class GoliathModel<T extends GoliathEntity> extends HierarchicalModel<T> {
 	public boolean isPet = false;
 	public boolean saddled = false;

@@ -4,10 +4,13 @@ package net.ennway.farworld.entity.client.redstonecuriosity;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityEntity;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.loading.object.BakedAnimations;
 import software.bernie.geckolib.model.GeoModel;
 
+@OnlyIn(Dist.CLIENT)
 public class RedstoneCuriosityModel<T extends RedstoneCuriosityEntity> extends GeoModel<T> {
 
 	@Override

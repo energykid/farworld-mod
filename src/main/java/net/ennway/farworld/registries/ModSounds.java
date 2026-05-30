@@ -102,6 +102,12 @@ public class ModSounds {
     public static final Supplier<SoundEvent> CRYSTAL_LAMP_HIT = createSoundEvent("crystal_lamp_hit");
     public static final Supplier<SoundEvent> CRYSTAL_LAMP_BREAK = createSoundEvent("crystal_lamp_break");
 
+    public static final Supplier<SoundEvent> FLOWSTONE_HIT = createSoundEvent("flowstone_hit");
+    public static final Supplier<SoundEvent> FLOWSTONE_BREAK = createSoundEvent("flowstone_break");
+
+    public static final Supplier<SoundEvent> LOOSE_FLOWSTONE_HIT = createSoundEvent("loose_flowstone_hit");
+    public static final Supplier<SoundEvent> LOOSE_FLOWSTONE_BREAK = createSoundEvent("loose_flowstone_break");
+
     private static ResourceKey<JukeboxSong> createSong(String name)
     {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name));
@@ -115,15 +121,27 @@ public class ModSounds {
         );
     }
 
-    /*public SoundType flowstone()
+    public static SoundType flowstone()
     {
         return new SoundType(
                 1.0F,
                 1.0F,
-                ModSounds.FLOWSTONE_BREAK.get(),
-                SoundEvents.FLOWSTONE_STEP,
-                ModSounds.FLOWSTONE_HIT.get(),
-                ModSounds.FLOWSTONE_HIT.get(),
-                ModSounds.FLOWSTONE_HIT.get());
-    }*/
+                SoundEvents.NETHERRACK_BREAK,
+                SoundEvents.BASALT_STEP,
+                SoundEvents.NETHERRACK_PLACE,
+                SoundEvents.NETHERRACK_HIT,
+                SoundEvents.NETHERRACK_FALL);
+    }
+
+    public static SoundType looseFlowstone()
+    {
+        return new SoundType(
+                1.0F,
+                1.0F,
+                SoundEvents.NYLIUM_BREAK,
+                SoundEvents.BASALT_STEP,
+                SoundEvents.NYLIUM_PLACE,
+                SoundEvents.NYLIUM_HIT,
+                SoundEvents.NYLIUM_FALL);
+    }
 }

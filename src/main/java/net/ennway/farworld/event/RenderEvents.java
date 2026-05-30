@@ -3,6 +3,7 @@ package net.ennway.farworld.event;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.client.PlayerAccessoryLayer;
 import net.ennway.farworld.utils.MathUtils;
+import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -43,6 +44,38 @@ public class RenderEvents {
                         new PlayerAccessoryLayer(livingRenderer, livingRenderer.getModel(), livingRenderer.getModel(), Minecraft.getInstance().getModelManager(), skin == PlayerSkin.Model.SLIM)
                 );
             }
+        }
+    }
+
+    public static LayeredDraw.Layer layer = new LayeredDraw.Layer() {
+        @Override
+        public void render(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
+
+            List<ItemEntity> items = Minecraft.getInstance().level.getEntitiesOfClass(ItemEntity.class,
+                    new AABB(
+                            Minecraft.getInstance().player.getX() - 12, Minecraft.getInstance().player.getY() - 12, Minecraft.getInstance().player.getZ() - 12,
+                            Minecraft.getInstance().player.getX() + 12, Minecraft.getInstance().player.getY() + 12, Minecraft.getInstance().player.getZ() + 12
+                    ));
+
+            for (var a : items)
+            {
+                Camera c = Minecraft.getInstance().getEntityRenderDispatcher().camera;
+                Vector2f v = MathUtils.worldToScreen(a.getPosition(c.getPartialTickTime()).toVector3f(), guiGraphics.pose());
+
+                guiGraphics.blit((int)v.x + (guiGraphics.guiWidth() / 2) - 16, (int)v.y + (guiGraphics.guiHeight() / 2) - 16, 0, 32, 32,
+                        Minecraft.getInstance().getGuiSprites().getSprite(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "overlay/redstone_crosshair")),
+                        1f, 1f, 1f, 1f);
+            }
+        }
+    };
+
+    @SubscribeEvent
+    public static void createPortalEffect(RegisterGuiLayersEvent event)
+    {
+        ResourceLocation loc = ResourceLocation.tryBuild(Farworld.MOD_ID, "weird_test");
+
+        if (loc != null) {
+            event.registerBelowAll(loc, layer);
         }
     }
 }

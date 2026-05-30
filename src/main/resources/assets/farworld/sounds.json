@@ -13,6 +13,26 @@
       "farworld:crystal_lamp_break2"]
   },
 
+  "flowstone_hit": {
+    "sounds": ["farworld:flowstone_hit1",
+      "farworld:flowstone_hit2",
+      "farworld:flowstone_hit3"]
+  },
+  "flowstone_break": {
+    "sounds": ["farworld:flowstone_break1",
+      "farworld:flowstone_break2"]
+  },
+
+  "loose_flowstone_hit": {
+    "sounds": ["farworld:loose_flowstone_hit1",
+      "farworld:loose_flowstone_hit2",
+      "farworld:loose_flowstone_hit3"]
+  },
+  "loose_flowstone_break": {
+    "sounds": ["farworld:loose_flowstone_break1",
+      "farworld:loose_flowstone_break2"]
+  },
+
   "blaze_stance_slash": {
     "sounds": ["farworld:blaze_stance_slash"]
   },

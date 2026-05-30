@@ -27,7 +27,7 @@ public class DustPileFeature extends Feature<NoneFeatureConfiguration> {
 
         int rand = Mth.randomBetweenInclusive(featurePlaceContext.random(), 4, 7);
 
-        if (!level.getBlockState(origin).is(Blocks.AIR) && !level.getBlockState(origin).canBeReplaced())
+        if (!level.getBlockState(origin).is(Blocks.AIR))
         {
             return false;
         }
@@ -38,6 +38,7 @@ public class DustPileFeature extends Feature<NoneFeatureConfiguration> {
                 BlockPos.MutableBlockPos pos = new BlockPos(origin.getX() + i, origin.getY(), origin.getZ() + j).mutable();
 
                 for (int k = 0; k < 40; k++) {
+                    if (k == 39) return false;
                     if (level.getBlockState(pos).is(Blocks.AIR) || level.getBlockState(pos).canBeReplaced() || level.getBlockState(pos).is(ModBlocks.DUST_SHEET.get())) {
                         pos.move(0, -1, 0);
                     }

@@ -18,8 +18,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.joml.Vector3f;
 
+@OnlyIn(Dist.CLIENT)
 public class AmethystConstructModel<T extends Entity> extends HierarchicalModel<T> {
 
 	private static final Vector3f ANIMATION_VECTOR_CACHE = new Vector3f();

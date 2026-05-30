@@ -12,6 +12,8 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
@@ -19,6 +21,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 import software.bernie.geckolib.util.Color;
 
+@OnlyIn(Dist.CLIENT)
 public class RedstoneCuriosityRenderer extends GeoEntityRenderer<RedstoneCuriosityEntity> {
     @Override
     public @Nullable RenderType getRenderType(RedstoneCuriosityEntity animatable, ResourceLocation texture, @Nullable MultiBufferSource bufferSource, float partialTick) {

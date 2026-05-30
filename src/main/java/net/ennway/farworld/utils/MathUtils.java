@@ -1,14 +1,49 @@
 package net.ennway.farworld.utils;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.ennway.farworld.event.FOVEvents;
 import net.ennway.farworld.utils.curve.EasingCurve;
+import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.phys.Vec3;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import java.util.Random;
 
 public class MathUtils {
+
+    public static Vector2f worldToScreen(Vector3f position, PoseStack viewPose)
+    {
+        Vector3f v = position.mulProject(Minecraft.getInstance().gameRenderer.getProjectionMatrix(Minecraft.getInstance().options.fov().get()));
+
+        v = v.mulProject(viewPose.last().pose());
+
+        return new Vector2f(v.x / v.z, v.y / v.z);
+    }
+
+    public static Vector2f worldToScreenBackup(Vector3f position, Camera camera)
+    {
+        Vector3f ps = position;
+
+        Vec3 cPos = camera.getPosition();
+        float fov = 1f;
+
+        ps.sub((float)cPos.x, (float)cPos.y, (float)cPos.z);
+
+        Quaternionf qu = camera.rotation();
+        ps.rotate(qu.invert());
+
+        Vector2f v = new Vector2f(ps.x * (70 * fov / 2), -ps.y * (70 * fov / 2));
+
+        return v;
+    }
+
     public static double randomDouble(RandomSource randomSource, double min, double max)
     {
         return min + (randomSource.nextDouble() * max);

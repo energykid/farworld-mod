@@ -6,11 +6,14 @@ import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityBla
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityEntity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.loading.object.BakedAnimations;
 import software.bernie.geckolib.model.GeoModel;
 
+@OnlyIn(Dist.CLIENT)
 public class RedstoneCuriosityBlastModel<T extends RedstoneCuriosityBlastEntity> extends GeoModel<T> {
 
 	@Override

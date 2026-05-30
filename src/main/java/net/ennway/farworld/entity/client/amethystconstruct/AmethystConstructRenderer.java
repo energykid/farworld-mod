@@ -22,11 +22,14 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 import java.util.Objects;
 
+@OnlyIn(Dist.CLIENT)
 public class AmethystConstructRenderer extends MobRenderer<AmethystConstructEntity, AmethystConstructModel<AmethystConstructEntity>> {
 
     public float itemXRot = 0f;

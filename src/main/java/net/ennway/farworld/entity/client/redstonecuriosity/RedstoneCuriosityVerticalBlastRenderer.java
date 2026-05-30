@@ -12,6 +12,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
@@ -19,6 +21,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 import java.util.List;
 
+@OnlyIn(Dist.CLIENT)
 public class RedstoneCuriosityVerticalBlastRenderer extends GeoEntityRenderer<RedstoneCuriosityVerticalBlastEntity> {
     public RedstoneCuriosityVerticalBlastRenderer(EntityRendererProvider.Context context) {
         super(context, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "redstone_curiosity_vertical_blast")));

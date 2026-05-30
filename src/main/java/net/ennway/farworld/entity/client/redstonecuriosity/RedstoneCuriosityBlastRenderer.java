@@ -12,6 +12,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
@@ -20,6 +22,7 @@ import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 
 import java.util.List;
 
+@OnlyIn(Dist.CLIENT)
 public class RedstoneCuriosityBlastRenderer extends GeoEntityRenderer<RedstoneCuriosityBlastEntity> {
     public RedstoneCuriosityBlastRenderer(EntityRendererProvider.Context context) {
         super(context, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "redstone_curiosity_blast")));

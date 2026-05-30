@@ -21,11 +21,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+@OnlyIn(Dist.CLIENT)
 public class GoliathRenderer extends MobRenderer<GoliathEntity, GoliathModel<GoliathEntity>> {
 
     public GoliathRenderer(EntityRendererProvider.Context context) {
