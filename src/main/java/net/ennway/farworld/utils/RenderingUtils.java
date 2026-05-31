@@ -142,4 +142,38 @@ public class RenderingUtils {
         vertex(vertexconsumer, posestack$pose, -0.5F, 0.75F, 255, 255, 255, left, top, packedLight);
         poseStack.popPose();
     }
+
+    public static void renderSprite(PoseStack poseStack, Quaternionf orientation, ResourceLocation spriteLocation, VertexConsumer consumer, int packedLight)
+    {
+        poseStack.pushPose();
+        float left = 0;
+        float right = 1.0f;
+        float top = 0;
+        float bottom = 1.0f;
+        poseStack.mulPose(orientation);
+        poseStack.scale(1F, 1F, 1F);
+        PoseStack.Pose posestack$pose = poseStack.last();
+        vertex(consumer, posestack$pose, -0.5F, -0.25F, 255, 255, 255, left, bottom, packedLight);
+        vertex(consumer, posestack$pose, 0.5F, -0.25F, 255, 255, 255, right, bottom, packedLight);
+        vertex(consumer, posestack$pose, 0.5F, 0.75F, 255, 255, 255, right, top, packedLight);
+        vertex(consumer, posestack$pose, -0.5F, 0.75F, 255, 255, 255, left, top, packedLight);
+        poseStack.popPose();
+    }
+    public static void renderSprite(PoseStack poseStack, Quaternionf orientation, ResourceLocation spriteLocation, MultiBufferSource source, int packedLight)
+    {
+        poseStack.pushPose();
+        float left = 0;
+        float right = 1.0f;
+        float top = 0;
+        float bottom = 1.0f;
+        poseStack.mulPose(orientation);
+        poseStack.scale(1F, 1F, 1F);
+        VertexConsumer vertexconsumer = source.getBuffer(RenderType.entityCutout(spriteLocation));
+        PoseStack.Pose posestack$pose = poseStack.last();
+        vertex(vertexconsumer, posestack$pose, -0.5F, -0.25F, 255, 255, 255, left, bottom, packedLight);
+        vertex(vertexconsumer, posestack$pose, 0.5F, -0.25F, 255, 255, 255, right, bottom, packedLight);
+        vertex(vertexconsumer, posestack$pose, 0.5F, 0.75F, 255, 255, 255, right, top, packedLight);
+        vertex(vertexconsumer, posestack$pose, -0.5F, 0.75F, 255, 255, 255, left, top, packedLight);
+        poseStack.popPose();
+    }
 }

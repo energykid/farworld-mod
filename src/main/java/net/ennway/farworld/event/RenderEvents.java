@@ -72,7 +72,7 @@ public class RenderEvents {
     };
 
     @SubscribeEvent
-    public static void createPortalEffect(RegisterGuiLayersEvent event)
+    public static void possiblyCreateWeirdTest(RegisterGuiLayersEvent event)
     {
         ResourceLocation loc = ResourceLocation.tryBuild(Farworld.MOD_ID, "weird_test");
 

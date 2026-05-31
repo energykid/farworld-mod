@@ -104,7 +104,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> DUST_GLASS = BLOCKS_ALL.register(
             "dust_glass",
-            () -> new TransparentBlock(BlockBehaviour.Properties.of()
+            () -> new DustGlassBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
                     .strength(0.6F, 1.0F)
                     .noOcclusion()

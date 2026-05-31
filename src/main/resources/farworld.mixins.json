@@ -1,22 +1,21 @@
 {
-
   "package": "net.ennway.farworld.mixin",
   "compatibilityLevel": "JAVA_21",
   "required": true,
-
   "mixins": [
-    "WishboneAnimationMixin",
-    "ItemAnimationMixin",
-    "SwordStanceMixin",
-    "SwordStancePlayerMixin",
     "ArmoryMixin",
-    "ArmoryModelMixin",
-    "DurathystClusterRenderMixin",
     "ChargeBunkerPlayerMixin",
-    "SparklingEffectMixin"
+    "SparklingEffectMixin",
+    "SwordStanceMixin",
+    "SwordStancePlayerMixin"
   ],
-
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "client": [
+    "ArmoryModelMixin",
+    "WishboneAnimationMixin",
+    "DurathystClusterRenderMixin",
+    "ItemAnimationMixin"
+  ]
 }

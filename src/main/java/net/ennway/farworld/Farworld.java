@@ -1,5 +1,6 @@
 package net.ennway.farworld;
 
+import net.ennway.farworld.block.entity.DustGlassBERenderer;
 import net.ennway.farworld.block.entity.RedstoneTeleporterBERenderer;
 import net.ennway.farworld.registries.*;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
@@ -333,6 +334,7 @@ public class Farworld
         public static void setupBlockRenderer(EntityRenderersEvent.RegisterRenderers evt)
         {
             evt.registerBlockEntityRenderer(ModBlockEntities.REDSTONE_TELEPORTER_BE.get(), context -> new RedstoneTeleporterBERenderer());
+            evt.registerBlockEntityRenderer(ModBlockEntities.DUST_GLASS_BE.get(), context -> new DustGlassBERenderer());
         }
     }
 }

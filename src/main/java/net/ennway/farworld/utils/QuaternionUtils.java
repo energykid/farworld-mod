@@ -11,15 +11,12 @@ import org.joml.Vector3f;
 public class QuaternionUtils {
     public static Quaternionf flatQuaternion()
     {
-        Quaternionf quaternionf = new Quaternionf();
-        quaternionf.rotateX((float)Math.toRadians(90.0));
-        return quaternionf;
+        return new Quaternionf().rotateX((float)Math.toRadians(90.0));
     }
 
     public static Quaternionf upQuaternion(Camera camera)
     {
-        Quaternionf quaternionf = Axis.YP.rotationDegrees(-camera.getYRot());
-        return quaternionf;
+        return Axis.YP.rotationDegrees(-camera.getYRot());
     }
 
     public static Quaternionf orientedQuaternion(Camera camera)
