@@ -51,6 +51,7 @@ public class RenderEvents {
         @Override
         public void render(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
 
+            /*
             List<ItemEntity> items = Minecraft.getInstance().level.getEntitiesOfClass(ItemEntity.class,
                     new AABB(
                             Minecraft.getInstance().player.getX() - 12, Minecraft.getInstance().player.getY() - 12, Minecraft.getInstance().player.getZ() - 12,
@@ -66,6 +67,7 @@ public class RenderEvents {
                         Minecraft.getInstance().getGuiSprites().getSprite(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "overlay/redstone_crosshair")),
                         1f, 1f, 1f, 1f);
             }
+             */
         }
     };
 

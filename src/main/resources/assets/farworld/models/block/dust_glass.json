@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "farworld:block/fruitless_crystallia_leaves"
+    "all": "farworld:block/dust_glass"
   },
   "render_type": "cutout"
 }

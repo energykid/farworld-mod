@@ -563,6 +563,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.FLOWSTONE_CACHE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> CRYSTAL_LAMP = ITEMS_ALL.register("crystal_lamp",
             () -> new BlockItem(ModBlocks.CRYSTAL_LAMP.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> DUST_GLASS = ITEMS_ALL.register("dust_glass",
+            () -> new BlockItem(ModBlocks.DUST_GLASS.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> LARGE_CHAIN = ITEMS_ALL.register("large_chain",
             () -> new BlockItem(ModBlocks.LARGE_CHAIN.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> BLACK_ICE = ITEMS_ALL.register("black_ice",

@@ -76,8 +76,8 @@ public class ModBlocks {
                     .sound(SoundType.GLASS)
                     .strength(1.25F, 4.2F)
                     .forceSolidOn()
-                    .requiresCorrectToolForDrops()
-                    .noOcclusion()));
+                    .noOcclusion()
+                    .requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> NETHER_IRON_ORE = BLOCKS_ALL.register(
             "nether_iron_ore",
@@ -101,6 +101,16 @@ public class ModBlocks {
                     .mapColor(MapColor.COLOR_BLUE).requiresCorrectToolForDrops()
                     .strength(1.6F, 12.0F)
                     .sound(SoundType.METAL)));
+
+    public static final DeferredBlock<Block> DUST_GLASS = BLOCKS_ALL.register(
+            "dust_glass",
+            () -> new TransparentBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .strength(0.6F, 1.0F)
+                    .noOcclusion()
+                    .isValidSpawn(Blocks::never)
+                    .isViewBlocking((a, b, c) -> false)
+                    .sound(SoundType.GLASS)));
 
     public static final DeferredBlock<Block> DENSE_COAL_ORE = BLOCKS_ALL.register(
             "dense_coal_ore",
