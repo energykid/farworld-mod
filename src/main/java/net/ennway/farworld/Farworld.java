@@ -126,6 +126,7 @@ public class Farworld
 
             event.insertAfter(ModItems.STONEWOOD_BUTTON.toStack(), ModItems.CRYSTAL_LAMP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.CRYSTAL_LAMP.toStack(), ModItems.LARGE_CHAIN.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.LARGE_CHAIN.toStack(), ModItems.DUST_GLASS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
         {

@@ -31,26 +31,33 @@ public class DustGlassBERenderer implements BlockEntityRenderer<DustGlassBE> {
     public DustGlassBERenderer() {}
 
     @Override
-    public void render(DustGlassBE dustGlassBE, float v, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int i1) {
+    public void render(DustGlassBE dustGlassBE, float v, PoseStack poseStack, MultiBufferSource multiBufferSource, int ii, int i1) {
         Camera c = Minecraft.getInstance().gameRenderer.getMainCamera();
 
         Vector3f pos = c.getPosition().toVector3f();
 
-        float uu = (float)pos.x / 4f;
-        float vv = (float)pos.y / 4f;
-        float ww = (float)pos.z / 4f;
+        float uu = (float)pos.x / 3f;
+        float vv = (float)pos.y / 3f;
+        float ww = (float)pos.z / 3f;
 
         if (dustGlassBE.getLevel() != null)
         {
+            int i = getLightLevel(dustGlassBE.getLevel(), dustGlassBE.getBlockPos());
+
             renderFace(dustGlassBE.getLevel(), dustGlassBE.getBlockPos(), poseStack, new Quaternionf().rotateX((float)Math.toRadians(90.0)), multiBufferSource, i, -uu, ww, Direction.DOWN);
             renderFace(dustGlassBE.getLevel(), dustGlassBE.getBlockPos(), poseStack, new Quaternionf().rotateX((float)Math.toRadians(90.0)), multiBufferSource, i, -uu, ww, Direction.UP);
 
-            renderFace(dustGlassBE.getLevel(), dustGlassBE.getBlockPos(), poseStack, new Quaternionf().rotateZ((float)Math.toRadians(90.0)), multiBufferSource, i, vv, -uu, Direction.NORTH);
-            renderFace(dustGlassBE.getLevel(), dustGlassBE.getBlockPos(), poseStack, new Quaternionf().rotateZ((float)Math.toRadians(90.0)), multiBufferSource, i, vv, -uu, Direction.SOUTH);
+            renderFace(dustGlassBE.getLevel(), dustGlassBE.getBlockPos(), poseStack, new Quaternionf().rotateZ((float)Math.toRadians(90.0)), multiBufferSource, i, -vv, -uu, Direction.NORTH);
+            renderFace(dustGlassBE.getLevel(), dustGlassBE.getBlockPos(), poseStack, new Quaternionf().rotateZ((float)Math.toRadians(90.0)), multiBufferSource, i, -vv, -uu, Direction.SOUTH);
 
             renderFace(dustGlassBE.getLevel(), dustGlassBE.getBlockPos(), poseStack, new Quaternionf().rotateY((float)Math.toRadians(90.0)), multiBufferSource, i, ww, vv, Direction.EAST);
             renderFace(dustGlassBE.getLevel(), dustGlassBE.getBlockPos(), poseStack, new Quaternionf().rotateY((float)Math.toRadians(90.0)), multiBufferSource, i, ww, vv, Direction.WEST);
         }
+    }
+
+    private int getLightLevel(Level level, BlockPos pos)
+    {
+        return LightTexture.pack(level.getBrightness(LightLayer.BLOCK, pos), level.getBrightness(LightLayer.SKY, pos));
     }
 
     private static void vertex(VertexConsumer consumer, PoseStack.Pose pose, float x, float y, int red, int green, int blue, float u, float v, int packedLight, float uadd, float vadd) {
