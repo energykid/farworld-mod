@@ -13,6 +13,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import software.bernie.geckolib.util.Color;
 
 import java.awt.*;
 import java.util.Optional;
@@ -110,7 +112,27 @@ public class ModBlocks {
                     .noOcclusion()
                     .isValidSpawn(Blocks::never)
                     .isViewBlocking((a, b, c) -> false)
-                    .sound(SoundType.GLASS)));
+                    .sound(SoundType.GLASS), "textures/block/dust_glass_overlay.png"));
+
+    public static final DeferredBlock<Block> SHADOW_DUST_GLASS = BLOCKS_ALL.register(
+            "shadow_dust_glass",
+            () -> new DustGlassBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops()
+                    .strength(0.6F, 1.0F)
+                    .noOcclusion()
+                    .isValidSpawn(Blocks::never)
+                    .isViewBlocking((a, b, c) -> false)
+                    .sound(SoundType.GLASS), "textures/block/shadow_dust_glass_overlay.png"));
+
+    public static final DeferredBlock<Block> CRYSTAL_DUST_GLASS = BLOCKS_ALL.register(
+            "crystal_dust_glass",
+            () -> new DustGlassBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_MAGENTA).requiresCorrectToolForDrops()
+                    .strength(0.6F, 1.0F)
+                    .noOcclusion()
+                    .isValidSpawn(Blocks::never)
+                    .isViewBlocking((a, b, c) -> false)
+                    .sound(SoundType.GLASS), "textures/block/crystal_dust_glass_overlay.png"));
 
     public static final DeferredBlock<Block> DENSE_COAL_ORE = BLOCKS_ALL.register(
             "dense_coal_ore",

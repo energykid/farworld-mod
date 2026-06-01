@@ -1,16 +1,10 @@
 package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
-import net.ennway.farworld.block.RedstoneTeleporterBlock;
-import net.ennway.farworld.block.entity.DustGlassBE;
+import net.ennway.farworld.block.entity.CustomRenderBlockBE;
 import net.ennway.farworld.block.entity.RedstoneTeleporterBE;
-import net.ennway.farworld.entity.custom.BloomedEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -25,8 +19,12 @@ public class ModBlockEntities {
                     RedstoneTeleporterBE::new, ModBlocks.REDSTONE_TELEPORTER_BLOCK.get()).build(null)
     );
 
-    public static final Supplier<BlockEntityType<DustGlassBE>> DUST_GLASS_BE = BLOCK_ENTITY_TYPES.register(
-            "dust_glass_be", () -> BlockEntityType.Builder.of(
-                    DustGlassBE::new, ModBlocks.DUST_GLASS.get()).build(null)
+    public static final Supplier<BlockEntityType<CustomRenderBlockBE>> CUSTOM_RENDER_BE = BLOCK_ENTITY_TYPES.register(
+            "custom_render_be", () -> BlockEntityType.Builder.of(
+                    CustomRenderBlockBE::new,
+                    ModBlocks.DUST_GLASS.get(),
+                    ModBlocks.SHADOW_DUST_GLASS.get(),
+                    ModBlocks.CRYSTAL_DUST_GLASS.get()
+            ).build(null)
     );
 }

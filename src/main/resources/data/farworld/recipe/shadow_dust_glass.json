@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "colored_dust_glass",
+  "key": {
+    "#": {
+      "item": "farworld:dust_glass"
+    },
+    "X": {
+      "item": "minecraft:black_dye"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "farworld:shadow_dust_glass"
+  }
+}

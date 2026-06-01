@@ -1,6 +1,6 @@
 package net.ennway.farworld;
 
-import net.ennway.farworld.block.entity.DustGlassBERenderer;
+import net.ennway.farworld.block.entity.CustomRenderBERenderer;
 import net.ennway.farworld.block.entity.RedstoneTeleporterBERenderer;
 import net.ennway.farworld.registries.*;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
@@ -127,6 +127,8 @@ public class Farworld
             event.insertAfter(ModItems.STONEWOOD_BUTTON.toStack(), ModItems.CRYSTAL_LAMP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.CRYSTAL_LAMP.toStack(), ModItems.LARGE_CHAIN.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.LARGE_CHAIN.toStack(), ModItems.DUST_GLASS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DUST_GLASS.toStack(), ModItems.SHADOW_DUST_GLASS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SHADOW_DUST_GLASS.toStack(), ModItems.CRYSTAL_DUST_GLASS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
         {
@@ -335,7 +337,7 @@ public class Farworld
         public static void setupBlockRenderer(EntityRenderersEvent.RegisterRenderers evt)
         {
             evt.registerBlockEntityRenderer(ModBlockEntities.REDSTONE_TELEPORTER_BE.get(), context -> new RedstoneTeleporterBERenderer());
-            evt.registerBlockEntityRenderer(ModBlockEntities.DUST_GLASS_BE.get(), context -> new DustGlassBERenderer());
+            evt.registerBlockEntityRenderer(ModBlockEntities.CUSTOM_RENDER_BE.get(), context -> new CustomRenderBERenderer());
         }
     }
 }

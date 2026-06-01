@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "farworld:block/crystal_dust_glass_composite"
+  },
+  "render_type": "translucent"
+}
