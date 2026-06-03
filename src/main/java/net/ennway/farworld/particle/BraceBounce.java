@@ -11,12 +11,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class BraceBounce extends FlatParticle {
 
-    float rollSpeed = 0f;
-
     public BraceBounce(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z, spriteSet);
-
-        this.rollSpeed = 0.25f;
 
         this.quadSize = 1f;
 
