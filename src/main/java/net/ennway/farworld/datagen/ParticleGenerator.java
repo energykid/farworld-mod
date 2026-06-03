@@ -19,8 +19,7 @@ public class ParticleGenerator extends ParticleDescriptionProvider {
 
     @Override
     protected void addDescriptions() {
-        mySpriteSet(ModParticles.SLIME_STREAKS.get(), ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "slime_streaks/slime_streaks"), 5, false);
-        mySpriteSet(ModParticles.BRACE_BOUNCE.get(), ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "brace_bounce/brace_bounce"), 5, false);
+        mySpriteSet(ModParticles.SLIME_STREAKS.get(), ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "gloom_shockwave/gloom_shockwave"), 4, false);
     }
 
     protected void mySpriteSet(ParticleType<?> type, ResourceLocation baseName, int numOfTextures, boolean reverse) {

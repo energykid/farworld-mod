@@ -127,4 +127,8 @@ public class ModParticles {
             "brace_bounce",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> GLOOM_SHOCKWAVE = PARTICLE_TYPES.register(
+            "gloom_shockwave",
+            () -> new SimpleParticleType(false)
+    );
 }

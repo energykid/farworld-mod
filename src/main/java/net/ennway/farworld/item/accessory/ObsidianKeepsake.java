@@ -6,6 +6,8 @@ import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -29,22 +31,25 @@ public class ObsidianKeepsake extends AccessoryItem {
 
         AABB range = new AABB(player.getX() - distance, player.getY() - distance, player.getZ() - distance, player.getX() + distance, player.getY() + distance, player.getZ() + distance);
 
-        for (LivingEntity mob : player.level().getEntitiesOfClass(LivingEntity.class, range))
+        for (Mob mob : player.level().getEntitiesOfClass(Mob.class, range))
         {
-            if (!mob.is(player) && mob.canAttack((LivingEntity)player))
+            if (mob.getTarget() == player)
             {
-                mob.hurt(mob.damageSources().playerAttack((Player)player), event.getOriginalDamage());
+                if (!mob.is(player) && mob.canAttack(player))
+                {
+                    mob.hurt(mob.damageSources().playerAttack((Player)player), event.getOriginalDamage());
 
-                Vec3 v = mob.position().add(mob.getBbWidth() / 2, mob.getBbHeight() / 2, mob.getBbWidth() / 2).add(
-                        MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7),
-                        MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7),
-                        MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7)
-                );
+                    Vec3 v = mob.position().add(mob.getBbWidth() / 2, mob.getBbHeight() / 2, mob.getBbWidth() / 2).add(
+                            MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7),
+                            MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7),
+                            MathUtils.randomDouble(mob.getRandom(), -0.7, 0.7)
+                    );
 
-                mob.level().getServer().getLevel(player.level().dimension()).sendParticles(ModParticles.OBSIDIAN_SHATTER.get(),
-                        v.x, v.y, v.z, 1, 0, 0, 0, 0);
+                    mob.level().getServer().getLevel(player.level().dimension()).sendParticles(ModParticles.OBSIDIAN_SHATTER.get(),
+                            v.x, v.y, v.z, 1, 0, 0, 0, 0);
 
-                mob.playSound(SoundEvents.DECORATED_POT_SHATTER);
+                    mob.playSound(SoundEvents.DECORATED_POT_SHATTER);
+                }
             }
         }
     }

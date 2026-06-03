@@ -79,5 +79,6 @@ public class ModParticleProviders {
 
         event.registerSpriteSet(ModParticles.SLIME_STREAKS.get(), SlimeStreaks.Provider::new);
         event.registerSpriteSet(ModParticles.BRACE_BOUNCE.get(), BraceBounce.Provider::new);
+        event.registerSpriteSet(ModParticles.GLOOM_SHOCKWAVE.get(), GloomShockwave.Provider::new);
     }
 }

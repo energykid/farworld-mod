@@ -21,14 +21,14 @@ public class SlimeBraceEvent {
     {
         if (evt.getEntity() instanceof Player plr)
         {
-            if (AccessoryUtils.playerHasAccessory(plr, ModItems.SLIME_BRACE.get()))
+            if (AccessoryUtils.playerHasAccessory(plr, ModItems.SLIME_BRACE.get()) && !AccessoryUtils.playerHasAccessory(plr, ModItems.GLOOM_BRACE.get()))
             {
                 if (evt.getSource().is(DamageTypes.FALL))
                 {
                     if (!plr.isCrouching())
                     {
-                        Objects.requireNonNull(plr.level().getServer().getLevel(plr.level().dimension())).sendParticles(ModParticles.SLIME_STREAKS.get(), plr.getX(), plr.getY(), plr.getZ(),1, 0, 0, 0, 0);
-                        Objects.requireNonNull(plr.level().getServer().getLevel(plr.level().dimension())).sendParticles(ModParticles.BRACE_BOUNCE.get(), plr.getX(), plr.getY(), plr.getZ(),1, 0, 0, 0, 0);
+                        Objects.requireNonNull(plr.level().getServer().getLevel(plr.level().dimension())).sendParticles(ModParticles.SLIME_STREAKS.get(), plr.getX(), plr.getY() + 0.1, plr.getZ(),1, 0, 0, 0, 0);
+                        Objects.requireNonNull(plr.level().getServer().getLevel(plr.level().dimension())).sendParticles(ModParticles.BRACE_BOUNCE.get(), plr.getX(), plr.getY() + 0.1, plr.getZ(),1, 0, 0, 0, 0);
 
                         plr.setDeltaMovement(plr.getDeltaMovement().x, 0.4, plr.getDeltaMovement().x);
                         plr.hurtMarked = true;

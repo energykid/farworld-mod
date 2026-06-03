@@ -17,6 +17,8 @@ public class StraightUpParticle extends TextureSheetParticle {
 	public Quaternionf QUATERNION = new Quaternionf(0F, -0.7F, 0.7F, 0F);
 
 	public float rot = 0;
+	public float widthScale = 1f;
+	public float heightScale = 1f;
 
 	protected StraightUpParticle(ClientLevel world, double x, double y, double z, SpriteSet sprites) {
 		super(world, x, y, z, 0.0, 0.0, 0.0);
@@ -33,7 +35,7 @@ public class StraightUpParticle extends TextureSheetParticle {
 		float x = (float) (Mth.lerp(ticks, this.xo, this.x) - vec3.x());
 		float y = (float) (Mth.lerp(ticks, this.yo, this.y) - vec3.y());
 		float z = (float) (Mth.lerp(ticks, this.zo, this.z) - vec3.z());
-		Vector3f[] vector3fs = new Vector3f[]{new Vector3f(-1.0F, 0.0F, 0.0F), new Vector3f(-1.0F, 2.0F, 0.0F), new Vector3f(1.0F, 2.0F, 0.0F), new Vector3f(1.0F, 0.0F, 0.0F)};
+		Vector3f[] vector3fs = new Vector3f[]{new Vector3f(-1.0F, 0.0F, 0.0F), new Vector3f(-1.0F, 2.0F * heightScale, 0.0F), new Vector3f(1.0F, 2.0F * heightScale, 0.0F), new Vector3f(1.0F, 0.0F, 0.0F)};
 		Vector3f[] vector3fsBottom = new Vector3f[]{new Vector3f(-1.0F, 0.0F, 0.0F), new Vector3f(1.0F, 0.0F, 0.0F), new Vector3f(1.0F, 0.0F, 0.0F), new Vector3f(-1.0F, 0.0F, 0.0F)};
 		float f4 = this.getQuadSize(ticks);
 		for (int i = 0; i < 4; ++i) {

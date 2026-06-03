@@ -311,6 +311,11 @@ public class ModItems {
             () -> new AccessoryItem(new Item.Properties())
     );
 
+    public static final DeferredItem<Item> GLOOM_BRACE = ITEMS_ALL.register(
+            "gloom_brace",
+            () -> new AccessoryItem(new Item.Properties())
+    );
+
     public static final DeferredItem<Item> COBALT_CUFF = ITEMS_ALL.register(
             "cobalt_cuff",
             () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(

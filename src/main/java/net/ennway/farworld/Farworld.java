@@ -247,10 +247,11 @@ public class Farworld
             event.insertAfter(ModItems.BLACK_ICE_AXE.toStack(), ModItems.BLACK_ICE_HOE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.ELYTRA.getDefaultInstance(), ModItems.GOGGLES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.GOGGLES.toStack(), ModItems.MAGIC_SPUR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.MAGIC_SPUR.toStack(), ModItems.TOOLBELT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.TOOLBELT.toStack(), ModItems.SLIME_BRACE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.SLIME_BRACE.toStack(), ModItems.GLITTERING_ASPECT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GOGGLES.toStack(), ModItems.TOOLBELT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.TOOLBELT.toStack(), ModItems.MAGIC_SPUR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.TOOLBELT.toStack(), ModItems.GLITTERING_ASPECT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GLITTERING_ASPECT.toStack(), ModItems.SLIME_BRACE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SLIME_BRACE.toStack(), ModItems.GLOOM_BRACE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT)
         {
