@@ -21,6 +21,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LanternBlock;
@@ -84,41 +85,54 @@ public class BystonePortalBlock extends Block {
     }
 
     @Override
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
-        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
-        if (!level.getBlockState(pos.above()).is(ModBlocks.ECHO_LANTERN))
-        {
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        super.tick(state, level, pos, random);
+        if (state.getValue(SHORT) && !level.getBlockState(pos.above()).is(ModBlocks.ECHO_LANTERN)) {
+            level.destroyBlock(pos, false);
             cascadingPortalConversion(level, pos);
         }
     }
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (random.nextInt(40) > 38)
-        {
-            level.playLocalSound(pos.getX() + 0.5,pos.getY() + 0.5,pos.getZ() + 0.5, ModSounds.BYSTONE_PORTAL_IDLE.get(), SoundSource.AMBIENT, (float)0.8f + (random.nextFloat() % 0.4f), 1f, false);
+
+        if (random.nextInt(40) > 38) {
+            level.playLocalSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, ModSounds.BYSTONE_PORTAL_IDLE.get(), SoundSource.AMBIENT, (float) 0.8f + (random.nextFloat() % 0.4f), 1f, false);
         }
         level.addParticle(ModParticles.BYSTONE_PORTAL.get(), pos.getX() + random.nextDouble(), pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble(), 0, 0, 0);
     }
 
-    public static void cascadingPortalConversion(LevelAccessor level, BlockPos pos)
-    {
-        for (int i = -1; i <= 1; i++)
-        {
-            for (int j = -1; j <= 1; j++)
-            {
-                for (int k = -1; k <= 1; k++)
-                {
-                    if (i != 0 || j != 0 || k != 0)
-                    {
+    public static void cascadingPortalConversion(LevelAccessor level, BlockPos pos) {
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                for (int k = -1; k <= 1; k++) {
+                    if (i != 0 || j != 0 || k != 0) {
                         BlockPos pos2 = new BlockPos(pos.getX() + i, pos.getY() + j, pos.getZ() + k);
-                        if (level.getBlockState(pos2).is(ModBlocks.BYSTONE_PORTAL))
-                        {
+                        if (level.getBlockState(pos2).is(ModBlocks.BYSTONE_PORTAL)) {
                             level.removeBlock(pos2, false);
                             cascadingPortalConversion(level, pos2);
                         }
-                        if (level.getBlockState(pos2).is(ModBlocks.ECHO_LANTERN))
-                        {
+                        if (level.getBlockState(pos2).is(ModBlocks.ECHO_LANTERN)) {
+                            level.setBlock(pos2, Blocks.LANTERN.defaultBlockState().setValue(LanternBlock.HANGING, true), Block.UPDATE_ALL);
+                            cascadingPortalConversion(level, pos2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public static void cascadingPortalConversion(ServerLevel level, BlockPos pos) {
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                for (int k = -1; k <= 1; k++) {
+                    if (i != 0 || j != 0 || k != 0) {
+                        BlockPos pos2 = new BlockPos(pos.getX() + i, pos.getY() + j, pos.getZ() + k);
+                        if (level.getBlockState(pos2).is(ModBlocks.BYSTONE_PORTAL)) {
+                            level.destroyBlock(pos2, false);
+                            cascadingPortalConversion(level, pos2);
+                        }
+                        if (level.getBlockState(pos2).is(ModBlocks.ECHO_LANTERN)) {
                             level.setBlock(pos2, Blocks.LANTERN.defaultBlockState().setValue(LanternBlock.HANGING, true), Block.UPDATE_ALL);
                             cascadingPortalConversion(level, pos2);
                         }

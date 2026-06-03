@@ -40,7 +40,7 @@ public class SlimeBraceEvent {
                     if (AccessoryUtils.playerHasAccessory(plr, ModItems.SLIME_BRACE.get()))
                     {
                         Objects.requireNonNull(plr.level().getServer().getLevel(plr.level().dimension())).sendParticles(ModParticles.SLIME_STREAKS.get(), plr.getX(), plr.getY() + 0.1, plr.getZ(),1, 0, 0, 0, 0);
-                        Objects.requireNonNull(plr.level().getServer().getLevel(plr.level().dimension())).sendParticles(ModParticles.BRACE_BOUNCE.get(), plr.getX(), plr.getY() + 0.1, plr.getZ(),1, 0, 0, 0, 0);
+                        Objects.requireNonNull(plr.level().getServer().getLevel(plr.level().dimension())).sendParticles(ModParticles.BRACE_BOUNCE.get(), plr.getX(), plr.getY() + 0.2, plr.getZ(),1, 0, 0, 0, 0);
 
                         plr.setDeltaMovement(plr.getDeltaMovement().x, 0.4, plr.getDeltaMovement().z);
                     }
@@ -73,10 +73,11 @@ public class SlimeBraceEvent {
                             if (!(mob instanceof TamableAnimal animal) || !animal.isTame()) {
                                 if (!(mob instanceof Player))
                                 {
-                                    Vec3 v = mob.position().subtract(plr.position()).normalize().multiply(0.5,0,0.5);
+                                    Vec3 v = mob.position().subtract(plr.position()).normalize().multiply(1, 0,1);
                                     mob.addDeltaMovement(v);
-                                    mob.addDeltaMovement(new Vec3(0, 0.3, 0));
+                                    mob.addDeltaMovement(new Vec3(0, 0.4, 0));
                                     mob.addEffect(new MobEffectInstance(ModEffects.PARALYSIS, 40));
+                                    mob.hurt(plr.damageSources().magic(), 5);
                                 }
                             }
                         }
