@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "farworld:gloomstone_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "farworld:slime_brace"
+  },
+  "addition": {
+    "item": "farworld:gloom_plate"
+  },
+  "result": {
+    "id": "farworld:gloom_brace",
+    "count": 1
+  }
+}

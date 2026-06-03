@@ -110,26 +110,4 @@ public class BreezeRing extends AccessoryItem {
         if (event instanceof PlayerInteractEvent.LeftClickEmpty)
             lunging = false;
     }
-
-    @EventBusSubscriber
-    public static class SlimeBraceEvents {
-        @SubscribeEvent
-        public static void fallDmg(LivingIncomingDamageEvent evt)
-        {
-            if (evt.getEntity() instanceof Player plr)
-            {
-                if (AccessoryUtils.playerHasAccessory(plr, ModItems.SLIME_BRACE.get()))
-                {
-                    if (evt.getSource().is(DamageTypes.FALL))
-                    {
-                        if (evt.getAmount() <= 4)
-                        {
-                            evt.setCanceled(true);
-                        }
-                        evt.setAmount(evt.getAmount() - 4);
-                    }
-                }
-            }
-        }
-    }
 }

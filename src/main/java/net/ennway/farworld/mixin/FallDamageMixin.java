@@ -31,7 +31,11 @@ public abstract class FallDamageMixin extends LivingEntity {
     @Inject(method = "getFallSounds", at = @At("HEAD"), cancellable = true)
     public void fallSounds(CallbackInfoReturnable<LivingEntity.Fallsounds> cir)
     {
-        if (AccessoryUtils.playerHasAccessory((Player)(Object)this, ModItems.SLIME_BRACE.get())) {
+        Player t = (Player)(Object)this;
+        if (AccessoryUtils.playerHasAccessory(t, ModItems.GLOOM_BRACE.get())) {
+            cir.setReturnValue(ModSounds.gloomSounds());
+        }
+        else if (AccessoryUtils.playerHasAccessory(t, ModItems.SLIME_BRACE.get())) {
             cir.setReturnValue(ModSounds.slimeSounds());
         }
     }

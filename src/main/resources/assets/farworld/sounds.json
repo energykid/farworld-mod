@@ -8,6 +8,11 @@
       "farworld:slime_brace_land2"]
   },
 
+  "gloom_brace_land": {
+    "sounds": ["farworld:gloom_brace_land1",
+      "farworld:gloom_brace_land2"]
+  },
+
   "crystal_lamp_hit": {
     "sounds": ["farworld:crystal_lamp_hit1",
       "farworld:crystal_lamp_hit2",

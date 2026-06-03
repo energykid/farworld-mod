@@ -105,6 +105,7 @@ public class ModSounds {
     public static final Supplier<SoundEvent> CRYSTAL_LAMP_BREAK = createSoundEvent("crystal_lamp_break");
 
     public static final Supplier<SoundEvent> SLIME_BRACE_LAND = createSoundEvent("slime_brace_land");
+    public static final Supplier<SoundEvent> GLOOM_BRACE_LAND = createSoundEvent("gloom_brace_land");
 
     public static final Supplier<SoundEvent> FLOWSTONE_HIT = createSoundEvent("flowstone_hit");
     public static final Supplier<SoundEvent> FLOWSTONE_BREAK = createSoundEvent("flowstone_break");
@@ -114,6 +115,9 @@ public class ModSounds {
 
     public static LivingEntity.Fallsounds slimeSounds() {
         return new LivingEntity.Fallsounds(SLIME_BRACE_LAND.get(), SLIME_BRACE_LAND.get());
+    }
+    public static LivingEntity.Fallsounds gloomSounds() {
+        return new LivingEntity.Fallsounds(GLOOM_BRACE_LAND.get(), GLOOM_BRACE_LAND.get());
     }
 
     private static ResourceKey<JukeboxSong> createSong(String name)

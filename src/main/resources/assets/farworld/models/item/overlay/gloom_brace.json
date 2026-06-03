@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "farworld:item/gloom_brace"
+    "layer0": "farworld:item/overlay/gloom_brace"
   }
 }

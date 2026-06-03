@@ -33,7 +33,7 @@ public class SlimeStreaks extends StraightUpParticle {
 
     @Override
     public void render(VertexConsumer buffer, Camera camera, float ticks) {
-        this.heightScale = Mth.lerp(0.1f, heightScale, 2f);
+        this.heightScale = Mth.lerp(0.2f, heightScale, 2f);
         super.render(buffer, camera, ticks);
     }
 

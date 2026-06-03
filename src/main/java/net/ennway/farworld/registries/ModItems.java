@@ -31,6 +31,7 @@ public class ModItems {
                     "obsidian_keepsake",
                     "iron_cuff",
                     "slime_brace",
+                    "gloom_brace",
                     "cobalt_cuff",
                     "glittering_aspect",
                     "magic_spur",
