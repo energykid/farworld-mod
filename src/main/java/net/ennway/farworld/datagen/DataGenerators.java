@@ -23,5 +23,6 @@ public class DataGenerators {
 
         generator.addProvider(event.includeServer(), new BlockGenerator(packOutput, Farworld.MOD_ID, existingFileHelper));
         generator.addProvider(event.includeServer(), new ItemGenerator(packOutput, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ParticleGenerator(packOutput, existingFileHelper));
     }
 }

@@ -45,29 +45,6 @@ public class BlockGenerator extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
-        cubeAll("lush_flowstone_bricks",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
-        slab("lush_flowstone_brick_slab",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
-        stairs("lush_flowstone_brick_stairs",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
-        stairsInner("lush_flowstone_brick_stairs_inner",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
-        stairsOuter("lush_flowstone_brick_stairs_outer",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"),
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
-        wallPost("lush_flowstone_brick_wall_post",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
-        wallSide("lush_flowstone_brick_wall_side",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
-        wallSideTall("lush_flowstone_brick_wall_side_tall",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
+
     }
 }

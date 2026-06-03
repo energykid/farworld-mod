@@ -119,4 +119,12 @@ public class ModParticles {
             "apocalypse_roar",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> SLIME_STREAKS = PARTICLE_TYPES.register(
+            "slime_streaks",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> BRACE_BOUNCE = PARTICLE_TYPES.register(
+            "brace_bounce",
+            () -> new SimpleParticleType(false)
+    );
 }

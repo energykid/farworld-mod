@@ -1,0 +1,44 @@
+package net.ennway.farworld.particle;
+
+import net.ennway.farworld.particle.base.StraightUpParticle;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.core.particles.SimpleParticleType;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+public class SlimeStreaks extends StraightUpParticle {
+
+    public SlimeStreaks(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
+        super(level, x, y, z, spriteSet);
+
+        this.quadSize = 0.8f;
+
+        this.lifetime = level.getRandom().nextInt(5, 7);
+
+        this.setSpriteFromAge(this.sprites);
+    }
+
+    @Override
+    public void tick() {
+        this.setSpriteFromAge(this.sprites);
+        super.tick();
+    }
+
+    public static class Provider implements ParticleProvider<SimpleParticleType>
+    {
+        private final SpriteSet spriteSet;
+
+        public Provider(SpriteSet spriteSet) {
+            this.spriteSet = spriteSet;
+        }
+
+        @Override
+        public @Nullable Particle createParticle(@NotNull SimpleParticleType particleType, @NotNull ClientLevel level, double x, double y, double z, double xsp, double ysp, double zsp) {
+            return new SlimeStreaks(level, x, y, z, spriteSet);
+        }
+    }
+}
+

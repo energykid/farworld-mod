@@ -58,11 +58,6 @@ public class ItemGenerator extends ItemModelProvider {
     @Override
     protected void registerModels() {
 
-        simpleBlockItem(ModBlocks.LUSH_FLOWSTONE_BRICKS.get());
-        simpleBlockItem(ModBlocks.LUSH_FLOWSTONE_BRICK_STAIRS.get());
-        simpleBlockItem(ModBlocks.LUSH_FLOWSTONE_BRICK_SLAB.get());
-        wallInventory("lush_flowstone_brick_wall",
-                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/lush_flowstone_bricks"));
     }
 
     // Shoutout to El_Redstoniano for making this

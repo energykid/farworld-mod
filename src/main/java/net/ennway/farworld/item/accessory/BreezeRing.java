@@ -2,28 +2,20 @@ package net.ennway.farworld.item.accessory;
 
 import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.registries.*;
+import net.ennway.farworld.utils.AccessoryUtils;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.common.Tags;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-
-import java.util.Objects;
 
 public class BreezeRing extends AccessoryItem {
 
@@ -117,5 +109,27 @@ public class BreezeRing extends AccessoryItem {
     public void onLeftClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
         if (event instanceof PlayerInteractEvent.LeftClickEmpty)
             lunging = false;
+    }
+
+    @EventBusSubscriber
+    public static class SlimeBraceEvents {
+        @SubscribeEvent
+        public static void fallDmg(LivingIncomingDamageEvent evt)
+        {
+            if (evt.getEntity() instanceof Player plr)
+            {
+                if (AccessoryUtils.playerHasAccessory(plr, ModItems.SLIME_BRACE.get()))
+                {
+                    if (evt.getSource().is(DamageTypes.FALL))
+                    {
+                        if (evt.getAmount() <= 4)
+                        {
+                            evt.setCanceled(true);
+                        }
+                        evt.setAmount(evt.getAmount() - 4);
+                    }
+                }
+            }
+        }
     }
 }
