@@ -7,7 +7,7 @@
     "item": "minecraft:stone_sword"
   },
   "addition": {
-    "item": "farworld:gloomspores"
+    "item": "farworld:gloom_plate"
   },
   "result": {
     "id": "farworld:gloomstone_sword",

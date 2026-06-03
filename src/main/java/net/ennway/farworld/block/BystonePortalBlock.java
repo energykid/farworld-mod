@@ -84,6 +84,15 @@ public class BystonePortalBlock extends Block {
     }
 
     @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+        if (!level.getBlockState(pos.above()).is(ModBlocks.ECHO_LANTERN))
+        {
+            cascadingPortalConversion(level, pos);
+        }
+    }
+
+    @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (random.nextInt(40) > 38)
         {

@@ -7,7 +7,7 @@
     "item": "minecraft:stone_pickaxe"
   },
   "addition": {
-    "item": "farworld:gloomspores"
+    "item": "farworld:gloom_plate"
   },
   "result": {
     "id": "farworld:gloomstone_pickaxe",

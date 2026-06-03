@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "gloom_plate",
+  "key": {
+    "#": {
+      "item": "farworld:gloomspores"
+    },
+    "X": {
+      "item": "farworld:cobalt_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:gloom_plate"
+  }
+}

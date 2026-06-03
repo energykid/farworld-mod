@@ -203,6 +203,7 @@ public class Farworld
             event.insertAfter(ModItems.BRITTLE_POWDER.toStack(), ModItems.GLOOMSPORES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.RAW_GOLD.getDefaultInstance(), ModItems.RAW_COBALT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.GOLD_INGOT.getDefaultInstance(), ModItems.COBALT_INGOT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.COBALT_INGOT.toStack(), ModItems.GLOOM_PLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.NETHERITE_INGOT.getDefaultInstance(), ModItems.SOUL_STEEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.NETHERITE_INGOT.getDefaultInstance(), ModItems.BLACK_ICE_SHARD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.BLACK_ICE_SHARD.toStack(), ModItems.BLACK_ICE_GEM.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -245,10 +246,11 @@ public class Farworld
             event.insertAfter(ModItems.BLACK_ICE_PICKAXE.toStack(), ModItems.BLACK_ICE_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.BLACK_ICE_AXE.toStack(), ModItems.BLACK_ICE_HOE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
-            event.insertAfter(Items.ELYTRA.getDefaultInstance(), ModItems.MAGIC_SPUR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.ELYTRA.getDefaultInstance(), ModItems.GOGGLES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GOGGLES.toStack(), ModItems.MAGIC_SPUR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.MAGIC_SPUR.toStack(), ModItems.TOOLBELT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.TOOLBELT.toStack(), ModItems.GLITTERING_ASPECT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.GLITTERING_ASPECT.toStack(), ModItems.GOGGLES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.TOOLBELT.toStack(), ModItems.SLIME_BRACE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SLIME_BRACE.toStack(), ModItems.GLITTERING_ASPECT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT)
         {

@@ -9,10 +9,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.JukeboxSong;
 import net.minecraft.world.level.block.SoundType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.spongepowered.asm.mixin.Unique;
 
 import java.util.function.Supplier;
 
@@ -102,11 +104,17 @@ public class ModSounds {
     public static final Supplier<SoundEvent> CRYSTAL_LAMP_HIT = createSoundEvent("crystal_lamp_hit");
     public static final Supplier<SoundEvent> CRYSTAL_LAMP_BREAK = createSoundEvent("crystal_lamp_break");
 
+    public static final Supplier<SoundEvent> SLIME_BRACE_LAND = createSoundEvent("slime_brace_land");
+
     public static final Supplier<SoundEvent> FLOWSTONE_HIT = createSoundEvent("flowstone_hit");
     public static final Supplier<SoundEvent> FLOWSTONE_BREAK = createSoundEvent("flowstone_break");
 
     public static final Supplier<SoundEvent> LOOSE_FLOWSTONE_HIT = createSoundEvent("loose_flowstone_hit");
     public static final Supplier<SoundEvent> LOOSE_FLOWSTONE_BREAK = createSoundEvent("loose_flowstone_break");
+
+    public static LivingEntity.Fallsounds slimeSounds() {
+        return new LivingEntity.Fallsounds(SLIME_BRACE_LAND.get(), SLIME_BRACE_LAND.get());
+    }
 
     private static ResourceKey<JukeboxSong> createSong(String name)
     {

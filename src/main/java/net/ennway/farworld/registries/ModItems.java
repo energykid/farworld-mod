@@ -30,6 +30,7 @@ public class ModItems {
                     "apocalypse_core",
                     "obsidian_keepsake",
                     "iron_cuff",
+                    "slime_brace",
                     "cobalt_cuff",
                     "glittering_aspect",
                     "magic_spur",
@@ -75,6 +76,8 @@ public class ModItems {
     public static final DeferredItem<Item> RAW_COBALT = ITEMS_ALL.register("raw_cobalt",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> COBALT_INGOT = ITEMS_ALL.register("cobalt_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GLOOM_PLATE = ITEMS_ALL.register("gloom_plate",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BLACK_ICE_SHARD = ITEMS_ALL.register("black_ice_shard",
             () -> new Item(new Item.Properties()));
@@ -303,6 +306,11 @@ public class ModItems {
                     EquipmentSlotGroup.ANY).build()))
     );
 
+    public static final DeferredItem<Item> SLIME_BRACE = ITEMS_ALL.register(
+            "slime_brace",
+            () -> new AccessoryItem(new Item.Properties())
+    );
+
     public static final DeferredItem<Item> COBALT_CUFF = ITEMS_ALL.register(
             "cobalt_cuff",
             () -> new AccessoryItem(new Item.Properties().attributes(ItemAttributeModifiers.builder().add(
@@ -397,7 +405,7 @@ public class ModItems {
                 Component.translatable("item.farworld.gloomstone_upgrade_smithing_template.base_slot_description"),
                 Component.translatable("item.farworld.gloomstone_upgrade_smithing_template.additions_slot_description"),
                 SmithingUtils.equipmentIconListNoArmor(),
-                SmithingUtils.gloomsporeIcon());
+                SmithingUtils.gloomPlateIcon());
     }
 
     public static SmithingTemplateItem createBlackIceUpgradeTemplate() {

@@ -5,6 +5,7 @@
   "mixins": [
     "ArmoryMixin",
     "ChargeBunkerPlayerMixin",
+    "FallDamageMixin",
     "SparklingEffectMixin",
     "SwordStanceMixin",
     "SwordStancePlayerMixin"
@@ -14,8 +15,8 @@
   },
   "client": [
     "ArmoryModelMixin",
-    "WishboneAnimationMixin",
     "DurathystClusterRenderMixin",
-    "ItemAnimationMixin"
+    "ItemAnimationMixin",
+    "WishboneAnimationMixin"
   ]
 }
