@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "DSD",
+    "DCD",
+    "DDD"
+  ],
+  "key": {
+    "C": {
+      "item": "farworld:soul_steel"
+    },
+    "S": {
+      "item": "farworld:smithstone_remnant"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "id": "farworld:soul_steel_upgrade_smithing_template",
+    "count": 1
+  }
+}

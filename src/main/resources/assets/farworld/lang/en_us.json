@@ -77,6 +77,8 @@
   "item.farworld.black_ice_boots" : "Black Ice Boots",
   "extra.farworld.black_ice_effect" : "§aVoid Bursts",
   "item.farworld.black_ice_upgrade_smithing_template" : "Smithing Template",
+  "item.farworld.smithstone_remnant" : "Smithstone Remnant",
+  "lore.farworld.smithstone_remnant" : "An ancient stone, containing trace amounts of magic once used for forging Smithing Templates.",
   "item.farworld.breeze_boots" : "Breeze Treads",
   "lore.farworld.breeze_boots" : "Boots that, when worn, grant extra movement speed.",
 

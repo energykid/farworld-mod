@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "farworld",
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "C": [
+      {
+        "item": "farworld:black_ice_gem"
+      }
+    ],
+    "S": {
+      "item": "farworld:smithstone_remnant"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:black_ice_upgrade_smithing_template"
+  }
+}

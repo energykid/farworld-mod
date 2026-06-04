@@ -1,0 +1,57 @@
+{
+  "criteria": {
+    "pickup0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickup1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:ancient_debris"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickup2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_scrap"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickup3": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pickup0",
+      "pickup1",
+      "pickup2",
+      "pickup3"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farworld:netherite_template_from_smithstone"
+    ]
+  }
+}

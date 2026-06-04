@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "category": "misc",
-  "group": "gold_ingot",
+  "group": "iron_ingot",
   "ingredient": {
     "item": "farworld:nether_iron_ore"
   },

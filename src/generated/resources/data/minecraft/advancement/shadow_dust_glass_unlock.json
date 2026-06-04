@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "pickup0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farworld:dust_glass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pickup0"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farworld:shadow_dust_glass"
+    ]
+  }
+}

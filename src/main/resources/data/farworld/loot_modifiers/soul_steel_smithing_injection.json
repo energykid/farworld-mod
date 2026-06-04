@@ -3,10 +3,10 @@
   "conditions": [
     {
       "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/bastion_bridge"
+      "loot_table_id": "minecraft:chests/nether_bridge"
     }
   ],
-  "chance": 0.15,
+  "chance": 0.35,
   "amount": 1,
   "item_type": "farworld:soul_steel_upgrade_smithing_template"
 }

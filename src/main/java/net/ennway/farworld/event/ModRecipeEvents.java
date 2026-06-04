@@ -3,12 +3,14 @@ package net.ennway.farworld.event;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.registries.ModItems;
 import net.ennway.farworld.registries.ModPotions;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RecipesUpdatedEvent;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 
@@ -23,5 +25,14 @@ public class ModRecipeEvents {
         PotionBrewing.Builder builder = event.getBuilder();
 
         builder.addMix(Potions.AWKWARD, ModItems.GLOOMSPORES.value(), ModPotions.PARALYSIS);
+    }
+
+    @SubscribeEvent
+    public static void updateRecipes(RecipesUpdatedEvent evt)
+    {
+        for (var recipe : evt.getRecipeManager().getRecipeIds().toList())
+        {
+
+        }
     }
 }

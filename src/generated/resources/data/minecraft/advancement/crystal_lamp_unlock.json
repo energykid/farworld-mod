@@ -1,0 +1,46 @@
+{
+  "criteria": {
+    "pickup0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:amethyst_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickup1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:amethyst_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickup2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:smooth_basalt"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pickup0",
+      "pickup1",
+      "pickup2"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farworld:crystal_lamp"
+    ]
+  }
+}

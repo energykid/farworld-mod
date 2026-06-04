@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "cuff",
+  "group": "iron_cuff",
   "key": {
     "#": {
       "item": "minecraft:iron_ingot"

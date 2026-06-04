@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "pickup0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farworld:cobalt_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pickup0"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farworld:cobalt_chestplate"
+    ]
+  }
+}

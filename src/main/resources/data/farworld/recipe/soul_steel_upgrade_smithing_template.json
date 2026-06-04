@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "pattern": [
-    "#S#",
-    "#C#",
-    "#D#"
+    "DSD",
+    "DCD",
+    "DDD"
   ],
   "key": {
     "#": {
@@ -17,7 +17,7 @@
       "item": "farworld:soul_steel_upgrade_smithing_template"
     },
     "D": {
-      "item": "farworld:soul_steel"
+      "item": "minecraft:diamond"
     }
   },
   "result": {

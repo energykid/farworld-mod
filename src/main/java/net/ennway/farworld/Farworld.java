@@ -69,6 +69,7 @@ public class Farworld
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
@@ -215,6 +216,9 @@ public class Farworld
             event.insertBefore(ModItems.SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE.toStack(), ModItems.GLOOMSTONE_UPGRADE_SMITHING_TEMPLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             // Post-Netherite smithing templates
             event.insertAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.getDefaultInstance(), ModItems.BLACK_ICE_UPGRADE_SMITHING_TEMPLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            // Smithstone Remnant
+            event.insertBefore(ModItems.GLOOMSTONE_UPGRADE_SMITHING_TEMPLATE.toStack(), ModItems.SMITHSTONE_REMNANT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {

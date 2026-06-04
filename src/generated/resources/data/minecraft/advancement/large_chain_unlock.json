@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "pickup0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickup1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_nugget"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pickup0",
+      "pickup1"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farworld:large_chain"
+    ]
+  }
+}

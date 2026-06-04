@@ -6,11 +6,14 @@
     "farworld:pear_injection",
     "farworld:cherries_injection",
     "farworld:soul_steel_smithing_injection",
-    "farworld:soul_steel_smithing_injection_2",
-    "farworld:soul_steel_smithing_injection_3",
     "farworld:black_ice_smithing_injection",
     "farworld:breeze_boots_injection",
     "farworld:skeleton_arm_injection",
-    "farworld:apocalypse_core_injection"
+    "farworld:apocalypse_core_injection",
+    "farworld:smithstone_injection_1",
+    "farworld:smithstone_injection_2",
+    "farworld:smithstone_injection_3",
+    "farworld:smithstone_injection_4",
+    "farworld:smithstone_injection_5"
   ]
 }

@@ -84,6 +84,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BLACK_ICE_GEM = ITEMS_ALL.register("black_ice_gem",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SMITHSTONE_REMNANT = ITEMS_ALL.register("smithstone_remnant",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL_UPGRADE_SMITHING_TEMPLATE = ITEMS_ALL.register("soul_steel_upgrade_smithing_template",
             ModItems::createSoulSteelUpgradeTemplate);
     public static final DeferredItem<Item> GLOOMSTONE_UPGRADE_SMITHING_TEMPLATE = ITEMS_ALL.register("gloomstone_upgrade_smithing_template",

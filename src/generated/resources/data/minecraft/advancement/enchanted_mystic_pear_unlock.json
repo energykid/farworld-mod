@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "pickup0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farworld:pear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pickup0"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farworld:enchanted_mystic_pear"
+    ]
+  }
+}

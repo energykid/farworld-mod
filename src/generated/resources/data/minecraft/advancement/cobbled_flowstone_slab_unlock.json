@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "pickup0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farworld:cobbled_flowstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pickup0"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farworld:cobbled_flowstone_slab"
+    ]
+  }
+}

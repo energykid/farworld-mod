@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "from_cobalt",
+  "pattern": [
+    "#S#",
+    "#C#",
+    "DDD"
+  ],
+  "key": {
+    "#": {
+      "item": "farworld:cobalt_ingot"
+    },
+    "C": {
+      "item": "farworld:gloom_plate"
+    },
+    "S": {
+      "item": "farworld:smithstone_remnant"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "id": "farworld:gloomstone_upgrade_smithing_template",
+    "count": 1
+  }
+}
