@@ -30,8 +30,10 @@ public class SludgeModel<T extends SludgeEntity> extends GeoModel<T> {
 			return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/sludge_emerald.png");
 		if (animatable.getEntityData().get(SludgeEntity.GEM_CONTAINED).equals("lapis"))
 			return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/sludge_lapis.png");
+		if (animatable.getEntityData().get(SludgeEntity.GEM_CONTAINED).equals("amethyst"))
+			return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/sludge_amethyst.png");
 
-		return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/sludge_amethyst.png");
+		return ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/sludge_diamond.png");
 	}
 
 	@Override

@@ -149,6 +149,7 @@ public class Farworld
             event.insertAfter(Items.ENCHANTED_GOLDEN_APPLE.getDefaultInstance(), ModItems.PEAR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.PEAR.toStack(), ModItems.MYSTIC_PEAR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.MYSTIC_PEAR.toStack(), ModItems.ENCHANTED_MYSTIC_PEAR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.MUSHROOM_STEW.getDefaultInstance(), ModItems.SLUDGE_SOUP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(Items.SWEET_BERRIES.getDefaultInstance(), ModItems.CHERRIES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.CHERRIES.toStack(), ModItems.GEODE_NUT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GEODE_NUT.toStack(), ModItems.GEODE_FRUIT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

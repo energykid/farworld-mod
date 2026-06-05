@@ -4,7 +4,7 @@
   "spawners": [
     {
       "type": "farworld:sludge",
-      "weight": 4,
+      "weight": 1,
       "minCount": 5,
       "maxCount": 10
     }

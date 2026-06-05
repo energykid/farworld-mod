@@ -76,6 +76,12 @@ public class SludgeEntity extends Monster implements GeoEntity {
             {
                 this.setItemSlotAndDropWhenKilled(EquipmentSlot.MAINHAND, new ItemStack(Items.AMETHYST_SHARD, getRandom().nextIntBetweenInclusive(1, 3)));
             }
+
+            if (this.getRandom().nextIntBetweenInclusive(0, 50) > 45)
+            {
+                this.getEntityData().set(GEM_CONTAINED, "diamond");
+                this.setItemSlotAndDropWhenKilled(EquipmentSlot.MAINHAND, new ItemStack(Items.DIAMOND, getRandom().nextIntBetweenInclusive(1, 3)));
+            }
         }
     }
 

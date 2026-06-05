@@ -17,7 +17,6 @@ public class SludgeSoup extends Item {
                         .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20 * 10, 1), 1f)
                         .effect(new MobEffectInstance(ModEffects.SLUDGED, 20 * 10, 0), 1f)
                         .usingConvertsTo(Items.BOWL)
-                        .build())
-                .rarity(Rarity.RARE));
+                        .build()));
     }
 }
