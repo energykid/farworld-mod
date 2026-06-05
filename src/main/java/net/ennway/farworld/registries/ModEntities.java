@@ -22,16 +22,15 @@ import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityBla
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityEntity;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityLaserEntity;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityVerticalBlastEntity;
-import net.ennway.farworld.entity.projectile.ApocalypseBreathProjectile;
-import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
-import net.ennway.farworld.entity.projectile.BlazeStanceProjectile;
-import net.ennway.farworld.entity.projectile.GloomstonePickup;
+import net.ennway.farworld.entity.projectile.*;
 import net.ennway.farworld.entity.projectile.client.ApocalypseBreathRenderer;
 import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
+import net.ennway.farworld.entity.projectile.client.SludgeArrowRenderer;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
 import net.ennway.farworld.registries.entity_definitions.NonGeoEntityLayerDefinition;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -51,6 +50,7 @@ public class ModEntities {
             BuiltInRegistries.ENTITY_TYPE,
             Farworld.MOD_ID);
 
+    //region Mobs
     public static final DeferredHolder<EntityType<?>, EntityType<BloomedEntity>> BLOOMED = ENTITY_TYPES.register(
             "bloomed", () -> EntityType.Builder.of(BloomedEntity::new, MobCategory.MONSTER)
                     .eyeHeight(0.25f)
@@ -98,8 +98,17 @@ public class ModEntities {
                     .eyeHeight(2f)
                     .sized(1f, 2.25f)
                     .build("redstone_curiosity"));
+    //endregion
 
     //region Projectiles
+
+    public static final DeferredHolder<EntityType<?>, EntityType<SludgeArrowProjectile>> SLUDGE_ARROW = ENTITY_TYPES.register(
+            "sludge_arrow", () -> EntityType.Builder.of(SludgeArrowProjectile::getBase, MobCategory.MISC)
+                    .sized(0.5f, 0.5f)
+                    .eyeHeight(0.13F)
+                    .clientTrackingRange(4)
+                    .updateInterval(20)
+                    .build("sludge_arrow"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<BlazeStanceProjectile>> BLAZE_STANCE_SLASH = ENTITY_TYPES.register(
             "blaze_stance_slash", () -> EntityType.Builder.of(BlazeStanceProjectile::new, MobCategory.MISC).build("blaze_stance_slash"));
@@ -179,6 +188,12 @@ public class ModEntities {
                     null,
                     null,
                     ApocalypseBreathRenderer::new
+            ),
+            new NonGeoEntityLayerDefinition<SludgeArrowProjectile>(
+                    SLUDGE_ARROW,
+                    null,
+                    null,
+                    SludgeArrowRenderer::new
             )
     );
     //endregion
@@ -218,7 +233,7 @@ public class ModEntities {
         public static void registerSpawnConditions(RegisterSpawnPlacementsEvent event)
         {
             event.register(BLOOMED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-            event.register(SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, pos, e) -> pos.getY() < 0, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(BRITTLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(DUSTBUG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(GOLIATH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);

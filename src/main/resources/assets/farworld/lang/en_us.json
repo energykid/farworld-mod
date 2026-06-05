@@ -79,6 +79,12 @@
   "item.farworld.black_ice_upgrade_smithing_template" : "Smithing Template",
   "item.farworld.smithstone_remnant" : "Smithstone Remnant",
   "lore.farworld.smithstone_remnant" : "An ancient stone, containing trace amounts of magic once used for forging Smithing Templates.",
+  "item.farworld.sludge_ball" : "Sludgeball",
+  "lore.farworld.sludge_ball" : "A piece of sludge looted from an enemy.",
+  "item.farworld.sludge_arrow" : "Sludge Arrow",
+  "lore.farworld.sludge_arrow" : "An arrow coated in sludge. It slows enemies and decreases their jump height on hit.",
+  "item.farworld.sludge_soup" : "Sludge Soup",
+  "lore.farworld.sludge_soup" : "Yummy!",
   "item.farworld.breeze_boots" : "Breeze Treads",
   "lore.farworld.breeze_boots" : "Boots that, when worn, grant extra movement speed.",
 
@@ -144,6 +150,8 @@
 
   "effect.farworld.paralysis" : "Paralysis",
   "effect.farworld.paralysis.desc" : "Briefly disables movement.",
+  "effect.farworld.sludged" : "Sludge Soup",
+  "effect.farworld.sludged.desc" : "Decreases jump height and movement speed.",
   "effect.farworld.sparkling" : "Sparkling",
   "effect.farworld.sparkling.desc" : "Decreases fading speed for other positive effects, and increases fading speed for negative effects.",
   "item.minecraft.potion.effect.paralysis_potion" : "Potion of Paralysis",

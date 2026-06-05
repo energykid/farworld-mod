@@ -198,6 +198,8 @@ public class Farworld
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
         {
+            event.insertAfter(Items.SLIME_BALL.getDefaultInstance(), ModItems.SLUDGE_BALL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.HEAVY_CORE.getDefaultInstance(), ModItems.CURIOUS_COMPONENT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.BLAZE_POWDER.getDefaultInstance(), ModItems.BRITTLE_POWDER.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -272,6 +274,8 @@ public class Farworld
 
             event.insertAfter(Items.NETHERITE_SWORD.getDefaultInstance(), ModItems.BLACK_ICE_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.NETHERITE_AXE.getDefaultInstance(), ModItems.BLACK_ICE_AXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.ARROW.getDefaultInstance(), ModItems.SLUDGE_ARROW.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.BOW.getDefaultInstance(), ModItems.SOUL_STEEL_BOW.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SOUL_STEEL_BOW.toStack(), ModItems.BLACK_ICE_BOW.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

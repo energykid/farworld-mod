@@ -123,6 +123,10 @@ public class ModParticles {
             "slime_streaks",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> SLUDGE_DROP = PARTICLE_TYPES.register(
+            "sludge_drop",
+            () -> new SimpleParticleType(false)
+    );
     public static final Supplier<SimpleParticleType> BRACE_BOUNCE = PARTICLE_TYPES.register(
             "brace_bounce",
             () -> new SimpleParticleType(false)

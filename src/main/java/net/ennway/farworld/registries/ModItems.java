@@ -56,19 +56,15 @@ public class ModItems {
             MysticPear::new);
     public static final DeferredItem<Item> ENCHANTED_MYSTIC_PEAR = ITEMS_ALL.register("enchanted_mystic_pear",
             EnchantedMysticPear::new);
-    public static final DeferredItem<Item> ALLSAW = ITEMS_ALL.register("allsaw",
-            Allsaw::new);
-
-    public static final DeferredItem<Item> WISHBONE = ITEMS_ALL.register("wishbone",
-            Wishbone::new);
-
-    public static final DeferredItem<Item> DURATHYST_CLUSTER = ITEMS_ALL.register("durathyst_cluster",
-            DurathystCluster::new);
+    public static final DeferredItem<Item> SLUDGE_SOUP = ITEMS_ALL.register("sludge_soup",
+            SludgeSoup::new);
 
     public static final DeferredItem<BrittlePowder> BRITTLE_POWDER = ITEMS_ALL.register("brittle_powder",
             () -> new BrittlePowder(new BrittlePowder.Properties()));
 
     public static final DeferredItem<Item> GLOOMSPORES = ITEMS_ALL.register("gloomspores",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SLUDGE_BALL = ITEMS_ALL.register("sludge_ball",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> CURIOUS_COMPONENT = ITEMS_ALL.register("curious_component",
             () -> new Item(new Item.Properties()));
@@ -281,11 +277,19 @@ public class ModItems {
     );
     //endregion
 
-    //region Unique Weapons
+    //region Unique Weapons & Tools
     public static final DeferredItem<Item> CHARGE_BUNKER = ITEMS_ALL.register(
             "charge_bunker",
             () -> new ChargeBunker(new Item.Properties().durability(500))
     );
+    public static final DeferredItem<Item> SLUDGE_ARROW = ITEMS_ALL.register("sludge_arrow",
+            SludgeArrow::new);
+    public static final DeferredItem<Item> ALLSAW = ITEMS_ALL.register("allsaw",
+            Allsaw::new);
+    public static final DeferredItem<Item> WISHBONE = ITEMS_ALL.register("wishbone",
+            Wishbone::new);
+    public static final DeferredItem<Item> DURATHYST_CLUSTER = ITEMS_ALL.register("durathyst_cluster",
+            DurathystCluster::new);
     //endregion
 
     public static final DeferredItem<Item> NETHERITE_CROSSBOW = ITEMS_ALL.register(

@@ -108,10 +108,14 @@ public class SludgeEntity extends Monster implements GeoEntity {
                         if (this.getEntityData().get(JUMPS) >= 3) {
                             this.playSound(ModSounds.SLUDGE_CRASH.get());
                             this.getEntityData().set(JUMPS, 0);
+                            if (level() instanceof ServerLevel)
+                                triggerAnim("jump_controller", "crash");
+                        }
+                        else {
+                            if (level() instanceof ServerLevel)
+                                triggerAnim("jump_controller", "land");
                         }
                         this.playSound(SoundEvents.SLIME_SQUISH);
-                        if (level() instanceof ServerLevel)
-                            triggerAnim("jump_controller", "land");
                     }
                 } else {
                     if (this.getTarget() != null && this.getEntityData().get(JUMPS) >= 3 && this.getDeltaMovement().y > 0) {
@@ -122,7 +126,7 @@ public class SludgeEntity extends Monster implements GeoEntity {
             }
             if (!this.onGround())
             {
-                this.absRotateTo((float) MathUtils.entityLookAngle(getDeltaMovement()), 0f);
+                this.absRotateTo((float)MathUtils.entityLookAngle(getDeltaMovement()), 0f);
             }
         }
         super.aiStep();
@@ -161,6 +165,7 @@ public class SludgeEntity extends Monster implements GeoEntity {
     protected static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     protected static final RawAnimation JUMP_ANIM = RawAnimation.begin().thenPlayAndHold("jump");
     protected static final RawAnimation LAND_ANIM = RawAnimation.begin().thenPlayAndHold("land");
+    protected static final RawAnimation CRASH_ANIM = RawAnimation.begin().thenPlayAndHold("crash");
 
     protected <E extends SludgeEntity> PlayState idleAnimController(final AnimationState<E> event) {
         return event.setAndContinue(IDLE_ANIM);
@@ -193,7 +198,8 @@ public class SludgeEntity extends Monster implements GeoEntity {
 
         controllers.add(new AnimationController<>(this, "jump_controller", animTest -> PlayState.STOP)
                 .triggerableAnim("jump", JUMP_ANIM)
-                .triggerableAnim("land", LAND_ANIM));
+                .triggerableAnim("land", LAND_ANIM)
+                .triggerableAnim("crash", CRASH_ANIM));
     }
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);

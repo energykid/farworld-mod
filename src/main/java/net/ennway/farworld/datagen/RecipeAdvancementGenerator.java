@@ -109,6 +109,10 @@ public class RecipeAdvancementGenerator extends AdvancementProvider {
             recipeAdvancement(saver, List.of(ModItems.PEAR.asItem()), List.of(
                     "mystic_pear", "enchanted_mystic_pear"));
 
+            /// Sludge Soup & Sludge Arrow
+            recipeAdvancement(saver, List.of(ModItems.SLUDGE_BALL.asItem()), List.of(
+                    "sludge_soup", "sludge_arrow"));
+
             /// Cobalt set & Gloom Plates
             recipeAdvancement(saver, List.of(ModItems.COBALT_INGOT.asItem()), List.of(
                     "cobalt_block", "cobalt_block_revert",

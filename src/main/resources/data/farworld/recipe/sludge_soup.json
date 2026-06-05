@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "farworld:sludge_ball"
+    },
+    {
+      "item": "farworld:sludge_ball"
+    },
+    {
+      "item": "farworld:sludge_ball"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:sludge_soup"
+  }
+}
