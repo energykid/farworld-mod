@@ -3,6 +3,14 @@
     "sounds": ["farworld:battle_stance"]
   },
 
+  "sludge_wobble": {
+    "sounds": ["farworld:sludge_wobble"]
+  },
+
+  "sludge_crash": {
+    "sounds": ["farworld:sludge_crash"]
+  },
+
   "slime_brace_land": {
     "sounds": ["farworld:slime_brace_land1",
       "farworld:slime_brace_land2"]

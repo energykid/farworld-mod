@@ -66,6 +66,12 @@ public class MathUtils {
         return new Vector2f(rx, ry);
     }
 
+    public static double entityLookAngle(Vec3 target) {
+        double d0 = target.x;
+        double d2 = target.z;
+        return Mth.wrapDegrees((float)(Mth.atan2(d2, d0) * 180.0 / 3.1415927410125732) - 90.0F);
+    }
+
     public static Vector3f getAngleFromVector(float x, float y, float z)
     {
         return new Vector3f(

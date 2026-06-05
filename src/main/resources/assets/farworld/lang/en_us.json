@@ -114,6 +114,7 @@
   "accessory.item.farworld.apocalypse_core.desc" : "Right-click with an empty hand to breathe dragon fire",
 
   "item.farworld.bloomed_spawn_egg" : "Bloomed Spawn Egg",
+  "item.farworld.sludge_spawn_egg" : "Sludge Spawn Egg",
   "item.farworld.soul_golem_spawn_egg" : "Soul Steel Golem Spawn Egg",
   "item.farworld.brittle_spawn_egg" : "Brittle Spawn Egg",
   "item.farworld.dustbug_spawn_egg" : "Dustbug Spawn Egg",
@@ -325,6 +326,8 @@
 
   "entity.farworld.bloomed" : "Bloomed",
   "lore.farworld.bloomed" : "A small, timid spider that can be befriended using a raw potato, which it bites into like an apple.",
+  "entity.farworld.sludge" : "Sludge",
+  "lore.farworld.sludge" : "A territorial sort of slime found under blocks in the Deep Dark. It uses small gems to mimic a face in order to ward off predators.",
   "entity.farworld.soul_golem" : "Soul Steel Golem",
   "lore.farworld.soul_golem" : "A large construct that can be built using three Soul Steel blocks and a Shroomlight. It must be fueled using coal.",
   "entity.farworld.brittle" : "Brittle",

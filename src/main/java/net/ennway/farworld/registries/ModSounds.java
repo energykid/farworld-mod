@@ -107,6 +107,9 @@ public class ModSounds {
     public static final Supplier<SoundEvent> SLIME_BRACE_LAND = createSoundEvent("slime_brace_land");
     public static final Supplier<SoundEvent> GLOOM_BRACE_LAND = createSoundEvent("gloom_brace_land");
 
+    public static final Supplier<SoundEvent> SLUDGE_WOBBLE = createSoundEvent("sludge_wobble");
+    public static final Supplier<SoundEvent> SLUDGE_CRASH = createSoundEvent("sludge_crash");
+
     public static final Supplier<SoundEvent> FLOWSTONE_HIT = createSoundEvent("flowstone_hit");
     public static final Supplier<SoundEvent> FLOWSTONE_BREAK = createSoundEvent("flowstone_break");
 

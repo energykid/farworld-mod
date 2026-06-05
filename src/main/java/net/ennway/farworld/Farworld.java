@@ -308,6 +308,7 @@ public class Farworld
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
         {
             event.accept(ModItems.BLOOMED_SPAWN_EGG);
+            event.accept(ModItems.SLUDGE_SPAWN_EGG);
             event.accept(ModItems.SOUL_GOLEM_SPAWN_EGG);
             event.accept(ModItems.BRITTLE_SPAWN_EGG);
             event.accept(ModItems.DUSTBUG_SPAWN_EGG);

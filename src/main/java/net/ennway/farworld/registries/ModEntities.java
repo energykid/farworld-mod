@@ -5,7 +5,6 @@ import net.ennway.farworld.entity.client.amethystconstruct.AmethystConstructMode
 import net.ennway.farworld.entity.client.amethystconstruct.AmethystConstructRenderer;
 import net.ennway.farworld.entity.client.bloomed.BloomedModel;
 import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
-import net.ennway.farworld.entity.client.brittle.BrittleModel;
 import net.ennway.farworld.entity.client.brittle.BrittleRenderer;
 import net.ennway.farworld.entity.client.dustbug.DustbugModel;
 import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
@@ -15,6 +14,7 @@ import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityBlas
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityLaserRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityVerticalBlastRenderer;
+import net.ennway.farworld.entity.client.sludge.SludgeRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
 import net.ennway.farworld.entity.custom.*;
@@ -34,6 +34,13 @@ import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -61,6 +68,12 @@ public class ModEntities {
                     .eyeHeight(1.35f)
                     .sized(0.75f, 2f)
                     .build("brittle"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<SludgeEntity>> SLUDGE = ENTITY_TYPES.register(
+            "sludge", () -> EntityType.Builder.of(SludgeEntity::new, MobCategory.MONSTER)
+                    .eyeHeight(0.5f)
+                    .sized(0.7f, 0.7f)
+                    .build("sludge"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<DustbugEntity>> DUSTBUG = ENTITY_TYPES.register(
             "dustbug", () -> EntityType.Builder.of(DustbugEntity::new, MobCategory.MONSTER)
@@ -172,6 +185,10 @@ public class ModEntities {
 
     //region Geo Entity Renderers
     public static final List<GeoEntityRendererDefinition> geoMobDefinitions = List.of(
+            new GeoEntityRendererDefinition<SludgeEntity>(
+                    SLUDGE,
+                    SludgeRenderer::new
+            ),
             new GeoEntityRendererDefinition<BrittleEntity>(
                     BRITTLE,
                     BrittleRenderer::new
@@ -194,4 +211,42 @@ public class ModEntities {
             )
     );
     //endregion
+
+    @EventBusSubscriber(modid = Farworld.MOD_ID)
+    public static class EntityDataEvents {
+        @SubscribeEvent
+        public static void registerSpawnConditions(RegisterSpawnPlacementsEvent event)
+        {
+            event.register(BLOOMED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(BRITTLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(DUSTBUG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(GOLIATH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(AMETHYST_CONSTRUCT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        }
+        @SubscribeEvent
+        public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
+        {
+            for (int i = 0; i < mobDefinitions.size(); i++) {
+                NonGeoEntityLayerDefinition def = mobDefinitions.get(i);
+
+                if (def.location != null && def.definition != null)
+                {
+                    event.registerLayerDefinition(def.location, def.definition);
+                }
+            }
+        }
+        @SubscribeEvent
+        public static void registerAttributes(EntityAttributeCreationEvent event)
+        {
+            event.put(BLOOMED.get(), BloomedEntity.createAttributes().build());
+            event.put(SLUDGE.get(), SludgeEntity.createAttributes().build());
+            event.put(SOUL_GOLEM.get(), SoulGolemEntity.createAttributes().build());
+            event.put(BRITTLE.get(), BrittleEntity.createAttributes().build());
+            event.put(DUSTBUG.get(), DustbugEntity.createAttributes().build());
+            event.put(GOLIATH.get(), GoliathEntity.createAttributes().build());
+            event.put(AMETHYST_CONSTRUCT.get(), AmethystConstructEntity.createAttributes().build());
+            event.put(REDSTONE_CURIOSITY.get(), RedstoneCuriosityEntity.createAttributes().build());
+        }
+    }
 }

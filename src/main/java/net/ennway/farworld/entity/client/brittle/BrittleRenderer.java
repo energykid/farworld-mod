@@ -23,7 +23,6 @@ import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 @OnlyIn(Dist.CLIENT)
 public class BrittleRenderer extends GeoEntityRenderer<BrittleEntity> {
 
-
     public BrittleRenderer(EntityRendererProvider.Context context) {
         super(context, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "brittle")));
         addRenderLayer(new AutoGlowingGeoLayer<>(this));

@@ -185,19 +185,18 @@ public class BrittleEntity extends Monster implements GeoEntity {
         return flag;
     }
 
-    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
     protected static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-
         controllers.add(DefaultAnimations.genericWalkIdleController(this));
 
         controllers.add(new AnimationController<>(this, "attack_controller", animTest -> PlayState.STOP)
                 .triggerableAnim("attack", ATTACK_ANIM));
     }
 
+    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return geoCache;
