@@ -10,7 +10,7 @@ import net.minecraft.world.item.Rarity;
 
 public class SludgeSoup extends Item {
     public SludgeSoup() {
-		super(new Properties().food(
+		super(new Properties().stacksTo(1).food(
                 new FoodProperties.Builder()
                         .nutrition(10)
                         .saturationModifier(0.5f)
