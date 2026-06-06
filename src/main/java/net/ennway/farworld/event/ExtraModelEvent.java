@@ -30,6 +30,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -52,7 +53,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID)
+@EventBusSubscriber(modid = Farworld.MOD_ID, value = Dist.CLIENT)
 public class ExtraModelEvent {
 
     public static String getExtraModelName(Item item)

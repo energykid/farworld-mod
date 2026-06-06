@@ -25,7 +25,7 @@ import java.util.TimerTask;
 
 public class DimensionLink {
 
-    public DimensionLink(ResourceKey<Level> lv1, ResourceKey<Level> lv2, Block portal, Holder<PoiType> poi, int min, int max, ResourceLocation textureLoc, ResourceLocation featureLoc)
+    public DimensionLink(ResourceKey<Level> lv1, ResourceKey<Level> lv2, Block portal, Holder<PoiType> poi, int min, int max, String textureLoc, ResourceLocation featureLoc)
     {
         level1 = lv1;
         level2 = lv2;
@@ -42,7 +42,7 @@ public class DimensionLink {
     ResourceKey<Level> level2;
     Block portalBlock;
     public float transitionTime = 40;
-    public ResourceLocation resourceLocation;
+    public String resourceLocation;
     int minY;
     int maxY;
     float travelMultiplier;

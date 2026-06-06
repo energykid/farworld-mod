@@ -45,7 +45,6 @@ public class Farworld
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        ModPois.POIS.register(modEventBus);
         ModItems.ITEMS_ALL.register(modEventBus);
         ModAttachments.ATTACHMENT_TYPES.register(modEventBus);
         ModDataComponents.DATA_COMPONENT_TYPES.register(modEventBus);
@@ -59,6 +58,7 @@ public class Farworld
         ModStructures.STRUCTURES_ALL.register(modEventBus);
         ModFeatureTypes.FEATURES_ALL.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
+        ModPois.POIS.register(modEventBus);
 
         // Register items to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -325,8 +325,7 @@ public class Farworld
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("... Hello " + event.getServer().name() + ", I'm FARWORLD!");
     }
 
     @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
@@ -335,11 +334,11 @@ public class Farworld
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            for (NonGeoEntityLayerDefinition<Entity> def : ModEntities.mobDefinitions) {
+            for (NonGeoEntityLayerDefinition<Entity> def : ModEntities.EntityClientRegistries.mobDefinitions) {
                 EntityRenderers.register(def.type.get(), def.renderer);
             }
 
-            for (GeoEntityRendererDefinition<Entity> def : ModEntities.geoMobDefinitions) {
+            for (GeoEntityRendererDefinition<Entity> def : ModEntities.EntityClientRegistries.geoMobDefinitions) {
                 EntityRenderers.register(def.type.get(), def.renderer);
             }
 

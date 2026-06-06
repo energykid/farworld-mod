@@ -35,6 +35,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -133,100 +135,6 @@ public class ModEntities {
 
     //endregion
 
-    //region Non-Geo Entity Layers
-    public static final List<NonGeoEntityLayerDefinition> mobDefinitions = List.of(
-            new NonGeoEntityLayerDefinition<BloomedEntity>(
-                    BLOOMED,
-                    BloomedModel.LAYER_LOCATION,
-                    BloomedModel::createBodyLayer,
-                    BloomedRenderer::new
-            ),
-            new NonGeoEntityLayerDefinition<SoulGolemEntity>(
-                    SOUL_GOLEM,
-                    SoulGolemModel.LAYER_LOCATION,
-                    SoulGolemModel::createBodyLayer,
-                    SoulGolemRenderer::new
-            ),
-            new NonGeoEntityLayerDefinition<DustbugEntity>(
-                    DUSTBUG,
-                    DustbugModel.LAYER_LOCATION,
-                    DustbugModel::createBodyLayer,
-                    DustbugRenderer::new
-            ),
-            new NonGeoEntityLayerDefinition<GoliathEntity>(
-                    GOLIATH,
-                    GoliathModel.LAYER_LOCATION,
-                    GoliathModel::createBodyLayer,
-                    GoliathRenderer::new
-            ),
-            new NonGeoEntityLayerDefinition<AmethystConstructEntity>(
-                    AMETHYST_CONSTRUCT,
-                    AmethystConstructModel.LAYER_LOCATION,
-                    AmethystConstructModel::createBodyLayer,
-                    AmethystConstructRenderer::new
-            ),
-            new NonGeoEntityLayerDefinition<BlackIceImplosionProjectile>(
-                    BLACK_ICE_AOE_ENTITY,
-                    null,
-                    null,
-                    NoopRenderer::new
-            ),
-            new NonGeoEntityLayerDefinition<GloomstonePickup>(
-                    GLOOMSTONE_PICKUP,
-                    null,
-                    null,
-                    GloomstonePickupRenderer::new
-            ),
-            new NonGeoEntityLayerDefinition<BlazeStanceProjectile>(
-                    BLAZE_STANCE_SLASH,
-                    null,
-                    null,
-                    NoopRenderer::new
-            ),
-            new NonGeoEntityLayerDefinition<ApocalypseBreathProjectile>(
-                    APOCALYPSE_BREATH,
-                    null,
-                    null,
-                    ApocalypseBreathRenderer::new
-            ),
-            new NonGeoEntityLayerDefinition<SludgeArrowProjectile>(
-                    SLUDGE_ARROW,
-                    null,
-                    null,
-                    SludgeArrowRenderer::new
-            )
-    );
-    //endregion
-
-    //region Geo Entity Renderers
-    public static final List<GeoEntityRendererDefinition> geoMobDefinitions = List.of(
-            new GeoEntityRendererDefinition<SludgeEntity>(
-                    SLUDGE,
-                    SludgeRenderer::new
-            ),
-            new GeoEntityRendererDefinition<BrittleEntity>(
-                    BRITTLE,
-                    BrittleRenderer::new
-            ),
-            new GeoEntityRendererDefinition<RedstoneCuriosityEntity>(
-                    REDSTONE_CURIOSITY,
-                    RedstoneCuriosityRenderer::new
-            ),
-            new GeoEntityRendererDefinition<RedstoneCuriosityBlastEntity>(
-                    REDSTONE_CURIOSITY_BLAST,
-                    RedstoneCuriosityBlastRenderer::new
-            ),
-            new GeoEntityRendererDefinition<RedstoneCuriosityVerticalBlastEntity>(
-                    REDSTONE_CURIOSITY_VERTICAL_BLAST,
-                    RedstoneCuriosityVerticalBlastRenderer::new
-            ),
-            new GeoEntityRendererDefinition<RedstoneCuriosityLaserEntity>(
-                    REDSTONE_CURIOSITY_LASER,
-                    RedstoneCuriosityLaserRenderer::new
-            )
-    );
-    //endregion
-
     @EventBusSubscriber(modid = Farworld.MOD_ID)
     public static class EntityDataEvents {
         @SubscribeEvent
@@ -239,18 +147,7 @@ public class ModEntities {
             event.register(GOLIATH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(AMETHYST_CONSTRUCT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         }
-        @SubscribeEvent
-        public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
-        {
-            for (int i = 0; i < mobDefinitions.size(); i++) {
-                NonGeoEntityLayerDefinition def = mobDefinitions.get(i);
 
-                if (def.location != null && def.definition != null)
-                {
-                    event.registerLayerDefinition(def.location, def.definition);
-                }
-            }
-        }
         @SubscribeEvent
         public static void registerAttributes(EntityAttributeCreationEvent event)
         {
@@ -262,6 +159,118 @@ public class ModEntities {
             event.put(GOLIATH.get(), GoliathEntity.createAttributes().build());
             event.put(AMETHYST_CONSTRUCT.get(), AmethystConstructEntity.createAttributes().build());
             event.put(REDSTONE_CURIOSITY.get(), RedstoneCuriosityEntity.createAttributes().build());
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @EventBusSubscriber(modid = Farworld.MOD_ID, value = Dist.CLIENT)
+    public static class EntityClientRegistries
+    {
+
+        //region Non-Geo Entity Layers
+        public static final List<NonGeoEntityLayerDefinition> mobDefinitions = List.of(
+                new NonGeoEntityLayerDefinition<BloomedEntity>(
+                        BLOOMED,
+                        BloomedModel.LAYER_LOCATION,
+                        BloomedModel::createBodyLayer,
+                        BloomedRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<SoulGolemEntity>(
+                        SOUL_GOLEM,
+                        SoulGolemModel.LAYER_LOCATION,
+                        SoulGolemModel::createBodyLayer,
+                        SoulGolemRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<DustbugEntity>(
+                        DUSTBUG,
+                        DustbugModel.LAYER_LOCATION,
+                        DustbugModel::createBodyLayer,
+                        DustbugRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<GoliathEntity>(
+                        GOLIATH,
+                        GoliathModel.LAYER_LOCATION,
+                        GoliathModel::createBodyLayer,
+                        GoliathRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<AmethystConstructEntity>(
+                        AMETHYST_CONSTRUCT,
+                        AmethystConstructModel.LAYER_LOCATION,
+                        AmethystConstructModel::createBodyLayer,
+                        AmethystConstructRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<BlackIceImplosionProjectile>(
+                        BLACK_ICE_AOE_ENTITY,
+                        null,
+                        null,
+                        NoopRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<GloomstonePickup>(
+                        GLOOMSTONE_PICKUP,
+                        null,
+                        null,
+                        GloomstonePickupRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<BlazeStanceProjectile>(
+                        BLAZE_STANCE_SLASH,
+                        null,
+                        null,
+                        NoopRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<ApocalypseBreathProjectile>(
+                        APOCALYPSE_BREATH,
+                        null,
+                        null,
+                        ApocalypseBreathRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<SludgeArrowProjectile>(
+                        SLUDGE_ARROW,
+                        null,
+                        null,
+                        SludgeArrowRenderer::new
+                )
+        );
+        //endregion
+
+        //region Geo Entity Renderers
+        public static final List<GeoEntityRendererDefinition> geoMobDefinitions = List.of(
+                new GeoEntityRendererDefinition<SludgeEntity>(
+                        SLUDGE,
+                        SludgeRenderer::new
+                ),
+                new GeoEntityRendererDefinition<BrittleEntity>(
+                        BRITTLE,
+                        BrittleRenderer::new
+                ),
+                new GeoEntityRendererDefinition<RedstoneCuriosityEntity>(
+                        REDSTONE_CURIOSITY,
+                        RedstoneCuriosityRenderer::new
+                ),
+                new GeoEntityRendererDefinition<RedstoneCuriosityBlastEntity>(
+                        REDSTONE_CURIOSITY_BLAST,
+                        RedstoneCuriosityBlastRenderer::new
+                ),
+                new GeoEntityRendererDefinition<RedstoneCuriosityVerticalBlastEntity>(
+                        REDSTONE_CURIOSITY_VERTICAL_BLAST,
+                        RedstoneCuriosityVerticalBlastRenderer::new
+                ),
+                new GeoEntityRendererDefinition<RedstoneCuriosityLaserEntity>(
+                        REDSTONE_CURIOSITY_LASER,
+                        RedstoneCuriosityLaserRenderer::new
+                )
+        );
+        //endregion
+        @SubscribeEvent
+        public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
+        {
+            for (int i = 0; i < mobDefinitions.size(); i++) {
+                NonGeoEntityLayerDefinition def = mobDefinitions.get(i);
+
+                if (def.location != null && def.definition != null)
+                {
+                    event.registerLayerDefinition(def.location, def.definition);
+                }
+            }
         }
     }
 }

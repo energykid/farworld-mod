@@ -9,6 +9,6 @@ import net.minecraft.world.level.Level;
 
 public class AllDimensionLinks {
     public static final DimensionLink[] links = {
-        new DimensionLink(Level.OVERWORLD, ModDimensions.BYSTONE, ModBlocks.BYSTONE_PORTAL.get(), ModPois.BYSTONE_PORTAL, -42, -14, ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "overlay/bystone_portal"), ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "bystone_portal_generated"))
+        new DimensionLink(Level.OVERWORLD, ModDimensions.BYSTONE, ModBlocks.BYSTONE_PORTAL.get(), ModPois.BYSTONE_PORTAL, -42, -14, "overlay/bystone_portal", ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "bystone_portal_generated"))
     };
 }

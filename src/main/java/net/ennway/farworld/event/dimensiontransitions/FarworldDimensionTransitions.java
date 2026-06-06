@@ -62,7 +62,7 @@ public class FarworldDimensionTransitions {
 
                         entity.setData(ModAttachments.DIMENSION_TRANSITION, entity.getData(ModAttachments.DIMENSION_TRANSITION) + 1f);
                         entity.setData(ModAttachments.DIMENSION_TRANSITION_VISUAL, entity.getData(ModAttachments.DIMENSION_TRANSITION));
-                        entity.setData(ModAttachments.DIMENSION_TRANSITION_RESOURCE, link.resourceLocation.getPath());
+                        entity.setData(ModAttachments.DIMENSION_TRANSITION_RESOURCE, link.resourceLocation);
                         PortalLayerEvents.transitionOpacity = Mth.lerp(0.03f, PortalLayerEvents.transitionOpacity, 0.85f);
                         PortalLayerEvents.transitionResource = entity.getData(ModAttachments.DIMENSION_TRANSITION_RESOURCE);
                         shouldBeMoving = true;

@@ -22,6 +22,7 @@ import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -30,7 +31,7 @@ import org.joml.Vector2f;
 
 import java.util.List;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = Farworld.MOD_ID, value = Dist.CLIENT)
 public class RenderEvents {
 
     @SubscribeEvent

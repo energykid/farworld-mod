@@ -6,11 +6,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 
-@EventBusSubscriber(modid = Farworld.MOD_ID)
+@EventBusSubscriber(modid = Farworld.MOD_ID, value = Dist.CLIENT)
 public class PortalLayerEvents {
 
     public static float transitionOpacity = 0f;

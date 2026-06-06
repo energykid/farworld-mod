@@ -20,6 +20,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
@@ -85,6 +87,7 @@ public class DustGlassBlock extends CustomRenderBlock implements EntityBlock {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void render(Level lvl, BlockPos bpos, BlockState state, PoseStack poseStack) {
         MultiBufferSource source = Minecraft.getInstance().renderBuffers().bufferSource();
 
