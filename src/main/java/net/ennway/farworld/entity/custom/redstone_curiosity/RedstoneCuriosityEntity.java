@@ -1,15 +1,14 @@
 package net.ennway.farworld.entity.custom.redstone_curiosity;
 
 import net.ennway.farworld.entity.base.BaseSubattackEntity;
+import net.ennway.farworld.registries.ModAttachments;
 import net.ennway.farworld.registries.ModEntities;
 import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.utils.BehaviorUtils;
 import net.ennway.farworld.utils.MathUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -26,6 +25,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -75,24 +75,23 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
         this.bossEvent.addPlayer(player);
-
-        Minecraft.getInstance().getMusicManager().stopPlaying();
-        Minecraft.getInstance().getMusicManager().startPlaying(BATTLE_THEME);
+        BehaviorUtils.setMusicForPlayer(player, "redstone_curiosity");
     }
 
     @Override
     public void stopSeenByPlayer(ServerPlayer player) {
         super.stopSeenByPlayer(player);
         this.bossEvent.removePlayer(player);
-        if (Minecraft.getInstance().getMusicManager().isPlayingMusic(BATTLE_THEME))
-            Minecraft.getInstance().getMusicManager().stopPlaying(BATTLE_THEME);
+        BehaviorUtils.setMusicForPlayer(player, "");
     }
 
     @Override
     protected void tickDeath() {
         super.tickDeath();
-        if (Minecraft.getInstance().getMusicManager().isPlayingMusic(BATTLE_THEME))
-            Minecraft.getInstance().getMusicManager().stopPlaying(BATTLE_THEME);
+        for (ServerPlayer plr : this.bossEvent.getPlayers())
+        {
+            BehaviorUtils.setMusicForPlayer(plr, "");
+        }
     }
 
     @Override
@@ -105,7 +104,11 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
         this.setPathfindingMalus(PathType.POWDER_SNOW, -1.0F);
         this.setPathfindingMalus(PathType.DANGER_POWDER_SNOW, -1.0F);
         this.setPathfindingMalus(PathType.WATER, -1.5F);
-        this.bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
+        this.bossEvent = (new ServerBossEvent
+                (this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS));
+        this.bossEvent.setColor(BossEvent.BossBarColor.RED);
+        this.bossEvent.setDarkenScreen(true);
+        this.bossEvent.setOverlay(BossEvent.BossBarOverlay.PROGRESS);
         this.moveControl = new FlyingMoveControl(this, 10, false);
         this.setHealth(this.getMaxHealth());
         this.xpReward = 35;

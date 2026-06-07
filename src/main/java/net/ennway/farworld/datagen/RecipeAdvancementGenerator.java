@@ -77,11 +77,17 @@ public class RecipeAdvancementGenerator extends AdvancementProvider {
 
             /// Building blocks
             {
+                /// Amethyst
                 recipeAdvancement(saver, List.of(Items.AMETHYST_SHARD, Items.AMETHYST_BLOCK, Items.SMOOTH_BASALT), List.of(
                         "crystal_lamp"));
 
+                /// Large Chain
                 recipeAdvancement(saver, List.of(Items.IRON_INGOT, Items.IRON_NUGGET), List.of(
                         "large_chain"));
+
+                /// Dust Clumps/Blocks
+                recipeAdvancement(saver, List.of(ModItems.DUST_BLOCK.asItem(), ModItems.DUST_CLUMP.asItem()), List.of(
+                        "dust_block", "dust_block_revert"));
 
                 /// Dust Glass
                 recipeAdvancement(saver, List.of(ModItems.DUST_GLASS.asItem()), List.of(

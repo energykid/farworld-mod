@@ -5,6 +5,8 @@ import net.ennway.farworld.Farworld;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.attachment.AttachmentSync;
+import net.neoforged.neoforge.attachment.AttachmentSyncHandler;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -14,6 +16,12 @@ import java.util.function.Supplier;
 public class ModAttachments {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Farworld.MOD_ID);
 
+    public static final Supplier<AttachmentType<String>> BOSS_MUSIC = ATTACHMENT_TYPES.register(
+            "boss_music", () -> AttachmentType.builder(() -> "").serialize(Codec.STRING).build()
+    );
+    public static final Supplier<AttachmentType<Boolean>> MUSIC_CHECK = ATTACHMENT_TYPES.register(
+            "music_check", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
+    );
     public static final Supplier<AttachmentType<Float>> DIMENSION_TRANSITION_COOLDOWN = ATTACHMENT_TYPES.register(
             "dimension_transition_cooldown", () -> AttachmentType.builder(() -> 0f).serialize(Codec.FLOAT).build()
     );

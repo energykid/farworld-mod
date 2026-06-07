@@ -2,6 +2,7 @@ package net.ennway.farworld;
 
 import net.ennway.farworld.block.entity.CustomRenderBERenderer;
 import net.ennway.farworld.block.entity.RedstoneTeleporterBERenderer;
+import net.ennway.farworld.network.Payloads;
 import net.ennway.farworld.registries.*;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
 import net.ennway.farworld.registries.entity_definitions.NonGeoEntityLayerDefinition;

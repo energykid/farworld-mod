@@ -1,7 +1,6 @@
 package net.ennway.farworld.event.dimensiontransitions;
 
 import net.ennway.farworld.Farworld;
-import net.ennway.farworld.event.PortalLayerEvents;
 import net.ennway.farworld.registries.ModAttachments;
 import net.ennway.farworld.registries.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -17,6 +16,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -46,8 +46,8 @@ public class FarworldDimensionTransitions {
         Entity entity = event.getEntity();
 
         // dimension transitions for players
-        if (entity instanceof ServerPlayer servPlayer) {
-            if (!servPlayer.isPassenger())
+        if (entity instanceof ServerPlayer player) {
+            if (!player.isPassenger())
             {
                 boolean shouldBeMoving = false;
                 BlockPos blockPos = BlockPos.containing(entity.getEyePosition());
@@ -63,8 +63,6 @@ public class FarworldDimensionTransitions {
                         entity.setData(ModAttachments.DIMENSION_TRANSITION, entity.getData(ModAttachments.DIMENSION_TRANSITION) + 1f);
                         entity.setData(ModAttachments.DIMENSION_TRANSITION_VISUAL, entity.getData(ModAttachments.DIMENSION_TRANSITION));
                         entity.setData(ModAttachments.DIMENSION_TRANSITION_RESOURCE, link.resourceLocation);
-                        PortalLayerEvents.transitionOpacity = Mth.lerp(0.03f, PortalLayerEvents.transitionOpacity, 0.85f);
-                        PortalLayerEvents.transitionResource = entity.getData(ModAttachments.DIMENSION_TRANSITION_RESOURCE);
                         shouldBeMoving = true;
                         if (entity.getData(ModAttachments.DIMENSION_TRANSITION) == link.transitionTime) {
                             try {
@@ -74,13 +72,13 @@ public class FarworldDimensionTransitions {
 
                                 BlockPos pos = new BlockPos((int) xx, (int) yy, (int) zz);
                                 ServerLevel levelTo = entity.getServer().getLevel(link.level2);
-                                if (servPlayer.level().dimension() == link.level2) {
+                                if (player.level().dimension() == link.level2) {
                                     levelTo = entity.getServer().getLevel(link.level1);
                                 }
                                 assert levelTo != null;
                                 BlockPos pos2 = findNearestPortalTo(levelTo, pos, link.poiType);
                                 if (pos2 != null) {
-                                    servPlayer.teleportTo(levelTo, pos2.getX(), pos2.getY(), pos2.getZ(), 0f, 0f);
+                                    player.teleportTo(levelTo, pos2.getX(), pos2.getY(), pos2.getZ(), Set.of(), 0f, 0f);
                                 } else {
                                     int dir = 1;
                                     int bedrocks = 0;
@@ -93,7 +91,7 @@ public class FarworldDimensionTransitions {
                                         if (levelTo.getBlockState(pos).is(Blocks.AIR) && levelTo.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())).is(Blocks.AIR) && !levelTo.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())).canBeReplaced())
                                             break;
                                     }
-                                    servPlayer.teleportTo(levelTo, pos.getX(), pos.getY(), pos.getZ(), 0f, 0f);
+                                    player.teleportTo(levelTo, pos.getX(), pos.getY(), pos.getZ(), Set.of(), 0f, 0f);
                                     link.setPortal(pos, levelTo);
                                 }
                             } finally {
@@ -103,13 +101,12 @@ public class FarworldDimensionTransitions {
                     }
                 }
                 if (!shouldBeMoving) {
-                    PortalLayerEvents.transitionOpacity = Mth.lerp(0.06f, PortalLayerEvents.transitionOpacity, 0f);
                     entity.setData(ModAttachments.DIMENSION_TRANSITION, 0f);
-                    entity.setData(ModAttachments.DIMENSION_TRANSITION_VISUAL, entity.getData(ModAttachments.DIMENSION_TRANSITION_VISUAL) * 0.95f);
+                    entity.setData(ModAttachments.DIMENSION_TRANSITION_VISUAL, 0f);
                 }
             }
         }
-        else // dimension transitions for anything else!
+        else if (!(entity instanceof Player)) // dimension transitions for anything else!
         {
             if (entity.getServer() != null)
             {
