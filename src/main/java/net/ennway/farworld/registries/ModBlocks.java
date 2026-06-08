@@ -699,7 +699,7 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME + 0.3F, 8.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> ECHO_LANTERN = BLOCKS_ALL.register(
             "echo_lantern",
