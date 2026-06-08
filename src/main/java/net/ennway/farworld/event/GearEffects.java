@@ -1,9 +1,9 @@
 package net.ennway.farworld.event;
 
 import net.ennway.farworld.Farworld;
-import net.ennway.farworld.registries.ModItems;
-import net.ennway.farworld.registries.ModParticles;
-import net.ennway.farworld.registries.ModSounds;
+import net.ennway.farworld.entity.projectile.BlackIceImplosionProjectile;
+import net.ennway.farworld.item.tool.gloomstone.GloomstoneEffects;
+import net.ennway.farworld.registries.*;
 import net.ennway.farworld.utils.AccessoryUtils;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -24,6 +24,8 @@ import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
+import net.neoforged.neoforge.event.level.BlockDropsEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 import java.util.function.Supplier;
@@ -87,30 +89,52 @@ public class GearEffects {
     */
 
     @SubscribeEvent
-    public static void onHitWithSword(AttackEntityEvent event)
+    public static void onHitWithSword(AttackEntityEvent evt)
     {
-        Player player = event.getEntity();
+        Player player = evt.getEntity();
 
-        ItemStack stack = event.getEntity().getItemInHand(event.getEntity().getUsedItemHand());
+        ItemStack stack = evt.getEntity().getItemInHand(evt.getEntity().getUsedItemHand());
 
-        if (event.getTarget() instanceof LivingEntity enemy) {
+        if (evt.getTarget() instanceof LivingEntity enemy) {
 
             if (!stack.isEmpty() && !enemy.isDeadOrDying() && player.fallDistance > 0f && player.canAttack(enemy) && player.swingTime == 0)
             {
-                if (stack.is(ModItems.SOUL_STEEL_SWORD) || stack.is(ModItems.SOUL_STEEL_AXE))
+                if (stack.is(ModTags.HAS_SOUL_STEEL_EFFECT))
                 {
                     enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1f, 1.6f);
                     enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.SOUL_ESCAPE.getDelegate().value(), SoundSource.PLAYERS, 1.2f, 0.9f);
 
                     spawnFireEffect(enemy, ModParticles.SOUL_SMOKE, ModParticles.SOUL_FIRE_TENDRIL);
                 }
-                if (stack.is(Items.NETHERITE_SWORD) || stack.is(Items.NETHERITE_AXE))
+                if (stack.is(ModTags.HAS_NETHERITE_EFFECT))
                 {
                     enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1f, 0.6f);
 
                     spawnFireEffect(enemy, ModParticles.INFERNAL_SMOKE, ModParticles.INFERNAL_TENDRIL);
                 }
+                if (stack.is(ModTags.HAS_BLACK_ICE_EFFECT))
+                {
+                    BlackIceImplosionProjectile proj = new BlackIceImplosionProjectile(ModEntities.BLACK_ICE_AOE_ENTITY.get(), enemy.level());
+                    proj.setPos(enemy.position().add(new Vec3(0.0, enemy.getBbHeight() / 2.0, 0.0)));
+
+                    enemy.level().addFreshEntity(proj);
+                }
+                if (stack.is(ModTags.HAS_GLOOMSTONE_EFFECT))
+                {
+                    GloomstoneEffects.doCombatEffect(enemy, player);
+                }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onMineBlock(BlockEvent.BreakEvent evt) {
+        Player player = evt.getPlayer();
+
+        ItemStack stack = player.getItemInHand(player.getUsedItemHand());
+
+        if (stack.is(ModTags.HAS_GLOOMSTONE_EFFECT)) {
+            GloomstoneEffects.doMiningEffect(player, evt.getPos());
         }
     }
 }

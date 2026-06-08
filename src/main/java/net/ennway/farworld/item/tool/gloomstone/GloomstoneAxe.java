@@ -33,21 +33,4 @@ public class GloomstoneAxe extends AxeItem {
                                 EquipmentSlotGroup.MAINHAND)
                 .build()));
     }
-
-    @Override
-    public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        GloomstoneEffects.doCombatEffect(target, attacker);
-
-        super.postHurtEnemy(stack, target, attacker);
-    }
-
-    @Override
-    public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
-        if (miningEntity instanceof Player plr)
-        {
-            GloomstoneEffects.doMiningEffect(plr, pos);
-        }
-
-        return super.mineBlock(stack, level, state, pos, miningEntity);
-    }
 }

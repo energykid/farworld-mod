@@ -9,6 +9,19 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags {
 
+    public static final TagKey<Item> HAS_NETHERITE_EFFECT = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "has_netherite_effect"));
+    public static final TagKey<Item> HAS_SOUL_STEEL_EFFECT = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "has_soul_steel_effect"));
+    public static final TagKey<Item> HAS_GLOOMSTONE_EFFECT = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "has_gloomstone_effect"));
+    public static final TagKey<Item> HAS_BLACK_ICE_EFFECT = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "has_black_ice_effect"));
+
     public static final TagKey<Item> HELMET_ACCESSORIES = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "helmet_accessories"));

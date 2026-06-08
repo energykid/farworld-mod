@@ -25,11 +25,4 @@ public class GloomstoneSword extends SwordItem {
                                 EquipmentSlotGroup.MAINHAND)
                 .build()));
     }
-
-    @Override
-    public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        GloomstoneEffects.doCombatEffect(target, attacker);
-
-        super.postHurtEnemy(stack, target, attacker);
-    }
 }

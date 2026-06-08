@@ -26,14 +26,4 @@ public class GloomstoneHoe extends HoeItem {
                                 EquipmentSlotGroup.MAINHAND)
                 .build()));
     }
-
-    @Override
-    public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
-        if (miningEntity instanceof Player plr)
-        {
-            GloomstoneEffects.doMiningEffect(plr, pos);
-        }
-
-        return super.mineBlock(stack, level, state, pos, miningEntity);
-    }
 }
