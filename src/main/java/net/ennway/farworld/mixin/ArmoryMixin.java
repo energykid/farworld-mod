@@ -60,7 +60,8 @@ public abstract class ArmoryMixin {
     @Unique
     private boolean farworld_mod$countsAsArmorForAccessories(ItemStack stack)
     {
-        return (stack.is(ItemTags.HEAD_ARMOR) || stack.is(ItemTags.CHEST_ARMOR) || stack.is(ItemTags.LEG_ARMOR) || stack.is(ItemTags.FOOT_ARMOR));
+        boolean b = (stack.is(ItemTags.HEAD_ARMOR) || stack.is(ItemTags.CHEST_ARMOR) || stack.is(ItemTags.LEG_ARMOR) || stack.is(ItemTags.FOOT_ARMOR));
+        return b && !stack.is(ACCESSORY_INCOMPATIBLE) && !stack.is(BUILTIN_ACCESSORY_INCOMPATIBLE);
     }
 
     /*
@@ -77,23 +78,24 @@ public abstract class ArmoryMixin {
 
     @Inject(method = "appendHoverText", at = @At("TAIL"))
     void changeDescription(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, CallbackInfo ci) {
-        if (farworld_mod$countsAsArmorForAccessories(stack) && stack.get(ModDataComponents.ARMOR_ACCESSORIES) != null) {
-            tooltipComponents.add(Component.translatable("accessory.farworld.accessory_slots").append(stack.get(ModDataComponents.ACCESSORY_SLOTS).toString()));
-            if (!stack.get(ModDataComponents.ARMOR_ACCESSORIES).isEmpty()) {
-                MutableComponent str = Component.empty();
+        if (farworld_mod$countsAsArmorForAccessories(stack)) {
+            if (stack.get(ModDataComponents.ARMOR_ACCESSORIES) != null) {
+                tooltipComponents.add(Component.translatable("accessory.farworld.accessory_slots").append(stack.get(ModDataComponents.ACCESSORY_SLOTS).toString()));
+                if (!stack.get(ModDataComponents.ARMOR_ACCESSORIES).isEmpty()) {
+                    MutableComponent str = Component.empty();
 
-                stack.get(ModDataComponents.ARMOR_ACCESSORIES).items().forEach(
-                        item -> {
-                            if (!str.equals(Component.empty()))
-                            {
-                                str.append(", ");
+                    stack.get(ModDataComponents.ARMOR_ACCESSORIES).items().forEach(
+                            item -> {
+                                if (!str.equals(Component.empty())) {
+                                    str.append(", ");
+                                }
+                                str.append(item.getDisplayName().getString());
                             }
-                            str.append(item.getDisplayName().getString());
-                        }
-                );
+                    );
 
-                tooltipComponents.add(Component.translatable("accessory.farworld.accessory_attached").append(str));
-                tooltipComponents.add(Component.translatable("accessory.farworld.accessory_detach_hint"));
+                    tooltipComponents.add(Component.translatable("accessory.farworld.accessory_attached").append(str));
+                    tooltipComponents.add(Component.translatable("accessory.farworld.accessory_detach_hint"));
+                }
             }
         }
 
@@ -134,6 +136,14 @@ public abstract class ArmoryMixin {
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "three_accessory_armor"));
 
+    private static final TagKey<Item> ACCESSORY_INCOMPATIBLE = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "accessory_incompatible_armor"));
+
+    private static final TagKey<Item> BUILTIN_ACCESSORY_INCOMPATIBLE = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "builtin_accessory_incompatible_armor"));
+
     @Inject(method = "verifyComponentsAfterLoad", at = @At("TAIL"))
     void addComponents(ItemStack stack, CallbackInfo ci)
     {
@@ -155,41 +165,43 @@ public abstract class ArmoryMixin {
 
     @Inject(method = "overrideStackedOnOther", at = @At("HEAD"), cancellable = true)
     public void overrideStackedOnOther(ItemStack stack, Slot slot, ClickAction action, Player player, CallbackInfoReturnable<Boolean> cir) {
-        boolean shouldRunLogic = false;
+        if (farworld_mod$countsAsArmorForAccessories(stack)) {
+            boolean shouldRunLogic = false;
 
-        if (stack.is(ItemTags.HEAD_ARMOR) && slot.getItem().is(ModTags.HELMET_ACCESSORIES)) shouldRunLogic = true;
-        if (stack.is(ItemTags.CHEST_ARMOR) && slot.getItem().is(ModTags.CHESTPLATE_ACCESSORIES)) shouldRunLogic = true;
-        if (stack.is(ItemTags.LEG_ARMOR) && slot.getItem().is(ModTags.LEGGINGS_ACCESSORIES)) shouldRunLogic = true;
-        if (stack.is(ItemTags.FOOT_ARMOR) && slot.getItem().is(ModTags.BOOTS_ACCESSORIES)) shouldRunLogic = true;
+            if (stack.is(ItemTags.HEAD_ARMOR) && slot.getItem().is(ModTags.HELMET_ACCESSORIES)) shouldRunLogic = true;
+            if (stack.is(ItemTags.CHEST_ARMOR) && slot.getItem().is(ModTags.CHESTPLATE_ACCESSORIES))
+                shouldRunLogic = true;
+            if (stack.is(ItemTags.LEG_ARMOR) && slot.getItem().is(ModTags.LEGGINGS_ACCESSORIES)) shouldRunLogic = true;
+            if (stack.is(ItemTags.FOOT_ARMOR) && slot.getItem().is(ModTags.BOOTS_ACCESSORIES)) shouldRunLogic = true;
 
-        if (farworld_mod$countsAsArmorForAccessories(stack))
-            if (slot.getItem().isEmpty()) shouldRunLogic = true;
+            if (farworld_mod$countsAsArmorForAccessories(stack))
+                if (slot.getItem().isEmpty()) shouldRunLogic = true;
 
-        if (action != ClickAction.SECONDARY) shouldRunLogic = false;
+            if (action != ClickAction.SECONDARY) shouldRunLogic = false;
 
-        if (shouldRunLogic)
-        {
-            if (stack.getCount() == 1) {
-                ArmorAccessories bundlecontents = (ArmorAccessories)stack.get(ModDataComponents.ARMOR_ACCESSORIES);
-                if (bundlecontents != null) {
-                    ItemStack itemstack = slot.getItem();
-                    ArmorAccessories.Mutable bundlecontents$mutable = new ArmorAccessories.Mutable(bundlecontents);
-                    if (itemstack.isEmpty()) {
-                        this.farworld_mod$playRemoveOneSound(player);
-                        ItemStack itemstack1 = bundlecontents$mutable.removeOne();
-                        if (itemstack1 != null) {
-                            ItemStack itemstack2 = slot.safeInsert(itemstack1);
-                            bundlecontents$mutable.tryInsert(stack, itemstack2);
+            if (shouldRunLogic) {
+                if (stack.getCount() == 1) {
+                    ArmorAccessories bundlecontents = (ArmorAccessories) stack.get(ModDataComponents.ARMOR_ACCESSORIES);
+                    if (bundlecontents != null) {
+                        ItemStack itemstack = slot.getItem();
+                        ArmorAccessories.Mutable bundlecontents$mutable = new ArmorAccessories.Mutable(bundlecontents);
+                        if (itemstack.isEmpty()) {
+                            this.farworld_mod$playRemoveOneSound(player);
+                            ItemStack itemstack1 = bundlecontents$mutable.removeOne();
+                            if (itemstack1 != null) {
+                                ItemStack itemstack2 = slot.safeInsert(itemstack1);
+                                bundlecontents$mutable.tryInsert(stack, itemstack2);
+                            }
+                        } else if (itemstack.getItem().canFitInsideContainerItems()) {
+                            int i = bundlecontents$mutable.tryInsert(stack, slot.getItem());
+                            if (i > 0) {
+                                this.farworld_mod$playInsertSound(player);
+                            }
                         }
-                    } else if (itemstack.getItem().canFitInsideContainerItems()) {
-                        int i = bundlecontents$mutable.tryInsert(stack, slot.getItem());
-                        if (i > 0) {
-                            this.farworld_mod$playInsertSound(player);
-                        }
+
+                        stack.set(ModDataComponents.ARMOR_ACCESSORIES, bundlecontents$mutable.toImmutable());
+                        cir.setReturnValue(true);
                     }
-
-                    stack.set(ModDataComponents.ARMOR_ACCESSORIES, bundlecontents$mutable.toImmutable());
-                    cir.setReturnValue(true);
                 }
             }
         }
@@ -197,43 +209,44 @@ public abstract class ArmoryMixin {
 
     @Inject(method = "overrideOtherStackedOnMe", at = @At("HEAD"), cancellable = true)
     public void overrideOtherStackedOnMe(ItemStack stack, ItemStack other, Slot slot, ClickAction action, Player player, SlotAccess access, CallbackInfoReturnable<Boolean> cir) {
-        boolean shouldRunLogic = false;
 
-        if (stack.is(ItemTags.HEAD_ARMOR) && other.is(ModTags.HELMET_ACCESSORIES)) shouldRunLogic = true;
-        if (stack.is(ItemTags.CHEST_ARMOR) && other.is(ModTags.CHESTPLATE_ACCESSORIES)) shouldRunLogic = true;
-        if (stack.is(ItemTags.LEG_ARMOR) && other.is(ModTags.LEGGINGS_ACCESSORIES)) shouldRunLogic = true;
-        if (stack.is(ItemTags.FOOT_ARMOR) && other.is(ModTags.BOOTS_ACCESSORIES)) shouldRunLogic = true;
+        if (farworld_mod$countsAsArmorForAccessories(stack)) {
+            boolean shouldRunLogic = false;
 
-        if (farworld_mod$countsAsArmorForAccessories(stack))
-            if (slot.getItem().isEmpty()) shouldRunLogic = true;
+            if (stack.is(ItemTags.HEAD_ARMOR) && other.is(ModTags.HELMET_ACCESSORIES)) shouldRunLogic = true;
+            if (stack.is(ItemTags.CHEST_ARMOR) && other.is(ModTags.CHESTPLATE_ACCESSORIES)) shouldRunLogic = true;
+            if (stack.is(ItemTags.LEG_ARMOR) && other.is(ModTags.LEGGINGS_ACCESSORIES)) shouldRunLogic = true;
+            if (stack.is(ItemTags.FOOT_ARMOR) && other.is(ModTags.BOOTS_ACCESSORIES)) shouldRunLogic = true;
 
-        if (action != ClickAction.SECONDARY) shouldRunLogic = false;
+            if (farworld_mod$countsAsArmorForAccessories(stack))
+                if (slot.getItem().isEmpty()) shouldRunLogic = true;
 
-        if (shouldRunLogic)
-        {
-            if (stack.getCount() == 1 && slot.allowModification(player)) {
-                ArmorAccessories bundlecontents = (ArmorAccessories)stack.get(ModDataComponents.ARMOR_ACCESSORIES);
-                if (bundlecontents != null) {
-                    ArmorAccessories.Mutable bundlecontents$mutable = new ArmorAccessories.Mutable(bundlecontents);
-                    if (other.isEmpty()) {
-                        ItemStack itemstack = bundlecontents$mutable.removeOne();
-                        if (itemstack != null) {
-                            this.farworld_mod$playRemoveOneSound(player);
-                            access.set(itemstack);
-                        }
-                    } else {
-                        if (!slot.getItem().isEmpty())
-                        {
+            if (action != ClickAction.SECONDARY) shouldRunLogic = false;
 
-                            int i = bundlecontents$mutable.tryInsert(stack, other);
-                            if (i > 0) {
-                                this.farworld_mod$playInsertSound(player);
+            if (shouldRunLogic) {
+                if (stack.getCount() == 1 && slot.allowModification(player)) {
+                    ArmorAccessories bundlecontents = (ArmorAccessories) stack.get(ModDataComponents.ARMOR_ACCESSORIES);
+                    if (bundlecontents != null) {
+                        ArmorAccessories.Mutable bundlecontents$mutable = new ArmorAccessories.Mutable(bundlecontents);
+                        if (other.isEmpty()) {
+                            ItemStack itemstack = bundlecontents$mutable.removeOne();
+                            if (itemstack != null) {
+                                this.farworld_mod$playRemoveOneSound(player);
+                                access.set(itemstack);
+                            }
+                        } else {
+                            if (!slot.getItem().isEmpty()) {
+
+                                int i = bundlecontents$mutable.tryInsert(stack, other);
+                                if (i > 0) {
+                                    this.farworld_mod$playInsertSound(player);
+                                }
                             }
                         }
-                    }
 
-                    stack.set(ModDataComponents.ARMOR_ACCESSORIES, bundlecontents$mutable.toImmutable());
-                    cir.setReturnValue(true);
+                        stack.set(ModDataComponents.ARMOR_ACCESSORIES, bundlecontents$mutable.toImmutable());
+                        cir.setReturnValue(true);
+                    }
                 }
             }
         }
