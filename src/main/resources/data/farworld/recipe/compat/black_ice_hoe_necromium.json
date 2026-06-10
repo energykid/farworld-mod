@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "caverns_and_chasms"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "farworld:black_ice_upgrade_smithing_template"
+  },
+  "base": [
+    {
+      "item": "caverns_and_chasms:necromium_hoe"
+    }
+  ],
+  "addition": {
+    "item": "farworld:black_ice_gem"
+  },
+  "result": {
+    "id": "farworld:black_ice_hoe",
+    "count": 1
+  }
+}
