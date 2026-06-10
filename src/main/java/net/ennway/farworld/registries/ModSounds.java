@@ -2,6 +2,7 @@ package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
 import net.minecraft.client.resources.sounds.Sound;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -71,6 +72,8 @@ public class ModSounds {
     public static final Supplier<SoundEvent> BATTLE_STANCE = createSoundEvent("battle_stance");
     public static final Supplier<SoundEvent> BLAZE_STANCE_SLASH = createSoundEvent("blaze_stance_slash");
 
+    public static final Holder<SoundEvent> SOUL_STEEL_EQUIP = SOUND_EVENTS.register("soul_steel_equip", SoundEvent::createVariableRangeEvent);
+    public static final Holder<SoundEvent> BLACK_ICE_EQUIP = SOUND_EVENTS.register("black_ice_equip", SoundEvent::createVariableRangeEvent);
     public static final Supplier<SoundEvent> GLOOMSTONE_PICKUP = createSoundEvent("gloomstone_pickup");
 
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");
@@ -133,6 +136,14 @@ public class ModSounds {
         return SOUND_EVENTS.register(
                 name,
             () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name))
+        );
+    }
+
+    private static Holder<SoundEvent> createSoundEventHolder(String name)
+    {
+        return SOUND_EVENTS.register(
+                name,
+                SoundEvent::createVariableRangeEvent
         );
     }
 

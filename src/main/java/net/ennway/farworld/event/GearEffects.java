@@ -9,6 +9,7 @@ import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -99,16 +100,35 @@ public class GearEffects {
 
             if (!stack.isEmpty() && !enemy.isDeadOrDying() && player.fallDistance > 0f && player.canAttack(enemy) && player.swingTime == 0)
             {
+                if (stack.is(ModTags.HAS_NECROMIUM_EFFECT))
+                {
+                    enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.SOUL_ESCAPE.getDelegate().value(), SoundSource.PLAYERS, 1.2f, 0.4f);
+                    enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.ANCIENT_DEBRIS_BREAK, SoundSource.PLAYERS, 1.2f, 0.7f);
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        enemy.level().addParticle(
+                                ModParticles.NECROMIUM_EFFECT.get(),
+                                enemy.getPosition(0).x + Mth.nextDouble(enemy.getRandom(), -0.6, 0.6),
+                                enemy.getPosition(0).y,
+                                enemy.getPosition(0).z + Mth.nextDouble(enemy.getRandom(), -0.6, 0.6),
+                                0f,
+                                0f,
+                                0f
+                        );
+                    }
+                }
                 if (stack.is(ModTags.HAS_SOUL_STEEL_EFFECT))
                 {
-                    enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1f, 1.6f);
-                    enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.SOUL_ESCAPE.getDelegate().value(), SoundSource.PLAYERS, 1.2f, 0.9f);
+                    enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 1.4f);
+                    enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.SOUL_ESCAPE.getDelegate().value(), SoundSource.PLAYERS, 1.2f, 1.2f);
 
                     spawnFireEffect(enemy, ModParticles.SOUL_SMOKE, ModParticles.SOUL_FIRE_TENDRIL);
                 }
                 if (stack.is(ModTags.HAS_NETHERITE_EFFECT))
                 {
-                    enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1f, 0.6f);
+                    enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 0.6f);
+                    enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.NETHERITE_BLOCK_BREAK, SoundSource.PLAYERS, 1.2f, 0.7f);
 
                     spawnFireEffect(enemy, ModParticles.INFERNAL_SMOKE, ModParticles.INFERNAL_TENDRIL);
                 }

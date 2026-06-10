@@ -267,7 +267,6 @@
   "bystone_portal_exit": {
     "sounds": ["farworld:bystone_portal_exit"]
   },
-
   "black_ice_inwards": {
     "sounds": ["farworld:black_ice_inwards"]
   },
@@ -279,5 +278,18 @@
   },
   "void_crossbow_inwards": {
     "sounds": ["farworld:void_crossbow_inwards"]
+  },
+  "soul_steel_equip": {
+    "sounds": ["farworld:soul_steel_equip1",
+      "farworld:soul_steel_equip2",
+      "farworld:soul_steel_equip3",
+      "farworld:soul_steel_equip4"]
+  },
+  "black_ice_equip": {
+    "sounds": ["farworld:black_ice_equip1",
+      "farworld:black_ice_equip2",
+      "farworld:black_ice_equip3",
+      "farworld:black_ice_equip4",
+      "farworld:black_ice_equip5"]
   }
 }

@@ -1,5 +1,6 @@
 package net.ennway.farworld.particle.on_hit;
 
+import net.ennway.farworld.particle.base.StraightUpParticle;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;

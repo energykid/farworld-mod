@@ -12,6 +12,7 @@ import net.ennway.farworld.item.tool.soul_steel.*;
 import net.ennway.farworld.utils.SmithingUtils;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -115,32 +116,36 @@ public class ModItems {
             () -> new SoulSteelBow()
     );
 
-    public static final DeferredItem<ArmorItem> SOUL_STEEL_HELMET = ITEMS_ALL.register(
+    public static final DeferredItem<CustomArmorItem> SOUL_STEEL_HELMET = ITEMS_ALL.register(
             "soul_steel_helmet",
-            () -> new ArmorItem(ModArmorMaterials.SOUL_STEEL_ARMOR_MATERIAL,
-                    ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(312))
+            () -> new CustomArmorItem(ModArmorMaterials.SOUL_STEEL_ARMOR_MATERIAL,
+                    CustomArmorItem.Type.HELMET,
+                    new Item.Properties().durability(312),
+                    ModSounds.SOUL_STEEL_EQUIP)
     );
 
-    public static final DeferredItem<ArmorItem> SOUL_STEEL_CHESTPLATE = ITEMS_ALL.register(
+    public static final DeferredItem<CustomArmorItem> SOUL_STEEL_CHESTPLATE = ITEMS_ALL.register(
             "soul_steel_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.SOUL_STEEL_ARMOR_MATERIAL,
-                    ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(428))
+            () -> new CustomArmorItem(ModArmorMaterials.SOUL_STEEL_ARMOR_MATERIAL,
+                    CustomArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(428),
+                    ModSounds.SOUL_STEEL_EQUIP)
     );
 
-    public static final DeferredItem<ArmorItem> SOUL_STEEL_LEGGINGS = ITEMS_ALL.register(
+    public static final DeferredItem<CustomArmorItem> SOUL_STEEL_LEGGINGS = ITEMS_ALL.register(
             "soul_steel_leggings",
-            () -> new ArmorItem(ModArmorMaterials.SOUL_STEEL_ARMOR_MATERIAL,
-                    ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(350))
+            () -> new CustomArmorItem(ModArmorMaterials.SOUL_STEEL_ARMOR_MATERIAL,
+                    CustomArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(350),
+                    ModSounds.SOUL_STEEL_EQUIP)
     );
 
-    public static final DeferredItem<ArmorItem> SOUL_STEEL_BOOTS = ITEMS_ALL.register(
+    public static final DeferredItem<CustomArmorItem> SOUL_STEEL_BOOTS = ITEMS_ALL.register(
             "soul_steel_boots",
-            () -> new ArmorItem(ModArmorMaterials.SOUL_STEEL_ARMOR_MATERIAL,
-                    ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(290))
+            () -> new CustomArmorItem(ModArmorMaterials.SOUL_STEEL_ARMOR_MATERIAL,
+                    CustomArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(290),
+                    ModSounds.SOUL_STEEL_EQUIP)
     );
     //endregion
 
@@ -248,32 +253,36 @@ public class ModItems {
             () -> new BlackIceCrossbow(new Item.Properties())
     );
 
-    public static final DeferredItem<ArmorItem> BLACK_ICE_HELMET = ITEMS_ALL.register(
+    public static final DeferredItem<CustomArmorItem> BLACK_ICE_HELMET = ITEMS_ALL.register(
             "black_ice_helmet",
-            () -> new ArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
-                    ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(712))
+            () -> new CustomArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
+                    CustomArmorItem.Type.HELMET,
+                    new Item.Properties().durability(712),
+                    ModSounds.BLACK_ICE_EQUIP)
     );
 
-    public static final DeferredItem<ArmorItem> BLACK_ICE_CHESTPLATE = ITEMS_ALL.register(
+    public static final DeferredItem<CustomArmorItem> BLACK_ICE_CHESTPLATE = ITEMS_ALL.register(
             "black_ice_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
-                    ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(828))
+            () -> new CustomArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
+                    CustomArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(828),
+                    ModSounds.BLACK_ICE_EQUIP)
     );
 
-    public static final DeferredItem<ArmorItem> BLACK_ICE_LEGGINGS = ITEMS_ALL.register(
+    public static final DeferredItem<CustomArmorItem> BLACK_ICE_LEGGINGS = ITEMS_ALL.register(
             "black_ice_leggings",
-            () -> new ArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
-                    ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(750))
+            () -> new CustomArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
+                    CustomArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(750),
+                    ModSounds.BLACK_ICE_EQUIP)
     );
 
-    public static final DeferredItem<ArmorItem> BLACK_ICE_BOOTS = ITEMS_ALL.register(
+    public static final DeferredItem<CustomArmorItem> BLACK_ICE_BOOTS = ITEMS_ALL.register(
             "black_ice_boots",
-            () -> new ArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
-                    ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(690))
+            () -> new CustomArmorItem(ModArmorMaterials.BLACK_ICE_ARMOR_MATERIAL,
+                    CustomArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(690),
+                    ModSounds.BLACK_ICE_EQUIP)
     );
     //endregion
 

@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "caverns_and_chasms"
+    }
+  ],
+  "values": [
+    "caverns_and_chasms:necromium_sword",
+    "caverns_and_chasms:necromium_axe"
+  ]
+}

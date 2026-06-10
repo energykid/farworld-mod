@@ -15,6 +15,9 @@ public class ModTags {
     public static final TagKey<Item> HAS_SOUL_STEEL_EFFECT = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "has_soul_steel_effect"));
+    public static final TagKey<Item> HAS_NECROMIUM_EFFECT = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "has_necromium_effect"));
     public static final TagKey<Item> HAS_GLOOMSTONE_EFFECT = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "has_gloomstone_effect"));

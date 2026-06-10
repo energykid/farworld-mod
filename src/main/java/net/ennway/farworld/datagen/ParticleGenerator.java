@@ -19,7 +19,7 @@ public class ParticleGenerator extends ParticleDescriptionProvider {
 
     @Override
     protected void addDescriptions() {
-        //mySpriteSet(ModParticles.SLIME_STREAKS.get(), ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "sludge_drop/sludge_drop"), 9, false);
+        //mySpriteSet(ModParticles.NECROMIUM_EFFECT.get(), ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "necromium_effect/necromium_effect"), 9, false);
     }
 
     protected void mySpriteSet(ParticleType<?> type, ResourceLocation baseName, int numOfTextures, boolean reverse) {

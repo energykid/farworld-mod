@@ -123,6 +123,10 @@ public class ModParticles {
             "slime_streaks",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> NECROMIUM_EFFECT = PARTICLE_TYPES.register(
+            "necromium_effect",
+            () -> new SimpleParticleType(false)
+    );
     public static final Supplier<SimpleParticleType> SLUDGE_DROP = PARTICLE_TYPES.register(
             "sludge_drop",
             () -> new SimpleParticleType(false)

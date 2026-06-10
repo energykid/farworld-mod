@@ -46,13 +46,13 @@ public class Farworld
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        ModSounds.SOUND_EVENTS.register(modEventBus);
         ModItems.ITEMS_ALL.register(modEventBus);
         ModAttachments.ATTACHMENT_TYPES.register(modEventBus);
         ModDataComponents.DATA_COMPONENT_TYPES.register(modEventBus);
         ModBlocks.BLOCKS_ALL.register(modEventBus);
         ModLootModifiers.GLOBAL_LOOT_MODIFIERS_ALL.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
-        ModSounds.SOUND_EVENTS.register(modEventBus);
         ModEffects.MOB_EFFECTS.register(modEventBus);
         ModParticles.PARTICLE_TYPES.register(modEventBus);
         ModPotions.POTIONS.register(modEventBus);

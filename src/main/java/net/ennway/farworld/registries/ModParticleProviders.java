@@ -82,5 +82,7 @@ public class ModParticleProviders {
         event.registerSpriteSet(ModParticles.GLOOM_SHOCKWAVE.get(), GloomShockwave.Provider::new);
 
         event.registerSpriteSet(ModParticles.SLUDGE_DROP.get(), SludgeDropParticle.Provider::new);
+
+        event.registerSpriteSet(ModParticles.NECROMIUM_EFFECT.get(), NecromiumEffectParticle.Provider::new);
     }
 }

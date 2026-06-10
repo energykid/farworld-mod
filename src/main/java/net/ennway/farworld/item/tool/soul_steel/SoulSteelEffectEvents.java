@@ -22,12 +22,12 @@ public class SoulSteelEffectEvents {
         {
             if (plr.getWeaponItem().is(ModItems.SOUL_STEEL_SWORD))
             {
-                evt.setNewDamage(evt.getNewDamage() + (2 * plr.getAttackStrengthScale(0f)));
+                evt.setNewDamage(evt.getNewDamage() + (4 * plr.getAttackStrengthScale(0f)));
             }
 
             if (plr.getWeaponItem().is(ModItems.SOUL_STEEL_AXE))
             {
-                evt.setNewDamage(evt.getOriginalDamage() + (3 * plr.getAttackStrengthScale(0f)));
+                evt.setNewDamage(evt.getOriginalDamage() + (5 * plr.getAttackStrengthScale(0f)));
             }
         }
     }
@@ -37,12 +37,12 @@ public class SoulSteelEffectEvents {
     {
         if (evt.getStack().is(ModItems.SOUL_STEEL_SWORD))
         {
-            evt.addTooltipLines(Component.literal( "§a+2 ").append(Component.translatable("extra.farworld.soul_steel_magic_damage")));
+            evt.addTooltipLines(Component.literal( "§9+4 ").append(Component.translatable("extra.farworld.soul_steel_magic_damage")));
         }
 
         if (evt.getStack().is(ModItems.SOUL_STEEL_AXE))
         {
-            evt.addTooltipLines(Component.literal( "§a+3 ").append(Component.translatable("extra.farworld.soul_steel_magic_damage")));
+            evt.addTooltipLines(Component.literal( "§9+5 ").append(Component.translatable("extra.farworld.soul_steel_magic_damage")));
         }
     }
 }

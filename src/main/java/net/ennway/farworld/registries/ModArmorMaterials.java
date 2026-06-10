@@ -23,7 +23,8 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.CHESTPLATE, 7);
                 attribute.put(ArmorItem.Type.HELMET, 3);
                 attribute.put(ArmorItem.Type.BODY, 11);
-            }), 10, 1f, 0.1f, ModItems.SOUL_STEEL);
+            }), 10, 1f, 0.1f, ModItems.SOUL_STEEL,
+            ModSounds.SOUL_STEEL_EQUIP);
 
     public static final Holder<ArmorMaterial> COBALT_ARMOR_MATERIAL = register("cobalt",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
@@ -32,7 +33,8 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.CHESTPLATE, 8);
                 attribute.put(ArmorItem.Type.HELMET, 4);
                 attribute.put(ArmorItem.Type.BODY, 11);
-            }), 7, 2f, 0.15f, ModItems.COBALT_INGOT);
+            }), 7, 2f, 0.15f,
+            ModItems.COBALT_INGOT::value, SoundEvents.ARMOR_EQUIP_IRON);
 
     public static final Holder<ArmorMaterial> BLACK_ICE_ARMOR_MATERIAL = register("black_ice",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
@@ -41,19 +43,19 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.CHESTPLATE, 9);
                 attribute.put(ArmorItem.Type.HELMET, 4);
                 attribute.put(ArmorItem.Type.BODY, 15);
-            }), 20, 4f, 0.1f, ModItems.BLACK_ICE_GEM);
+            }), 20, 4f, 0.1f, ModItems.BLACK_ICE_GEM,
+            ModSounds.BLACK_ICE_EQUIP);
 
     public static final Holder<ArmorMaterial> BREEZE_ARMOR_MATERIAL = register("breeze",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
                 attribute.put(ArmorItem.Type.BOOTS, 1);
             }), 11, 0f, 0f,
-            () -> Items.BREEZE_ROD);
+            () -> Items.BREEZE_ROD, SoundEvents.ARMOR_EQUIP_IRON);
 
     private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection,
                                                   int enchantability, float toughness, float knockbackResistance,
-                                                  Supplier<Item> ingredientItem) {
+                                                  Supplier<Item> ingredientItem, Holder<SoundEvent> equipSound) {
         ResourceLocation location = ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, name);
-        Holder<SoundEvent> equipSound = SoundEvents.ARMOR_EQUIP_NETHERITE;
         Supplier<Ingredient> ingredient = () -> Ingredient.of(ingredientItem.get());
         List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(location));
 
