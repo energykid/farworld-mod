@@ -30,6 +30,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -58,6 +59,10 @@ public class ExtraModelEvent {
 
     public static String getExtraModelName(Item item)
     {
+        if (item.getDefaultInstance().is(Items.ELYTRA))
+        {
+            return "elytra";
+        }
         String fullId = item.getDescriptionId();
         int itemModNameLength = "item.farworld".length() + 1;
         String id = fullId.substring(itemModNameLength);
@@ -67,9 +72,6 @@ public class ExtraModelEvent {
     @SubscribeEvent
     public static void addModels(ModelEvent.RegisterAdditional event)
     {
-        for (int i = 0; i < ModItems.ITEMS_ALL.getEntries().size(); i++) {
-
-        }
         for (int i = 0; i < ModItems.ALL_ACCESSORY_NAMES.size(); i++) {
             event.register(ModelResourceLocation.standalone(
                     ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "item/overlay/" + ModItems.ALL_ACCESSORY_NAMES.get(i))));

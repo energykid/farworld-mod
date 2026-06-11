@@ -1,4 +1,13 @@
 {
   "values": [
+    "minecraft:elytra",
+    {
+      "id": "caverns_and_chasms:toolbelt",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:cowl",
+      "required": false
+    }
   ]
 }

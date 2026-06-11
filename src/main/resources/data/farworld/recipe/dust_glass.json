@@ -2,9 +2,9 @@
   "type": "minecraft:smelting",
   "category": "blocks",
   "cookingtime": 200,
-  "experience": 0.1,
+  "experience": 0,
   "ingredient": {
-    "tag": "farworld:dust_block"
+    "item": "farworld:dust_block"
   },
   "result": {
     "id": "farworld:dust_glass"

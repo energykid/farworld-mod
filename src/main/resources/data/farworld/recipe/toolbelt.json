@@ -1,23 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "equipment",
+  "pattern": [
+    "X X",
+    "XVX"
+  ],
   "key": {
-    "#": {
+    "X": {
       "item": "minecraft:leather"
     },
-    "X": {
+    "V": {
       "item": "minecraft:iron_ingot"
-    },
-    "Y": {
-      "item": "minecraft:string"
     }
   },
-  "pattern": [
-    "#Y#",
-    "#X#"
-  ],
   "result": {
-    "item": "farworld:toolbelt"
-  },
-  "show_notification": true
+    "count": 1,
+    "id": "farworld:toolbelt"
+  }
 }

@@ -30,10 +30,10 @@ public class ModArmorMaterials {
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
                 attribute.put(ArmorItem.Type.BOOTS, 3);
                 attribute.put(ArmorItem.Type.LEGGINGS, 6);
-                attribute.put(ArmorItem.Type.CHESTPLATE, 8);
+                attribute.put(ArmorItem.Type.CHESTPLATE, 7);
                 attribute.put(ArmorItem.Type.HELMET, 4);
                 attribute.put(ArmorItem.Type.BODY, 11);
-            }), 7, 2f, 0.15f,
+            }), 7, 0f, 0.05f,
             ModItems.COBALT_INGOT::value, SoundEvents.ARMOR_EQUIP_IRON);
 
     public static final Holder<ArmorMaterial> BLACK_ICE_ARMOR_MATERIAL = register("black_ice",

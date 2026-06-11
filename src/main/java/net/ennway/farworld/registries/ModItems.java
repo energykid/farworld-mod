@@ -38,7 +38,8 @@ public class ModItems {
                     "magic_spur",
                     "blaze_locket",
                     "skeleton_arm",
-                    "toolbelt"
+                    "toolbelt",
+                    "elytra"
             );
 
     public static final DeferredRegister.Items ITEMS_ALL = DeferredRegister.createItems(Farworld.MOD_ID);
