@@ -107,7 +107,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> DUST_GLASS = BLOCKS_ALL.register(
             "dust_glass",
             () -> new DustGlassBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
                     .strength(0.6F, 1.0F)
                     .noOcclusion()
                     .isValidSpawn(Blocks::never)
@@ -117,7 +117,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SHADOW_DUST_GLASS = BLOCKS_ALL.register(
             "shadow_dust_glass",
             () -> new DustGlassBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops()
+                    .mapColor(MapColor.COLOR_BLACK)
                     .strength(0.6F, 1.0F)
                     .noOcclusion()
                     .isValidSpawn(Blocks::never)
@@ -127,7 +127,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> CRYSTAL_DUST_GLASS = BLOCKS_ALL.register(
             "crystal_dust_glass",
             () -> new DustGlassBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_MAGENTA).requiresCorrectToolForDrops()
+                    .mapColor(MapColor.COLOR_MAGENTA)
                     .strength(0.6F, 1.0F)
                     .noOcclusion()
                     .isValidSpawn(Blocks::never)
@@ -740,7 +740,9 @@ public class ModBlocks {
     public static final DeferredBlock<RedstoneTeleporterBlock> REDSTONE_TELEPORTER_BLOCK = BLOCKS_ALL.register(
             "redstone_teleporter",
             () -> new RedstoneTeleporterBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops()
+                    .mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops()
+                    .pushReaction(PushReaction.BLOCK)
+                    .isValidSpawn(Blocks::never)
                     .strength(2F, 10.0F)
                     .sound(SoundType.STONE)));
 }

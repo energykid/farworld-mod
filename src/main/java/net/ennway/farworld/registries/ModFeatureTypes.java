@@ -72,6 +72,13 @@ public class ModFeatureTypes {
         }
     });
 
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> LARGE_DUST_PILE = FEATURES_ALL.register("large_dust_pile", new Supplier<Feature<NoneFeatureConfiguration>>() {
+        @Override
+        public Feature<NoneFeatureConfiguration> get() {
+            return new LargeDustPileFeature(NoneFeatureConfiguration.CODEC);
+        }
+    });
+
     public static final DeferredHolder<Feature<?>, Feature<TemplateFeatureConfiguration>> SIMPLE_TEMPLATE_FEATURE = FEATURES_ALL.register("simple_template", new Supplier<Feature<TemplateFeatureConfiguration>>() {
         @Override
         public Feature<TemplateFeatureConfiguration> get() {
