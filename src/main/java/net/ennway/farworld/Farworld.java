@@ -29,7 +29,6 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Farworld.MOD_ID)
 public class Farworld
 {
@@ -41,9 +40,6 @@ public class Farworld
     {
         modEventBus.addListener(this::commonSetup);
 
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
         ModSounds.SOUND_EVENTS.register(modEventBus);
@@ -61,10 +57,8 @@ public class Farworld
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ModPois.POIS.register(modEventBus);
 
-        // Register items to a creative tab
         modEventBus.addListener(this::addCreative);
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 

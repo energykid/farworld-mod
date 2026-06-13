@@ -72,6 +72,16 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
     );
 
     @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return false;
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+        return false;
+    }
+
+    @Override
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
         this.bossEvent.addPlayer(player);
@@ -168,7 +178,6 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
     @Override
     protected void customServerAiStep() {
-
         if (getTarget() == null || getTarget().isDeadOrDying())
         {
             setTarget(level().getNearestPlayer(this, 20));
@@ -199,7 +208,12 @@ public class RedstoneCuriosityEntity extends Monster implements GeoEntity {
 
         if (!isDeadOrDying())
         {
-            doAI();
+            if (getTarget() != null)
+                doAI();
+            else
+            {
+                this.getEntityData().set(ATTACK_TIME_1, 0);
+            }
         }
 
         super.aiStep();

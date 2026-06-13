@@ -114,12 +114,8 @@ public class BasaltColumnFeature extends Feature<NoneFeatureConfiguration> {
                 {
                     BlockPos pos2 = new BlockPos(posMid.getX() + Mth.floor(x), posMid.getY() + Mth.floor(y), posMid.getZ() + Mth.floor(z));
 
-                    int dist = (int)Math.sqrt(Math.pow((double)pos2.getX() - (double)posMid.getX(), 2) + Math.pow((double)pos2.getZ() - (double)posMid.getZ(), 2));
-
-                    int dist2 = (int)Math.sqrt(Math.pow(dist, 2) + Math.pow((double)pos2.getY() - (double)posMid.getY(), 2));
-
-                    if (dist < size && dist2 < (size / 2)) {
-                        BlockState state = ModBlocks.FRUITLESS_CRYSTALLIA_LEAVES.get().defaultBlockState();
+                    if (pos2.distSqr(posMid) < (size + 0.6)) {
+                        BlockState state = ModBlocks.FRUITLESS_CRYSTALLIA_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 1);
                         if (MathUtils.randomDouble(featurePlaceContext.random(), 0, 20) < 3) state = ModBlocks.CRYSTALLIA_LEAVES.get().defaultBlockState();
 
                         if (featurePlaceContext.level().getBlockState(pos2).is(Blocks.AIR))

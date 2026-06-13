@@ -9,6 +9,16 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags {
 
+    public static final TagKey<Item> TWO_ACCESSORY_ARMOR = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "two_accessory_armor"));
+    public static final TagKey<Item> THREE_ACCESSORY_ARMOR = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "three_accessory_armor"));
+    public static final TagKey<Item> ACCESSORY_INCOMPATIBLE = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "accessory_incompatible_armor"));
+
     public static final TagKey<Item> HAS_NETHERITE_EFFECT = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "has_netherite_effect"));

@@ -2,6 +2,7 @@ package net.ennway.farworld.utils;
 
 import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.registries.ModDataComponents;
+import net.ennway.farworld.registries.ModTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.ItemTags;
@@ -13,6 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccessoryUtils {
+
+    public static boolean countsAsArmorForAccessories(ItemStack stack)
+    {
+        boolean b = (stack.is(ItemTags.HEAD_ARMOR) || stack.is(ItemTags.CHEST_ARMOR) || stack.is(ItemTags.LEG_ARMOR) || stack.is(ItemTags.FOOT_ARMOR));
+        return b && !stack.is(ModTags.ACCESSORY_INCOMPATIBLE);
+    }
+
     public static boolean playerHasAccessory(Player player, Item accessoryType)
     {
         for (ItemStack stack : player.getInventory().armor)

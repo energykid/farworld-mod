@@ -1,27 +1,24 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "pattern": [
-    "DSD",
-    "DCD",
-    "DDD"
-  ],
   "key": {
     "#": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:diamond"
     },
     "C": {
       "item": "minecraft:basalt"
     },
     "S": {
       "item": "farworld:soul_steel_upgrade_smithing_template"
-    },
-    "D": {
-      "item": "minecraft:diamond"
     }
   },
+  "pattern": [
+    "#S#",
+    "#C#",
+    "###"
+  ],
   "result": {
-    "id": "farworld:soul_steel_upgrade_smithing_template",
-    "count": 2
+    "count": 2,
+    "id": "farworld:soul_steel_upgrade_smithing_template"
   }
 }

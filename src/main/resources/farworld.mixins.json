@@ -4,6 +4,7 @@
   "required": true,
   "mixins": [
     "ArmoryMixin",
+    "ArmorySmithingMixin",
     "ChargeBunkerPlayerMixin",
     "ElytraMixin",
     "FallDamageMixin",
