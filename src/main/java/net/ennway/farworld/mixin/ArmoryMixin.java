@@ -61,7 +61,7 @@ public abstract class ArmoryMixin {
     private boolean farworld_mod$countsAsArmorForAccessories(ItemStack stack)
     {
         boolean b = (stack.is(ItemTags.HEAD_ARMOR) || stack.is(ItemTags.CHEST_ARMOR) || stack.is(ItemTags.LEG_ARMOR) || stack.is(ItemTags.FOOT_ARMOR));
-        return b && !stack.is(ACCESSORY_INCOMPATIBLE) && !stack.is(BUILTIN_ACCESSORY_INCOMPATIBLE);
+        return b && !stack.is(ACCESSORY_INCOMPATIBLE);
     }
 
     /*
@@ -140,20 +140,15 @@ public abstract class ArmoryMixin {
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "accessory_incompatible_armor"));
 
-    private static final TagKey<Item> BUILTIN_ACCESSORY_INCOMPATIBLE = TagKey.create(
-            BuiltInRegistries.ITEM.key(),
-            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "builtin_accessory_incompatible_armor"));
-
     @Inject(method = "verifyComponentsAfterLoad", at = @At("TAIL"))
     void addComponents(ItemStack stack, CallbackInfo ci)
     {
         if (farworld_mod$countsAsArmorForAccessories(stack))
         {
             if (stack.get(ModDataComponents.ARMOR_ACCESSORIES) == null)
+            {
                 stack.set(ModDataComponents.ARMOR_ACCESSORIES, ArmorAccessories.EMPTY);
 
-            if (stack.get(ModDataComponents.ACCESSORY_SLOTS) == null)
-            {
                 stack.set(ModDataComponents.ACCESSORY_SLOTS, 1);
                 if (stack.is(TWO_ACCESSORY_ARMOR))
                     stack.set(ModDataComponents.ACCESSORY_SLOTS, 2);
