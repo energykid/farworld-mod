@@ -314,6 +314,8 @@ public class Farworld
             event.accept(ModItems.DUSTBUG_SPAWN_EGG);
             event.accept(ModItems.GOLIATH_SPAWN_EGG);
             event.accept(ModItems.AMETHYST_CONSTRUCT_SPAWN_EGG);
+            event.accept(ModItems.SCRAPPED_SPAWN_EGG);
+            event.accept(ModItems.OBELISK_SPAWN_EGG);
         }
     }
 

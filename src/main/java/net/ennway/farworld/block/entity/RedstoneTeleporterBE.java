@@ -40,6 +40,8 @@ import java.util.Set;
 
 public class RedstoneTeleporterBE extends BlockEntity {
 
+    public static final int MAXIMUM_DISTANCE = 1000;
+
     public float sc = 0.5f;
     public int cooldown = 0;
 
@@ -70,9 +72,9 @@ public class RedstoneTeleporterBE extends BlockEntity {
             PoiManager manager = lev.getPoiManager();
             manager.ensureLoadedAndValid(lev, posFrom, 0);
 
-            List<BlockPos> positions = manager.findAll(p -> p.is(ModPois.REDSTONE_TELEPORTER), x -> true, posFrom, 500, PoiManager.Occupancy.ANY).toList();
+            List<BlockPos> positions = manager.findAll(p -> p.is(ModPois.REDSTONE_TELEPORTER), x -> true, posFrom, MAXIMUM_DISTANCE, PoiManager.Occupancy.ANY).toList();
 
-            double dist = 1500000;
+            double dist = MAXIMUM_DISTANCE;
 
             for (BlockPos p : positions) {
                 if (!p.equals(posFrom)) {

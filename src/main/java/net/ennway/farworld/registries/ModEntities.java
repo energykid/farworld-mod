@@ -10,10 +10,12 @@ import net.ennway.farworld.entity.client.dustbug.DustbugModel;
 import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
 import net.ennway.farworld.entity.client.goliath.GoliathModel;
 import net.ennway.farworld.entity.client.goliath.GoliathRenderer;
+import net.ennway.farworld.entity.client.obelisk.ObeliskRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityBlastRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityLaserRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityVerticalBlastRenderer;
+import net.ennway.farworld.entity.client.scrapped.ScrappedRenderer;
 import net.ennway.farworld.entity.client.sludge.SludgeRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemRenderer;
@@ -70,6 +72,18 @@ public class ModEntities {
                     .eyeHeight(1.35f)
                     .sized(0.75f, 2f)
                     .build("brittle"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ScrappedEntity>> SCRAPPED = ENTITY_TYPES.register(
+            "scrapped", () -> EntityType.Builder.of(ScrappedEntity::new, MobCategory.MONSTER)
+                    .eyeHeight(1.35f)
+                    .sized(0.75f, 2f)
+                    .build("scrapped"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ObeliskEntity>> OBELISK = ENTITY_TYPES.register(
+            "obelisk", () -> EntityType.Builder.of(ObeliskEntity::new, MobCategory.MONSTER)
+                    .eyeHeight(1.35f)
+                    .sized(2.75f, 3.8f)
+                    .build("obelisk"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<SludgeEntity>> SLUDGE = ENTITY_TYPES.register(
             "sludge", () -> EntityType.Builder.of(SludgeEntity::new, MobCategory.MONSTER)
@@ -143,6 +157,8 @@ public class ModEntities {
             event.register(BLOOMED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, pos, e) -> pos.getY() < 0, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(BRITTLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(SCRAPPED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(OBELISK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(DUSTBUG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(GOLIATH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(AMETHYST_CONSTRUCT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
@@ -155,6 +171,8 @@ public class ModEntities {
             event.put(SLUDGE.get(), SludgeEntity.createAttributes().build());
             event.put(SOUL_GOLEM.get(), SoulGolemEntity.createAttributes().build());
             event.put(BRITTLE.get(), BrittleEntity.createAttributes().build());
+            event.put(SCRAPPED.get(), ScrappedEntity.createAttributes().build());
+            event.put(OBELISK.get(), ObeliskEntity.createAttributes().build());
             event.put(DUSTBUG.get(), DustbugEntity.createAttributes().build());
             event.put(GOLIATH.get(), GoliathEntity.createAttributes().build());
             event.put(AMETHYST_CONSTRUCT.get(), AmethystConstructEntity.createAttributes().build());
@@ -241,6 +259,14 @@ public class ModEntities {
                 new GeoEntityRendererDefinition<BrittleEntity>(
                         BRITTLE,
                         BrittleRenderer::new
+                ),
+                new GeoEntityRendererDefinition<ScrappedEntity>(
+                        SCRAPPED,
+                        ScrappedRenderer::new
+                ),
+                new GeoEntityRendererDefinition<ObeliskEntity>(
+                        OBELISK,
+                        ObeliskRenderer::new
                 ),
                 new GeoEntityRendererDefinition<RedstoneCuriosityEntity>(
                         REDSTONE_CURIOSITY,

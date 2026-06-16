@@ -3,6 +3,7 @@ package net.ennway.farworld.registries;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.block.BystonePortalBlock;
 import net.ennway.farworld.block.RedstoneTeleporterBlock;
+import net.ennway.farworld.block.entity.RedstoneTeleporterBE;
 import net.ennway.farworld.item.tool.Wishbone;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -41,5 +42,5 @@ public class ModPois {
             () -> new PoiType(Set.of(ModBlocks.REDSTONE_TELEPORTER_BLOCK.get().defaultBlockState(),
                     ModBlocks.REDSTONE_TELEPORTER_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.LIT, true)),
                     1,
-                    1000));
+                    RedstoneTeleporterBE.MAXIMUM_DISTANCE));
 }

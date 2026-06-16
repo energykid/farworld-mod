@@ -127,6 +127,8 @@
   "item.farworld.dustbug_spawn_egg" : "Dustbug Spawn Egg",
   "item.farworld.goliath_spawn_egg" : "Goliath Spawn Egg",
   "item.farworld.amethyst_construct_spawn_egg" : "Amethyst Construct Spawn Egg",
+  "item.farworld.scrapped_spawn_egg" : "Scrapped Spawn Egg",
+  "item.farworld.obelisk_spawn_egg" : "Obelisk Spawn Egg",
 
   "item.farworld.soul_steel_upgrade_smithing_template.type" : "§7Soul Steel Upgrade",
   "item.farworld.soul_steel_upgrade_smithing_template.applies_to" : "§9Iron Equipment",
