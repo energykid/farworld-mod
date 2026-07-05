@@ -42,7 +42,7 @@ public class MathUtils {
 
     public static double randomDouble(RandomSource randomSource, double min, double max)
     {
-        return min + (randomSource.nextDouble() * max);
+        return min + (randomSource.nextDouble() * (max - min));
     }
 
     public static int sign(int num)

@@ -19,10 +19,32 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.joml.Vector3f;
 
+import javax.annotation.Nullable;
 import java.util.Comparator;
 import java.util.List;
 
 public class BehaviorUtils {
+
+    @Nullable
+    public static Player nearestPlayer(Level level, Vec3 pos, int blockRange)
+    {
+        AABB box = new AABB(pos.x - blockRange, pos.y - blockRange, pos.z - blockRange, pos.x + blockRange, pos.y + blockRange, pos.z + blockRange);
+
+        var entities = level.getEntitiesOfClass(Player.class, box);
+
+        Player plr = null;
+        double dist = blockRange * 2;
+        for (Player p : entities)
+        {
+            if (p.distanceToSqr(pos) < dist)
+            {
+                dist = p.distanceToSqr(pos);
+                plr = p;
+            }
+        }
+
+        return plr;
+    }
 
     public static void sendDebugMessage(ServerLevel level, String str)
     {

@@ -51,9 +51,7 @@ public class SludgeEntity extends Monster implements GeoEntity {
     public float sc = 1f;
 
     public static final EntityDataAccessor<Integer> JUMP_TICKS = SynchedEntityData.defineId(SludgeEntity.class, EntityDataSerializers.INT);
-
     public static final EntityDataAccessor<Integer> JUMPS = SynchedEntityData.defineId(SludgeEntity.class, EntityDataSerializers.INT);
-
     public static final EntityDataAccessor<String> GEM_CONTAINED = SynchedEntityData.defineId(SludgeEntity.class, EntityDataSerializers.STRING);
 
     public SludgeEntity(EntityType<? extends Monster> entityType, Level level) {

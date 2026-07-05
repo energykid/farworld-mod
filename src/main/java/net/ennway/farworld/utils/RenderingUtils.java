@@ -42,6 +42,20 @@ public class RenderingUtils {
         poseStack.mulPose(Axis.YP.rotationDegrees(-yrot));
         poseStack.mulPose(Axis.XP.rotationDegrees(-xrot));
     }
+    public static void autoRotateRender(PoseStack poseStack, Vec3 rotationVec)
+    {
+        float xrot = 0f;
+        float yrot = 0f;
+
+        if (rotationVec.lengthSqr() != 0.0) {
+            double d0 = rotationVec.horizontalDistance();
+            yrot = ((float)(Mth.atan2(rotationVec.z, rotationVec.x) * 180.0 / 3.1415927410125732) + 90.0F);
+            xrot = ((float)(Mth.atan2(d0, rotationVec.y) * 180.0 / 3.1415927410125732) - 90.0F);
+        }
+
+        poseStack.mulPose(Axis.YP.rotationDegrees(-yrot));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-xrot));
+    }
     public static void autoRotateRender(PoseStack poseStack, LivingEntity entity)
     {
         float xrot = 0f;

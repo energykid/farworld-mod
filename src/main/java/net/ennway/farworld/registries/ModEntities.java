@@ -15,6 +15,7 @@ import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityBlas
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityLaserRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityRenderer;
 import net.ennway.farworld.entity.client.redstonecuriosity.RedstoneCuriosityVerticalBlastRenderer;
+import net.ennway.farworld.entity.client.scrapped.ScrappedLaserRenderer;
 import net.ennway.farworld.entity.client.scrapped.ScrappedRenderer;
 import net.ennway.farworld.entity.client.sludge.SludgeRenderer;
 import net.ennway.farworld.entity.client.soulgolem.SoulGolemModel;
@@ -140,6 +141,9 @@ public class ModEntities {
 
     public static final DeferredHolder<EntityType<?>, EntityType<RedstoneCuriosityLaserEntity>> REDSTONE_CURIOSITY_LASER = ENTITY_TYPES.register(
             "redstone_curiosity_laser", () -> EntityType.Builder.of(RedstoneCuriosityLaserEntity::new, MobCategory.MISC).build("redstone_curiosity_laser"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ScrappedLaserEntity>> SCRAPPED_LASER = ENTITY_TYPES.register(
+            "scrapped_laser", () -> EntityType.Builder.of(ScrappedLaserEntity::newForDefinition, MobCategory.MISC).build("scrapped_laser"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<GloomstonePickup>> GLOOMSTONE_PICKUP = ENTITY_TYPES.register(
             "gloomstone_pickup", () -> EntityType.Builder.of(GloomstonePickup::new, MobCategory.MISC).build("gloomstone_pickup"));
@@ -283,6 +287,10 @@ public class ModEntities {
                 new GeoEntityRendererDefinition<RedstoneCuriosityLaserEntity>(
                         REDSTONE_CURIOSITY_LASER,
                         RedstoneCuriosityLaserRenderer::new
+                ),
+                new GeoEntityRendererDefinition<ScrappedLaserEntity>(
+                        SCRAPPED_LASER,
+                        ScrappedLaserRenderer::new
                 )
         );
         //endregion

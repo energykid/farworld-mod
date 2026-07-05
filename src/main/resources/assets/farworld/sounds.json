@@ -291,5 +291,23 @@
       "farworld:black_ice_equip3",
       "farworld:black_ice_equip4",
       "farworld:black_ice_equip5"]
+  },
+  "scrapped_idle": {
+    "sounds": ["farworld:scrapped_idle1",
+      "farworld:scrapped_idle2",
+      "farworld:scrapped_idle3"]
+  },
+  "scrapped_hurt": {
+    "sounds": ["farworld:scrapped_hurt1",
+      "farworld:scrapped_hurt2"]
+  },
+  "scrapped_windup": {
+    "sounds": ["farworld:scrapped_windup"]
+  },
+  "scrapped_beam": {
+    "sounds": ["farworld:scrapped_beam"]
+  },
+  "scrapped_kill": {
+    "sounds": ["farworld:scrapped_kill"]
   }
 }

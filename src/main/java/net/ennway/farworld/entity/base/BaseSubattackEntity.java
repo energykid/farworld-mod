@@ -14,6 +14,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
@@ -83,11 +84,23 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity, Owna
     public static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(BaseSubattackEntity.class, EntityDataSerializers.FLOAT);
     public static final EntityDataAccessor<Float> PITCH = SynchedEntityData.defineId(BaseSubattackEntity.class, EntityDataSerializers.FLOAT);
 
+    public static final EntityDataAccessor<Float> DIR_X = SynchedEntityData.defineId(BaseSubattackEntity.class, EntityDataSerializers.FLOAT);
+    public static final EntityDataAccessor<Float> DIR_Y = SynchedEntityData.defineId(BaseSubattackEntity.class, EntityDataSerializers.FLOAT);
+    public static final EntityDataAccessor<Float> DIR_Z = SynchedEntityData.defineId(BaseSubattackEntity.class, EntityDataSerializers.FLOAT);
+
+    public Vec3 getDirectionVector()
+    {
+        return new Vec3(getEntityData().get(DIR_X), getEntityData().get(DIR_Y), getEntityData().get(DIR_Z));
+    }
+
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        builder.define(ATTACK_TICKS, 0);
-        builder.define(ROTATION, 0f);
-        builder.define(PITCH, 0f);
+        builder.define(ATTACK_TICKS, 0)
+                .define(ROTATION, 0f)
+                .define(PITCH, 0f)
+                .define(DIR_X, 2f)
+                .define(DIR_Y, 0f)
+                .define(DIR_Z, 2f).build();
     }
 
     @Override

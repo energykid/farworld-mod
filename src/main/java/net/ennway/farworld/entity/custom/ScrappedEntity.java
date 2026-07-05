@@ -1,6 +1,46 @@
 package net.ennway.farworld.entity.custom;
 
+import io.netty.buffer.ByteBuf;
+import net.ennway.farworld.Farworld;
+import io.netty.buffer.ByteBuf;
+import net.ennway.farworld.Farworld;
+import net.ennway.farworld.registries.ModAttachments;
+import net.ennway.farworld.utils.BehaviorUtils;
+import net.ennway.farworld.utils.BossMusicHandling;
+import net.ennway.farworld.utils.MathUtils;
+import net.ennway.farworld.utils.ServerUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.goal.target.TargetGoal;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import org.apache.logging.log4j.core.jmx.Server;
+import net.ennway.farworld.network.Payloads;
+import net.ennway.farworld.registries.ModEntities;
+import net.ennway.farworld.registries.ModSounds;
+import net.ennway.farworld.utils.BehaviorUtils;
+import net.ennway.farworld.utils.BossMusicHandling;
+import net.ennway.farworld.utils.MathUtils;
+import net.ennway.farworld.utils.ServerUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -19,11 +59,21 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
@@ -33,9 +83,16 @@ import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.UUID;
+
 public class ScrappedEntity extends Monster implements GeoEntity {
 
     public float walkAnimationScale = 0F;
+
+    int attackTimer = 0;
+    String attackState = "none";
+
+    Vec3 finderPos = Vec3.ZERO;
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
@@ -48,40 +105,34 @@ public class ScrappedEntity extends Monster implements GeoEntity {
         this.setPathfindingMalus(PathType.WATER, -1.5F);
     }
 
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return ModSounds.SCRAPPED_IDLE.get();
+    }
+
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        playSound(SoundEvents.ZOMBIE_STEP);
+    }
+
     public double getEyeY() {
         return this.getPosition(0).y + 1.5D;
     }
 
-    public final TargetingConditions targeting = TargetingConditions.forCombat().range(4.0).ignoreLineOfSight();
-
-    public class BrittleAttackGoal extends MeleeAttackGoal
-    {
-        public BrittleAttackGoal(PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
-            super(mob, speedModifier, followingTargetEvenIfNotSeen);
-        }
-
-        @Override
-        protected void checkAndPerformAttack(LivingEntity target) {
-            if (this.canPerformAttack(target)) {
-                this.resetAttackCooldown();
-                if (this.mob instanceof ScrappedEntity entity)
-                {
-                    entity.triggerAnim("attack_controller", "attack");
-                }
-                this.mob.doHurtTarget(target);
-            }
-        }
+    @Override
+    public float getSpeed() {
+        if (attackState == "laser") return 0f;
+        return super.getSpeed();
     }
 
     @Override
     protected void registerGoals() {
         super.registerGoals();
 
-        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(2, new BrittleAttackGoal(this, 1.0, false));
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
+        this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 15.0F));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0));
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1, false));
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal(this, Player.class, true));
     }
 
     @Override
@@ -90,24 +141,66 @@ public class ScrappedEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public void tick() {
-        if (this.level().isClientSide) {
-            if (this.getDeltaMovement().x != 0 || this.getDeltaMovement().z != 0)
-                walkAnimationScale = Mth.lerp(0.25f, walkAnimationScale, 1f);
-            else
-                walkAnimationScale = Mth.lerp(0.5f, walkAnimationScale, 0f);
-        }
-
-        super.tick();
-
-        if (this.level().isClientSide) {
-            setupAnimationStates();
-        }
+    public void aiStep() {
+        super.aiStep();
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
+    protected void customServerAiStep() {
+        if (!isDeadOrDying()) {
+            if (attackState == "none") setTarget(BehaviorUtils.nearestPlayer(level(), position(), 20));
+
+            if (getTarget() != null) {
+                attackTimer++;
+
+                if (attackTimer < 10) {
+                    finderPos = getTarget().position();
+                }
+
+                if (attackState == "none") {
+                    if (attackTimer > 40) {
+                        attackState = "laser";
+                        attackTimer = 0;
+
+                        playSound(ModSounds.SCRAPPED_WINDUP.get());
+
+                        if (level() instanceof ServerLevel)
+                            triggerAnim("attack_controller", "laser");
+                    }
+                }
+                if (attackState == "laser") {
+                    double r = MathUtils.entityLookAngle(getTarget().position().subtract(position()));
+                    absRotateTo((float)r, 0);
+
+                    if (attackTimer == 20) {
+
+                        Vec3 p = finderPos.subtract(position()).normalize();
+
+                        ScrappedLaserEntity ent = new ScrappedLaserEntity(ModEntities.SCRAPPED_LASER.get(), level(), getEyePosition().add(0f, 0.1f, 0f), p);
+
+                        ent.owner = this;
+
+                        ent.getEntityData().set(ScrappedLaserEntity.DIR_X, (float) p.x);
+                        ent.getEntityData().set(ScrappedLaserEntity.DIR_Y, (float) p.y);
+                        ent.getEntityData().set(ScrappedLaserEntity.DIR_Z, (float) p.z);
+
+                        playSound(ModSounds.SCRAPPED_BEAM.get());
+
+                        if (level() != null) {
+                            level().addFreshEntity(ent);
+                        }
+                    }
+                    if (attackTimer > 23) {
+                        attackState = "none";
+                        attackTimer = 0;
+                    }
+                }
+            } else {
+                attackTimer = 0;
+            }
+        }
+
+        super.customServerAiStep();
     }
 
     private void setupAnimationStates()
@@ -119,19 +212,19 @@ public class ScrappedEntity extends Monster implements GeoEntity {
     @Override
     protected @Nullable SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
         this.hurtAnimationState.start(this.tickCount);
-        return SoundEvents.ZOMBIE_HURT;
+        return ModSounds.SCRAPPED_HURT.get();
     }
 
     @Override
     protected @Nullable SoundEvent getDeathSound() {
-        return SoundEvents.ZOMBIE_DEATH;
+        return ModSounds.SCRAPPED_KILL.get();
     }
 
     public static AttributeSupplier.Builder createAttributes()
     {
         return Mob.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 25D)
-                .add(Attributes.FOLLOW_RANGE, 10D)
+                .add(Attributes.FOLLOW_RANGE, 20D)
                 .add(Attributes.ATTACK_DAMAGE, 2)
                 .add(Attributes.ATTACK_KNOCKBACK, 2)
                 .add(Attributes.MOVEMENT_SPEED, 0.2D);
@@ -152,13 +245,16 @@ public class ScrappedEntity extends Monster implements GeoEntity {
     }
 
 
-    protected static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+    protected static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack.basic");
+    protected static final RawAnimation LASER_ANIM = RawAnimation.begin().thenPlay("attack.laser");
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(DefaultAnimations.genericWalkIdleController(this));
+        controllers.add(DefaultAnimations.genericDeathController(this));
 
         controllers.add(new AnimationController<>(this, "attack_controller", animTest -> PlayState.STOP)
+                .triggerableAnim("laser", LASER_ANIM)
                 .triggerableAnim("attack", ATTACK_ANIM));
     }
 

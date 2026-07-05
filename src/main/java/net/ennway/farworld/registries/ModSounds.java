@@ -113,6 +113,12 @@ public class ModSounds {
     public static final Supplier<SoundEvent> SLUDGE_WOBBLE = createSoundEvent("sludge_wobble");
     public static final Supplier<SoundEvent> SLUDGE_CRASH = createSoundEvent("sludge_crash");
 
+    public static final Supplier<SoundEvent> SCRAPPED_IDLE = createSoundEvent("scrapped_idle");
+    public static final Supplier<SoundEvent> SCRAPPED_WINDUP = createSoundEvent("scrapped_windup");
+    public static final Supplier<SoundEvent> SCRAPPED_BEAM = createSoundEvent("scrapped_beam");
+    public static final Supplier<SoundEvent> SCRAPPED_HURT = createSoundEvent("scrapped_hurt");
+    public static final Supplier<SoundEvent> SCRAPPED_KILL = createSoundEvent("scrapped_kill");
+
     public static final Supplier<SoundEvent> FLOWSTONE_HIT = createSoundEvent("flowstone_hit");
     public static final Supplier<SoundEvent> FLOWSTONE_BREAK = createSoundEvent("flowstone_break");
 
