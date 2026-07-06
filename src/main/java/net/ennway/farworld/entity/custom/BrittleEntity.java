@@ -166,7 +166,7 @@ public class BrittleEntity extends Monster implements GeoEntity {
     {
         return Mob.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 14D)
-                .add(Attributes.FOLLOW_RANGE, 10D)
+                .add(Attributes.FOLLOW_RANGE, 16D)
                 .add(Attributes.ATTACK_DAMAGE, 5)
                 .add(Attributes.MOVEMENT_SPEED, 0.18D);
     }

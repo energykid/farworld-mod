@@ -77,7 +77,7 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<ScrappedEntity>> SCRAPPED = ENTITY_TYPES.register(
             "scrapped", () -> EntityType.Builder.of(ScrappedEntity::new, MobCategory.MONSTER)
                     .eyeHeight(1.35f)
-                    .sized(0.75f, 2f)
+                    .sized(1f, 2f)
                     .build("scrapped"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<ObeliskEntity>> OBELISK = ENTITY_TYPES.register(

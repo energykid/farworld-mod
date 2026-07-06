@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import net.ennway.farworld.Farworld;
 import io.netty.buffer.ByteBuf;
 import net.ennway.farworld.Farworld;
+import net.ennway.farworld.entity.base.BaseSubattackEntity;
 import net.ennway.farworld.registries.ModAttachments;
 import net.ennway.farworld.utils.BehaviorUtils;
 import net.ennway.farworld.utils.BossMusicHandling;
@@ -89,6 +90,9 @@ public class ScrappedEntity extends Monster implements GeoEntity {
 
     public float walkAnimationScale = 0F;
 
+    public float headRotation = 0f;
+    public float headRotationLerp = 0f;
+
     int attackTimer = 0;
     String attackState = "none";
 
@@ -132,7 +136,7 @@ public class ScrappedEntity extends Monster implements GeoEntity {
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 15.0F));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1, false));
-        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal(this, Player.class, true));
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal(this, Player.class, true, false));
     }
 
     @Override
@@ -146,15 +150,38 @@ public class ScrappedEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    protected void customServerAiStep() {
-        if (!isDeadOrDying()) {
-            if (attackState == "none") setTarget(BehaviorUtils.nearestPlayer(level(), position(), 20));
+    public void tick() {
+        super.tick();
+        float rot = getXRot();
 
-            if (getTarget() != null) {
+        target = BehaviorUtils.getNearestPlayer(this, 14d);
+
+        if (target != null)
+        {
+            float r2 = (float)MathUtils.entityLookAngle(target.position().subtract(position()));
+
+            if (Mth.degreesDifferenceAbs(rot, r2) < 70) rot = r2;
+        }
+
+        headRotation = Mth.lerp(0.2f, headRotation, rot);
+    }
+
+    Player target = null;
+
+    @Override
+    protected void customServerAiStep() {
+
+
+        if (!isDeadOrDying()) {
+            if (attackState == "none")
+                    target = BehaviorUtils.getNearestPlayer(this, 14d);
+
+            if (target != null) {
+
                 attackTimer++;
 
                 if (attackTimer < 10) {
-                    finderPos = getTarget().position();
+                    finderPos = target.position();
                 }
 
                 if (attackState == "none") {
@@ -169,7 +196,7 @@ public class ScrappedEntity extends Monster implements GeoEntity {
                     }
                 }
                 if (attackState == "laser") {
-                    double r = MathUtils.entityLookAngle(getTarget().position().subtract(position()));
+                    double r = MathUtils.entityLookAngle(target.position().subtract(position()));
                     absRotateTo((float)r, 0);
 
                     if (attackTimer == 20) {
@@ -224,8 +251,8 @@ public class ScrappedEntity extends Monster implements GeoEntity {
     {
         return Mob.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 25D)
-                .add(Attributes.FOLLOW_RANGE, 20D)
-                .add(Attributes.ATTACK_DAMAGE, 2)
+                .add(Attributes.FOLLOW_RANGE, 35D)
+                .add(Attributes.ATTACK_DAMAGE, 5)
                 .add(Attributes.ATTACK_KNOCKBACK, 2)
                 .add(Attributes.MOVEMENT_SPEED, 0.2D);
     }
