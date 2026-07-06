@@ -2,11 +2,13 @@ package net.ennway.farworld.particle.base;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import net.ennway.farworld.utils.QuaternionUtils;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.particle.TextureSheetParticle;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Quaternionf;
@@ -26,6 +28,17 @@ public class OrientedParticle extends TextureSheetParticle {
 		this.lifetime = 20;
 		this.sprites = sprites;
 		this.qu = Axis.YP.rotationDegrees(0f);
+		this.setSpriteFromAge(sprites);
+	}
+
+	protected OrientedParticle(ClientLevel world, double x, double y, double z, SpriteSet sprites, Vec3 rot, float roll) {
+		super(world, x, y, z, 0.0, 0.0, 0.0);
+		this.quadSize = 1;
+		this.setParticleSpeed(0D, 0D, 0D);
+		this.lifetime = 20;
+		this.sprites = sprites;
+		this.qu = QuaternionUtils.orientedQuaternion(rot);
+		this.roll = roll;
 		this.setSpriteFromAge(sprites);
 	}
 

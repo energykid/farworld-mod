@@ -95,6 +95,8 @@ public class ScrappedEntity extends Monster implements GeoEntity {
     public float headRotation = 0f;
     public float headRotationLerp = 0f;
 
+    public float bodyRotation = 0f;
+
     int attackTimer = 0;
     String attackState = "none";
 
@@ -162,7 +164,7 @@ public class ScrappedEntity extends Monster implements GeoEntity {
         {
             float r2 = (float)MathUtils.entityLookAngle(target.position().subtract(position()));
 
-            if (Mth.degreesDifference(getYRot(), r2) < 70) {
+            if (Mth.abs(Mth.wrapDegrees(getYRot()) - Mth.wrapDegrees(r2)) < 70) {
                 rot = Mth.degreesDifference(getYRot(), r2);
             }
         }
@@ -219,6 +221,8 @@ public class ScrappedEntity extends Monster implements GeoEntity {
                         if (level() != null) {
                             level().addFreshEntity(ent);
                         }
+
+                        addDeltaMovement(new Vec3(-p.x, 0, -p.z));
                     }
                     if (attackTimer > 23) {
                         attackState = "none";

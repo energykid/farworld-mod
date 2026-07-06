@@ -27,6 +27,11 @@ public class QuaternionUtils {
         return quaternionf;
     }
 
+    public static Quaternionf orientedQuaternion(Vec3 v3)
+    {
+        return Vec3.ZERO.toVector3f().rotationTo(v3.toVector3f(), Axis.YP.rotation(0f));
+    }
+
     public static Quaternionf orientedQuaternion(Entity ent)
     {
         Quaternionf quaternionf = Axis.YP.rotationDegrees(-ent.getYHeadRot());

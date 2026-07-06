@@ -1,11 +1,19 @@
 package net.ennway.farworld.registries;
 
+import com.mojang.serialization.MapCodec;
 import net.ennway.farworld.Farworld;
+import net.ennway.farworld.particle.base.OrientedParticleType;
+import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SculkChargeParticleOptions;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModParticles {
@@ -137,6 +145,10 @@ public class ModParticles {
     );
     public static final Supplier<SimpleParticleType> GLOOM_SHOCKWAVE = PARTICLE_TYPES.register(
             "gloom_shockwave",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> SCRAPPED_LASER_STREAK = PARTICLE_TYPES.register(
+            "scrapped_laser_streak",
             () -> new SimpleParticleType(false)
     );
 }

@@ -30,6 +30,7 @@ public class ScrappedRenderer extends GeoEntityRenderer<ScrappedEntity> {
     public void actuallyRender(PoseStack poseStack, ScrappedEntity animatable, BakedGeoModel model, @Nullable RenderType renderType, MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
         super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
 
+        animatable.bodyRotation = Mth.lerp(0.4f, animatable.bodyRotation, animatable.getYRot());
         animatable.headRotationLerp = Mth.lerp(0.3f, animatable.headRotationLerp, animatable.headRotation);
 
         model.getBone("Head").get().setRotY((float)(Math.toRadians(-animatable.headRotationLerp)));
