@@ -32,7 +32,6 @@ public class ScrappedRenderer extends GeoEntityRenderer<ScrappedEntity> {
 
         animatable.headRotationLerp = Mth.lerp(0.3f, animatable.headRotationLerp, animatable.headRotation);
 
-        model.getBone("Head").get().setRotZ(0f);
         model.getBone("Head").get().setRotY((float)(Math.toRadians(-animatable.headRotationLerp)));
     }
 }

@@ -77,6 +77,33 @@ public class BehaviorUtils {
         else
             return null;
     }
+    public static Player getNearestPlayer(LivingEntity ent, double range, boolean creativeExcluded)
+    {
+        Player plr = null;
+
+        List<Player> items = ent.level().getEntitiesOfClass(Player.class,
+                new AABB(
+                        ent.getX() - range, ent.getY() - range, ent.getZ() - range,
+                        ent.getX() + range, ent.getY() + range, ent.getZ() + range
+                ));
+
+        for (int i = 0; i < 20; i++)
+        {
+            if (items.isEmpty()) break;
+
+            items.sort(Comparator.comparingInt(c -> (int) c.distanceToSqr(ent)));
+
+            if (!items.getFirst().isCreative() || !creativeExcluded) plr = items.getFirst();
+            else items.removeFirst();
+
+            if (plr != null) break;
+        }
+
+        if (!items.isEmpty())
+            return items.getFirst();
+        else
+            return null;
+    }
 
     public static Vec3 groundedVec3(Level lvl, Vector3f pos)
     {

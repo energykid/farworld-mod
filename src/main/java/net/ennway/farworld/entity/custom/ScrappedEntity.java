@@ -18,8 +18,10 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec2;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -152,25 +154,26 @@ public class ScrappedEntity extends Monster implements GeoEntity {
     @Override
     public void tick() {
         super.tick();
-        float rot = getXRot();
+        float rot = 0f;
 
         target = BehaviorUtils.getNearestPlayer(this, 14d);
 
-        if (target != null)
+        if (target != null && level().isClientSide)
         {
             float r2 = (float)MathUtils.entityLookAngle(target.position().subtract(position()));
 
-            if (Mth.degreesDifferenceAbs(rot, r2) < 70) rot = r2;
+            if (Mth.degreesDifference(getYRot(), r2) < 70) {
+                rot = Mth.degreesDifference(getYRot(), r2);
+            }
         }
 
-        headRotation = Mth.lerp(0.2f, headRotation, rot);
+        headRotation = Mth.lerp(0.4f, headRotation, rot);
     }
 
     Player target = null;
 
     @Override
     protected void customServerAiStep() {
-
 
         if (!isDeadOrDying()) {
             if (attackState == "none")
