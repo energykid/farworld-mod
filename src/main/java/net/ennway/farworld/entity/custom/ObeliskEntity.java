@@ -44,7 +44,6 @@ public class ObeliskEntity extends Monster implements GeoEntity {
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
-    public final AnimationState hurtAnimationState = new AnimationState();
 
     public ObeliskEntity(EntityType<? extends Monster> entityType, Level level)
     {
