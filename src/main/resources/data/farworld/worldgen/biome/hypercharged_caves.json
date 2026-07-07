@@ -18,7 +18,22 @@
       "probability": 0.006
     }
   },
-  "spawners": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "farworld:scrapped",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "farworld:obelisk",
+        "weight": 6,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ]
+  },
   "spawn_costs": {},
   "carvers": {},
   "features": [

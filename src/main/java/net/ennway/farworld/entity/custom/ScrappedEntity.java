@@ -86,6 +86,7 @@ import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class ScrappedEntity extends Monster implements GeoEntity {
@@ -151,11 +152,7 @@ public class ScrappedEntity extends Monster implements GeoEntity {
     @Override
     public void aiStep() {
         super.aiStep();
-    }
 
-    @Override
-    public void tick() {
-        super.tick();
         float rot = 0f;
 
         target = BehaviorUtils.getNearestPlayer(this, 14d);
@@ -170,16 +167,10 @@ public class ScrappedEntity extends Monster implements GeoEntity {
         }
 
         headRotation = Mth.lerp(0.4f, headRotation, rot);
-    }
-
-    Player target = null;
-
-    @Override
-    protected void customServerAiStep() {
 
         if (!isDeadOrDying()) {
             if (attackState == "none")
-                    target = BehaviorUtils.getNearestPlayer(this, 14d);
+                target = BehaviorUtils.getNearestPlayer(this, 14d, true);
 
             if (target != null) {
 
@@ -200,9 +191,7 @@ public class ScrappedEntity extends Monster implements GeoEntity {
                             triggerAnim("attack_controller", "laser");
                     }
                 }
-                if (attackState == "laser") {
-                    double r = MathUtils.entityLookAngle(target.position().subtract(position()));
-                    absRotateTo((float)r, 0);
+                if (Objects.equals(attackState, "laser")) {
 
                     if (attackTimer == 20) {
 
@@ -233,6 +222,17 @@ public class ScrappedEntity extends Monster implements GeoEntity {
                 attackTimer = 0;
             }
         }
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+    }
+
+    Player target = null;
+
+    @Override
+    protected void customServerAiStep() {
 
         super.customServerAiStep();
     }
@@ -267,12 +267,8 @@ public class ScrappedEntity extends Monster implements GeoEntity {
     @Override
     public boolean doHurtTarget(Entity entity) {
         boolean flag = super.doHurtTarget(entity);
-        if (flag && this.getMainHandItem().isEmpty() && entity instanceof LivingEntity) {
-            float f = this.level().getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
-            ((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 140 * (int)f), this);
-        }
 
-        if (level() instanceof ServerLevel)
+        if (level() instanceof ServerLevel && flag)
             triggerAnim("attack_controller", "attack");
 
         return flag;

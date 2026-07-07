@@ -1,5 +1,6 @@
 package net.ennway.farworld.entity.custom;
 
+import net.ennway.farworld.utils.BehaviorUtils;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -37,12 +38,37 @@ public class ObeliskEntity extends Monster implements GeoEntity {
 
     public float walkAnimationScale = 0F;
 
+    public float areaScale = 0F;
+    public float areaScaleVisual = 0F;
+    public float areaScaleMax = 7F;
+
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
     public final AnimationState hurtAnimationState = new AnimationState();
 
-    public ObeliskEntity(EntityType<? extends Monster> entityType, Level level) {
+    public ObeliskEntity(EntityType<? extends Monster> entityType, Level level)
+    {
         super(entityType, level);
+        setYRot(getRandom().nextFloat() * 360f);
+    }
+
+    @Override
+    public void aiStep() {
+
+        Player target = BehaviorUtils.getNearestPlayer(this, areaScaleMax, true);
+
+        if (target != null)
+        {
+            areaScale += 0.1f;
+        }
+        else
+        {
+            areaScale -= 0.1f;
+        }
+
+        areaScale = Mth.clamp(areaScale, 0f, areaScaleMax);
+
+        super.aiStep();
     }
 
     @Override

@@ -69,7 +69,6 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
             if (random.nextBoolean()) {
                 level().addParticle(ModParticles.REDSTONE_CURIOSITY_PARTICLE.get(), v.x, v.y, v.z, 0, 0, 0);
             }
-            level().addParticle(ModParticles.SCRAPPED_LASER_STREAK.get(), v.x, v.y, v.z, getDirectionVector().x, getDirectionVector().y, getDirectionVector().z);
         }
 
         for (double i = 0; i < 4; i += 0.5)
