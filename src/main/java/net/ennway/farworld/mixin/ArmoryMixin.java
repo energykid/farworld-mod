@@ -122,11 +122,6 @@ public abstract class ArmoryMixin {
             showTooltip = true;
             tooltipComponents.add(Component.translatable("accessory.farworld.accessory_boots_description"));
         }
-
-        if (showTooltip)
-        {
-            tooltipComponents.add(Component.translatable("accessory." + stack.getDescriptionId() + ".desc"));
-        }
     }
 
     private static final TagKey<Item> TWO_ACCESSORY_ARMOR = TagKey.create(

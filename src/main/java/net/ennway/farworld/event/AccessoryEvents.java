@@ -133,10 +133,6 @@ public class AccessoryEvents {
 
             for (int i = 0; i < items.size(); i++) {
                 items.get(i).preTick(player, itemStacks.get(i), event);
-
-                if (Minecraft.getInstance().getSingleplayerServer() != null) {
-                    items.get(i).preTickServer(player, itemStacks.get(i), Minecraft.getInstance().getSingleplayerServer().getLevel(player.level().dimension()));
-                }
             }
         }
     }

@@ -9,6 +9,10 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags {
 
+    public static final TagKey<Item> ACCESSORIES = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "accessories"));
+
     public static final TagKey<Item> TWO_ACCESSORY_ARMOR = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "two_accessory_armor"));

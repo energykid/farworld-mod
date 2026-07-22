@@ -60,7 +60,7 @@ public class ApocalypseCore extends AccessoryItem {
 
     @Override
     public void postTick(Player player, ItemStack stack, EntityTickEvent.Post event) {
-        if (player.getData(ModAttachments.APOCALYPSE_ABILITY) > 170) {
+        if (player.getData(ModAttachments.APOCALYPSE_ABILITY) > 180) {
             Vec3 shootVel = player.getLookAngle();
             if (player.getData(ModAttachments.APOCALYPSE_ABILITY) % 2 == 1)
                 player.level().addParticle(ModParticles.APOCALYPSE_ROAR.get(), player.getX() + (shootVel.x * 0.6), player.getEyePosition().y + (shootVel.y * 0.6), player.getZ() + (shootVel.z * 0.6), 0, 0, 0);
@@ -69,7 +69,7 @@ public class ApocalypseCore extends AccessoryItem {
 
     @Override
     public void postTickServer(Player player, ItemStack stack, ServerLevel level) {
-        if (player.getData(ModAttachments.APOCALYPSE_ABILITY) > 170) {
+        if (player.getData(ModAttachments.APOCALYPSE_ABILITY) > 180) {
             Vec3 shootVel = player.getLookAngle();
 
             if (player.getDeltaMovement().y < 0)
@@ -94,7 +94,7 @@ public class ApocalypseCore extends AccessoryItem {
         {
             if (block.getUseItem().isTrue()) {
                 if (evt.getItemStack().isEmpty() && player.getData(ModAttachments.APOCALYPSE_ABILITY) <= 0 && AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get())) {
-                    player.setData(ModAttachments.APOCALYPSE_ABILITY, 200f);
+                    player.setData(ModAttachments.APOCALYPSE_ABILITY, 210f);
                     player.playSound(ModSounds.APOCALYPSE_FIRE_BREATH.get());
                     player.swing(InteractionHand.MAIN_HAND);
                 }
@@ -103,7 +103,7 @@ public class ApocalypseCore extends AccessoryItem {
         else
         {
             if (evt.getItemStack().isEmpty() && player.getData(ModAttachments.APOCALYPSE_ABILITY) <= 0 && AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get())) {
-                player.setData(ModAttachments.APOCALYPSE_ABILITY, 200f);
+                player.setData(ModAttachments.APOCALYPSE_ABILITY, 210f);
                 player.playSound(ModSounds.APOCALYPSE_FIRE_BREATH.get());
                 player.swing(InteractionHand.MAIN_HAND);
             }
