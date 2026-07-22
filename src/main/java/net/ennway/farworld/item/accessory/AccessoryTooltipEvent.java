@@ -17,9 +17,17 @@ public class AccessoryTooltipEvent {
             String str = "accessory." + evt.getStack().getDescriptionId() + ".desc";
             if (!Component.translatable(str).getString().contains(str))
             {
+                if (evt.getStack().getAttributeModifiers().modifiers().isEmpty())
+                {
+                    evt.addTooltipLines(Component.empty());
+                    evt.addTooltipLines(
+                            Component.literal("§7" +
+                            Component.translatable("item.modifiers.body").getString()));
+                }
+
                 evt.addTooltipLines(
-                        Component.literal(
-                                "§9" + Component.translatable(str).getString()
+                        Component.literal("§9" +
+                                Component.translatable(str).getString()
                         )
                 );
             }
