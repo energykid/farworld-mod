@@ -18,6 +18,7 @@
   "client": [
     "ArmoryModelMixin",
     "DurathystClusterRenderMixin",
+    "ElytraCapeMixin",
     "ElytraVisualMixin",
     "ItemAnimationMixin",
     "WishboneAnimationMixin"

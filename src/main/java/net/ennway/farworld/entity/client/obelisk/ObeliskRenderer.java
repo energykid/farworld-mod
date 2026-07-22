@@ -45,7 +45,9 @@ public class ObeliskRenderer extends GeoEntityRenderer<ObeliskEntity> {
             animatable.areaScaleVisual = Mth.lerp(0.01f, animatable.areaScaleVisual, animatable.areaScale);
 
         if (!Minecraft.getInstance().isPaused())
-            a++;
+            animatable.areaScaleSin++;
+
+        float a = animatable.areaScaleSin;
 
         ResourceLocation loc1 = ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/obelisk_aura_inner.png");
         ResourceLocation loc2 = ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/obelisk_aura_middle.png");
@@ -58,7 +60,7 @@ public class ObeliskRenderer extends GeoEntityRenderer<ObeliskEntity> {
 
         if (Minecraft.getInstance().getCameraEntity().getViewVector(partialTick).y > 0.0f) extrude = -0.01f;
 
-            poseStack.pushPose();
+        poseStack.pushPose();
         poseStack.translate(0, 0.1, 0);
         RenderingUtils.renderSprite(poseStack, Axis.XP.rotationDegrees(90).mul(Axis.ZP.rotationDegrees(a / 40)),
                 loc1, bufferSource.getBuffer(RenderType.ENTITY_TRANSLUCENT_EMISSIVE.apply(loc1, true)), packedLight, new Vector2f(animatable.areaScaleVisual * sc2, animatable.areaScaleVisual * sc));

@@ -39,6 +39,7 @@ public class ObeliskEntity extends Monster implements GeoEntity {
 
     public float walkAnimationScale = 0F;
 
+    public float areaScaleSin = 0F;
     public float areaScale = 0F;
     public float areaScaleVisual = 0F;
     public float areaScaleMax = 25f;

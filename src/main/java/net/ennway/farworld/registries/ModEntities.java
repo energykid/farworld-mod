@@ -37,6 +37,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -159,7 +160,7 @@ public class ModEntities {
         public static void registerSpawnConditions(RegisterSpawnPlacementsEvent event)
         {
             event.register(BLOOMED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-            event.register(SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, pos, e) -> pos.getY() < 0, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, level, c, pos, e) -> pos.getY() < 0 && !level.getBiome(pos).is(Biomes.DEEP_DARK), RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(BRITTLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(SCRAPPED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(OBELISK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
