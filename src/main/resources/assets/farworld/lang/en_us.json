@@ -93,7 +93,7 @@
   "item.farworld.obsidian_keepsake" : "Obsidian Keepsake",
   "accessory.item.farworld.obsidian_keepsake.desc" : "Retaliating Damage",
   "item.farworld.golem_heart" : "Golem Heart",
-  "accessory.item.farworld.golem_heart.desc" : "§rOn Attack Grounded Enemy:\n§9Upwards Knockback\n§rOn Attack Airborne Enemy:\n§9Downwards Knockback",
+  "accessory.item.farworld.golem_heart.desc" : "§rOn Hit Enemy:\n§9Upwards Knockback\nDownwards Knockback When Mid-air",
   "item.farworld.iron_cuff" : "Iron Cuff",
   "item.farworld.slime_brace" : "Slime Brace",
   "accessory.item.farworld.slime_brace.desc" : "-6 Fall Damage",
