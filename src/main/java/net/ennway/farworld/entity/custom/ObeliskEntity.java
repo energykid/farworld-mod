@@ -22,6 +22,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +41,7 @@ public class ObeliskEntity extends Monster implements GeoEntity {
 
     public float areaScale = 0F;
     public float areaScaleVisual = 0F;
-    public float areaScaleMax = 7F;
+    public float areaScaleMax = 25f;
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
@@ -54,7 +55,7 @@ public class ObeliskEntity extends Monster implements GeoEntity {
     @Override
     public void aiStep() {
 
-        Player target = BehaviorUtils.getNearestPlayer(this, areaScaleMax, true);
+        Player target = BehaviorUtils.getNearestPlayer(this, areaScaleMax / 2f, true);
 
         if (target != null)
         {
@@ -65,6 +66,12 @@ public class ObeliskEntity extends Monster implements GeoEntity {
             areaScale -= 0.1f;
         }
 
+        for (Player plr : level().getEntitiesOfClass(Player.class, AABB.ofSize(position(), areaScale, areaScale, areaScale / 2f)))
+        {
+            if (plr.distanceTo(this) < areaScale / 2f) plr.addEffect(
+                    new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 1, true, false)
+            );
+        }
         areaScale = Mth.clamp(areaScale, 0f, areaScaleMax);
 
         super.aiStep();
