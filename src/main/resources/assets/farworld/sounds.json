@@ -11,6 +11,14 @@
     "sounds": ["farworld:sludge_crash"]
   },
 
+  "curious_core_power_down": {
+    "sounds": ["farworld:curious_core_power_down"]
+  },
+
+  "curious_core_power_up": {
+    "sounds": ["farworld:curious_core_power_up"]
+  },
+
   "slime_brace_land": {
     "sounds": ["farworld:slime_brace_land1",
       "farworld:slime_brace_land2"]

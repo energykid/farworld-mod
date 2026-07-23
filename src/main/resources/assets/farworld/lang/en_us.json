@@ -158,7 +158,7 @@
 
   "item.farworld.curious_core" : "Curious Core",
   "lore.farworld.curious_core" : "Dubious circuitry salvaged from a dismantled Redstone Curiosity. Useful for crafting.",
-  "item.tooltip.uses_left" : "§7Uses left: ",
+  "item.tooltip.uses_left" : "§7Uses Left: ",
   "item.farworld.curious_core_off" : "Curious Core §7(Dormant)",
   "lore.farworld.curious_core_off" : "Dubious circuitry salvaged from a dismantled Redstone Curiosity. Can be re-powered with a Redstone Block or Pillar.",
   "nonlore_tooltip.item.farworld.curious_core_off" : "§7Perhaps you should insert a redstone block...",

@@ -2,11 +2,13 @@ package net.ennway.farworld.item;
 
 import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModItems;
+import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.registries.ModTags;
 import net.ennway.farworld.utils.ItemUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
@@ -66,6 +68,9 @@ public class CuriousCoreItem extends Item {
         s.set(ModDataComponents.EXP_SATURATION, itemStack.get(ModDataComponents.EXP_SATURATION) - 1);
 
         setModelStuff(s);
+
+        if (Minecraft.getInstance().player != null)
+            Minecraft.getInstance().player.playNotifySound(ModSounds.CURIOUS_CORE_POWER_DOWN.get(), SoundSource.PLAYERS, 1, 1);
 
         if (s.get(ModDataComponents.EXP_SATURATION) <= 0) s = new ItemStack(ModItems.CURIOUS_CORE_OFF.asItem());
 

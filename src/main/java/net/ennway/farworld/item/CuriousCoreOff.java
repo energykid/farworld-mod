@@ -1,8 +1,10 @@
 package net.ennway.farworld.item;
 
 import net.ennway.farworld.registries.ModItems;
+import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.registries.ModTags;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
@@ -32,6 +34,9 @@ public class CuriousCoreOff extends Item {
             ItemStack s = new ItemStack(ModItems.CURIOUS_CORE.asItem());
             CuriousCoreItem.setModelStuff(s);
             slot.set(s);
+
+            player.playNotifySound(ModSounds.CURIOUS_CORE_POWER_UP.get(), SoundSource.PLAYERS, 1, 1);
+
             return true;
         }
         return super.overrideOtherStackedOnMe(stack, other, slot, action, player, access);

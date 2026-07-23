@@ -125,6 +125,9 @@ public class ModSounds {
     public static final Supplier<SoundEvent> LOOSE_FLOWSTONE_HIT = createSoundEvent("loose_flowstone_hit");
     public static final Supplier<SoundEvent> LOOSE_FLOWSTONE_BREAK = createSoundEvent("loose_flowstone_break");
 
+    public static final Supplier<SoundEvent> CURIOUS_CORE_POWER_DOWN = createSoundEvent("curious_core_power_down");
+    public static final Supplier<SoundEvent> CURIOUS_CORE_POWER_UP = createSoundEvent("curious_core_power_up");
+
     public static LivingEntity.Fallsounds slimeSounds() {
         return new LivingEntity.Fallsounds(SLIME_BRACE_LAND.get(), SLIME_BRACE_LAND.get());
     }
