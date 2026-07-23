@@ -65,26 +65,31 @@ public class ApocalypseCore extends AccessoryItem {
             if (player.getData(ModAttachments.APOCALYPSE_ABILITY) % 2 == 1)
                 player.level().addParticle(ModParticles.APOCALYPSE_ROAR.get(), player.getX() + (shootVel.x * 0.6), player.getEyePosition().y + (shootVel.y * 0.6), player.getZ() + (shootVel.z * 0.6), 0, 0, 0);
         }
-    }
 
-    @Override
-    public void postTickServer(Player player, ItemStack stack, ServerLevel level) {
+        Level level = player.level();
+
         if (player.getData(ModAttachments.APOCALYPSE_ABILITY) > 180) {
             Vec3 shootVel = player.getLookAngle();
 
             if (player.getDeltaMovement().y < 0)
+            {
                 player.setDeltaMovement(player.getDeltaMovement().multiply(1, 0.7, 1));
+                player.hurtMarked = true;
+            }
 
             if (player.getData(ModAttachments.APOCALYPSE_ABILITY) % 2 == 1)
                 level.addParticle(ModParticles.APOCALYPSE_ROAR.get(), player.getX() + (shootVel.x * 0.6), player.getEyePosition().y + (shootVel.y * 0.6), player.getZ() + (shootVel.z * 0.6), 0, 0, 0);
 
             level.getPlayerByUUID(player.getUUID()).resetFallDistance();
 
-            ApocalypseBreathProjectile ent = new ApocalypseBreathProjectile(ModEntities.APOCALYPSE_BREATH.get(), level);
+            ApocalypseBreathProjectile ent = new ApocalypseBreathProjectile(ModEntities.APOCALYPSE_BREATH.get(), player.level());
             ent.setPos(player.getEyePosition().add(0, -0.4, 0));
-            ent.setOwner(level.getPlayerByUUID(player.getUUID()));
+            ent.setOwner(player);
             ent.setDeltaMovement(shootVel);
-            level.addFreshEntity(ent);
+            if (player.getServer() != null)
+                player.getServer().getLevel(player.level().dimension()).addFreshEntity(ent);
+            else
+                Minecraft.getInstance().getSingleplayerServer().getLevel(player.level().dimension()).addFreshEntity(ent);
         }
     }
 

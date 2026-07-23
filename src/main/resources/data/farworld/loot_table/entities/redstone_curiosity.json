@@ -7,13 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "farworld:curious_component",
-                    "functions": [
-                        {
-                            "function": "minecraft:set_count",
-                            "count": 4
-                        }
-                    ]
+                    "name": "farworld:curious_core"
                 }
             ],
             "rolls": 1

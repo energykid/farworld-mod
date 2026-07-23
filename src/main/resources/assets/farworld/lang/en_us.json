@@ -156,8 +156,12 @@
   "item.minecraft.lingering_potion.effect.paralysis_potion" : "Lingering Potion of Paralysis",
   "item.minecraft.tipped_arrow.effect.paralysis_potion" : "Arrow of Paralysis",
 
-  "item.farworld.curious_component" : "Curious Component",
-  "lore.farworld.curious_component" : "Dubious circuitry salvaged from a dismantled Redstone Curiosity. Quite useful for crafting.",
+  "item.farworld.curious_core" : "Curious Core",
+  "lore.farworld.curious_core" : "Dubious circuitry salvaged from a dismantled Redstone Curiosity. Useful for crafting.",
+  "item.tooltip.uses_left" : "§7Uses left: ",
+  "item.farworld.curious_core_off" : "Curious Core §7(Dormant)",
+  "lore.farworld.curious_core_off" : "Dubious circuitry salvaged from a dismantled Redstone Curiosity. Can be re-powered with a Redstone Block or Pillar.",
+  "nonlore_tooltip.item.farworld.curious_core_off" : "§7Perhaps you should insert a redstone block...",
   "item.farworld.charge_bunker" : "Charge Bunker",
   "lore.farworld.charge_bunker" : "A powerful cannon fashioned from Curious Components. Fires a powerful close-range blast with mean kickback.",
 

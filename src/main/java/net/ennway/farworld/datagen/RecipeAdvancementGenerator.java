@@ -108,7 +108,7 @@ public class RecipeAdvancementGenerator extends AdvancementProvider {
             }
 
             /// Redstone Curiosity
-            recipeAdvancement(saver, List.of(ModItems.CURIOUS_COMPONENT.asItem()), List.of(
+            recipeAdvancement(saver, List.of(ModItems.CURIOUS_CORE.asItem()), List.of(
                     "redstone_curiosity", "redstone_teleporter", "charge_bunker"));
 
             /// Mystic Pear

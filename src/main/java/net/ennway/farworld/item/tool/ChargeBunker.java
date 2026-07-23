@@ -56,7 +56,7 @@ public class ChargeBunker extends Item implements GeoItem {
 
     @Override
     public boolean isValidRepairItem(ItemStack stack, ItemStack repairCandidate) {
-        return stack.is(ModItems.CURIOUS_COMPONENT) || stack.is(Items.REDSTONE_BLOCK);
+        return stack.is(ModItems.CURIOUS_CORE) || stack.is(Items.REDSTONE_BLOCK);
     }
 
     @Override

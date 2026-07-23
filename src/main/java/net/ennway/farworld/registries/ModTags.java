@@ -13,6 +13,10 @@ public class ModTags {
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "accessories"));
 
+    public static final TagKey<Item> CURIOUS_CORE_FUEL = TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "curious_core_fuel"));
+
     public static final TagKey<Item> TWO_ACCESSORY_ARMOR = TagKey.create(
             BuiltInRegistries.ITEM.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "two_accessory_armor"));

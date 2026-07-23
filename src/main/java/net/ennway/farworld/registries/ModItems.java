@@ -68,8 +68,10 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SLUDGE_BALL = ITEMS_ALL.register("sludge_ball",
             () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> CURIOUS_COMPONENT = ITEMS_ALL.register("curious_component",
-            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CURIOUS_CORE_OFF = ITEMS_ALL.register("curious_core_off",
+            () -> new CuriousCoreOff(new CuriousCoreOff.Properties()));
+    public static final DeferredItem<Item> CURIOUS_CORE = ITEMS_ALL.register("curious_core",
+            () -> new CuriousCoreItem(new CuriousCoreItem.Properties()));
     public static final DeferredItem<Item> SOUL_STEEL = ITEMS_ALL.register("soul_steel",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_COBALT = ITEMS_ALL.register("raw_cobalt",

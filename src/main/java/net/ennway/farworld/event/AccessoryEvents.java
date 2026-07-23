@@ -103,24 +103,6 @@ public class AccessoryEvents {
 
             for (int i = 0; i < items.size(); i++) {
                 items.get(i).postTick(player, itemStacks.get(i), event);
-
-
-                if (Minecraft.getInstance().getSingleplayerServer() != null) {
-                    items.get(i).postTickServer(player, itemStacks.get(i), Minecraft.getInstance().getSingleplayerServer().getLevel(player.level().dimension()));
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void postTick(ServerTickEvent.Post event) {
-        for (ServerPlayer player : event.getServer().getPlayerList().getPlayers()) {
-
-            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
-            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
-
-            for (int i = 0; i < items.size(); i++) {
-                items.get(i).postTickServer(player, itemStacks.get(i), event.getServer().getLevel(player.level().dimension()));
             }
         }
     }
@@ -133,19 +115,6 @@ public class AccessoryEvents {
 
             for (int i = 0; i < items.size(); i++) {
                 items.get(i).preTick(player, itemStacks.get(i), event);
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void preTick(ServerTickEvent.Pre event) {
-        for (ServerPlayer player : event.getServer().getPlayerList().getPlayers()) {
-
-            List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(player);
-            List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(player);
-
-            for (int i = 0; i < items.size(); i++) {
-                items.get(i).preTickServer(player, itemStacks.get(i), event.getServer().getLevel(player.level().dimension()));
             }
         }
     }

@@ -42,14 +42,6 @@ public class AccessoryItem extends Item {
     {
     }
 
-    public void preTickServer(Player player, ItemStack stack, ServerLevel level)
-    {
-    }
-
-    public void postTickServer(Player player, ItemStack stack, ServerLevel level)
-    {
-    }
-
     public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent event) {
     }
 

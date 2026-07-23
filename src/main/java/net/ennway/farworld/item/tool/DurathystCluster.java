@@ -2,8 +2,10 @@ package net.ennway.farworld.item.tool;
 
 import net.ennway.farworld.registries.ModDataComponents;
 import net.ennway.farworld.registries.ModSounds;
+import net.ennway.farworld.utils.ItemUtils;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -12,9 +14,12 @@ import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
+
+import java.util.List;
 
 public class DurathystCluster extends Item {
     public static final int MAX_SATURATION = 1000;
@@ -46,6 +51,11 @@ public class DurathystCluster extends Item {
     @Override
     public boolean isBarVisible(ItemStack stack) {
         return stack.get(ModDataComponents.EXP_SATURATION) > 0;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        ItemUtils.addUsesLeft(tooltipComponents, 3 - stack.get(ModDataComponents.FRAME));
     }
 
     @Override
