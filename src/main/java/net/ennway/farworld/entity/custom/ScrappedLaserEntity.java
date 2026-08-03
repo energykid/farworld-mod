@@ -73,9 +73,11 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
         return false;
     }
 
-    int timer = 0;
+    public int timer = 0;
     float v = 0.5f;
     float v2 = 0f;
+
+    public float darkScale = 1f;
 
     @Override
     public void tick() {
@@ -84,26 +86,28 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
 
         if (timer > 6)
         {
-            v2 = Mth.lerp(0.2f, v2, v);
-            v *= 0.7f;
-            entityData.set(DIR_Y, entityData.get(DIR_Y) + v2);
+            v2 = Mth.lerp(0.3f, v2, v);
+            v *= 0.6f;
+            entityData.set(DIR_Y, entityData.get(DIR_Y) + (float)Math.pow(v2 * 3, 2));
             scale *= 0.3f;
             if (scale <= 0.01f) remove(RemovalReason.DISCARDED);
+            distInBlocks *= 0.6f;
         }
-
-        for (double i = 0; i < distInBlocks; i++)
-        {
-            Vec3 v = position().add(getDirectionVector().multiply(i, i, i));
-            if (random.nextBoolean()) {
-                level().addParticle(ModParticles.REDSTONE_CURIOSITY_PARTICLE.get(), v.x, v.y, v.z, 0, 0, 0);
+        else {
+            for (double i = 0; i < distInBlocks; i++)
+            {
+                Vec3 v = position().add(getDirectionVector().multiply(i, i, i));
+                if (random.nextBoolean()) {
+                    level().addParticle(ModParticles.REDSTONE_CURIOSITY_PARTICLE.get(), v.x, v.y, v.z, 0, 0, 0);
+                }
             }
-        }
 
-        for (double i = 0; i < 4; i += 0.5)
-        {
-            Vec3 p = position().add(getDirectionVector().multiply(new Vec3(distInBlocks, distInBlocks, distInBlocks)));
-            if (!level().getBlockState(BlockPos.containing(p)).isSolid())
-                distInBlocks+=0.5f;
+            for (double i = 0; i < 4; i += 0.5)
+            {
+                Vec3 p = position().add(getDirectionVector().multiply(new Vec3(distInBlocks, distInBlocks, distInBlocks)));
+                if (!level().getBlockState(BlockPos.containing(p)).isSolid())
+                    distInBlocks+=0.5f;
+            }
         }
 
         Vec3 v = position().add(getDirectionVector().multiply(distInBlocks, distInBlocks, distInBlocks));
