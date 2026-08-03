@@ -66,9 +66,9 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
             double dist = 0.6;
 
             AABB bb = potentialTarget.getBoundingBox();
-            AABB thisone = new AABB(pos.x - dist, pos.y - dist, pos.z - dist, pos.x + dist, pos.y + dist, pos.z + dist);
+            AABB this_one = new AABB(pos.x - dist, pos.y - dist, pos.z - dist, pos.x + dist, pos.y + dist, pos.z + dist);
 
-            if (bb.intersects(thisone)) return true;
+            if (bb.intersects(this_one)) return true;
         }
         return false;
     }
@@ -85,10 +85,10 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
         if (timer > 6)
         {
             v2 = Mth.lerp(0.2f, v2, v);
-            v *= 0.5f;
+            v *= 0.7f;
             entityData.set(DIR_Y, entityData.get(DIR_Y) + v2);
             scale *= 0.3f;
-            if (scale <= 0.05f) remove(RemovalReason.DISCARDED);
+            if (scale <= 0.01f) remove(RemovalReason.DISCARDED);
         }
 
         for (double i = 0; i < distInBlocks; i++)

@@ -210,8 +210,6 @@ public class ScrappedEntity extends Monster implements GeoEntity {
                         if (level() != null) {
                             level().addFreshEntity(ent);
                         }
-
-                        addDeltaMovement(new Vec3(-p.x, 0, -p.z));
                     }
                     if (attackTimer > 23) {
                         attackState = "none";
