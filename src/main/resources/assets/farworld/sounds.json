@@ -317,5 +317,17 @@
   },
   "scrapped_kill": {
     "sounds": ["farworld:scrapped_kill"]
+  },
+  "obelisk_idle": {
+    "sounds": ["farworld:obelisk_idle_1",
+      "farworld:obelisk_idle_2"]
+  },
+  "obelisk_hurt": {
+    "sounds": ["farworld:obelisk_hurt_1",
+      "farworld:obelisk_hurt_2",
+      "farworld:obelisk_hurt_3"]
+  },
+  "obelisk_death": {
+    "sounds": ["farworld:obelisk_death"]
   }
 }

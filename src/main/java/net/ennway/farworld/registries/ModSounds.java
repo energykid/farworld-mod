@@ -119,6 +119,10 @@ public class ModSounds {
     public static final Supplier<SoundEvent> SCRAPPED_HURT = createSoundEvent("scrapped_hurt");
     public static final Supplier<SoundEvent> SCRAPPED_KILL = createSoundEvent("scrapped_kill");
 
+    public static final Supplier<SoundEvent> OBELISK_IDLE = createSoundEvent("obelisk_idle");
+    public static final Supplier<SoundEvent> OBELISK_HURT = createSoundEvent("obelisk_hurt");
+    public static final Supplier<SoundEvent> OBELISK_DEATH = createSoundEvent("obelisk_death");
+
     public static final Supplier<SoundEvent> FLOWSTONE_HIT = createSoundEvent("flowstone_hit");
     public static final Supplier<SoundEvent> FLOWSTONE_BREAK = createSoundEvent("flowstone_break");
 

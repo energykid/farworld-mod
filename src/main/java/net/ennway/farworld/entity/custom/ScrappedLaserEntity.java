@@ -5,16 +5,20 @@ import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
+
+import java.util.Objects;
 
 public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntity {
     public static ScrappedLaserEntity newForDefinition(EntityType<?> entityType, Level level) {
@@ -23,11 +27,15 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
 
     public ScrappedLaserEntity(EntityType<?> entityType, Level level) {
         super(entityType, level, 6, 0, 3, 40);
+        this.timer = 0;
+        this.visualFinder = this.getDirectionVector();
     }
 
     public ScrappedLaserEntity(EntityType<?> entityType, Level level, Vec3 pos, Vec3 finder) {
         super(entityType, level, 6, 0, 3, 40);
         setPos(pos);
+        this.timer = 0;
+        this.visualFinder = this.getDirectionVector();
     }
 
     @Override
@@ -39,6 +47,10 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
     public float visualDistInBlocks = 0f;
     public float scale = 1f;
     public float visualScale = 1f;
+
+    public Vec3 visualFinder = Vec3.ZERO;
+
+    public boolean visualStarted = false;
 
     @Override
     public boolean canHit(Entity potentialTarget) {
@@ -61,8 +73,24 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
         return false;
     }
 
+    int timer = 0;
+    float v = 0.5f;
+    float v2 = 0f;
+
     @Override
     public void tick() {
+
+        timer++;
+
+        if (timer > 6)
+        {
+            v2 = Mth.lerp(0.2f, v2, v);
+            v *= 0.5f;
+            entityData.set(DIR_Y, entityData.get(DIR_Y) + v2);
+            scale *= 0.3f;
+            if (scale <= 0.05f) remove(RemovalReason.DISCARDED);
+        }
+
         for (double i = 0; i < distInBlocks; i++)
         {
             Vec3 v = position().add(getDirectionVector().multiply(i, i, i));
@@ -79,10 +107,8 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
         }
 
         Vec3 v = position().add(getDirectionVector().multiply(distInBlocks, distInBlocks, distInBlocks));
-        level().addParticle(ModParticles.SCRAPPED_LASER_STREAK.get(), v.x, v.y, v.z, getDirectionVector().x, getDirectionVector().y, getDirectionVector().z);
+        //level().addParticle(ModParticles.SCRAPPED_LASER_STREAK.get(), v.x, v.y, v.z, getDirectionVector().x, getDirectionVector().y, getDirectionVector().z);
 
-        scale *= 0.5f;
-        if (scale <= 0.1f) remove(RemovalReason.DISCARDED);
 
         super.tick();
     }

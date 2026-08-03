@@ -21,11 +21,13 @@ public class AccessoryTooltipEvent {
             for (ItemStack stack : Objects.requireNonNull(evt.getStack().get(ModDataComponents.ARMOR_ACCESSORIES)).items())
             {
                 String str = "accessory." + stack.getDescriptionId() + ".desc";
-                evt.addTooltipLines(
-                        Component.literal("§9" +
-                                Component.translatable(str).getString()
-                        )
-                );
+                if (!Component.translatable(str).getString().contains(str)) {
+                    evt.addTooltipLines(
+                            Component.literal("§9" +
+                                    Component.translatable(str).getString()
+                            )
+                    );
+                }
             }
         }
         if (evt.shouldShow() && evt.getStack().is(ModTags.ACCESSORIES)) {

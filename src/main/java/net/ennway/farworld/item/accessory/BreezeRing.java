@@ -24,6 +24,7 @@ public class BreezeRing extends AccessoryItem {
     }
 
     public boolean lunging = false;
+    public boolean lunged = false;
 
     @Override
     public void onDamageEnemy(Player player, Entity enemy, ItemStack stack, LivingDamageEvent.Pre event) {
@@ -51,6 +52,7 @@ public class BreezeRing extends AccessoryItem {
         {
             if (player.onGround() || player.isSwimming())
             {
+                lunged = false;
                 lunging = false;
             }
 
@@ -72,7 +74,7 @@ public class BreezeRing extends AccessoryItem {
 
     public void runStuff(Player player)
     {
-        if (player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS) && !lunging) {
+        if (player.getWeaponItem().is(ModTags.BREEZE_STANCEABLE_WEAPONS) && !lunged) {
             if (!player.getData(ModAttachments.BATTLE_STANCE.get())) {
                 player.setOnGround(false);
                 if (player.getServer() != null)
@@ -89,6 +91,7 @@ public class BreezeRing extends AccessoryItem {
                 }
                 player.fallDistance = 1;
                 lunging = true;
+                lunged = true;
             }
         }
     }

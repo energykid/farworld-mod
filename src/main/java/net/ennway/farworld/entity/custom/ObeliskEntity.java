@@ -1,5 +1,6 @@
 package net.ennway.farworld.entity.custom;
 
+import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.utils.BehaviorUtils;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
@@ -106,12 +107,17 @@ public class ObeliskEntity extends Monster implements GeoEntity {
 
     @Override
     protected @Nullable SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
-        return SoundEvents.IRON_GOLEM_HURT;
+        return ModSounds.OBELISK_HURT.get();
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return ModSounds.OBELISK_IDLE.get();
     }
 
     @Override
     protected @Nullable SoundEvent getDeathSound() {
-        return SoundEvents.IRON_GOLEM_DEATH;
+        return ModSounds.OBELISK_DEATH.get();
     }
 
     public static AttributeSupplier.Builder createAttributes()

@@ -4,7 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.custom.ScrappedLaserEntity;
+import net.ennway.farworld.utils.MathUtils;
 import net.ennway.farworld.utils.RenderingUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,6 +17,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
+import org.lwjgl.system.MathUtil;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -36,13 +39,24 @@ public class ScrappedLaserRenderer extends GeoEntityRenderer<ScrappedLaserEntity
 
     @Override
     public void actuallyRender(PoseStack poseStack, ScrappedLaserEntity animatable, BakedGeoModel model, @Nullable RenderType renderType, MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+        if (!animatable.visualStarted)
+        {
+            animatable.visualFinder = animatable.getDirectionVector();
+            animatable.visualStarted = true;
+        }
+
+        animatable.visualFinder = animatable.visualFinder.lerp(animatable.getDirectionVector(), 0.2f);
+
         animatable.visualDistInBlocks = Mth.lerp(0.3f, animatable.visualDistInBlocks, animatable.distInBlocks);
 
         animatable.visualScale = Mth.lerp(0.2f, animatable.visualScale, animatable.scale);
 
-        RenderingUtils.autoRotateRender(poseStack, animatable.getDirectionVector());
+        RenderingUtils.autoRotateRender(poseStack, animatable.visualFinder);
 
-        poseStack.scale(animatable.visualScale, animatable.visualScale, animatable.visualDistInBlocks);
+        assert Minecraft.getInstance().cameraEntity != null;
+        float r = 1f + (float)MathUtils.randomDouble(Minecraft.getInstance().cameraEntity.getRandom(), -0.5f, 0.5f);
+
+        poseStack.scale(animatable.visualScale * r, animatable.visualScale * r, animatable.visualDistInBlocks);
 
         super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
