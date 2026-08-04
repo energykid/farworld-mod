@@ -123,14 +123,59 @@ public class GearEffects {
                     enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 1.4f);
                     enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.SOUL_ESCAPE.getDelegate().value(), SoundSource.PLAYERS, 1.2f, 1.2f);
 
-                    spawnFireEffect(enemy, ModParticles.SOUL_SMOKE, ModParticles.SOUL_FIRE_TENDRIL);
+                    for (int i = 0; i < 20; i++)
+                    {
+                        enemy.level().addParticle(
+                                ModParticles.SOUL_SMOKE.get(),
+                                enemy.getEyePosition().x,
+                                Mth.lerp(0.6f, enemy.position().y, enemy.getEyePosition().y),
+                                enemy.getEyePosition().z,
+                                0f,
+                                0f,
+                                0f
+                        );
+                    }
+
+                    for (int i = 0; i < 7; i++)
+                    {
+                        enemy.level().addParticle(
+                                ModParticles.SOUL_FIRE_TENDRIL.get(),
+                                enemy.getEyePosition().x,
+                                Mth.lerp(0.6f, enemy.position().y, enemy.getEyePosition().y),
+                                enemy.getEyePosition().z,
+                                0f,
+                                0f,
+                                0f
+                        );
+                    }
                 }
                 if (stack.is(ModTags.HAS_NETHERITE_EFFECT))
                 {
                     enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 0.6f);
                     enemy.level().playSound(enemy, enemy.blockPosition(), SoundEvents.NETHERITE_BLOCK_BREAK, SoundSource.PLAYERS, 1.2f, 0.7f);
 
-                    spawnFireEffect(enemy, ModParticles.INFERNAL_SMOKE, ModParticles.INFERNAL_TENDRIL);
+                    enemy.level().addParticle(
+                            ModParticles.INFERNAL_PILLAR.get(),
+                            enemy.getPosition(0).x + Mth.nextDouble(enemy.getRandom(), -0.1, 0.1),
+                            enemy.getPosition(0).y,
+                            enemy.getPosition(0).z + Mth.nextDouble(enemy.getRandom(), -0.1, 0.1),
+                            0f,
+                            0f,
+                            0f
+                    );
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        enemy.level().addParticle(
+                                ModParticles.INFERNAL_SMOKE.get(),
+                                enemy.getPosition(0).x + Mth.nextDouble(enemy.getRandom(), -0.6, 0.6),
+                                enemy.getPosition(0).y + 0.2f,
+                                enemy.getPosition(0).z + Mth.nextDouble(enemy.getRandom(), -0.6, 0.6),
+                                0f,
+                                0f,
+                                0f
+                        );
+                    }
                 }
                 if (stack.is(ModTags.HAS_BLACK_ICE_EFFECT))
                 {

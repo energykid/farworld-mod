@@ -131,6 +131,10 @@ public class ModParticles {
             "slime_streaks",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> INFERNAL_PILLAR = PARTICLE_TYPES.register(
+            "infernal_pillar",
+            () -> new SimpleParticleType(false)
+    );
     public static final Supplier<SimpleParticleType> NECROMIUM_EFFECT = PARTICLE_TYPES.register(
             "necromium_effect",
             () -> new SimpleParticleType(false)

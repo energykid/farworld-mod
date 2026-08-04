@@ -37,7 +37,7 @@ public class QuaternionUtils {
         float yaw = (float)Math.atan2(d.z, d.x);
 
         Quaternionf quaternionf = Axis.YP.rotation(-yaw + (float)Math.toRadians(180));
-        quaternionf = quaternionf.mul(Axis.ZP.rotationDegrees((float)(d.y * 60f)));
+        quaternionf = quaternionf.mul(Axis.ZP.rotationDegrees((float)(-d.y * 60f)));
         return quaternionf;
     }
 

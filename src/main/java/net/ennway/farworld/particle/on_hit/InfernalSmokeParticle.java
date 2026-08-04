@@ -20,13 +20,11 @@ public class InfernalSmokeParticle extends TextureSheetParticle {
     public InfernalSmokeParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z);
         this.spriteSet = spriteSet;
-        this.gravity = -0.07f;
-        this.scale(1 + (level.getRandom().nextFloat() * 2));
-        this.lifetime = level.getRandom().nextInt(10, 15);
 
-        this.xd = (double) level.getRandom().nextInt(-10, 10) / 10;
-        this.yd = (double) level.getRandom().nextInt(-10, 10) / 10;
-        this.zd = (double) level.getRandom().nextInt(-10, 10) / 10;
+        this.scale(1 + (level.getRandom().nextFloat() * 2));
+        this.lifetime = level.getRandom().nextInt(5, 8);
+
+        this.yd = (double) level.getRandom().nextInt(10, 30) / 100;
 
         this.setSpriteFromAge(spriteSet);
     }
@@ -39,9 +37,9 @@ public class InfernalSmokeParticle extends TextureSheetParticle {
     @Override
     public void tick() {
         this.setSpriteFromAge(spriteSet);
-        this.xd *= 0.5;
-        this.yd *= 0.5;
-        this.zd *= 0.5;
+        this.xd *= 0.8;
+        this.yd *= 0.8;
+        this.zd *= 0.8;
         super.tick();
     }
 

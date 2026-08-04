@@ -11,6 +11,7 @@ import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
@@ -22,11 +23,13 @@ public class SoulSmokeParticle extends TextureSheetParticle {
         this.spriteSet = spriteSet;
         this.gravity = -0.07f;
         this.scale(1 + (level.getRandom().nextFloat() * 2));
-        this.lifetime = level.getRandom().nextInt(10, 15);
+        this.lifetime = level.getRandom().nextInt(4, 8);
 
-        this.xd = (double) level.getRandom().nextInt(-10, 10) / 10;
+        this.xd = (double) level.getRandom().nextInt(-10, 10) / 30;
         this.yd = (double) level.getRandom().nextInt(-10, 10) / 10;
-        this.zd = (double) level.getRandom().nextInt(-10, 10) / 10;
+        this.zd = (double) level.getRandom().nextInt(-10, 10) / 30;
+
+        this.gravity = 0.4f;
 
         this.setSpriteFromAge(spriteSet);
     }
@@ -39,10 +42,11 @@ public class SoulSmokeParticle extends TextureSheetParticle {
     @Override
     public void tick() {
         this.setSpriteFromAge(spriteSet);
-        this.xd *= 0.5;
-        this.yd *= 0.5;
-        this.zd *= 0.5;
         super.tick();
+        var a = new Vec3(this.xd, this.yd, this.zd);
+        a = a.yRot(0.7f);
+        this.xd = a.x * 0.9f;
+        this.zd = a.z * 0.9f;
     }
 
     @Override
