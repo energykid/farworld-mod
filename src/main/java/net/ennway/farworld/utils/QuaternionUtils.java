@@ -2,6 +2,8 @@ package net.ennway.farworld.utils;
 
 import com.mojang.math.Axis;
 import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -24,12 +26,19 @@ public class QuaternionUtils {
     {
         Quaternionf quaternionf = Axis.YP.rotationDegrees(-camera.getYRot());
         quaternionf.mul(Axis.XP.rotationDegrees(camera.getXRot()));
+        quaternionf.mul(Axis.ZP.rotationDegrees(-camera.getXRot()));
         return quaternionf;
     }
 
     public static Quaternionf orientedQuaternion(Vec3 v3)
     {
-        return Vec3.ZERO.toVector3f().rotationTo(v3.toVector3f(), Axis.YP.rotation(0f));
+        Vec3 d = v3.normalize();
+
+        float yaw = (float)Math.atan2(d.z, d.x);
+
+        Quaternionf quaternionf = Axis.YP.rotation(-yaw + (float)Math.toRadians(180));
+        quaternionf = quaternionf.mul(Axis.ZP.rotationDegrees((float)(d.y * 60f)));
+        return quaternionf;
     }
 
     public static Quaternionf orientedQuaternion(Entity ent)

@@ -37,7 +37,7 @@ public class MilkBerryCropBlock extends CropBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (level.isAreaLoaded(pos, 1)) {
+        if (level.isAreaLoaded(pos, 1) && level.getRandom().nextInt(5) > 3) {
             int i = this.getAge(state);
             if (i < this.getMaxAge()) {
                 this.growCrops(level, pos, state);

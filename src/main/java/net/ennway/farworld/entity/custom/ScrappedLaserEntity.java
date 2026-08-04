@@ -86,21 +86,18 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
 
         if (timer > 6)
         {
-            v2 = Mth.lerp(0.3f, v2, v);
-            v *= 0.6f;
-            entityData.set(DIR_Y, entityData.get(DIR_Y) + (float)Math.pow(v2 * 3, 2));
             scale *= 0.3f;
             if (scale <= 0.01f) remove(RemovalReason.DISCARDED);
             distInBlocks *= 0.6f;
         }
         else {
-            for (double i = 0; i < distInBlocks; i++)
-            {
-                Vec3 v = position().add(getDirectionVector().multiply(i, i, i));
-                if (random.nextBoolean()) {
-                    level().addParticle(ModParticles.REDSTONE_CURIOSITY_PARTICLE.get(), v.x, v.y, v.z, 0, 0, 0);
+                for (double i = 0; i < distInBlocks; i++)
+                {
+                    Vec3 v = position().add(getDirectionVector().multiply(i, i, i));
+                    if (random.nextBoolean()) {
+                        level().addParticle(ModParticles.DIRECTIONAL_REDSTONE_CHARGE.get(), v.x + Mth.randomBetween(getRandom(), -0.5f, 0.5f), v.y + Mth.randomBetween(getRandom(), -0.5f, 0.5f), v.z + Mth.randomBetween(getRandom(), -0.5f, 0.5f), getDirectionVector().x * 3, getDirectionVector().y * 3, getDirectionVector().z * 3);
+                    }
                 }
-            }
 
             for (double i = 0; i < 4; i += 0.5)
             {
@@ -112,7 +109,6 @@ public class ScrappedLaserEntity extends BaseSubattackEntity implements GeoEntit
 
         Vec3 v = position().add(getDirectionVector().multiply(distInBlocks, distInBlocks, distInBlocks));
         //level().addParticle(ModParticles.SCRAPPED_LASER_STREAK.get(), v.x, v.y, v.z, getDirectionVector().x, getDirectionVector().y, getDirectionVector().z);
-
 
         super.tick();
     }

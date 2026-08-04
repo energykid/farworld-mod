@@ -1,0 +1,9 @@
+{
+  "textures": [
+    "farworld:directional_redstone_charge/directional_redstone_charge1",
+    "farworld:directional_redstone_charge/directional_redstone_charge2",
+    "farworld:directional_redstone_charge/directional_redstone_charge3",
+    "farworld:directional_redstone_charge/directional_redstone_charge4",
+    "farworld:directional_redstone_charge/directional_redstone_charge5"
+  ]
+}

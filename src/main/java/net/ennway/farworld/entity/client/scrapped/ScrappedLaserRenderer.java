@@ -9,6 +9,7 @@ import net.ennway.farworld.utils.RenderingUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -30,6 +31,11 @@ import java.util.List;
 public class ScrappedLaserRenderer extends GeoEntityRenderer<ScrappedLaserEntity> {
     public ScrappedLaserRenderer(EntityRendererProvider.Context context) {
         super(context, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "scrapped_laser")));
+    }
+
+    @Override
+    public boolean shouldRender(ScrappedLaserEntity livingEntity, Frustum camera, double camX, double camY, double camZ) {
+        return true;
     }
 
     private static final RenderType RENDER_TYPE = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_laser.png"));

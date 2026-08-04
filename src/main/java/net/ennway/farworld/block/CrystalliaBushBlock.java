@@ -99,7 +99,8 @@ public class CrystalliaBushBlock extends BushBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.BERRIES, true));
+        if (level.getRandom().nextInt(100) > 80)
+            level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.BERRIES, true));
     }
 
     @Override

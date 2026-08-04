@@ -84,6 +84,7 @@ public class ModParticleProviders {
         event.registerSpriteSet(ModParticles.SLUDGE_DROP.get(), SludgeDropParticle.Provider::new);
 
         event.registerSpriteSet(ModParticles.SCRAPPED_LASER_STREAK.get(), ScrappedLaserStreakParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.DIRECTIONAL_REDSTONE_CHARGE.get(), DirectionalRedstoneChargeParticle.Provider::new);
 
         event.registerSpriteSet(ModParticles.NECROMIUM_EFFECT.get(), NecromiumEffectParticle.Provider::new);
     }

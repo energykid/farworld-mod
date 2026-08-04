@@ -151,4 +151,8 @@ public class ModParticles {
             "scrapped_laser_streak",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> DIRECTIONAL_REDSTONE_CHARGE = PARTICLE_TYPES.register(
+            "directional_redstone_charge",
+            () -> new SimpleParticleType(false)
+    );
 }
