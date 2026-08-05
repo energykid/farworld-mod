@@ -23,11 +23,11 @@ public class SoulSmokeParticle extends TextureSheetParticle {
         this.spriteSet = spriteSet;
         this.gravity = -0.07f;
         this.scale(1 + (level.getRandom().nextFloat() * 2));
-        this.lifetime = level.getRandom().nextInt(4, 8);
+        this.lifetime = level.getRandom().nextInt(7, 12);
 
-        this.xd = (double) level.getRandom().nextInt(-10, 10) / 30;
-        this.yd = (double) level.getRandom().nextInt(-10, 10) / 10;
-        this.zd = (double) level.getRandom().nextInt(-10, 10) / 30;
+        this.xd = (double) level.getRandom().nextInt(-10, 10) / 50;
+        this.yd = (double) level.getRandom().nextInt(-10, 10) / 20;
+        this.zd = (double) level.getRandom().nextInt(-10, 10) / 50;
 
         this.gravity = 0.4f;
 
@@ -45,8 +45,8 @@ public class SoulSmokeParticle extends TextureSheetParticle {
         super.tick();
         var a = new Vec3(this.xd, this.yd, this.zd);
         a = a.yRot(0.7f);
-        this.xd = a.x * 0.9f;
-        this.zd = a.z * 0.9f;
+        this.xd = a.x * 0.95f;
+        this.zd = a.z * 0.95f;
     }
 
     @Override

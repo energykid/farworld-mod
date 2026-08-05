@@ -21,10 +21,12 @@ public class InfernalSmokeParticle extends TextureSheetParticle {
         super(level, x, y, z);
         this.spriteSet = spriteSet;
 
-        this.scale(1 + (level.getRandom().nextFloat() * 2));
-        this.lifetime = level.getRandom().nextInt(5, 8);
+        this.gravity = 0.1f;
 
-        this.yd = (double) level.getRandom().nextInt(10, 30) / 100;
+        this.scale(1 + (level.getRandom().nextFloat() * 2));
+        this.lifetime = level.getRandom().nextInt(8, 15);
+
+        this.yd = (double) level.getRandom().nextInt(10, 30) / 150;
 
         this.setSpriteFromAge(spriteSet);
     }

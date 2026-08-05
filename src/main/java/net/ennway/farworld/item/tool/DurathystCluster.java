@@ -78,8 +78,8 @@ public class DurathystCluster extends Item {
                 player.playSound(SoundEvents.BASALT_BREAK, 1, 0.5f);
                 if (stack.get(ModDataComponents.FRAME) >= 3)
                 {
-                    stack.consume(1, player);
                     player.playSound(SoundEvents.BASALT_BREAK, 1, -0.5f);
+                    stack.shrink(1);
                 }
             }
             return true;

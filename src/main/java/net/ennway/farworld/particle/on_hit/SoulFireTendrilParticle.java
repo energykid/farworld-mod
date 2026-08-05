@@ -23,7 +23,7 @@ public class SoulFireTendrilParticle extends TextureSheetParticle {
 
         this.hasPhysics = false;
 
-        this.lifetime = random.nextInt(5, 8);
+        this.lifetime = random.nextInt(4, 9);
 
         this.scale(10f);
 
