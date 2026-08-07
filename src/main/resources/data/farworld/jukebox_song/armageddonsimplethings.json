@@ -1,0 +1,9 @@
+{
+  "comparator_output": 3,
+  "description":
+  {
+    "translate": "item.farworld.disc_armageddonsimplethings.desc"
+  },
+  "length_in_seconds": 123.0,
+  "sound_event": "farworld:armageddonsimplethings"
+}

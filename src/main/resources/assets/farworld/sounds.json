@@ -95,6 +95,12 @@
   "whirlingworld": {
     "sounds": ["farworld:music/whirlingworld"]
   },
+  "soulless": {
+    "sounds": ["farworld:music/soulless"]
+  },
+  "armageddonsimplethings": {
+    "sounds": ["farworld:music/armageddonsimplethings"]
+  },
 
   "dusty_shelves_ambiance": {
     "sounds": ["farworld:dusty_shelves_ambiance"]
@@ -116,10 +122,6 @@
     "sounds": ["farworld:apocalypse_cooldown_over"]
   },
 
-  "music.armageddon_simple_things": {
-    "sounds": ["farworld:music/armageddon_simple_things"],
-    "stream": true
-  },
   "music.awake_aware": {
     "sounds": ["farworld:music/awake_aware"],
     "stream": true

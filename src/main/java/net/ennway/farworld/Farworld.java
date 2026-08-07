@@ -227,6 +227,8 @@ public class Farworld
             event.insertAfter(Items.NETHERITE_HOE.getDefaultInstance(), ModItems.ALLSAW.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.MUSIC_DISC_WAIT.getDefaultInstance(), ModItems.WHIRLING_WORLD_DISC.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.WHIRLING_WORLD_DISC.toStack(), ModItems.SOULLESS_DISC.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SOULLESS_DISC.toStack(), ModItems.ARMAGEDDON_SIMPLE_THINGS_DISC.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.DIAMOND_HOE.getDefaultInstance(), ModItems.SOUL_STEEL_SHOVEL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SOUL_STEEL_SHOVEL.toStack(), ModItems.SOUL_STEEL_PICKAXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

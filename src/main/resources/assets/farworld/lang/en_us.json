@@ -145,6 +145,10 @@
 
   "item.farworld.disc_whirlingworld" : "Music Disc",
   "item.farworld.disc_whirlingworld.desc" : "ENNWAY - whirling world",
+  "item.farworld.disc_soulless" : "Music Disc",
+  "item.farworld.disc_soulless.desc" : "ENNWAY - soulless",
+  "item.farworld.disc_armageddonsimplethings" : "Music Disc",
+  "item.farworld.disc_armageddonsimplethings.desc" : "ENNWAY - Armageddon Simple Things",
 
   "effect.farworld.paralysis" : "Paralysis",
   "effect.farworld.paralysis.desc" : "Briefly disables movement.",

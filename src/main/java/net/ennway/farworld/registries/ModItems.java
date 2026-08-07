@@ -635,4 +635,14 @@ public class ModItems {
             () -> new Item(new Item.Properties()
                     .jukeboxPlayable(ModSounds.WHIRLING_WORLD_KEY)
                     .rarity(Rarity.RARE)));
+
+    public static final DeferredItem<Item> SOULLESS_DISC = ITEMS_ALL.register("disc_soulless",
+            () -> new Item(new Item.Properties()
+                    .jukeboxPlayable(ModSounds.SOULLESS_KEY)
+                    .rarity(Rarity.RARE)));
+
+    public static final DeferredItem<Item> ARMAGEDDON_SIMPLE_THINGS_DISC = ITEMS_ALL.register("disc_armageddonsimplethings",
+            () -> new Item(new Item.Properties()
+                    .jukeboxPlayable(ModSounds.ARMAGEDDON_SIMPLE_THINGS_KEY)
+                    .rarity(Rarity.RARE)));
 }

@@ -40,6 +40,12 @@ public class ModSounds {
     public static final Supplier<SoundEvent> WHIRLING_WORLD = createSoundEvent("whirlingworld");
     public static final ResourceKey<JukeboxSong> WHIRLING_WORLD_KEY = createSong("whirlingworld");
 
+    public static final Supplier<SoundEvent> SOULLESS = createSoundEvent("soulless");
+    public static final ResourceKey<JukeboxSong> SOULLESS_KEY = createSong("soulless");
+
+    public static final Supplier<SoundEvent> ARMAGEDDON_SIMPLE_THINGS = createSoundEvent("armageddonsimplethings");
+    public static final ResourceKey<JukeboxSong> ARMAGEDDON_SIMPLE_THINGS_KEY = createSong("armageddonsimplethings");
+
     public static final Supplier<SoundEvent> DUSTY_SHELVES_AMBIANCE = createSoundEvent("dusty_shelves_ambiance");
     public static final Supplier<SoundEvent> LUSH_SHALLOWS_AMBIANCE = createSoundEvent("lush_shallows_ambiance");
     public static final Supplier<SoundEvent> CHARGED_CAVES_AMBIANCE = createSoundEvent("charged_caves_ambiance");
