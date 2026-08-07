@@ -105,6 +105,8 @@ public class GeodeNut extends Block implements SimpleWaterloggedBlock {
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         Direction direction = getConnectedDirection(state).getOpposite();
+        if (direction == Direction.DOWN || direction == Direction.UP)
+            if (level.getBlockState(pos.relative(direction)).isFaceSturdy(level, pos.relative(direction), direction.getOpposite())) return true;
         return level.getBlockState(pos.relative(direction)).is(ModBlocks.STONEWOOD_LEAVES_FLOWERED) || level.getBlockState(pos.relative(direction)).is(ModBlocks.STONEWOOD_LEAVES);
     }
 }

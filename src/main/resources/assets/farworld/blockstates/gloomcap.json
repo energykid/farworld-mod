@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "dusted=0": {
       "model": "farworld:block/gloomcap"
+    },
+    "dusted=1": {
+      "model": "farworld:block/dusty_gloomcap"
     }
   }
 }

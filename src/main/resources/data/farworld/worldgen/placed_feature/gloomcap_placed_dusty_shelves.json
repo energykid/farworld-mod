@@ -1,5 +1,5 @@
 {
-  "feature": "farworld:gloomcap_patch_bystone",
+  "feature": "farworld:gloomcap_patch_bystone_dusted",
   "placement": [
     {
       "type": "minecraft:block_predicate_filter",

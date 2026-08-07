@@ -1,0 +1,8 @@
+{
+  "parent": "farworld:block/base/cross_with_emissive",
+  "textures": {
+    "cross": "farworld:block/dusty_gloomcap",
+    "emissive": "farworld:block/gloomcap_glowmask"
+  },
+  "render_type": "cutout"
+}
