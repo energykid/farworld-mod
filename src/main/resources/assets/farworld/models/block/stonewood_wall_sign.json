@@ -1,4 +1,5 @@
 {
+  "parent": "minecraft:builtin/entity",
   "textures": {
     "particle": "farworld:block/stonewood_planks"
   }
