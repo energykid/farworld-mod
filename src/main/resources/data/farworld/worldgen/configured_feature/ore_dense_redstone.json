@@ -5,7 +5,7 @@
       {
         "target": {
           "predicate_type": "minecraft:block_match",
-          "block": "farworld:flowstone"
+          "block": "farworld:sleekstone"
         },
         "state": {
           "Name": "farworld:dense_redstone_ore"

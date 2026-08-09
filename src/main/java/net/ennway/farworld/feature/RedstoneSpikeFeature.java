@@ -27,8 +27,8 @@ public class RedstoneSpikeFeature extends Feature<NoneFeatureConfiguration> {
 
         BlockPos.MutableBlockPos pos = new BlockPos(origin.getX(), -94, origin.getZ()).mutable();
 
-        float middle = featurePlaceContext.random().nextInt(-30, -5);
-        float sizeBig = featurePlaceContext.random().nextInt(2, 4);
+        float middle = featurePlaceContext.random().nextInt(-40, -20);
+        float sizeBig = featurePlaceContext.random().nextInt(1, 3);
 
         while (pos.getY() < 126)
         {

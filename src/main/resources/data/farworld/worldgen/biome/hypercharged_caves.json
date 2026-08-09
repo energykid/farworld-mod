@@ -39,7 +39,8 @@
   "features": [
     [
       "farworld:redstone_deltas_placed",
-      "farworld:redstone_spike_placed"
+      "farworld:redstone_spike_placed",
+      "farworld:ore_dense_redstone_placed"
     ]
   ]
 }
