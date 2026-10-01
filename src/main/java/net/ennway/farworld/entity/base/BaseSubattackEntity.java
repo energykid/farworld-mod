@@ -100,7 +100,7 @@ public class BaseSubattackEntity extends Entity implements TraceableEntity, Owna
                 .define(PITCH, 0f)
                 .define(DIR_X, 2f)
                 .define(DIR_Y, 0f)
-                .define(DIR_Z, 2f).build();
+                .define(DIR_Z, 2f);
     }
 
     @Override

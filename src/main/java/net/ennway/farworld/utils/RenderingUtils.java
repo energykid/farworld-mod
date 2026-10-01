@@ -25,8 +25,22 @@ import javax.swing.text.html.parser.Entity;
 @OnlyIn(Dist.CLIENT)
 public class RenderingUtils {
 
-    private static void vertex(VertexConsumer consumer, PoseStack.Pose pose, float x, float y, int red, int green, int blue, float u, float v, int packedLight) {
+    public static final int WHITE = 16777215;
+    public static void vertex(VertexConsumer consumer, PoseStack.Pose pose, float x, float y, int red, int green, int blue, float u, float v, int packedLight) {
         consumer.addVertex(pose, x, y, 0.0F).setColor(red, green, blue, 128).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(pose, 0.0F, 1.0F, 0.0F);
+    }
+    public static void vertex(VertexConsumer consumer, PoseStack.Pose pose, float x, float y, float z, int red, int green, int blue, float u, float v, int packedLight) {
+        consumer.addVertex(pose, x, y, z).setColor(red, green, blue, 128).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(pose, 0.0F, 1.0F, 0.0F);
+    }
+    public static void face(Axis axis, VertexConsumer consumer, PoseStack.Pose pose, float x1, float y1, float x2, float y2, int red, int green, int blue, float u, float v, int packedLight) {
+        Vector3f vec1 = new Vector3f(x1, 0, y1);
+        Vector3f vec2 = new Vector3f(x2, 0, y2);
+
+        vec1 = vec1.rotate(axis.rotation(0f));
+        vec2 = vec2.rotate(axis.rotation(0f));
+
+        consumer.addVertex(pose, vec1.x, vec1.y, vec1.z).setColor(red, green, blue, 128).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(pose, 0.0F, 1.0F, 0.0F);
+        consumer.addVertex(pose, vec2.x, vec2.y, vec2.z).setColor(red, green, blue, 128).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(pose, 0.0F, 1.0F, 0.0F);
     }
     public static void autoRotateRender(PoseStack poseStack, Projectile entity)
     {

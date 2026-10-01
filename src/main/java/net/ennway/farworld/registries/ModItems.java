@@ -618,6 +618,8 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.SOUL_GOLEM.get(), 0x494358, 0xFE8738, new Item.Properties()));
     public static final DeferredItem<Item> BRITTLE_SPAWN_EGG = ITEMS_ALL.register("brittle_spawn_egg",
             () -> new SpawnEggItem(ModEntities.BRITTLE.get(), 0x59555D, 0xFFE31B, new Item.Properties()));
+    public static final DeferredItem<Item> ENCRUSTED_SPAWN_EGG = ITEMS_ALL.register("encrusted_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.ENCRUSTED.get(), 0x7E7A82, 0x8D6ACC, new Item.Properties()));
     public static final DeferredItem<Item> SCRAPPED_SPAWN_EGG = ITEMS_ALL.register("scrapped_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SCRAPPED.get(), 0x2D2D32, 0xBD2008, new Item.Properties()));
     public static final DeferredItem<Item> OBELISK_SPAWN_EGG = ITEMS_ALL.register("obelisk_spawn_egg",

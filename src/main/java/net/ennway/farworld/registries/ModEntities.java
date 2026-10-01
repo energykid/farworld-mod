@@ -8,6 +8,7 @@ import net.ennway.farworld.entity.client.bloomed.BloomedRenderer;
 import net.ennway.farworld.entity.client.brittle.BrittleRenderer;
 import net.ennway.farworld.entity.client.dustbug.DustbugModel;
 import net.ennway.farworld.entity.client.dustbug.DustbugRenderer;
+import net.ennway.farworld.entity.client.encrusted.EncrustedRenderer;
 import net.ennway.farworld.entity.client.goliath.GoliathModel;
 import net.ennway.farworld.entity.client.goliath.GoliathRenderer;
 import net.ennway.farworld.entity.client.obelisk.ObeliskRenderer;
@@ -75,6 +76,12 @@ public class ModEntities {
                     .eyeHeight(1.35f)
                     .sized(0.75f, 2f)
                     .build("brittle"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<EncrustedEntity>> ENCRUSTED = ENTITY_TYPES.register(
+            "encrusted", () -> EntityType.Builder.of(EncrustedEntity::new, MobCategory.MONSTER)
+                    .eyeHeight(1.35f)
+                    .sized(0.75f, 2f)
+                    .build("encrusted"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<ScrappedEntity>> SCRAPPED = ENTITY_TYPES.register(
             "scrapped", () -> EntityType.Builder.of(ScrappedEntity::new, MobCategory.MONSTER)
@@ -163,6 +170,7 @@ public class ModEntities {
             event.register(BLOOMED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, level, c, pos, e) -> pos.getY() < 0 && !level.getBiome(pos).is(Biomes.DEEP_DARK), RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(BRITTLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+            event.register(ENCRUSTED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(SCRAPPED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(OBELISK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, level, c, pos, e) -> level.getLevel().getBlockState(pos.below()).is(Blocks.BLACKSTONE), RegisterSpawnPlacementsEvent.Operation.REPLACE);
             event.register(DUSTBUG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (a, b, c, d, e) -> true, RegisterSpawnPlacementsEvent.Operation.REPLACE);
@@ -177,6 +185,7 @@ public class ModEntities {
             event.put(SLUDGE.get(), SludgeEntity.createAttributes().build());
             event.put(SOUL_GOLEM.get(), SoulGolemEntity.createAttributes().build());
             event.put(BRITTLE.get(), BrittleEntity.createAttributes().build());
+            event.put(ENCRUSTED.get(), EncrustedEntity.createAttributes().build());
             event.put(SCRAPPED.get(), ScrappedEntity.createAttributes().build());
             event.put(OBELISK.get(), ObeliskEntity.createAttributes().build());
             event.put(DUSTBUG.get(), DustbugEntity.createAttributes().build());
@@ -266,6 +275,10 @@ public class ModEntities {
                         BRITTLE,
                         BrittleRenderer::new
                 ),
+                new GeoEntityRendererDefinition<EncrustedEntity>(
+                        ENCRUSTED,
+                        EncrustedRenderer::new
+                ),
                 new GeoEntityRendererDefinition<ScrappedEntity>(
                         SCRAPPED,
                         ScrappedRenderer::new
@@ -296,6 +309,7 @@ public class ModEntities {
                 )
         );
         //endregion
+
         @SubscribeEvent
         public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
         {

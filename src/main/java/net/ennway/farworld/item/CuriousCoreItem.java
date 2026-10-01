@@ -24,8 +24,6 @@ import java.util.List;
 
 public class CuriousCoreItem extends Item {
 
-    public static final int MAX_SATURATION = 5;
-
     public CuriousCoreItem(Properties properties) {
         super(properties
                 .craftRemainder(ModItems.CURIOUS_CORE_OFF.asItem())
@@ -52,9 +50,21 @@ public class CuriousCoreItem extends Item {
         setModelStuff(stack);
     }
 
+    public static final int MAX_SATURATION = 5;
+
     @Override
     public int getMaxDamage(ItemStack stack) {
         return MAX_SATURATION;
+    }
+
+    @Override
+    public boolean isBarVisible(ItemStack stack) {
+        return stack.get(ModDataComponents.EXP_SATURATION) < 5;
+    }
+
+    @Override
+    public int getBarColor(ItemStack stack) {
+        return 12728890;
     }
 
     @Override
@@ -75,15 +85,5 @@ public class CuriousCoreItem extends Item {
         if (s.get(ModDataComponents.EXP_SATURATION) <= 0) s = new ItemStack(ModItems.CURIOUS_CORE_OFF.asItem());
 
         return s;
-    }
-
-    @Override
-    public boolean isBarVisible(ItemStack stack) {
-        return stack.get(ModDataComponents.EXP_SATURATION) < 5;
-    }
-
-    @Override
-    public int getBarColor(ItemStack stack) {
-        return 12728890;
     }
 }

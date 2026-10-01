@@ -20,8 +20,7 @@ public class BlackIceImplosionProjectile extends Projectile {
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        builder.define(TIMER, 0)
-                .build();
+        builder.define(TIMER, 0);
     }
 
     @Override

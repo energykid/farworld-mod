@@ -27,7 +27,7 @@
   "spawners": {
     "monster": [
       {
-        "type": "farworld:brittle",
+        "type": "farworld:encrusted",
         "weight": 3,
         "minCount": 2,
         "maxCount": 3
