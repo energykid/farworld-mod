@@ -16,7 +16,7 @@
                     "predicates": {
                       "minecraft:enchantments": [
                         {
-                          "enchantments": "minecraft:silk_touch",
+                          "enchantments": "minecraft:fortune",
                           "levels": {
                             "min": 1
                           }
@@ -87,7 +87,7 @@
               "predicates": {
                 "minecraft:enchantments": [
                   {
-                    "enchantments": "minecraft:silk_touch",
+                    "enchantments": "minecraft:fortune",
                     "levels": {
                       "min": 1
                     }
@@ -121,7 +121,7 @@
               "predicates": {
                 "minecraft:enchantments": [
                   {
-                    "enchantments": "minecraft:silk_touch",
+                    "enchantments": "minecraft:fortune",
                     "levels": {
                       "min": 1
                     }

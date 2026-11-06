@@ -636,15 +636,18 @@ public class ModItems {
     public static final DeferredItem<Item> WHIRLING_WORLD_DISC = ITEMS_ALL.register("disc_whirlingworld",
             () -> new Item(new Item.Properties()
                     .jukeboxPlayable(ModSounds.WHIRLING_WORLD_KEY)
-                    .rarity(Rarity.RARE)));
+                    .rarity(Rarity.RARE)
+                    .stacksTo(1)));
 
     public static final DeferredItem<Item> SOULLESS_DISC = ITEMS_ALL.register("disc_soulless",
             () -> new Item(new Item.Properties()
                     .jukeboxPlayable(ModSounds.SOULLESS_KEY)
-                    .rarity(Rarity.RARE)));
+                    .rarity(Rarity.RARE)
+                    .stacksTo(1)));
 
-    public static final DeferredItem<Item> ARMAGEDDON_SIMPLE_THINGS_DISC = ITEMS_ALL.register("disc_armageddonsimplethings",
+    public static final DeferredItem<Item> ARMAGEDDON_SIMPLE_THINGS_DISC = ITEMS_ALL.register("disc_armageddon_simple_things",
             () -> new Item(new Item.Properties()
                     .jukeboxPlayable(ModSounds.ARMAGEDDON_SIMPLE_THINGS_KEY)
-                    .rarity(Rarity.RARE)));
+                    .rarity(Rarity.RARE)
+                    .stacksTo(1)));
 }

@@ -19,6 +19,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.level.Level;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.List;
 
@@ -73,6 +75,7 @@ public class CuriousCoreItem extends Item {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
         ItemStack s = new ItemStack(ModItems.CURIOUS_CORE.asItem());
         s.set(ModDataComponents.EXP_SATURATION, itemStack.get(ModDataComponents.EXP_SATURATION) - 1);
