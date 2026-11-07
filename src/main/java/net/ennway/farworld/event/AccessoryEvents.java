@@ -119,15 +119,6 @@ public class AccessoryEvents {
         }
     }
 
-    public static void runRightClickEffects(PlayerInteractEvent event) {
-        List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(event.getEntity());
-        List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(event.getEntity());
-
-        for (int i = 0; i < items.size(); i++) {
-            items.get(i).onRightClickUseItem(event.getEntity(), itemStacks.get(i), event);
-        }
-    }
-
     public static void runLeftClickEffects(PlayerInteractEvent event) {
         List<AccessoryItem> items = AccessoryUtils.getPlayerAccessories(event.getEntity());
         List<ItemStack> itemStacks = AccessoryUtils.getPlayerAccessoryStacks(event.getEntity());
@@ -168,9 +159,7 @@ public class AccessoryEvents {
     }
 
     @SubscribeEvent
-    public static void leftClick(PlayerInteractEvent.LeftClickEmpty event) {
-        runLeftClickEffects(event);
-    }
+    public static void leftClick(PlayerInteractEvent.LeftClickEmpty event) { runLeftClickEffects(event); }
 
     @SubscribeEvent
     public static void leftClick(PlayerInteractEvent.LeftClickBlock event) {

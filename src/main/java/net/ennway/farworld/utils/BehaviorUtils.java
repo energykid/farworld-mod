@@ -1,5 +1,6 @@
 package net.ennway.farworld.utils;
 
+import net.ennway.farworld.network.BossMusicData;
 import net.ennway.farworld.network.Payloads;
 import net.ennway.farworld.registries.ModAttachments;
 import net.minecraft.core.BlockPos;
@@ -53,9 +54,16 @@ public class BehaviorUtils {
             plr.sendChatMessage(OutgoingChatMessage.create(PlayerChatMessage.system(str)), false, ChatType.bind(ChatType.SAY_COMMAND, plr));
     }
 
+    public static void sendDebugMessage(Player plr, String str)
+    {
+        ServerPlayer plyr = ServerUtils.getServerLevelFromPlayer(plr).getRandomPlayer();
+        if (plyr != null)
+            plyr.sendChatMessage(OutgoingChatMessage.create(PlayerChatMessage.system(str)), false, ChatType.bind(ChatType.SAY_COMMAND, plr));
+    }
+
     public static void setMusicForPlayer(ServerPlayer plr, String mus)
     {
-        PacketDistributor.sendToPlayer(plr, new Payloads.BossMusicData(mus));
+        PacketDistributor.sendToPlayer(plr, new BossMusicData(mus));
         /*
         plr.setData(ModAttachments.BOSS_MUSIC, mus);
         plr.setData(ModAttachments.MUSIC_CHECK, true);

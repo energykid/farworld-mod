@@ -26,7 +26,7 @@ public class AccessoryTooltipEvent {
             for (String s : strs)
             {
                 evt.addTooltipLines(
-                        Component.literal(s)
+                    Component.literal(s)
                 );
             }
         }
@@ -40,7 +40,7 @@ public class AccessoryTooltipEvent {
                     for (String s : strs)
                     {
                         evt.addTooltipLines(
-                                Component.literal(s)
+                            Component.literal(s)
                         );
                     }
                 }

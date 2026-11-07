@@ -5,8 +5,11 @@ import net.ennway.farworld.Farworld;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityLaserEntity;
 import net.ennway.farworld.entity.projectile.ApocalypseBreathProjectile;
 import net.ennway.farworld.item.AccessoryItem;
+import net.ennway.farworld.network.ApocalypseCoreData;
+import net.ennway.farworld.network.BossMusicData;
 import net.ennway.farworld.registries.*;
 import net.ennway.farworld.utils.AccessoryUtils;
+import net.ennway.farworld.utils.BehaviorUtils;
 import net.ennway.farworld.utils.MathUtils;
 import net.ennway.farworld.utils.ServerUtils;
 import net.minecraft.client.Minecraft;
@@ -30,23 +33,29 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.entity.projectile.WitherSkull;
+import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.enchantment.effects.SummonEntityEffect;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
@@ -60,7 +69,7 @@ public class ApocalypseCore extends AccessoryItem {
 
     @Override
     public void postTick(Player player, ItemStack stack, EntityTickEvent.Post event) {
-        if (player.getData(ModAttachments.APOCALYPSE_ABILITY) > 180) {
+        if (player.getData(ModAttachments.APOCALYPSE_ABILITY) > 180 && player.level().isClientSide) {
             Vec3 shootVel = player.getLookAngle();
             if (player.getData(ModAttachments.APOCALYPSE_ABILITY) % 2 == 1)
                 player.level().addParticle(ModParticles.APOCALYPSE_ROAR.get(), player.getX() + (shootVel.x * 0.6), player.getEyePosition().y + (shootVel.y * 0.6), player.getZ() + (shootVel.z * 0.6), 0, 0, 0);
@@ -86,32 +95,19 @@ public class ApocalypseCore extends AccessoryItem {
             ent.setPos(player.getEyePosition().add(0, -0.4, 0));
             ent.setOwner(player);
             ent.setDeltaMovement(shootVel);
-            if (player.getServer() != null)
-                player.getServer().getLevel(player.level().dimension()).addFreshEntity(ent);
-            else
-                Minecraft.getInstance().getSingleplayerServer().getLevel(player.level().dimension()).addFreshEntity(ent);
+            ent.shoot(shootVel.x, shootVel.y, shootVel.z, 1, 0.15f);
+
+            level.addFreshEntity(ent);
         }
     }
 
-    @Override
-    public void onRightClickUseItem(Player player, ItemStack stack, PlayerInteractEvent evt) {
-        if (evt instanceof PlayerInteractEvent.RightClickBlock block)
-        {
-            if (block.getUseItem().isTrue()) {
-                if (evt.getItemStack().isEmpty() && player.getData(ModAttachments.APOCALYPSE_ABILITY) <= 0 && AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get())) {
-                    player.setData(ModAttachments.APOCALYPSE_ABILITY, 210f);
-                    player.playSound(ModSounds.APOCALYPSE_FIRE_BREATH.get());
-                    player.swing(InteractionHand.MAIN_HAND);
-                }
-            }
+    public static void runAttack(Player player)
+    {
+        if (AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get())) {
+            player.setData(ModAttachments.APOCALYPSE_ABILITY, 210f);
+            player.playSound(ModSounds.APOCALYPSE_FIRE_BREATH.get());
+            player.swing(InteractionHand.MAIN_HAND);
         }
-        else
-        {
-            if (evt.getItemStack().isEmpty() && player.getData(ModAttachments.APOCALYPSE_ABILITY) <= 0 && AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.get())) {
-                player.setData(ModAttachments.APOCALYPSE_ABILITY, 210f);
-                player.playSound(ModSounds.APOCALYPSE_FIRE_BREATH.get());
-                player.swing(InteractionHand.MAIN_HAND);
-            }
-        }
+        player.syncData(ModAttachments.APOCALYPSE_ABILITY.get());
     }
 }
