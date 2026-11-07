@@ -37,10 +37,4 @@ public class ModPois {
                     ModBlocks.BYSTONE_PORTAL.get().defaultBlockState().setValue(BystonePortalBlock.SHORT, true)),
                     1,
                     1000));
-
-    public static final Holder<PoiType> REDSTONE_TELEPORTER = POIS.register("redstone_teleporter",
-            () -> new PoiType(Set.of(ModBlocks.REDSTONE_TELEPORTER_BLOCK.get().defaultBlockState(),
-                    ModBlocks.REDSTONE_TELEPORTER_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.LIT, true)),
-                    1,
-                    RedstoneTeleporterBE.MAXIMUM_DISTANCE));
 }
