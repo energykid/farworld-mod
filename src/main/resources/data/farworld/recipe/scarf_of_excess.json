@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "scarf_of_excess",
+  "key": {
+    "W": {
+      "tag": "minecraft:wool"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "WLW",
+    "W W",
+    " W "
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:scarf_of_excess"
+  }
+}

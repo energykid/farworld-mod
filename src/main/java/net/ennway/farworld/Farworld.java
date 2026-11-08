@@ -2,7 +2,6 @@ package net.ennway.farworld;
 
 import net.ennway.farworld.block.entity.CustomRenderBERenderer;
 import net.ennway.farworld.block.entity.RedstoneTeleporterBERenderer;
-import net.ennway.farworld.network.Payloads;
 import net.ennway.farworld.registries.*;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
 import net.ennway.farworld.registries.entity_definitions.NonGeoEntityLayerDefinition;
@@ -252,8 +251,9 @@ public class Farworld
 
             event.insertAfter(Items.ELYTRA.getDefaultInstance(), ModItems.GOGGLES.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GOGGLES.toStack(), ModItems.TOOLBELT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.TOOLBELT.toStack(), ModItems.MAGIC_SPUR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.TOOLBELT.toStack(), ModItems.GLITTERING_ASPECT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.TOOLBELT.toStack(), ModItems.SCARF_OF_EXCESS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SCARF_OF_EXCESS.toStack(), ModItems.MAGIC_SPUR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.MAGIC_SPUR.toStack(), ModItems.GLITTERING_ASPECT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GLITTERING_ASPECT.toStack(), ModItems.SLIME_BRACE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SLIME_BRACE.toStack(), ModItems.GLOOM_BRACE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
@@ -299,7 +299,8 @@ public class Farworld
             event.insertAfter(ModItems.COBALT_LEGGINGS.toStack(), ModItems.COBALT_BOOTS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(ModItems.BREEZE_BOOTS.toStack(), ModItems.SKELETON_ARM.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.SKELETON_ARM.toStack(), ModItems.IRON_CUFF.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SKELETON_ARM.toStack(), ModItems.SCARF_OF_EXCESS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.SCARF_OF_EXCESS.toStack(), ModItems.IRON_CUFF.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.IRON_CUFF.toStack(), ModItems.COBALT_CUFF.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.COBALT_CUFF.toStack(), ModItems.GOLEM_HEART.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GOLEM_HEART.toStack(), ModItems.OBSIDIAN_KEEPSAKE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

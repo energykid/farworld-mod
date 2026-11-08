@@ -390,6 +390,11 @@ public class ModItems {
             () -> new GlitteringAspect(new Item.Properties())
     );
 
+    public static final DeferredItem<Item> SCARF_OF_EXCESS = ITEMS_ALL.register(
+            "scarf_of_excess",
+            () -> new AccessoryItem(new Item.Properties())
+    );
+
     public static final DeferredItem<Item> APOCALYPSE_CORE = ITEMS_ALL.register(
             "apocalypse_core",
             () -> new ApocalypseCore(new Item.Properties())

@@ -186,10 +186,10 @@ public class SludgeEntity extends Monster implements GeoEntity {
     public static AttributeSupplier.Builder createAttributes()
     {
         return Mob.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 20)
-                .add(Attributes.ARMOR, 3)
+                .add(Attributes.MAX_HEALTH, 16)
+                .add(Attributes.ARMOR, 2)
                 .add(Attributes.FOLLOW_RANGE, 20)
-                .add(Attributes.ATTACK_DAMAGE, 6)
+                .add(Attributes.ATTACK_DAMAGE, 5)
                 .add(Attributes.MOVEMENT_SPEED, 0)
                 .add(Attributes.SAFE_FALL_DISTANCE, 15)
                 .add(Attributes.FALL_DAMAGE_MULTIPLIER, 0.5);

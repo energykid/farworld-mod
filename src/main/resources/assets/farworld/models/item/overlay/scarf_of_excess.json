@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "farworld:item/overlay/scarf_of_excess"
+  },
+  "render_type": "translucent"
+}

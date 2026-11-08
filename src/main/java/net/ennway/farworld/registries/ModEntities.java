@@ -98,7 +98,7 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<SludgeEntity>> SLUDGE = ENTITY_TYPES.register(
             "sludge", () -> EntityType.Builder.of(SludgeEntity::new, MobCategory.MONSTER)
                     .eyeHeight(0.5f)
-                    .sized(0.7f, 0.7f)
+                    .sized(0.7f, 1.1f)
                     .build("sludge"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<DustbugEntity>> DUSTBUG = ENTITY_TYPES.register(

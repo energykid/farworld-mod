@@ -1,0 +1,46 @@
+{
+  "criteria": {
+    "pickup0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:lapis_lazuli"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickup1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:white_wool"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickup2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:lime_wool"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pickup0",
+      "pickup1",
+      "pickup2"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farworld:scarf_of_excess"
+    ]
+  }
+}

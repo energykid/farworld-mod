@@ -1,18 +1,13 @@
 package net.ennway.farworld.utils;
 
 import net.ennway.farworld.network.BossMusicData;
-import net.ennway.farworld.network.Payloads;
-import net.ennway.farworld.registries.ModAttachments;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.ChatType;
 import net.minecraft.network.chat.OutgoingChatMessage;
 import net.minecraft.network.chat.PlayerChatMessage;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.Music;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;

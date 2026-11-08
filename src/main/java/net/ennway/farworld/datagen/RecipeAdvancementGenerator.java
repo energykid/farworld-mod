@@ -73,6 +73,9 @@ public class RecipeAdvancementGenerator extends AdvancementProvider {
 
                 recipeAdvancement(saver, List.of(ModItems.COBALT_INGOT.asItem(), Items.SLIME_BALL), List.of(
                         "slime_brace"));
+
+                recipeAdvancement(saver, List.of(Items.LAPIS_LAZULI, Items.WHITE_WOOL, Items.LIME_WOOL), List.of(
+                        "scarf_of_excess"));
             }
 
             /// Building blocks
