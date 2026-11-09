@@ -63,11 +63,9 @@ public class RedstoneCuriosityTrailLayer extends AutoGlowingGeoLayer {
                 pos = entity.trailPositions[i - 1];
             }
 
-            //poseStack.mulPose(Axis.YP.rotationDegrees(-(float)entity.finalRot));
             translatePoseStackFromTo(poseStack, pos, entity.trailPositions[i]);
             if (pos.distanceTo(entity.trailPositions[i]) > 0.05f)
                 super.render(poseStack, animatable, bakedModel, RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "textures/entity/redstone_curiosity_trail")), bufferSource, buffer, partialTick, packedLight, packedOverlay);
-            //poseStack.mulPose(Axis.YP.rotationDegrees((float)entity.finalRot));
         }
     }
 }
