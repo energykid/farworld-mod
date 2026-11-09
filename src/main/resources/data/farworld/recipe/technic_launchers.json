@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "technic_launchers",
+  "key": {
+    "B": {
+      "item": "farworld:sleekstone_bricks"
+    },
+    "C": {
+      "item": "farworld:curious_core"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "B B",
+    "I I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "farworld:technic_launchers"
+  }
+}

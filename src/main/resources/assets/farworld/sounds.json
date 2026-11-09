@@ -147,6 +147,10 @@
     "sounds": ["farworld:charge_bunker_fire"]
   },
 
+  "technic_launcher_cooldown_end": {
+    "sounds": ["farworld:technic_launcher_cooldown_end"]
+  },
+
   "redstone_curiosity_zip": {
     "sounds": ["farworld:redstone_curiosity_zip_1",
       "farworld:redstone_curiosity_zip_2",

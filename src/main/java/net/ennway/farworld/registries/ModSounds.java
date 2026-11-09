@@ -82,6 +82,8 @@ public class ModSounds {
     public static final Holder<SoundEvent> BLACK_ICE_EQUIP = SOUND_EVENTS.register("black_ice_equip", SoundEvent::createVariableRangeEvent);
     public static final Supplier<SoundEvent> GLOOMSTONE_PICKUP = createSoundEvent("gloomstone_pickup");
 
+    public static final Supplier<SoundEvent> TECHNIC_LAUNCHER_COOLDOWN_END = createSoundEvent("technic_launcher_cooldown_end");
+
     public static final Supplier<SoundEvent> DIAMOND_HIT = createSoundEvent("diamond_hit");
     public static final Supplier<SoundEvent> COBALT_HIT = createSoundEvent("cobalt_hit");
 

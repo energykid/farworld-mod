@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "farworld:item/overlay/technic_launchers"
+  },
+  "render_type": "translucent"
+}

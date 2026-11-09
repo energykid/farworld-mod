@@ -19,7 +19,7 @@ public class ParticleGenerator extends ParticleDescriptionProvider {
 
     @Override
     protected void addDescriptions() {
-        mySpriteSet(ModParticles.SCRAPPED_LASER_STREAK.get(), ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "scrapped_laser_streak/scrapped_laser_streak"), 5, false);
+
     }
 
     protected void mySpriteSet(ParticleType<?> type, ResourceLocation baseName, int numOfTextures, boolean reverse) {

@@ -256,6 +256,7 @@ public class Farworld
             event.insertAfter(ModItems.MAGIC_SPUR.toStack(), ModItems.GLITTERING_ASPECT.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GLITTERING_ASPECT.toStack(), ModItems.SLIME_BRACE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.SLIME_BRACE.toStack(), ModItems.GLOOM_BRACE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GLOOM_BRACE.toStack(), ModItems.TECHNIC_LAUNCHERS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT)
         {
@@ -306,7 +307,8 @@ public class Farworld
             event.insertAfter(ModItems.GOLEM_HEART.toStack(), ModItems.OBSIDIAN_KEEPSAKE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.OBSIDIAN_KEEPSAKE.toStack(), ModItems.BLAZE_LOCKET.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.BLAZE_LOCKET.toStack(), ModItems.BREEZE_RING.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.BREEZE_RING.toStack(), ModItems.APOCALYPSE_CORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.BREEZE_RING.toStack(), ModItems.TECHNIC_LAUNCHERS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.TECHNIC_LAUNCHERS.toStack(), ModItems.APOCALYPSE_CORE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
         {

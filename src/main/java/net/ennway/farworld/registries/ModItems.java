@@ -40,6 +40,7 @@ public class ModItems {
                     "skeleton_arm",
                     "toolbelt",
                     "scarf_of_excess",
+                    "technic_launchers",
                     "elytra"
             );
 
@@ -399,6 +400,11 @@ public class ModItems {
     public static final DeferredItem<Item> APOCALYPSE_CORE = ITEMS_ALL.register(
             "apocalypse_core",
             () -> new ApocalypseCore(new Item.Properties())
+    );
+
+    public static final DeferredItem<Item> TECHNIC_LAUNCHERS = ITEMS_ALL.register(
+            "technic_launchers",
+            () -> new TechnicLaunchers(new Item.Properties())
     );
 
     public static final DeferredItem<Item> GOLEM_HEART = ITEMS_ALL.register(

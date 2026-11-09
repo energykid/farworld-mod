@@ -7,12 +7,14 @@ import net.ennway.farworld.entity.projectile.ApocalypseBreathProjectile;
 import net.ennway.farworld.item.AccessoryItem;
 import net.ennway.farworld.network.ApocalypseCoreData;
 import net.ennway.farworld.network.BossMusicData;
+import net.ennway.farworld.network.TechnicLaunchersData;
 import net.ennway.farworld.registries.*;
 import net.ennway.farworld.utils.AccessoryUtils;
 import net.ennway.farworld.utils.BehaviorUtils;
 import net.ennway.farworld.utils.MathUtils;
 import net.ennway.farworld.utils.ServerUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
@@ -109,5 +111,25 @@ public class ApocalypseCore extends AccessoryItem {
             player.swing(InteractionHand.MAIN_HAND);
         }
         player.syncData(ModAttachments.APOCALYPSE_ABILITY.get());
+    }
+
+    @EventBusSubscriber(value = Dist.CLIENT)
+    public class Event
+    {
+        @SubscribeEvent
+        public static void runInput(InputEvent.InteractionKeyMappingTriggered evt)
+        {
+            if (evt.isUseItem() && !evt.isCanceled())
+            {
+                LocalPlayer player = Minecraft.getInstance().player;
+                if (player.getItemInHand(evt.getHand()).isEmpty() && evt.getHand() == InteractionHand.MAIN_HAND)
+                {
+                    if (AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.asItem()) && player.getData(ModAttachments.APOCALYPSE_ABILITY) <= 0)
+                    {
+                        PacketDistributor.sendToServer(new ApocalypseCoreData(0));
+                    }
+                }
+            }
+        }
     }
 }

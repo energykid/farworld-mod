@@ -34,7 +34,7 @@ public record ApocalypseCoreData(int idk) implements CustomPacketPayload {
     public static class ServerPayloadHandler {
         public static void handleDataOnMain(final ApocalypseCoreData data, final IPayloadContext context) {
             ApocalypseCore.runAttack(context.player());
-            PacketDistributor.sendToAllPlayers(new ApocalypseCoreData(0));
+            PacketDistributor.sendToAllPlayers(data);
         }
     }
 }

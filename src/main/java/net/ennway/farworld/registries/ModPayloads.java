@@ -4,6 +4,7 @@ import net.ennway.farworld.Farworld;
 import net.ennway.farworld.network.AccessoryData;
 import net.ennway.farworld.network.ApocalypseCoreData;
 import net.ennway.farworld.network.BossMusicData;
+import net.ennway.farworld.network.TechnicLaunchersData;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -41,6 +42,15 @@ public class ModPayloads {
                 new DirectionalPayloadHandler<>(
                         ApocalypseCoreData.ClientPayloadHandler::handleDataOnMain,
                         ApocalypseCoreData.ServerPayloadHandler::handleDataOnMain
+                )
+        );
+
+        registrar.playBidirectional(
+                TechnicLaunchersData.TYPE,
+                TechnicLaunchersData.STREAM_CODEC,
+                new DirectionalPayloadHandler<>(
+                        TechnicLaunchersData.ClientPayloadHandler::handleDataOnMain,
+                        TechnicLaunchersData.ServerPayloadHandler::handleDataOnMain
                 )
         );
     }

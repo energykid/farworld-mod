@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "pickup0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farworld:curious_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pickup0"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farworld:technic_launchers"
+    ]
+  }
+}
