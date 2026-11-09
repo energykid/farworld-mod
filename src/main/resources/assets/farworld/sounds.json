@@ -138,6 +138,10 @@
     "sounds": ["farworld:music/jewels", "farworld:music/reinvent"],
     "stream": true
   },
+  "music.hypercharged_caves": {
+    "sounds": ["farworld:music/digitize"],
+    "stream": true
+  },
 
   "charge_bunker_fire": {
     "sounds": ["farworld:charge_bunker_fire"]

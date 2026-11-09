@@ -11,6 +11,12 @@
     "grass_color": 4012340,
     "foliage_color": 3947838,
     "ambient_sound": "farworld:charged_caves_ambiance",
+    "music": {
+      "sound": "farworld:music.hypercharged_caves",
+      "min_delay": 8000,
+      "max_delay": 14000,
+      "replace_current_music": false
+    },
     "particle": {
       "options": {
         "type": "farworld:redstone_charge_particle"

@@ -97,6 +97,7 @@ public class ModSounds {
 
     public static final Supplier<SoundEvent> MUSIC_LUSH_SHALLOWS = createSoundEvent("music.lush_shallows");
     public static final Supplier<SoundEvent> MUSIC_GEODIC_COLUMNS = createSoundEvent("music.geodic_columns");
+    public static final Supplier<SoundEvent> MUSIC_HYPERCHARGED_CAVES = createSoundEvent("music.hypercharged_caves");
     public static final Supplier<SoundEvent> MUSIC_DUSTY_SHELVES = createSoundEvent("music.dusty_shelves");
     public static final Supplier<SoundEvent> MUSIC_AWAKE_AWARE = createSoundEvent("music.awake_aware");
     public static final Supplier<SoundEvent> MUSIC_ARMAGEDDON_SIMPLE_THINGS = createSoundEvent("music.armageddon_simple_things");

@@ -39,6 +39,7 @@ public class ModItems {
                     "blaze_locket",
                     "skeleton_arm",
                     "toolbelt",
+                    "scarf_of_excess",
                     "elytra"
             );
 
