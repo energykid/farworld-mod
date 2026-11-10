@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:stonewood_pressure_plate"
+    "farworld:stonewood_pressure_plate",
+    "farworld:crystallia_pressure_plate"
   ]
 }

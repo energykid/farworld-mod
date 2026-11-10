@@ -94,13 +94,13 @@ public class BasaltColumnFeature extends Feature<NoneFeatureConfiguration> {
             if (level.getBlockState(posMid).is(Blocks.AIR) || level.getBlockState(posMid).canBeReplaced() || level.getBlockState(posMid).is(BlockTags.LEAVES)) break;
         }
 
-        this.setBlock(featurePlaceContext.level(), posMid, ModBlocks.STONEWOOD_LOG.get().defaultBlockState().setValue(StonewoodLogBlock.AXIS, dir.getAxis()));
+        this.setBlock(featurePlaceContext.level(), posMid, ModBlocks.CRYSTALLIA_LOG.get().defaultBlockState().setValue(StonewoodLogBlock.AXIS, dir.getAxis()));
         posMid.move(dir);
-        this.setBlock(featurePlaceContext.level(), posMid, ModBlocks.STONEWOOD_LOG.get().defaultBlockState().setValue(StonewoodLogBlock.AXIS, dir.getAxis()));
+        this.setBlock(featurePlaceContext.level(), posMid, ModBlocks.CRYSTALLIA_LOG.get().defaultBlockState().setValue(StonewoodLogBlock.AXIS, dir.getAxis()));
         if (featurePlaceContext.random().nextBoolean())
         {
             posMid.move(dir);
-            this.setBlock(featurePlaceContext.level(), posMid, ModBlocks.STONEWOOD_LOG.get().defaultBlockState().setValue(StonewoodLogBlock.AXIS, dir.getAxis()));
+            this.setBlock(featurePlaceContext.level(), posMid, ModBlocks.CRYSTALLIA_LOG.get().defaultBlockState().setValue(StonewoodLogBlock.AXIS, dir.getAxis()));
         }
         posMid.move(dir);
 

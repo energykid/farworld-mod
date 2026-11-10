@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:stonewood_slab"
+    "farworld:stonewood_slab",
+    "farworld:crystallia_slab"
   ]
 }

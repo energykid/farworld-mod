@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "farworld:block/crystallia_slab"
+    },
+    "type=double": {
+      "model": "farworld:block/crystallia_planks"
+    },
+    "type=top": {
+      "model": "farworld:block/crystallia_slab_top"
+    }
+  }
+}

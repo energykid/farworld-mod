@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:stonewood_fence"
+    "farworld:stonewood_fence",
+    "farworld:crystallia_fence"
   ]
 }

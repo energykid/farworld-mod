@@ -118,8 +118,22 @@ public class Farworld
             event.insertAfter(ModItems.STONEWOOD_DOOR.toStack(), ModItems.STONEWOOD_TRAPDOOR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.STONEWOOD_TRAPDOOR.toStack(), ModItems.STONEWOOD_PRESSURE_PLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.STONEWOOD_PRESSURE_PLATE.toStack(), ModItems.STONEWOOD_BUTTON.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            
+            event.insertAfter(ModItems.STONEWOOD_BUTTON.toStack(), ModItems.CRYSTALLIA_LOG.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_LOG.toStack(), ModItems.CRYSTALLIA.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA.toStack(), ModItems.STRIPPED_CRYSTALLIA_LOG.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STRIPPED_CRYSTALLIA_LOG.toStack(), ModItems.STRIPPED_CRYSTALLIA.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STRIPPED_CRYSTALLIA.toStack(), ModItems.CRYSTALLIA_PLANKS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_PLANKS.toStack(), ModItems.CRYSTALLIA_STAIRS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_STAIRS.toStack(), ModItems.CRYSTALLIA_SLAB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_SLAB.toStack(), ModItems.CRYSTALLIA_FENCE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_FENCE.toStack(), ModItems.CRYSTALLIA_FENCE_GATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_FENCE_GATE.toStack(), ModItems.CRYSTALLIA_DOOR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_DOOR.toStack(), ModItems.CRYSTALLIA_TRAPDOOR.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_TRAPDOOR.toStack(), ModItems.CRYSTALLIA_PRESSURE_PLATE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_PRESSURE_PLATE.toStack(), ModItems.CRYSTALLIA_BUTTON.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
-            event.insertAfter(ModItems.STONEWOOD_BUTTON.toStack(), ModItems.CRYSTAL_LAMP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.CRYSTALLIA_BUTTON.toStack(), ModItems.CRYSTAL_LAMP.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.CRYSTAL_LAMP.toStack(), ModItems.LARGE_CHAIN.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.LARGE_CHAIN.toStack(), ModItems.DUST_GLASS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.DUST_GLASS.toStack(), ModItems.SHADOW_DUST_GLASS.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

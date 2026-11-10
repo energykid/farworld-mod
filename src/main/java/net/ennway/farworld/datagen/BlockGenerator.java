@@ -3,6 +3,7 @@ package net.ennway.farworld.datagen;
 import net.ennway.farworld.Farworld;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.item.DyeColor;
 import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -45,6 +46,65 @@ public class BlockGenerator extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
+        /*
+        woodset("crystallia",
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/crystallia_planks"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/crystallia_log"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/crystallia_log_top"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/stripped_crystallia_log"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/stripped_crystallia_log_top"),
+                ResourceLocation.withDefaultNamespace("entity/signs/crystallia"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/crystallia_door_bottom"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/crystallia_door_top"),
+                ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/crystallia_trapdoor"));
+         */
+    }
 
+    public void woodset(String name,
+                        ResourceLocation planks,
+                        ResourceLocation log,
+                        ResourceLocation logTop,
+                        ResourceLocation strippedLog,
+                        ResourceLocation strippedLogTop,
+                        ResourceLocation sign,
+                        ResourceLocation doorBottom,
+                        ResourceLocation doorTop,
+                        ResourceLocation trapdoor)
+    {
+        String Name = name + "_";
+        cubeColumn(Name+"log", log, logTop);
+        cubeColumn(name, log, log);
+        cubeColumn("stripped_"+Name+"log", strippedLog, strippedLogTop);
+        cubeColumn("stripped_"+name, strippedLog, strippedLog);
+        cubeAll(Name+"planks", planks);
+        stairs(Name+"stairs", planks, planks, planks);
+        stairsInner(Name+"stairs_inner", planks, planks, planks);
+        stairsOuter(Name+"stairs_outer", planks, planks, planks);
+        slab(Name+"slab", planks, planks, planks);
+        slabTop(Name+"slab_top", planks, planks, planks);
+        button(Name+"button", planks);
+        buttonInventory(Name+"button_inventory", planks);
+        buttonPressed(Name+"button_pressed", planks);
+        pressurePlate(Name+"pressure_plate", planks);
+        pressurePlateDown(Name+"pressure_plate_down", planks);
+        fenceGate(Name+"fence_gate", planks);
+        fenceGateOpen(Name+"fence_gate_open", planks);
+        fenceGateWallOpen(Name+"fence_gate_wall_open", planks);
+        fenceGateWall(Name+"fence_gate_wall", planks);
+        fencePost(Name+"fence_post", planks);
+        fenceInventory(Name+"fence_inventory", planks);
+        fenceSide(Name+"fence_side", planks);
+        doorBottomLeft(Name+"door_bottom_left", doorBottom, doorTop);
+        doorBottomLeftOpen(Name+"door_bottom_left_open", doorBottom, doorTop);
+        doorBottomRight(Name+"door_bottom_right", doorBottom, doorTop);
+        doorBottomRightOpen(Name+"door_bottom_right_open", doorBottom, doorTop);
+        doorTopLeft(Name+"door_top_left", doorBottom, doorTop);
+        doorTopLeftOpen(Name+"door_top_left_open", doorBottom, doorTop);
+        doorTopRight(Name+"door_top_right", doorBottom, doorTop);
+        doorTopRightOpen(Name+"door_top_right_open", doorBottom, doorTop);
+        trapdoorBottom(name+"trapdoor_bottom", trapdoor);
+        trapdoorTop(Name+"trapdoor_top", trapdoor);
+        trapdoorOpen(Name+"trapdoor_open", trapdoor);
+        sign(Name+"sign", sign);
     }
 }

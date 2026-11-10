@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "bark",
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "key": {
+    "A": {
+      "item": "farworld:stripped_crystallia_log"
+    }
+  },
+  "result": {
+    "id": "farworld:stripped_crystallia",
+    "count": 3
+  }
+}

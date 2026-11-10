@@ -519,6 +519,38 @@ public class ModItems {
             () -> new SignItem(new Item.Properties(), ModBlocks.STONEWOOD_SIGN.get(), ModBlocks.STONEWOOD_SIGN_WALL.get()).asItem());
     public static final DeferredItem<Item> STONEWOOD_HANGING_SIGN = ITEMS_ALL.register("stonewood_hanging_sign",
             () -> new HangingSignItem(ModBlocks.STONEWOOD_SIGN_HANGING.get(), ModBlocks.STONEWOOD_SIGN_WALL_HANGING.get(), new Item.Properties()).asItem());
+
+    public static final DeferredItem<Item> CRYSTALLIA_LOG = ITEMS_ALL.register("crystallia_log",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_LOG.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA = ITEMS_ALL.register("crystallia",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STRIPPED_CRYSTALLIA = ITEMS_ALL.register("stripped_crystallia",
+            () -> new BlockItem(ModBlocks.STRIPPED_CRYSTALLIA.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> STRIPPED_CRYSTALLIA_LOG = ITEMS_ALL.register("stripped_crystallia_log",
+            () -> new BlockItem(ModBlocks.STRIPPED_CRYSTALLIA_LOG.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_PLANKS = ITEMS_ALL.register("crystallia_planks",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_PLANKS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_STAIRS = ITEMS_ALL.register("crystallia_stairs",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_STAIRS.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_SLAB = ITEMS_ALL.register("crystallia_slab",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_SLAB.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_DOOR = ITEMS_ALL.register("crystallia_door",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_DOOR.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_TRAPDOOR = ITEMS_ALL.register("crystallia_trapdoor",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_TRAPDOOR.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_FENCE = ITEMS_ALL.register("crystallia_fence",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_FENCE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_FENCE_GATE = ITEMS_ALL.register("crystallia_fence_gate",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_FENCE_GATE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_BUTTON = ITEMS_ALL.register("crystallia_button",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_BUTTON.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_PRESSURE_PLATE = ITEMS_ALL.register("crystallia_pressure_plate",
+            () -> new BlockItem(ModBlocks.CRYSTALLIA_PRESSURE_PLATE.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_SIGN = ITEMS_ALL.register("crystallia_sign",
+            () -> new SignItem(new Item.Properties(), ModBlocks.CRYSTALLIA_SIGN.get(), ModBlocks.CRYSTALLIA_SIGN_WALL.get()).asItem());
+    public static final DeferredItem<Item> CRYSTALLIA_HANGING_SIGN = ITEMS_ALL.register("crystallia_hanging_sign",
+            () -> new HangingSignItem(ModBlocks.CRYSTALLIA_SIGN_HANGING.get(), ModBlocks.CRYSTALLIA_SIGN_WALL_HANGING.get(), new Item.Properties()).asItem());
+    
     public static final DeferredItem<Item> COBBLED_FLOWSTONE = ITEMS_ALL.register("cobbled_flowstone",
             () -> new BlockItem(ModBlocks.COBBLED_FLOWSTONE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> COBBLED_FLOWSTONE_SLAB = ITEMS_ALL.register("cobbled_flowstone_slab",

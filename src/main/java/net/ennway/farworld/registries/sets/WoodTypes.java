@@ -5,4 +5,5 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 
 public class WoodTypes {
     public static final WoodType STONEWOOD_TYPE = WoodType.register(new WoodType("stonewood", BlockSetType.STONE));
+    public static final WoodType CRYSTALLIA_TYPE = WoodType.register(new WoodType("crystallia", BlockSetType.STONE));
 }

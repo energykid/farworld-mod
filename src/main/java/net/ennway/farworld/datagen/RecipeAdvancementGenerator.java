@@ -99,6 +99,9 @@ public class RecipeAdvancementGenerator extends AdvancementProvider {
                 /// Stonewood
                 woodSet(saver, ModItems.STONEWOOD_LOG.asItem(), ModItems.STONEWOOD_PLANKS.asItem(),"stonewood");
 
+                /// Crystallia
+                woodSet(saver, ModItems.CRYSTALLIA_LOG.asItem(), ModItems.CRYSTALLIA_PLANKS.asItem(),"crystallia");
+
                 /// Flowstone blocksets
                 {
                     genericStoneBlockset(saver, ModItems.COBBLED_FLOWSTONE.asItem(), "cobbled_flowstone");

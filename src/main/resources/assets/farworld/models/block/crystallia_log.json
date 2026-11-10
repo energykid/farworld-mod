@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "farworld:block/crystallia_log_top",
+    "side": "farworld:block/crystallia_log"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "planks",
+  "ingredients": [
+    {
+      "item": "farworld:crystallia_log"
+    }
+  ],
+  "result": {
+    "id": "farworld:crystallia_planks",
+    "count": 4
+  }
+}

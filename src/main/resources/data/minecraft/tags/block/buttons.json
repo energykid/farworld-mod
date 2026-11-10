@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:stonewood_button"
+    "farworld:stonewood_button",
+    "farworld:crystallia_button"
   ]
 }

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farworld:stonewood_planks"
+    "farworld:stonewood_planks",
+    "farworld:crystallia_planks"
   ]
 }

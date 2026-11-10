@@ -1,12 +1,16 @@
 package net.ennway.farworld.block;
 
 import com.mojang.serialization.MapCodec;
+import net.ennway.farworld.Farworld;
 import net.ennway.farworld.registries.ModBlocks;
 import net.ennway.farworld.registries.ModItems;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.Main;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -25,18 +29,28 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
+
 public class CrystalliaBushBlock extends BushBlock {
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CRYSTALLIA_TREE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "crystallia_tree"));
+
+    protected final TreeGrower treeGrower;
+
     public CrystalliaBushBlock(Properties properties) {
         super(properties);
+        this.treeGrower = new TreeGrower("crystallia", Optional.empty(), Optional.of(CRYSTALLIA_TREE), Optional.empty());
         this.registerDefaultState((BlockState)(this.stateDefinition.any()).setValue(BlockStateProperties.BERRIES, true));
     }
 
@@ -66,12 +80,34 @@ public class CrystalliaBushBlock extends BushBlock {
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (state.getValue(BlockStateProperties.BERRIES))
         {
-            ItemStack st = ModItems.CRYSTALLIAS.toStack();
-            st.setCount(level.getRandom().nextBoolean() ? 2 : 1);
-            level.addFreshEntity(new ItemEntity(level, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, st));
-            level.playLocalSound(pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1f, 1f, false);
-            level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.BERRIES, false));
-            return ItemInteractionResult.SUCCESS;
+            if (stack.is(Items.BONE_MEAL))
+            {
+                level.playLocalSound(pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1f, 0f, false);
+                for (int i = 0; i < 6; i++) {
+                    double x = pos.getCenter().x + MathUtils.randomDouble(level.getRandom(), -0.5, 0.5);
+                    double y = pos.getCenter().y + MathUtils.randomDouble(level.getRandom(), -0.5, 0.5);
+                    double z = pos.getCenter().z + MathUtils.randomDouble(level.getRandom(), -0.5, 0.5);
+                    level.addParticle(ParticleTypes.HAPPY_VILLAGER.getType(), x, y, z, 0, -0.1, 0);
+                }
+
+                if (level instanceof ServerLevel lvl)
+                {
+                    if (lvl.getRandom().nextInt(10) <= 2)
+                    {
+                        this.treeGrower.growTree(lvl, lvl.getChunkSource().getGenerator(), pos, state, lvl.getRandom());
+                    }
+                }
+                return ItemInteractionResult.SUCCESS;
+            }
+            else
+            {
+                ItemStack st = ModItems.CRYSTALLIAS.toStack();
+                st.setCount(level.getRandom().nextBoolean() ? 2 : 1);
+                level.addFreshEntity(new ItemEntity(level, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, st));
+                level.playLocalSound(pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1f, 1f, false);
+                level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.BERRIES, false));
+                return ItemInteractionResult.SUCCESS;
+            }
         }
         else
         {

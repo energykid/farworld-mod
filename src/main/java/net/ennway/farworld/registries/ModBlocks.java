@@ -408,6 +408,20 @@ public class ModBlocks {
                     .strength(1.2F, 3.0F)
                     .sound(SoundType.NETHER_WOOD)));
 
+    public static final DeferredBlock<Block> STRIPPED_CRYSTALLIA_LOG = BLOCKS_ALL.register(
+            "stripped_crystallia_log",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> STRIPPED_CRYSTALLIA = BLOCKS_ALL.register(
+            "stripped_crystallia",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
     public static final DeferredBlock<Block> CRYSTALLIA_BUSH = BLOCKS_ALL.register(
             "crystallia_bush",
             () -> new CrystalliaBushBlock(BlockBehaviour.Properties.of()
@@ -426,6 +440,13 @@ public class ModBlocks {
     public static final DeferredBlock<Block> STONEWOOD_LOG = BLOCKS_ALL.register(
             "stonewood_log",
             () -> new StonewoodLogBlock(STRIPPED_STONEWOOD_LOG.get(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_LOG = BLOCKS_ALL.register(
+            "crystallia_log",
+            () -> new StonewoodLogBlock(STRIPPED_CRYSTALLIA_LOG.get(), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY)
                     .strength(1.2F, 3.0F)
                     .sound(SoundType.NETHER_WOOD)));
@@ -543,6 +564,120 @@ public class ModBlocks {
                     .noOcclusion()
                     .isViewBlocking((a,b,c) -> false)));
 
+
+    public static final DeferredBlock<Block> CRYSTALLIA = BLOCKS_ALL.register(
+            "crystallia",
+            () -> new StonewoodLogBlock(STRIPPED_CRYSTALLIA.get(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_PLANKS = BLOCKS_ALL.register(
+            "crystallia_planks",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_STAIRS = BLOCKS_ALL.register(
+            "crystallia_stairs",
+            () -> new StairBlock(CRYSTALLIA_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_SLAB = BLOCKS_ALL.register(
+            "crystallia_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_DOOR = BLOCKS_ALL.register(
+            "crystallia_door",
+            () -> new DoorBlock(BlockSetType.STONE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_TRAPDOOR = BLOCKS_ALL.register(
+            "crystallia_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.STONE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_FENCE = BLOCKS_ALL.register(
+            "crystallia_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_FENCE_GATE = BLOCKS_ALL.register(
+            "crystallia_fence_gate",
+            () -> new FenceGateBlock(WoodTypes.CRYSTALLIA_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_PRESSURE_PLATE = BLOCKS_ALL.register(
+            "crystallia_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_BUTTON = BLOCKS_ALL.register(
+            "crystallia_button",
+            () -> new ButtonBlock(BlockSetType.STONE, 10, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<StandingSignBlock> CRYSTALLIA_SIGN = BLOCKS_ALL.register(
+            "crystallia_sign",
+            () -> new StandingSignBlock(WoodTypes.CRYSTALLIA_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .noCollission()));
+
+    public static final DeferredBlock<WallSignBlock> CRYSTALLIA_SIGN_WALL = BLOCKS_ALL.register(
+            "crystallia_wall_sign",
+            () -> new WallSignBlock(WoodTypes.CRYSTALLIA_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .noCollission()
+                    .dropsLike(CRYSTALLIA_SIGN.get())));
+
+    public static final DeferredBlock<CeilingHangingSignBlock> CRYSTALLIA_SIGN_HANGING = BLOCKS_ALL.register(
+            "crystallia_hanging_sign",
+            () -> new CeilingHangingSignBlock(WoodTypes.CRYSTALLIA_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .noCollission()));
+
+    public static final DeferredBlock<WallHangingSignBlock> CRYSTALLIA_SIGN_WALL_HANGING = BLOCKS_ALL.register(
+            "crystallia_wall_hanging_sign",
+            () -> new WallHangingSignBlock(WoodTypes.CRYSTALLIA_TYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.2F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .noCollission()
+                    .dropsLike(CRYSTALLIA_SIGN_HANGING.get())));
+
+    public static final DeferredBlock<Block> CRYSTALLIA_LEAVES = BLOCKS_ALL.register(
+            "crystallia_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .strength(0.4F, 0F)
+                    .sound(SoundType.AZALEA_LEAVES)
+                    .noOcclusion()
+                    .isViewBlocking((a,b,c) -> false)));
+
     public static final DeferredBlock<Block> STONEWOOD_LEAVES_FLOWERED = BLOCKS_ALL.register(
             "stonewood_leaves_flowered",
             () -> new LeavesBlock(BlockBehaviour.Properties.of()
@@ -550,16 +685,6 @@ public class ModBlocks {
                     .strength(0.4F, 0F)
                     .noOcclusion()
                     .sound(SoundType.AZALEA_LEAVES)
-                    .isViewBlocking((a,b,c) -> false)));
-
-
-    public static final DeferredBlock<Block> CRYSTALLIA_LEAVES = BLOCKS_ALL.register(
-            "crystallia_leaves",
-            () -> new LeavesBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
-                    .strength(0.4F, 0F)
-                    .sound(SoundType.AZALEA_LEAVES)
-                    .noOcclusion()
                     .isViewBlocking((a,b,c) -> false)));
 
     public static final DeferredBlock<Block> FRUITLESS_CRYSTALLIA_LEAVES = BLOCKS_ALL.register(
