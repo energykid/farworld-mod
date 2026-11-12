@@ -47,7 +47,7 @@ public class BlockGenerator extends BlockModelProvider {
     @Override
     protected void registerModels() {
         /*
-        woodset("crystallia",
+        woodSet("crystallia",
                 ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/crystallia_planks"),
                 ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/crystallia_log"),
                 ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "block/crystallia_log_top"),
@@ -60,7 +60,7 @@ public class BlockGenerator extends BlockModelProvider {
          */
     }
 
-    public void woodset(String name,
+    public void woodSet(String name,
                         ResourceLocation planks,
                         ResourceLocation log,
                         ResourceLocation logTop,
@@ -106,5 +106,33 @@ public class BlockGenerator extends BlockModelProvider {
         trapdoorTop(Name+"trapdoor_top", trapdoor);
         trapdoorOpen(Name+"trapdoor_open", trapdoor);
         sign(Name+"sign", sign);
+    }
+
+    public void genericBlockset(String name, ResourceLocation texture, boolean walls, boolean pressurePlates)
+    {
+        String Name = name + "_";
+        cubeAll(name, texture);
+        stairs(Name+"stairs", texture, texture, texture);
+        stairsInner(Name+"stairs_inner", texture, texture, texture);
+        stairsOuter(Name+"stairs_outer", texture, texture, texture);
+        slab(Name+"slab", texture, texture, texture);
+        slabTop(Name+"slab_top", texture, texture, texture);
+
+        if (walls)
+        {
+            wallPost(Name+"wall_post", texture);
+            wallInventory(Name+"wall_inventory", texture);
+            wallSide(Name+"wall_side", texture);
+        }
+
+        if (pressurePlates)
+        {
+            pressurePlate(Name+"pressure_plate", texture);
+            pressurePlateDown(Name+"pressure_plate_down", texture);
+
+            button(Name+"button", texture);
+            buttonPressed(Name+"button_pressed", texture);
+            buttonInventory(Name+"button_inventory", texture);
+        }
     }
 }

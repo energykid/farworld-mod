@@ -21,6 +21,9 @@ import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import java.util.List;
 
@@ -75,18 +78,30 @@ public class CuriousCoreItem extends Item {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
         ItemStack s = new ItemStack(ModItems.CURIOUS_CORE.asItem());
         s.set(ModDataComponents.EXP_SATURATION, itemStack.get(ModDataComponents.EXP_SATURATION) - 1);
 
         setModelStuff(s);
 
-        if (Minecraft.getInstance().player != null)
-            Minecraft.getInstance().player.playNotifySound(ModSounds.CURIOUS_CORE_POWER_DOWN.get(), SoundSource.PLAYERS, 1, 1);
-
         if (s.get(ModDataComponents.EXP_SATURATION) <= 0) s = new ItemStack(ModItems.CURIOUS_CORE_OFF.asItem());
 
         return s;
+    }
+
+    @EventBusSubscriber
+    public class Event
+    {
+        @SubscribeEvent
+        public static void A(PlayerEvent.ItemCraftedEvent evt)
+        {
+            for (int i = 0; i < evt.getInventory().getContainerSize(); i++) {
+                if (evt.getInventory().getItem(i).is(ModItems.CURIOUS_CORE))
+                {
+                    if (Minecraft.getInstance().player != null)
+                        Minecraft.getInstance().player.playNotifySound(ModSounds.CURIOUS_CORE_POWER_DOWN.get(), SoundSource.PLAYERS, 1, 1);
+                }
+            }
+        }
     }
 }

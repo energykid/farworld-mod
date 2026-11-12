@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "oreganized"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "farworld",
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "C": [
+      {
+        "item": "oreganized:electrum_ingot"
+      }
+    ],
+    "S": {
+      "item": "farworld:smithstone_remnant"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "oreganized:electrum_upgrade_smithing_template"
+  }
+}
