@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "farworld:brittle",
+    "farworld:encrusted",
     "farworld:scrapped"
   ]
 }

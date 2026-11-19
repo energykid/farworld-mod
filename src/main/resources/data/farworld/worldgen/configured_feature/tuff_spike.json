@@ -1,4 +1,12 @@
 {
-  "type": "farworld:tuff_spike",
-  "config": {}
+  "type": "farworld:bystone_column",
+  "config": {
+    "to_place": {
+      "Name": "minecraft:tuff"
+    },
+    "size_small": [0, 2],
+    "size_big": [3, 6],
+    "middle_range": [-30, -20],
+    "orientation": "crazy_spike"
+  }
 }

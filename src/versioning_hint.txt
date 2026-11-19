@@ -1,5 +1,51 @@
 the current WIP version is 1.3.5.0
 
+to do:
+- add dense forest and crystal retreat (deep versions of the lush shallows and geodic columns)
+- give the dense forest and crystal retreat reasons to be there
+  - dense forest should definitely be more gloomcap-y
+  - crystal retreat could have something to do with durathyst?
+  - or contain some extra gems that are not amethyst (lapis, emerald, diamond? a new gemstone toolset?)
+- decrease gloomcap spawns in the lush shallows, keep them the same maybe in the dusty shelves
+  - add a mini-structurey thing you can find in dusty shelves which involves gloomcap spread?
+  - gloom mold? like moss blocks and carpets but for gloom?
+- large gloomcaps in the dense forest, Gloomylia? (mycelium but for gloomcaps)
+  - if i do gloom mold it'll probably just be Gloomy Flowstone
+  - add a gloomstone block?? not sure about this, it would mess with the one-off nature of its toolset
+- add dirt or some kind of gravel into the lush shallows? more common in the dense forest?
+  - rock soil? peat? idk
+- large vine block for the dense forest? like normal vines, but full block-shaped
+  - would look like "leaf columns" and be climbable
+  - maybe some new fruit that grows on them?
+- basalt flowstone as a transitional block between dust and amethyst biomes?
+- flowstone resprite for sure
+- remove paralysis potions who the hell uses those. replace them with lifesteal potions or something?
+- gloomcap retooling
+  - basically when harvesting gloomcaps you can no longer get the spores directly
+  - you need to get those from the large versions, which grow on the bottom of strands
+  - these strands grow from the sides of the gloomcap
+  - the strands can be cooked for food, and are mildly nutritious
+  - materially, in-lore, the spores are mildly addictive, heal you, and heighten all your emotional responses
+  - this is why goliaths are so big and angry, but also imprint on you so quickly
+    - addendum: gloomspores give you minecraft bpd
+
+
+- rework A LOT of bystone mobs
+  - brittle: skeletons with dry bones esque revival mechanic, brushing one while it's down causes it to dissipate for good
+    - they can also have items embedded in them, which brushing will cause to un-embed
+      - also drops brittle powder when brushed away
+  - encrusted: like brittle, but cannot be brushed. instead you must kill its core to defeat it permanently
+    - cannot have items embedded in them, instead have a magic amethyst core which is exposed
+      - amethyst core is its own mob, shoots ranged attacks? stays within range of its body
+      - drops some kind of amethyst powder? maybe it's used for enchanting?
+      - alternatively, it drops itself when killed, and the durathyst cluster functionality is moved to it
+  - goliath: god i need to completely retool these guys' functionality
+    - taming them should take more work, perhaps you need to create some kind of gloom-infused fruit
+      - this could use a brewing stand or some kind of special interaction?
+    - goliaths should definitely be less of an active threat most of the time, decrease their aggro range
+    - make their whole gimmick gloom themed
+  - so as not to overwhelm myself i will cut the mob rework ideas here but there's probably more
+
 version history below:
 1.0.0 - the initial version, made in mcreator
 1.1.0 - the forestry update (final mcreator version & first modrinth upload)

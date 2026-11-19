@@ -21,16 +21,16 @@
     "barrier": 0,
     "continents": {
       "type": "minecraft:noise",
-      "noise": "minecraft:calcite",
-      "xz_scale": 0.2,
-      "y_scale": 0.2
+      "noise": "minecraft:erosion",
+      "xz_scale": 1.5,
+      "y_scale": 0
     },
     "depth": 0,
     "erosion": {
       "type": "minecraft:noise",
-      "noise": "minecraft:cave_cheese",
-      "xz_scale": 0.2,
-      "y_scale": 0.2
+      "noise": "minecraft:erosion",
+      "xz_scale": 1.5,
+      "y_scale": 0
     },
     "final_density": {
       "type": "minecraft:squeeze",
@@ -98,7 +98,7 @@
       "shift_x": "minecraft:shift_x",
       "shift_y": 0,
       "shift_z": "minecraft:shift_z",
-      "xz_scale": 1,
+      "xz_scale": 1.5,
       "y_scale": 0
     },
     "vegetation": {
@@ -107,7 +107,7 @@
       "shift_x": "minecraft:shift_x",
       "shift_y": 0,
       "shift_z": "minecraft:shift_z",
-      "xz_scale": 1,
+      "xz_scale": 1.5,
       "y_scale": 0
     },
     "vein_gap": 0,
@@ -175,7 +175,8 @@
           "if_true": {
             "type": "minecraft:biome",
             "biome_is": [
-              "farworld:lush_shallows"
+              "farworld:lush_shallows",
+              "farworld:dense_forest"
             ]
           },
           "then_run": {
@@ -200,7 +201,8 @@
           "if_true": {
             "type": "minecraft:biome",
             "biome_is": [
-              "farworld:lush_shallows"
+              "farworld:lush_shallows",
+              "farworld:dense_forest"
             ]
           },
           "then_run": {
@@ -256,7 +258,8 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "farworld:geodic_columns"
+            "farworld:geodic_columns",
+            "farworld:crystal_retreat"
           ]
         },
         "then_run": {

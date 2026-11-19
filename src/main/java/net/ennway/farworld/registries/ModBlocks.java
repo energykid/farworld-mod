@@ -61,6 +61,27 @@ public class ModBlocks {
                     .noCollission()
                     .noOcclusion()));
 
+    public static final DeferredBlock<Block> GLOOMCAP_STEM = BLOCKS_ALL.register(
+            "gloomcap_stem",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DEEPSLATE)
+                    .sound(SoundType.WART_BLOCK)
+                    .strength(0.25F, 0.2F)
+                    .forceSolidOn()
+                    .ignitedByLava()
+                    .requiresCorrectToolForDrops()));
+
+    public static final DeferredBlock<Block> GLOOMCAP_SHELF = BLOCKS_ALL.register(
+            "gloomcap_shelf",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DEEPSLATE)
+                    .sound(SoundType.WART_BLOCK)
+                    .strength(0.25F, 0.2F)
+                    .forceSolidOn()
+                    .ignitedByLava()
+                    .noOcclusion()
+                    .requiresCorrectToolForDrops()));
+
     public static final DeferredBlock<Block> MILK_BERRIES = BLOCKS_ALL.register(
             "milk_berries",
             () -> new MilkBerryCropBlock(BlockBehaviour.Properties.of()

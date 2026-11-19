@@ -1,0 +1,59 @@
+{
+  "temperature": 0,
+  "downfall": 0,
+  "has_precipitation": false,
+  "creature_spawn_probability": 0.00015,
+  "effects": {
+    "sky_color": 7699086,
+    "fog_color": 8217250,
+    "water_color": 3945547,
+    "water_fog_color": 4664415,
+    "grass_color": 3748670,
+    "foliage_color": 3424581,
+    "ambient_sound": "farworld:geodic_columns_ambiance",
+    "music": {
+      "sound": "farworld:music.geodic_columns",
+      "min_delay": 8000,
+      "max_delay": 14000,
+      "replace_current_music": false
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:end_rod"
+      },
+      "probability": 0.002
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "farworld:encrusted",
+        "weight": 3,
+        "minCount": 2,
+        "maxCount": 3
+      },
+      {
+        "type": "farworld:amethyst_construct",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "farworld:basalt_column_placed",
+      "farworld:geodic_flowstone_caches_placed",
+      "farworld:basalt_layering_placed",
+      "farworld:calcite_layering_placed",
+      "farworld:crystallia_bushes_placed",
+      "farworld:embedded_geode_placed",
+      "farworld:embedded_geode_floor_placed",
+      "farworld:pointed_amethyst_placed",
+      "farworld:pointed_amethyst_floor_placed",
+      "farworld:amethyst_column_placed"
+    ]
+  ]
+}

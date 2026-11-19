@@ -4,6 +4,7 @@ package net.ennway.farworld.network;
 import io.netty.buffer.ByteBuf;
 import net.ennway.farworld.item.accessory.ApocalypseCore;
 import net.ennway.farworld.item.accessory.TechnicLaunchers;
+import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -11,7 +12,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record TechnicLaunchersData(int direction) implements CustomPacketPayload {
+import java.util.UUID;
+
+public record TechnicLaunchersData(UUID player, int direction) implements CustomPacketPayload {
 
     @Override
     public int direction() {
@@ -21,6 +24,8 @@ public record TechnicLaunchersData(int direction) implements CustomPacketPayload
     public static final Type<TechnicLaunchersData> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("mymod", "technic_launchers_packet"));
 
     public static final StreamCodec<ByteBuf, TechnicLaunchersData> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.fromCodec(UUIDUtil.CODEC),
+            TechnicLaunchersData::player,
             ByteBufCodecs.VAR_INT,
             TechnicLaunchersData::direction,
             TechnicLaunchersData::new
@@ -33,13 +38,13 @@ public record TechnicLaunchersData(int direction) implements CustomPacketPayload
 
     public static class ClientPayloadHandler {
         public static void handleDataOnMain(final TechnicLaunchersData data, final IPayloadContext context) {
-            TechnicLaunchers.runZip(context.player(), data.direction());
+            TechnicLaunchers.runZip(context.player().level().getPlayerByUUID(data.player), data.direction());
         }
     }
 
     public static class ServerPayloadHandler {
         public static void handleDataOnMain(final TechnicLaunchersData data, final IPayloadContext context) {
-            TechnicLaunchers.runZip(context.player(), data.direction());
+            TechnicLaunchers.runZip(context.player().level().getPlayerByUUID(data.player), data.direction());
             PacketDistributor.sendToAllPlayers(data);
         }
     }

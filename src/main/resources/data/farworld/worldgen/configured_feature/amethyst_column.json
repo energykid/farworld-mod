@@ -1,0 +1,12 @@
+{
+  "type": "farworld:bystone_column",
+  "config": {
+    "to_place": {
+      "Name": "minecraft:amethyst_block"
+    },
+    "size_small": [0, 1.5],
+    "size_big": [1, 3],
+    "middle_range": [-30, -20],
+    "orientation": "spike"
+  }
+}

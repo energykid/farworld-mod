@@ -126,7 +126,7 @@ public class ApocalypseCore extends AccessoryItem {
                 {
                     if (AccessoryUtils.playerHasAccessory(player, ModItems.APOCALYPSE_CORE.asItem()) && player.getData(ModAttachments.APOCALYPSE_ABILITY) <= 0)
                     {
-                        PacketDistributor.sendToServer(new ApocalypseCoreData(0));
+                        PacketDistributor.sendToServer(new ApocalypseCoreData(player.getUUID()));
                     }
                 }
             }

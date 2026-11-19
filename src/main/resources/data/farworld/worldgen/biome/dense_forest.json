@@ -1,0 +1,64 @@
+{
+  "temperature": 0,
+  "downfall": 0,
+  "has_precipitation": false,
+  "creature_spawn_probability": 0.00035,
+  "effects": {
+    "sky_color": 14737816,
+    "fog_color": 14737816,
+    "water_color": 5008230,
+    "water_fog_color": 2310738,
+    "grass_color": 5027146,
+    "foliage_color": 3635038,
+    "ambient_sound": "farworld:lush_shallows_ambiance",
+    "music": {
+      "sound": "farworld:music.lush_shallows",
+      "min_delay": 10000,
+      "max_delay": 12000,
+      "replace_current_music": false
+    },
+    "particle": {
+      "options": {
+        "type": "farworld:phosphen_particle"
+      },
+      "probability": 0.0025
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "farworld:bloomed",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:spider",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "farworld:goliath",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "farworld:ore_dense_coal_placed",
+      "farworld:ore_dense_gold_placed",
+      "farworld:dense_forest_trees_placed",
+      "farworld:dense_forest_thick_trees_placed",
+      "farworld:dense_forest_tall_trees_placed",
+      "farworld:lush_shelves_flora_placed",
+      "farworld:dense_forest_foliage_placed",
+      "farworld:gloomcap_placed_lush_shallows",
+      "farworld:large_gloomcaps_placed"
+    ]
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "replace": false,
+
+  "values": {
+    "farworld:bloomed": {
+      "conditions": [
+        {
+          "texture": "shears",
+          "data": ["FlowerToDisplay!=air"]
+        },
+        {
+          "texture": "bone_meal",
+          "data": ["FlowerToDisplay=air"]
+        }
+      ]
+    }
+  }
+}

@@ -3,6 +3,7 @@ package net.ennway.farworld.registries;
 
 import net.ennway.farworld.Farworld;
 import net.ennway.farworld.feature.*;
+import net.ennway.farworld.feature.configuration.BystoneColumnFeatureConfiguration;
 import net.ennway.farworld.feature.configuration.TemplateFeatureConfiguration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -83,6 +84,13 @@ public class ModFeatureTypes {
         @Override
         public Feature<TemplateFeatureConfiguration> get() {
             return new SimpleTemplateFeature(TemplateFeatureConfiguration.CODEC);
+        }
+    });
+
+    public static final DeferredHolder<Feature<?>, Feature<BystoneColumnFeatureConfiguration>> BYSTONE_COLUMN_FEATURE = FEATURES_ALL.register("bystone_column", new Supplier<Feature<BystoneColumnFeatureConfiguration>>() {
+        @Override
+        public Feature<BystoneColumnFeatureConfiguration> get() {
+            return new BystoneColumnFeature(BystoneColumnFeatureConfiguration.CODEC);
         }
     });
 }

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+
+  "values": {
+    "minecraft:lantern": {
+      "texture": "mystery"
+    },
+    "farworld:milk_berries": {
+      "texture": "bone_meal",
+      "blockstates": ["age=0", "age=1", "age=2", "age=3", "age=4", "age=5", "age=6"]
+    }
+  }
+}

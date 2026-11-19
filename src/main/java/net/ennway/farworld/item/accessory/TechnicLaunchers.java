@@ -77,7 +77,7 @@ public class TechnicLaunchers extends AccessoryItem {
                                     if (dir == dashDirection)
                                     {
                                         dashCooldown = 40;
-                                        PacketDistributor.sendToServer(new TechnicLaunchersData(dir));
+                                        PacketDistributor.sendToServer(new TechnicLaunchersData(player.getUUID(), dir));
                                     }
                                 }
                                 else

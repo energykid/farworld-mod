@@ -457,6 +457,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> GLOOMCAP = ITEMS_ALL.register("gloomcap",
             () -> new BlockItem(ModBlocks.GLOOMCAP.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> GLOOMCAP_STEM = ITEMS_ALL.register("gloomcap_stem",
+            () -> new BlockItem(ModBlocks.GLOOMCAP_STEM.get(), new Item.Properties()).asItem());
+    public static final DeferredItem<Item> GLOOMCAP_SHELF = ITEMS_ALL.register("gloomcap_shelf",
+            () -> new BlockItem(ModBlocks.GLOOMCAP_SHELF.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> LUSH_FOLIAGE = ITEMS_ALL.register("lush_foliage",
             () -> new BlockItem(ModBlocks.LUSH_FOLIAGE.get(), new Item.Properties()).asItem());
     public static final DeferredItem<Item> FLOWERING_LUSH_FOLIAGE = ITEMS_ALL.register("flowering_lush_foliage",
