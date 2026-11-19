@@ -66,6 +66,8 @@ public class ModItems {
     public static final DeferredItem<BrittlePowder> BRITTLE_POWDER = ITEMS_ALL.register("brittle_powder",
             () -> new BrittlePowder(new BrittlePowder.Properties()));
 
+    public static final DeferredItem<MyceliumSpores> MYCELIUM_SPORES = ITEMS_ALL.register("mycelium_spores",
+            () -> new MyceliumSpores(new MyceliumSpores.Properties()));
     public static final DeferredItem<Item> GLOOMSPORES = ITEMS_ALL.register("gloomspores",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SLUDGE_BALL = ITEMS_ALL.register("sludge_ball",

@@ -135,9 +135,6 @@ public class ModSounds {
     public static final Supplier<SoundEvent> FLOWSTONE_HIT = createSoundEvent("flowstone_hit");
     public static final Supplier<SoundEvent> FLOWSTONE_BREAK = createSoundEvent("flowstone_break");
 
-    public static final Supplier<SoundEvent> LOOSE_FLOWSTONE_HIT = createSoundEvent("loose_flowstone_hit");
-    public static final Supplier<SoundEvent> LOOSE_FLOWSTONE_BREAK = createSoundEvent("loose_flowstone_break");
-
     public static final Supplier<SoundEvent> CURIOUS_CORE_POWER_DOWN = createSoundEvent("curious_core_power_down");
     public static final Supplier<SoundEvent> CURIOUS_CORE_POWER_UP = createSoundEvent("curious_core_power_up");
 
@@ -174,22 +171,10 @@ public class ModSounds {
         return new SoundType(
                 1.0F,
                 1.0F,
-                SoundEvents.NETHERRACK_BREAK,
+                FLOWSTONE_BREAK.get(),
                 SoundEvents.BASALT_STEP,
-                SoundEvents.NETHERRACK_PLACE,
-                SoundEvents.NETHERRACK_HIT,
-                SoundEvents.NETHERRACK_FALL);
-    }
-
-    public static SoundType looseFlowstone()
-    {
-        return new SoundType(
-                1.0F,
-                1.0F,
-                SoundEvents.NYLIUM_BREAK,
-                SoundEvents.BASALT_STEP,
-                SoundEvents.NYLIUM_PLACE,
-                SoundEvents.NYLIUM_HIT,
-                SoundEvents.NYLIUM_FALL);
+                FLOWSTONE_HIT.get(),
+                FLOWSTONE_HIT.get(),
+                FLOWSTONE_HIT.get());
     }
 }

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "entries": [
+    "farworld:red_mushroom_spore_injection",
+    "farworld:brown_mushroom_spore_injection",
     "farworld:obsidian_keepsake_injection",
     "farworld:allsaw_injection",
     "farworld:pear_injection",

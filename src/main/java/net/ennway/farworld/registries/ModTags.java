@@ -70,4 +70,7 @@ public class ModTags {
     public static final TagKey<Block> MILK_BERRY_SURVIVABLE = TagKey.create(
             BuiltInRegistries.BLOCK.key(),
             ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "milk_berry_survivable"));
+    public static final TagKey<Block> TALL_GRASSES = TagKey.create(
+            BuiltInRegistries.BLOCK.key(),
+            ResourceLocation.fromNamespaceAndPath(Farworld.MOD_ID, "tall_grasses"));
 }

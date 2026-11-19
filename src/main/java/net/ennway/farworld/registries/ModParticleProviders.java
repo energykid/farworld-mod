@@ -68,6 +68,8 @@ public class ModParticleProviders {
         event.registerSpriteSet(ModParticles.DIAMOND_DUST.get(), DiamondDustParticleProvider::new);
         event.registerSpriteSet(ModParticles.DIAMOND_SPARKLE.get(), DiamondSparkleParticleProvider::new);
 
+        event.registerSpriteSet(ModParticles.SPORE.get(), SporeParticle.Provider::new);
+
         event.registerSpriteSet(ModParticles.BLAZE_STANCE_SLASH.get(), BlazeStanceSlashParticle.Provider::new);
         event.registerSpriteSet(ModParticles.BREEZE_STANCE_BURST.get(), BreezeStanceBurstParticle.Provider::new);
         event.registerSpriteSet(ModParticles.BREEZE_STANCE_PUFF.get(), BreezeStancePuffParticle.Provider::new);

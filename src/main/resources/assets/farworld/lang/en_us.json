@@ -16,6 +16,8 @@
   "item.farworld.allsaw_precision" : "§eAllsaw §f(Precision)",
   "item.farworld.brittle_powder" : "Brittle Powder",
   "lore.farworld.brittle_powder" : "An item that can be used to rapidly grow plants, flowers, and crops at surplus rates. Does not work on saplings.",
+  "item.farworld.mycelium_spores" : "Mycelium Spores",
+  "lore.farworld.mycelium_spores" : "A small sample of spores taken from a mushroom. Can grow Mycelium on grass.",
   "item.farworld.gloomspores" : "Gloomspores",
   "lore.farworld.gloomspores" : "This item can be used to brew Potions of Paralysis, or combined with Cobalt to make Gloom Plates.",
   "item.farworld.gloom_plate" : "Gloom Plate",

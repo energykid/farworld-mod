@@ -93,4 +93,11 @@ public class ModFeatureTypes {
             return new BystoneColumnFeature(BystoneColumnFeatureConfiguration.CODEC);
         }
     });
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> LARGE_GLOOMCAP = FEATURES_ALL.register("large_gloomcap", new Supplier<Feature<NoneFeatureConfiguration>>() {
+        @Override
+        public Feature<NoneFeatureConfiguration> get() {
+            return new LargeGloomcapFeature(NoneFeatureConfiguration.CODEC);
+        }
+    });
 }

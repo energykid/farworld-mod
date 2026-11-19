@@ -1,7 +1,48 @@
 {
-  "variants": {
-    "": {
-      "model": "farworld:block/gloomcap_shelf"
+  "multipart": [
+    {
+      "apply": {
+        "model": "farworld:block/gloomcap_shelf"
+      }
+    },
+    {
+      "apply": {
+        "model": "farworld:block/gloomcap_shelf_side",
+        "uvlock": true
+      },
+      "when": {
+        "north": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "farworld:block/gloomcap_shelf_side",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "farworld:block/gloomcap_shelf_side",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "farworld:block/gloomcap_shelf_side",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "false"
+      }
     }
-  }
+  ]
 }

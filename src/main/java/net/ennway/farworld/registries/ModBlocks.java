@@ -73,7 +73,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> GLOOMCAP_SHELF = BLOCKS_ALL.register(
             "gloomcap_shelf",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new NeighborCognisantBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DEEPSLATE)
                     .sound(SoundType.WART_BLOCK)
                     .strength(0.25F, 0.2F)
@@ -345,61 +345,68 @@ public class ModBlocks {
                     .strength(1.3F, 5.0F)
                     .sound(SoundType.STONE)));
 
+    public static final DeferredBlock<Block> DUSTY_FLOWSTONE = BLOCKS_ALL.register(
+            "dusty_flowstone",
+            () -> new DustyFlowstoneBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
+                    .strength(FLOWSTONE_DESTROY_TIME, 6.0F)
+                    .sound(ModSounds.flowstone())));
+
     public static final DeferredBlock<Block> DUSTY_FLOWSTONE_BRICKS = BLOCKS_ALL.register(
             "dusty_flowstone_bricks",
             () -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME, 5.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> DUSTY_FLOWSTONE_BRICK_SLAB = BLOCKS_ALL.register(
             "dusty_flowstone_brick_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME, 5.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> DUSTY_FLOWSTONE_BRICK_STAIRS = BLOCKS_ALL.register(
             "dusty_flowstone_brick_stairs",
-            () -> new StairBlock(COBBLED_SLEEKSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+            () -> new StairBlock(DUSTY_FLOWSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME, 5.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> DUSTY_FLOWSTONE_BRICK_WALL = BLOCKS_ALL.register(
             "dusty_flowstone_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME, 5.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> LUSH_FLOWSTONE_BRICKS = BLOCKS_ALL.register(
             "lush_flowstone_bricks",
             () -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME, 5.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> LUSH_FLOWSTONE_BRICK_SLAB = BLOCKS_ALL.register(
             "lush_flowstone_brick_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME, 5.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> LUSH_FLOWSTONE_BRICK_STAIRS = BLOCKS_ALL.register(
             "lush_flowstone_brick_stairs",
             () -> new StairBlock(COBBLED_SLEEKSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME, 5.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> LUSH_FLOWSTONE_BRICK_WALL = BLOCKS_ALL.register(
             "lush_flowstone_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME, 5.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> POINTED_AMETHYST = BLOCKS_ALL.register(
             "pointed_amethyst",
@@ -804,14 +811,7 @@ public class ModBlocks {
             () -> new LushFlowstoneBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
                     .strength(FLOWSTONE_DESTROY_TIME, 6.0F)
-                    .sound(ModSounds.looseFlowstone())));
-
-    public static final DeferredBlock<Block> DUSTY_FLOWSTONE = BLOCKS_ALL.register(
-            "dusty_flowstone",
-            () -> new DustyFlowstoneBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops()
-                    .strength(FLOWSTONE_DESTROY_TIME, 6.0F)
-                    .sound(ModSounds.looseFlowstone())));
+                    .sound(ModSounds.flowstone())));
 
     public static final DeferredBlock<Block> ENCRUSTED_BASALT = BLOCKS_ALL.register(
             "encrusted_basalt",
