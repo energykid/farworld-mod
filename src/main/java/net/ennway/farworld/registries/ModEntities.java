@@ -27,9 +27,7 @@ import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityEnt
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityLaserEntity;
 import net.ennway.farworld.entity.custom.redstone_curiosity.RedstoneCuriosityVerticalBlastEntity;
 import net.ennway.farworld.entity.projectile.*;
-import net.ennway.farworld.entity.projectile.client.ApocalypseBreathRenderer;
-import net.ennway.farworld.entity.projectile.client.GloomstonePickupRenderer;
-import net.ennway.farworld.entity.projectile.client.SludgeArrowRenderer;
+import net.ennway.farworld.entity.projectile.client.*;
 import net.ennway.farworld.registries.entity_definitions.GeoEntityRendererDefinition;
 import net.ennway.farworld.registries.entity_definitions.NonGeoEntityLayerDefinition;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -157,6 +155,9 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<GloomstonePickup>> GLOOMSTONE_PICKUP = ENTITY_TYPES.register(
             "gloomstone_pickup", () -> EntityType.Builder.of(GloomstonePickup::new, MobCategory.MISC).build("gloomstone_pickup"));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<ThornBerryProjectile>> THORN_BERRY = ENTITY_TYPES.register(
+            "thorn_berry", () -> EntityType.Builder.of(ThornBerryProjectile::get, MobCategory.MISC).build("thorn_berry"));
+
     public static final DeferredHolder<EntityType<?>, EntityType<ApocalypseBreathProjectile>> APOCALYPSE_BREATH = ENTITY_TYPES.register(
             "apocalypse_breath", () -> EntityType.Builder.of(ApocalypseBreathProjectile::new, MobCategory.MISC).build("apocalypse_breath"));
 
@@ -261,6 +262,12 @@ public class ModEntities {
                         null,
                         null,
                         SludgeArrowRenderer::new
+                ),
+                new NonGeoEntityLayerDefinition<ThornBerryProjectile>(
+                        THORN_BERRY,
+                        ThornBerryModel.LAYER_LOCATION,
+                        ThornBerryModel::createBodyLayer,
+                        ThornBerryRenderer::new
                 )
         );
         //endregion
