@@ -6,6 +6,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -35,7 +36,7 @@ public class NeighborCognisantBlock extends Block {
         builder.add(BlockStateProperties.DOWN);
     }
 
-    public BlockState findState(Level level, BlockState state, BlockPos pos)
+    public static BlockState findState(Level level, BlockState state, BlockPos pos)
     {
         BlockState st = state;
 
@@ -46,18 +47,50 @@ public class NeighborCognisantBlock extends Block {
         st = st.setValue(BlockStateProperties.UP, false);
         st = st.setValue(BlockStateProperties.DOWN, false);
 
-        if (level.getBlockState(pos.mutable().move(Direction.NORTH)).is(this))
+        if (level.getBlockState(pos.mutable().move(Direction.NORTH)).is(state.getBlock()))
             st = st.setValue(BlockStateProperties.NORTH, true);
-        if (level.getBlockState(pos.mutable().move(Direction.SOUTH)).is(this))
+        if (level.getBlockState(pos.mutable().move(Direction.SOUTH)).is(state.getBlock()))
             st = st.setValue(BlockStateProperties.SOUTH, true);
-        if (level.getBlockState(pos.mutable().move(Direction.EAST)).is(this))
+        if (level.getBlockState(pos.mutable().move(Direction.EAST)).is(state.getBlock()))
             st = st.setValue(BlockStateProperties.EAST, true);
-        if (level.getBlockState(pos.mutable().move(Direction.WEST)).is(this))
+        if (level.getBlockState(pos.mutable().move(Direction.WEST)).is(state.getBlock()))
             st = st.setValue(BlockStateProperties.WEST, true);
-        if (level.getBlockState(pos.mutable().move(Direction.UP)).is(this))
+        if (level.getBlockState(pos.mutable().move(Direction.UP)).is(state.getBlock()))
             st = st.setValue(BlockStateProperties.UP, true);
-        if (level.getBlockState(pos.mutable().move(Direction.DOWN)).is(this))
+        if (level.getBlockState(pos.mutable().move(Direction.DOWN)).is(state.getBlock()))
             st = st.setValue(BlockStateProperties.DOWN, true);
+
+        return st;
+    }
+
+    public static BlockState findState(WorldGenLevel level, BlockState state, BlockPos pos)
+    {
+        BlockState st = state;
+
+        if (st.hasProperty(BlockStateProperties.NORTH) && st.hasProperty(BlockStateProperties.SOUTH)
+        && st.hasProperty(BlockStateProperties.EAST) && st.hasProperty(BlockStateProperties.WEST)
+        && st.hasProperty(BlockStateProperties.UP) && st.hasProperty(BlockStateProperties.DOWN))
+        {
+            st = st.setValue(BlockStateProperties.NORTH, false);
+            st = st.setValue(BlockStateProperties.SOUTH, false);
+            st = st.setValue(BlockStateProperties.EAST, false);
+            st = st.setValue(BlockStateProperties.WEST, false);
+            st = st.setValue(BlockStateProperties.UP, false);
+            st = st.setValue(BlockStateProperties.DOWN, false);
+
+            if (level.getBlockState(pos.mutable().move(Direction.NORTH)).is(state.getBlock()))
+                st = st.setValue(BlockStateProperties.NORTH, true);
+            if (level.getBlockState(pos.mutable().move(Direction.SOUTH)).is(state.getBlock()))
+                st = st.setValue(BlockStateProperties.SOUTH, true);
+            if (level.getBlockState(pos.mutable().move(Direction.EAST)).is(state.getBlock()))
+                st = st.setValue(BlockStateProperties.EAST, true);
+            if (level.getBlockState(pos.mutable().move(Direction.WEST)).is(state.getBlock()))
+                st = st.setValue(BlockStateProperties.WEST, true);
+            if (level.getBlockState(pos.mutable().move(Direction.UP)).is(state.getBlock()))
+                st = st.setValue(BlockStateProperties.UP, true);
+            if (level.getBlockState(pos.mutable().move(Direction.DOWN)).is(state.getBlock()))
+                st = st.setValue(BlockStateProperties.DOWN, true);
+        }
 
         return st;
     }

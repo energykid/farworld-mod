@@ -11,7 +11,7 @@
   "ambient_light": 0.05,
   "fixed_time": 0,
   "logical_height": 120,
-  "effects": "minecraft:the_nether",
+  "effects": "farworld:bystone",
   "infiniburn": "#minecraft:infiniburn_overworld",
   "min_y": -96,
   "height": 128,
