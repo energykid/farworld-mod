@@ -277,6 +277,8 @@ public class Farworld
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT)
         {
+            event.insertAfter(Items.WIND_CHARGE.getDefaultInstance(), ModItems.THORN_BERRY.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.MACE.getDefaultInstance(), ModItems.CHARGE_BUNKER.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.DIAMOND_SWORD.getDefaultInstance(), ModItems.SOUL_STEEL_SWORD.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

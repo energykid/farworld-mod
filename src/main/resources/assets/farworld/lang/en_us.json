@@ -1,6 +1,8 @@
 {
   "lore.minecraft.echo_shard": "An item that can be used to craft a Recovery Compass or light a Bystone portal. It's an uncommon find.",
 
+  "item.farworld.thorn_berry" : "Thorn Berry",
+  "lore.farworld.thorn_berry" : "A strange, spliced fruit made from Sweet Berries using Gloomspores. Explosive!",
   "item.farworld.cherries" : "Cherries",
   "lore.farworld.cherries" : "A food that drops in bulk from Cherry Leaves, which can be consumed to restore a slight amount of health and saturation.",
   "item.farworld.crystallias" : "Crystallia Berries",
@@ -390,6 +392,7 @@
   "lore.farworld.obelisk" : "Large Blackstone monoliths designed to hinder, not harm. History has forgotten why they're here, but they haven't.",
   "entity.farworld.redstone_curiosity" : "Redstone Curiosity",
   "lore.farworld.redstone_curiosity" : "Digi!tal m?aster!!mi?nd m?a!de co??nsc!ious.",
+  "entity.farworld.thorn_berry" : "Thorn Berry",
 
   "entity.farworld.black_ice_aoe" : "Black Ice Wormhole",
   "entity.farworld.sludge_arrow" : "Sludge Arrow",

@@ -163,4 +163,12 @@ public class ModParticles {
             "directional_redstone_charge",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> THORN_BERRY_JUICE = PARTICLE_TYPES.register(
+            "thorn_berry_juice",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> THORN_BERRY_POP = PARTICLE_TYPES.register(
+            "thorn_berry_pop",
+            () -> new SimpleParticleType(false)
+    );
 }

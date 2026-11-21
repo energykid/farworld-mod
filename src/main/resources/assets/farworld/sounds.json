@@ -11,6 +11,10 @@
     "sounds": ["farworld:sludge_crash"]
   },
 
+  "thorn_berry_throw": {
+    "sounds": ["farworld:thorn_berry_throw"]
+  },
+
   "thorn_berry_impact": {
     "sounds": ["farworld:thorn_berry_impact1",
       "farworld:thorn_berry_impact2",

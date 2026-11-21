@@ -44,6 +44,10 @@ public class MathUtils {
     {
         return min + (randomSource.nextDouble() * (max - min));
     }
+    public static float randomFloat(RandomSource randomSource, float min, float max)
+    {
+        return min + (float)(randomSource.nextDouble() * (max - min));
+    }
 
     public static int sign(int num)
     {

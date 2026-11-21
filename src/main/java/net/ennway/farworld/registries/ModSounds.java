@@ -34,6 +34,7 @@ public class ModSounds {
 
     public static final Supplier<SoundEvent> DUSTBUG_SCREECH = createSoundEvent("dustbug_screech");
 
+    public static final Supplier<SoundEvent> THORN_BERRY_THROW = createSoundEvent("thorn_berry_throw");
     public static final Supplier<SoundEvent> THORN_BERRY_IMPACT = createSoundEvent("thorn_berry_impact");
 
     public static final Supplier<SoundEvent> WISHBONE_CRACK = createSoundEvent("wishbonecrack");

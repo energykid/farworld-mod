@@ -1,5 +1,6 @@
 package net.ennway.farworld.entity.projectile;
 
+import net.ennway.farworld.registries.ModParticles;
 import net.ennway.farworld.registries.ModSounds;
 import net.ennway.farworld.utils.MathUtils;
 import net.minecraft.core.Direction;
@@ -7,6 +8,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,11 +44,6 @@ public class ThornBerryProjectile extends ThrowableProjectile {
     public static final EntityDataAccessor<Float> ROLL = SynchedEntityData.defineId(ThornBerryProjectile.class, EntityDataSerializers.FLOAT);
 
     @Override
-    public Vec3 getMovementToShoot(double x, double y, double z, float velocity, float inaccuracy) {
-        return new Vec3(MathUtils.randomDouble(random, -0.5d, 0.5d), MathUtils.randomDouble(random, -0.5d, 0.5d), MathUtils.randomDouble(random, -0.5d, 0.5d));
-    }
-
-    @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         builder.define(TIMER, 0);
         builder.define(BOUNCES, 3);
@@ -58,23 +55,26 @@ public class ThornBerryProjectile extends ThrowableProjectile {
         super.onHitEntity(result);
         if (result.getEntity() instanceof LivingEntity entity)
         {
-            explode();
+            if (getOwner() instanceof LivingEntity owner)
+            {
+                entity.hurt(damageSources().mobProjectile(this, owner), 6);
+            }
+            else {
+                entity.hurt(damageSources().generic(), 6);
+            }
+            remove(RemovalReason.KILLED);
         }
     }
 
     public void explode()
     {
         playSound(ModSounds.THORN_BERRY_IMPACT.get());
-        remove(RemovalReason.KILLED);
+        level().addParticle(ModParticles.THORN_BERRY_POP.get(), getX(), getY(), getZ(), 0, 0, 0);
+        level().addParticle(ModParticles.THORN_BERRY_JUICE.get(), getX(), getY(), getZ(), 0, 0, 0);
     }
 
     @Override
     public void tick() {
-        if (entityData.get(TIMER) == 0)
-        {
-            setDeltaMovement(new Vec3(MathUtils.randomDouble(random, -0.5, 0.5), MathUtils.randomDouble(random, -0.5, 0.5), MathUtils.randomDouble(random, -0.5, 0.5)));
-        }
-
         setYRot(lerpRotation(getYRot(), (float)(Mth.atan2(getDeltaMovement().x, getDeltaMovement().z) * 180.0F / (float) Math.PI)));
 
         super.tick();
@@ -85,8 +85,14 @@ public class ThornBerryProjectile extends ThrowableProjectile {
 
         this.setDeltaMovement(this.getDeltaMovement().multiply(0.9, 1, 0.9));
 
-        entityData.set(ROLL, entityData.get(ROLL) + (float)(this.getDeltaMovement().length() * 52f));
+        entityData.set(ROLL, entityData.get(ROLL) > 360 ? (entityData.get(ROLL) + 10) : Mth.lerp(0.2f, entityData.get(ROLL), 360 * 1.5f));
         entityData.set(TIMER, entityData.get(TIMER) + 1);
+    }
+
+    @Override
+    public void onRemovedFromLevel() {
+        super.onRemovedFromLevel();
+        explode();
     }
 
     @Override
@@ -99,11 +105,9 @@ public class ThornBerryProjectile extends ThrowableProjectile {
 
         entityData.set(BOUNCES, entityData.get(BOUNCES) - 1);
 
-        if (entityData.get(BOUNCES) < 0)
-        {
-            explode();
-        }
-
         setDeltaMovement(movement);
+
+        if (entityData.get(BOUNCES) <= 0)
+            remove(RemovalReason.KILLED);
     }
 }

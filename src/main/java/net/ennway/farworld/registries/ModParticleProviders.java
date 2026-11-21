@@ -91,5 +91,8 @@ public class ModParticleProviders {
         event.registerSpriteSet(ModParticles.DIRECTIONAL_REDSTONE_CHARGE.get(), DirectionalRedstoneChargeParticle.Provider::new);
 
         event.registerSpriteSet(ModParticles.NECROMIUM_EFFECT.get(), NecromiumEffectParticle.Provider::new);
+
+        event.registerSpriteSet(ModParticles.THORN_BERRY_POP.get(), ThornBerryPopParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.THORN_BERRY_JUICE.get(), ThirtyTwoPixelExplosionParticle.Provider::new);
     }
 }

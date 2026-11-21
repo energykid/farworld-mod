@@ -48,6 +48,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> CHERRIES = ITEMS_ALL.register("cherries",
             Cherries::new);
+    public static final DeferredItem<Item> THORN_BERRY = ITEMS_ALL.register("thorn_berry",
+            ThornBerry::new);
     public static final DeferredItem<Item> CRYSTALLIAS = ITEMS_ALL.register("crystallias",
             Crystallias::new);
     public static final DeferredItem<Item> PEAR = ITEMS_ALL.register("pear",
