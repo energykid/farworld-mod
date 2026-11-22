@@ -27,7 +27,7 @@ public class ThornBerryPopParticle extends OrientedParticle {
     public ThornBerryPopParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z, spriteSet);
 
-        this.quadSize = 0.6f + (float)(Math.random() % 0.6f);
+        this.quadSize = 1f + (float)(Math.random() % 0.5f);
 
         this.lifetime = 3;
 
@@ -51,7 +51,6 @@ public class ThornBerryPopParticle extends OrientedParticle {
 
     @Override
     public void render(VertexConsumer buffer, Camera camera, float ticks) {
-        this.quadSize = Mth.lerp(0.2f, this.quadSize, 2f);
         super.render(buffer, camera, ticks);
     }
 
