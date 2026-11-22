@@ -44,7 +44,6 @@ public class ThirtyTwoPixelExplosionParticle extends TextureSheetParticle {
 
     @Override
     public void render(VertexConsumer buffer, Camera camera, float ticks) {
-        this.quadSize = Mth.lerp(0.2f, this.quadSize, 2f);
         super.render(buffer, camera, ticks);
     }
 
